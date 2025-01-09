@@ -13,8 +13,11 @@ public class RestaurantNoteModel {
     private UUID id;
     private UUID restaurantId;
     private Integer note;
+    private UUID userId;
 
-    public RestaurantNoteModel() {}
+    public RestaurantNoteModel() {
+        this.id = UUID.randomUUID();
+    }
 
     public RestaurantNoteModel(UUID restaurantId, Integer note) {
         this.id = UUID.randomUUID();
@@ -33,4 +36,8 @@ public class RestaurantNoteModel {
     public Integer getNote() {return note;}
 
     public void setNote(Integer note) {this.note = note;}
+
+    public UUID getUserId() {return userId;}
+
+    public void setUserId(UUID userId) {this.userId = userId;}
 }

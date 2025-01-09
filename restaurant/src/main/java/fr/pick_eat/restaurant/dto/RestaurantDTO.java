@@ -1,43 +1,26 @@
-package fr.pick_eat.restaurant.entity;
+package fr.pick_eat.restaurant.dto;
 
-import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import org.hibernate.annotations.Generated;
-import org.springframework.boot.configurationprocessor.json.JSONArray;
 
-import java.util.List;
 import java.util.UUID;
 
-@Entity
-public class RestaurantModel {
+public class RestaurantDTO {
     @Id
     @Generated
     private UUID id;
     private String name;
     private String address;
-    private Double lat;
-    private Double  lon;
+    private double lat;
+    private double lon;
     private String type;
     private String bucket;
     private String picture; // path
     private String GeneratedPicture; // path
     private Integer price_level;
 
-    public RestaurantModel() {
+    public RestaurantDTO() {
         this.id = UUID.randomUUID();
-    }
-
-    public RestaurantModel(String name, String address, Double lat, Double lon, String type, String bucket, String picture, String GeneratedPicture, Integer price_level) {
-        this.id = UUID.randomUUID();
-        this.name = name;
-        this.address = address;
-        this.lat = lat;
-        this.lon = lon;
-        this.type = type;
-        this.bucket = bucket;
-        this.picture = picture;
-        this.GeneratedPicture = GeneratedPicture;
-        this.price_level = price_level;
     }
 
     public UUID getId() {return id;}
@@ -70,11 +53,11 @@ public class RestaurantModel {
 
     public double getLat() {return lat;}
 
-    public void setLat(double lat) {this.lat = lat;}
+    public void setLat(long lat) {this.lat = lat;}
 
     public double getLon() {return lon;}
 
-    public void setLon(double lon) {this.lon = lon;}
+    public void setLon(long lon) {this.lon = lon;}
 
     public Integer getPrice_level() {return price_level;}
 
