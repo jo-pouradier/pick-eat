@@ -10,4 +10,8 @@ class RestaurantApplicationTests {
 	void contextLoads() {
 	}
 
+	@Test
+	void test() {
+		RestaurantApplication.main(new String[] {});
+	}
 }

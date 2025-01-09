@@ -13,8 +13,11 @@ public class RestaurantAvisModel {
     private UUID id;
     private UUID restaurantId;
     private String comment;
+    private UUID userId;
 
-    public RestaurantAvisModel() {}
+    public RestaurantAvisModel() {
+        this.id = UUID.randomUUID();
+    }
 
     public RestaurantAvisModel(UUID restaurantId, String comment) {
         this.id = UUID.randomUUID();
@@ -33,4 +36,8 @@ public class RestaurantAvisModel {
     public String getComment() {return comment;}
 
     public void setComment(String comment) {this.comment = comment;}
+
+    public UUID getUserId() {return userId;}
+
+    public void setUserId(UUID userId) {this.userId = userId;}
 }
