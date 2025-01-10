@@ -1,0 +1,8 @@
+services:
+  # The load balancer/ reverse proxy
+  nginx:
+    build:
+      context: ./proxy
+      dockerfile: Dockerfile
+    ports:
+      - "${NGINX_PORT}:8080"
