@@ -1,4 +1,4 @@
-FROM nginx:stable-alpine-perl as final
+FROM nginx:stable-alpine3.20-perl as final
 
 # Copy the folder front_test to the nginx folder
 COPY ./front_test /usr/share/nginx/html
