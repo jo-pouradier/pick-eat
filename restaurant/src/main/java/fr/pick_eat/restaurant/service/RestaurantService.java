@@ -1,5 +1,10 @@
 package fr.pick_eat.restaurant.service;
 
+
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import fr.pick_eat.restaurant.dto.RestaurantDTO;
 import fr.pick_eat.restaurant.entity.RestaurantAvisModel;
 import fr.pick_eat.restaurant.entity.RestaurantModel;
@@ -7,23 +12,21 @@ import fr.pick_eat.restaurant.entity.RestaurantNoteModel;
 import fr.pick_eat.restaurant.repository.RestaurantAvisRepository;
 import fr.pick_eat.restaurant.repository.RestaurantNoteRepository;
 import fr.pick_eat.restaurant.repository.RestaurantRepository;
-import org.apache.tomcat.util.json.JSONParser;
+import jakarta.transaction.Transactional;
 import org.apache.tomcat.util.json.ParseException;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.configurationprocessor.json.JSONException;
 import org.springframework.boot.configurationprocessor.json.JSONObject;
-import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Service;
 
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.util.LinkedHashMap;
+
 import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
 // import fr.pick_eat.event.dto.EventDTO;
 
-import static fr.pick_eat.restaurant.utils.CoordCalcul.getAreaFromRadius;
-
+import static org.hibernate.validator.internal.util.Contracts.assertNotNull;
 
 @Service
 public class RestaurantService {
@@ -62,20 +65,22 @@ public class RestaurantService {
         return json.getJSONObject(place_id.toString()).getString("formatted_address");
     }
 
-    public void parseRestaurants(String resto_path, String resto_detail_path) throws FileNotFoundException, ParseException, JSONException {
-        JSONParser parser = new JSONParser(new FileReader(resto_path));
-        JSONParser parser2 = new JSONParser(new FileReader(resto_detail_path));
-        LinkedHashMap<String, Object> json = parser.parseObject();
-        LinkedHashMap<String, Object> json2 = parser2.parseObject();
-        for (String key : json.keySet()) {
-            JSONObject restaurant = new JSONObject((LinkedHashMap<String, Object>) json.get(key));
-            RestaurantModel restaurantModel = parseRestaurantGeneral(restaurant);
-            if (restaurantModel != null) {
-                restaurantModel.setAddress(parseRestaurantDetails(new JSONObject(json2), Integer.parseInt(key)));
-                saveRestaurant(restaurantModel);
-            }
-        }
+    @Transactional
+    public void parseRestaurants(String resto_path, String resto_detail_path) throws IOException, ParseException, JSONException {
+        // Read the file content into a String
+        String jsonContent = new String(Files.readAllBytes(Paths.get(resto_path)));
+        String jsonContentDetail = new String(Files.readAllBytes(Paths.get(resto_detail_path)));
 
+
+        ObjectMapper objectMapper = new ObjectMapper();
+        try {
+            Iterable<RestaurantModel> places = objectMapper.readValue(jsonContent, objectMapper.getTypeFactory().constructCollectionType(List.class, RestaurantModel.class));
+            List<RestaurantModel> placesList = (List<RestaurantModel>) places;
+            restaurantRepository.saveAll(places);
+            System.out.println(restaurantRepository.count());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public void setRestaurantNoteModel(UUID restaurantId, Integer note) {
@@ -134,4 +139,21 @@ public class RestaurantService {
 //    double maxLon = coords.get(3);
 //    return restaurantRepository.findBetweenLatAndLon(minLat, maxLat, minLon, maxLon);
 //    }
+    public void test() throws JSONException, IOException, ParseException {
+        String resto_path = "C:\\Users\\Adrien\\Cours\\pick-eat\\get_restaurants_data\\data\\all_restaurants_lyon.json";
+        String resto_details_path = "C:\\Users\\Adrien\\Cours\\pick-eat\\get_restaurants_data\\data\\restaurant_details.json";
+
+        // Act
+        parseRestaurants(resto_path, resto_details_path);
+        Iterable<RestaurantModel> restos = getAllRestaurants();
+        System.out.println("restos: " + restos);
+
+        // Assert
+        assertNotNull(restos);
+    }
+
+    public static void main(String[] args) throws JSONException, IOException, ParseException {
+        RestaurantService restaurantService = new RestaurantService(null, null, null);
+        restaurantService.test();
+    }
 }
