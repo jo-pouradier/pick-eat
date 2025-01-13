@@ -1,6 +1,7 @@
 package fr.pick_eat.restaurant.entity;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import org.hibernate.annotations.Generated;
 
@@ -9,15 +10,13 @@ import java.util.UUID;
 @Entity
 public class RestaurantAvisModel {
     @Id
-    @Generated
+    @GeneratedValue(strategy = jakarta.persistence.GenerationType.AUTO)
     private UUID id;
     private UUID restaurantId;
     private String comment;
     private UUID userId;
 
-    public RestaurantAvisModel() {
-        this.id = UUID.randomUUID();
-    }
+    public RestaurantAvisModel() {}
 
     public RestaurantAvisModel(UUID restaurantId, String comment) {
         this.id = UUID.randomUUID();

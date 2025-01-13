@@ -1,6 +1,8 @@
 package fr.pick_eat.restaurant.controller;
 
+import fr.pick_eat.restaurant.dto.EventDTO;
 import fr.pick_eat.restaurant.dto.RestaurantDTO;
+import fr.pick_eat.restaurant.entity.RestaurantModel;
 import fr.pick_eat.restaurant.service.RestaurantService;
 import fr.pick_eat.restaurant.utils.JWTUtils;
 import org.springframework.http.ResponseEntity;
@@ -56,14 +58,33 @@ public class RestaurantController {
         }
     }
 
-//    @PostMapping("/generate-restaurants-for-event")
-//    public ResponseEntity<String> generateRestaurantsForEvent(EventDTO event) {
-//        try {
-//            List<RestaurantDTO> listRestaurant = restaurantService.generateRestaurantsForEvent(event);
-//            return ResponseEntity.ok(listRestaurant.toString());
-//        } catch (Exception e) {
-//            return ResponseEntity.badRequest().body(e.getMessage());
-//        }
-//    }
+    @PostMapping("/restaurant/add")
+    public ResponseEntity<String> addRestaurant(RestaurantModel restaurant) {
+        try {
+            restaurantService.saveRestaurant(restaurant);
+            return ResponseEntity.ok("Restaurant added : " + restaurant.getId());
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
+    }
+
+    @GetMapping("/restaurant/all")
+    public ResponseEntity<String> getAllRestaurants() {
+        try {
+            Iterable<RestaurantModel> listRestaurant = restaurantService.getAllRestaurants();
+            return ResponseEntity.ok(listRestaurant.toString());
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
+    }
+    @GetMapping("/generate-restaurants-for-event")
+    public ResponseEntity<String> generateRestaurantsForEvent(EventDTO event) {
+        try {
+            List<RestaurantDTO> listRestaurant = restaurantService.generateRestaurantsForEvent(event);
+            return ResponseEntity.ok("Restaurants generated for event " );
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
+    }
 
 }
