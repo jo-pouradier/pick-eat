@@ -3,7 +3,6 @@ package fr.pick_eat.restaurant.entity;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
-import org.hibernate.annotations.Generated;
 
 import java.util.UUID;
 
@@ -15,14 +14,6 @@ public class RestaurantNoteModel {
     private UUID restaurantId;
     private Integer note;
     private UUID userId;
-
-    public RestaurantNoteModel() {}
-
-    public RestaurantNoteModel(UUID restaurantId, Integer note) {
-        this.id = UUID.randomUUID();
-        this.restaurantId = restaurantId;
-        this.note = note;
-    }
 
     public UUID getId() {return id;}
 

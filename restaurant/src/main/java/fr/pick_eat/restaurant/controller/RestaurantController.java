@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.UUID;
-//import fr.pick_eat.event.dto.EventDTO;
 
 @CrossOrigin
 @RestController
@@ -81,7 +80,7 @@ public class RestaurantController {
     public ResponseEntity<String> generateRestaurantsForEvent(EventDTO event) {
         try {
             List<RestaurantDTO> listRestaurant = restaurantService.generateRestaurantsForEvent(event);
-            return ResponseEntity.ok("Restaurants generated for event " );
+            return ResponseEntity.ok(listRestaurant.toString());
         } catch (Exception e) {
             return ResponseEntity.badRequest().body(e.getMessage());
         }
