@@ -5,9 +5,11 @@
             <p class="input-label">Vote name :</p>
             <input class="name-selector" tabindex="0" role="textbox" 
             placeholder="Select a name"
-            v-model="eventName" />
+            v-model="eventData.name" />
             <p>Select a place :</p>
             <button class="open-map-button" @click="openMapModal">Open Map</button>
+            <h1 class="second-title" v-if="eventData.address"> Selected place : 
+                <br> {{ eventData.address }}</h1>
             <dialog v-if="showMapModal" class="modal-dialog" @close="showMapModal = false">
                 <div class="modal-content">
                     <MapComponent @locationSelected="handleLocationSelected" :selectedRange="selectedRange" />
@@ -19,16 +21,16 @@
                     <p>Selected range: {{ selectedRange }}</p>
                </div>
             </dialog>
+        </div>
+    </div>
             <button class="validate-button" @click="handleValidation">
                 Valider
             </button>
-        </div>
-    </div>
 </template>
 
 <script setup lang="ts">
 import { useRouter } from 'vue-router';
-import { ref, nextTick } from 'vue';
+import { ref, nextTick, toRaw } from 'vue';
 import MapComponent from './MapComponent.vue'; // Import the new MapComponent
 import axios from 'axios';
 import type { EventInfo } from '@/types/EventInfo';
@@ -51,14 +53,14 @@ const eventName = ref('');
 
 function handleValidation(): void {
     console.log(eventName.value);
-    if (selectedCoords.value && eventName.value !== '') {
+    if (eventData.value.address && eventData.value.name !== '') {
         console.log('Selected coordinates:', selectedCoords.value);
         axios.post('/event/create', {
-            eventData
+            ...toRaw(eventData.value)
         });
         router.push('/event-page');
     } else {
-        if (eventName.value === '') {
+        if (eventData.value.name === '') {
             alert('Please select a name for the vote.');
         } else
         alert('Please select a place on the map.');
@@ -82,7 +84,11 @@ function closeMapModal(): void {
     if (selectedCoords.value) {
         axios.get(`https://nominatim.openstreetmap.org/reverse?lat=${selectedCoords.value[0]}&lon=${selectedCoords.value[1]}`)
             .then((response) => {
-                eventName.value = response.data.display_name;
+                const parser = new DOMParser();
+                const xmlDoc = parser.parseFromString(response.data, "application/xml");
+                const road = xmlDoc.getElementsByTagName("road")[0]?.textContent || '';
+                const city = xmlDoc.getElementsByTagName("city")[0]?.textContent || '';
+                eventData.value.address = `${road}, ${city}`;
             });
     }
 }
@@ -99,7 +105,8 @@ function handleLocationSelected(coords: [number, number]): void {
     max-width: 480px;
     width: 100%;
     flex-direction: column;
-    margin: 0 auto;
+    background-color: #f3e9b5;
+    border-radius: 10px;
 }
 
 .event-creation-wrapper {
@@ -108,24 +115,31 @@ function handleLocationSelected(coords: [number, number]): void {
     border-radius: 30px;
     position: relative;
     width: 100%;
-    padding: 26px 0 0;
+    padding: 26px 0 ;
     align-items: center;
 }
 
 
 .main-title {
     position: relative;
-    color: rgba(255, 255, 255, 1);
+    color: rgb(0, 0, 0);
     letter-spacing: -0.28px;
     text-align: center;
-    margin: 32px 0 0;
     font: 400 55px/1 Lobster, sans-serif;
+}
+
+.second-title {
+    position: relative;
+    color: rgb(0, 0, 0);
+    letter-spacing: -0.28px;
+    text-align: center;
+    font: 400 30px/1 Lobster, sans-serif;
 }
 
 .name-selector {
     position: relative;
     border-radius: 44px;
-    background: var(--Yellow-2, #f3e9b5);
+    background: var(--Yellow-2, #696343);
     margin: 17px 0 0;
     width: 100%;
     max-width: 300px; /* Reduce max-width */
