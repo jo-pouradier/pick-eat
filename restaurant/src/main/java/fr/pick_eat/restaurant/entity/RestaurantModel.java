@@ -5,11 +5,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
 import java.util.UUID;
 
 @Entity
 @JsonIgnoreProperties(ignoreUnknown = true)
+@Table(name = "restaurant")
 public class RestaurantModel {
     @Id
     @GeneratedValue(strategy = jakarta.persistence.GenerationType.AUTO)
@@ -18,10 +20,8 @@ public class RestaurantModel {
     private String name;
     @JsonProperty("vicinity")
     private String address;
-    @JsonProperty("geometry.location.lat")
-    private double lat;
-    @JsonProperty("geometry.location.lng")
-    private double lon;
+    private float lat;
+    private float lon;
     private String type;
     @JsonProperty("icon")
     private String bucket;
@@ -31,10 +31,6 @@ public class RestaurantModel {
     private int price_level;
     @JsonProperty("place_id")
     private String place_id;
-
-
-    public RestaurantModel() {
-    }
 
     public UUID getId() {
         return id;
@@ -100,7 +96,7 @@ public class RestaurantModel {
         return lat;
     }
 
-    public void setLat(double lat) {
+    public void setLat(float lat) {
         this.lat = lat;
     }
 
@@ -108,7 +104,7 @@ public class RestaurantModel {
         return lon;
     }
 
-    public void setLon(double lon) {
+    public void setLon(float lon) {
         this.lon = lon;
     }
 
@@ -118,5 +114,47 @@ public class RestaurantModel {
 
     public void setPrice_level(Integer price_level) {
         this.price_level = price_level;
+    }
+
+    @JsonProperty("geometry")
+    public void setGeometry(Geometry geometry) {
+        if (geometry != null && geometry.getLocation() != null) {
+            this.lat = geometry.getLocation().getLat();
+            this.lon = geometry.getLocation().getLng();
+        }
+    }
+
+    @JsonIgnoreProperties(ignoreUnknown = true)
+    public static class Geometry {
+        private Location location;
+
+        public Location getLocation() {
+            return location;
+        }
+
+        public void setLocation(Location location) {
+            this.location = location;
+        }
+    }
+
+    public static class Location {
+        private float lat;
+        private float lng;
+
+        public float getLat() {
+            return lat;
+        }
+
+        public void setLat(float lat) {
+            this.lat = lat;
+        }
+
+        public float getLng() {
+            return lng;
+        }
+
+        public void setLng(float lng) {
+            this.lng = lng;
+        }
     }
 }

@@ -2,7 +2,6 @@ package fr.pick_eat.restaurant.dto;
 
 import fr.pick_eat.restaurant.entity.RestaurantModel;
 import jakarta.persistence.Id;
-import org.hibernate.annotations.Generated;
 
 import java.util.ArrayList;
 import java.util.List;

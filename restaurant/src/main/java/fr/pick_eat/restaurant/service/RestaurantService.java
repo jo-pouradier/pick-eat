@@ -1,38 +1,30 @@
 package fr.pick_eat.restaurant.service;
 
 
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import fr.pick_eat.restaurant.dto.EventDTO;
 import fr.pick_eat.restaurant.dto.RestaurantDTO;
 import fr.pick_eat.restaurant.entity.EventModel;
 import fr.pick_eat.restaurant.entity.RestaurantAvisModel;
 import fr.pick_eat.restaurant.entity.RestaurantModel;
 import fr.pick_eat.restaurant.entity.RestaurantNoteModel;
-
-import fr.pick_eat.restaurant.dto.EventDTO;
 import fr.pick_eat.restaurant.repository.RestaurantAvisRepository;
 import fr.pick_eat.restaurant.repository.RestaurantNoteRepository;
 import fr.pick_eat.restaurant.repository.RestaurantRepository;
 import jakarta.transaction.Transactional;
 import org.apache.tomcat.util.json.ParseException;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.configurationprocessor.json.JSONArray;
 import org.springframework.boot.configurationprocessor.json.JSONException;
-import org.springframework.boot.configurationprocessor.json.JSONObject;
 import org.springframework.stereotype.Service;
 
-
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.List;
-import java.util.Objects;
 import java.util.UUID;
-// import fr.pick_eat.event.dto.EventDTO;
 
 import static fr.pick_eat.restaurant.utils.CoordCalcul.getAreaFromRadius;
 import static org.hibernate.validator.internal.util.Contracts.assertNotNull;
-import static org.springframework.data.jpa.domain.AbstractPersistable_.id;
 
 
 @Service
@@ -111,36 +103,26 @@ public class RestaurantService {
     }
 
 
-  public List<RestaurantDTO> generateRestaurantsForEvent(EventDTO event) {
-    double lat = event.getLatitude();
-    double lon = event.getLongitude();
-    double radius = event.getRadius();
-    List<Double> coords = getAreaFromRadius(lat, lon, radius);
-      System.out.println("coords : " + coords);
-    double minLat = coords.get(0);
-    double maxLat = coords.get(1);
-    double minLon = coords.get(2);
-    double maxLon = coords.get(3);
-    List<RestaurantModel> listModels = restaurantRepository.findBetweenLatAndLon(minLat, maxLat, minLon, maxLon);
-      System.out.println("listModels : " + listModels);
-      return RestaurantDTO.fromEntityAll(listModels);
+    public List<RestaurantDTO> generateRestaurantsForEvent(EventDTO event) {
+        float lat = event.getLatitude();
+        float lon = event.getLongitude();
+        float radius = event.getRadius();
+        List<Float> coords = getAreaFromRadius(lat, lon, radius);
+        return RestaurantDTO.fromEntityAll(restaurantRepository.findBetweenLatAndLon(coords.get(0), coords.get(1), coords.get(2), coords.get(3)));
     }
 
 
     public void test() throws JSONException, IOException, ParseException {
-        String resto_path = "C:\\Users\\CPE\\Desktop\\Cours\\Archi\\pick-eat\\get_restaurants_data\\data\\all_restaurants_lyon.json";
-        String resto_details_path = "C:\\Users\\CPE\\Desktop\\Cours\\Archi\\pick-eat\\get_restaurants_data\\data\\all_restaurants_lyon.json";
+        String resto_path = "get_restaurants_data\\data\\all_restaurants_lyon.json";
+        String resto_details_path = "pick-eat\\get_restaurants_data\\data\\restaurant_details.json";
         EventModel eventModel = new EventModel();
         eventModel.setName("test");
         eventModel.setAddress("test");
         eventModel.setDate(new java.util.Date());
         eventModel.setLatitude(45.716972f);
         eventModel.setLongitude(4.804001f);
-        eventModel.setRadius(10000);
+        eventModel.setRadius(1000);
         EventDTO event = EventDTO.fromEntity(eventModel);
-        System.out.println("event long : " + event.getLongitude());
-        System.out.println("event lat : " + event.getLatitude());
-        System.out.println("event radius : " + event.getRadius());
 
         // Act
         parseRestaurants(resto_path, resto_details_path);
@@ -151,6 +133,7 @@ public class RestaurantService {
 
         // Assert
         assertNotNull(restos);
+        assertNotNull(resto);
     }
 
 }
