@@ -6,27 +6,25 @@ services:
       dockerfile: ./Dockerfile
     env_file: dev.env
     ports:
-      - "${NGINX_PORT:-8080}:8080"
-  auth:
-    build:
-      context: ./auth
-      dockerfile: ./Dockerfile
-    env_file: dev.env
-    ports:
-      - "${AUTH_PORT:-8081}:8081"
+      - "${NGINX_PORT:-8080}:${NGINX_PORT:-8080}"
   frontend:
     build:
       context: ./frontend
       dockerfile: ./Dockerfile
     env_file: dev.env
     ports:
-      - "${FRONTEND_PORT:-8082}:8082"
-
-  
+      - "${FRONTEND_PORT:-8081}:${FRONTEND_PORT:-8081}"
+  auth:
+    build:
+      context: ./auth
+      dockerfile: ./Dockerfile
+    env_file: dev.env
+    ports:
+      - "${AUTH_PORT:-8082}:${AUTH_PORT:-8082}"
   event:
     build:
       context: ./event
       dockerfile: ./Dockerfile
     env_file: dev.env
     ports:
-      - "${EVENT_PORT:-8082}:8082"
+      - "${EVENT_PORT:-8083}:${EVENT_PORT:-8083}"
