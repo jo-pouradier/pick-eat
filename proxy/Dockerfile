@@ -3,7 +3,6 @@ FROM nginx:stable-alpine3.20-perl as final
 
 ENV AUTH_PORT=8081
 
-COPY ./front_test /usr/share/nginx/html
 COPY ./nginx.conf /etc/nginx/templates/nginx.conf.template
 COPY ./public.pem /etc/ssl/certs/public.pem
 

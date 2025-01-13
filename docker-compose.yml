@@ -14,3 +14,10 @@ services:
     env_file: dev.env
     ports:
       - "${AUTH_PORT:-8081}:8081"
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: ./Dockerfile
+    env_file: dev.env
+    ports:
+      - "${FRONTEND_PORT:-8082}:8082"
