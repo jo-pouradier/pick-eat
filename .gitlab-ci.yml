@@ -16,6 +16,7 @@ test_event:
     - gradle test
   rules:
     - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+    - if: $CI_COMMIT_BRANCH == "main" && $CI_PIPELINE_SOURCE == "push"
 
 test_auth:
   stage: test
@@ -25,6 +26,7 @@ test_auth:
     - gradle test
   rules:
     - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+    - if: $CI_COMMIT_BRANCH == "main" && $CI_PIPELINE_SOURCE == "push"
 
 build_proxy:
   stage: build
@@ -40,8 +42,7 @@ build_proxy:
     - docker push $REGISTRY/proxy:$TAG
     - docker push $REGISTRY/proxy:latest
   rules:
-    - if: $CI_COMMIT_BRANCH == "main" 
-    - if: $CI_PIPELINE_SOURCE == "push"
+    - if: $CI_COMMIT_BRANCH == "main" && $CI_PIPELINE_SOURCE == "push"
   
 build_event:
   stage: build
@@ -58,9 +59,7 @@ build_event:
   needs: 
     - test_event
   rules:
-    - if: $CI_COMMIT_BRANCH == "main"
-    - if: $CI_PIPELINE_SOURCE == "push"
-
+    - if: $CI_COMMIT_BRANCH == "main" && $CI_PIPELINE_SOURCE == "push"
 
 build_auth:
   stage: build
@@ -77,8 +76,24 @@ build_auth:
   needs: 
     - test_auth
   rules:
-    - if: $CI_COMMIT_BRANCH == "main"
-    - if: $CI_PIPELINE_SOURCE == "push"
+    - if: $CI_COMMIT_BRANCH == "main" && $CI_PIPELINE_SOURCE == "push"
+
+# build_restaurant:
+#   stage: build
+#   image: docker:20.10
+#   services:
+#     - docker:dind
+#   before_script:
+#     - echo "$CI_REGISTRY_PASSWORD" | docker login $CI_REGISTRY -u $CI_REGISTRY_USER --password-stdin
+#   script:
+#     - cd restaurant
+#     - docker build -t $REGISTRY/restaurant:$TAG -t $REGISTRY/restaurant:latest .
+#     - docker push $REGISTRY/restaurant:$TAG
+#     - docker push $REGISTRY/restaurant:latest
+#   only:
+#     - main
+
+
 # Python service
 # build_python:
 #   image: python:3.11
@@ -113,22 +128,5 @@ build_auth:
 #   script:
 #     - cd restaurant
 #     - gradle test
-#   only:
-#     - main
-
-# Build and push Docker images for all services
-
-# build_restaurant:
-#   stage: build
-#   image: docker:20.10
-#   services:
-#     - docker:dind
-#   before_script:
-#     - echo "$CI_REGISTRY_PASSWORD" | docker login $CI_REGISTRY -u $CI_REGISTRY_USER --password-stdin
-#   script:
-#     - cd restaurant
-#     - docker build -t $REGISTRY/restaurant:$TAG -t $REGISTRY/restaurant:latest .
-#     - docker push $REGISTRY/restaurant:$TAG
-#     - docker push $REGISTRY/restaurant:latest
 #   only:
 #     - main
