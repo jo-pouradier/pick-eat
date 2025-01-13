@@ -3,16 +3,14 @@
         <div class="event-creation-wrapper">
             <h1 class="main-title">Create a vote!</h1>
             <p class="input-label">Vote name :</p>
-            <input ref="nameInput" class="name-selector" tabindex="0" role="textbox" @focus="handleNameSelection"
-                placeholder="Select a name" />
+            <input class="name-selector" tabindex="0" role="textbox" 
+            placeholder="Select a name"
+            v-model="eventName" />
             <p>Select a place :</p>
             <button class="open-map-button" @click="openMapModal">Open Map</button>
             <dialog v-if="showMapModal" class="modal-dialog" @close="showMapModal = false">
                 <div class="modal-content">
-                    <div>
-                       Coucou je suis la map tkt
-                        <!-- MAKE THE MAP -->
-                    </div>
+                    <MapComponent @locationSelected="handleLocationSelected" />
                     <button class="close-map-button" @click="closeMapModal">Close Map</button>
                 </div>
             </dialog>
@@ -26,23 +24,26 @@
 <script setup lang="ts">
 import { useRouter } from 'vue-router';
 import { ref, nextTick } from 'vue';
-
+import MapComponent from './MapComponent.vue'; // Import the new MapComponent
 
 const router = useRouter();
 const showMapModal = ref(false);
 const selectedCoords = ref<[number, number] | null>(null);
+const eventName = ref('');
 
-function handleNameSelection(): void {
-    // Implementation for name selection
-};
 
 function handleValidation(): void {
-    if (selectedCoords.value) {
+    console.log(eventName.value);
+    if (selectedCoords.value && eventName.value !== '') {
         console.log('Selected coordinates:', selectedCoords.value);
         router.push('/event-page');
     } else {
+        if (eventName.value === '') {
+            alert('Please select a name for the vote.');
+        } else
         alert('Please select a place on the map.');
     }
+
 };
 
 function openMapModal(): void {
@@ -58,6 +59,10 @@ function closeMapModal(): void {
     showMapModal.value = false;
     const dialog = document.querySelector('.modal-dialog') as HTMLDialogElement;
     dialog.close();
+}
+
+function handleLocationSelected(coords: [number, number]): void {
+    selectedCoords.value = coords;
 }
 
 </script>
@@ -124,7 +129,6 @@ function closeMapModal(): void {
 
 .map-selector {
     height: 300px;
-    width: 100%;
     max-width: 300px;
     margin: 17px 0 0;
     border-radius: 10px;
@@ -153,6 +157,10 @@ function closeMapModal(): void {
     background: white;
     padding: 20px;
     border-radius: 10px;
+    width: 90vw; /* Adjust width to make it responsive */
+    max-width: 800px; /* Set a maximum width */
+    height: 80vh; /* Adjust height to make it responsive */
+    max-height: 600px; /* Set a maximum height */
 }
 
 .open-map-button, .close-map-button {

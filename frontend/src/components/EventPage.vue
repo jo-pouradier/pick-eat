@@ -1,9 +1,9 @@
 <template>
     <div class="event-page-container">
-        <h1 class="main-title">{{ event.name }}</h1>
-        <p class="event-place">{{ event.place }}</p>
-        <p class="event-participants">Participants: {{ event.participants.join(', ') }}</p>
-        <p class="event-more-info">More Info: {{ event.moreInfo }}</p>
+        <h1 class="main-title">{{ eventData.name }}</h1>
+        <p class="event-place">{{ eventData.place }}</p>
+        <p class="event-participants">Participants: {{ eventData.participants.join(', ') }}</p>
+        <p class="event-more-info">More Info: {{ eventData.moreInfo }}</p>
         <button class="back-button" @click="goBack">Back to Event List</button>
         <div class="logs-container">
             <div v-for="log in logs" :key="log.id" class="log-item">
@@ -16,10 +16,10 @@
             <input v-model="newMessage" class="message-input" placeholder="Write a message..." @keyup.enter="sendMessage" />
             <label class="image-upload-label send-button">
                 📷
-<!--              TODO-->
-<!--                <input type="file" @change="handleImageUpload" class="image-upload-input" />-->
+               <input type="file" @change="handleImageUpload" class="image-upload-input" />
             </label>
             <button class="send-button" @click="sendMessage">Send</button>
+            <div v-if="imageUploaded" class="image-uploaded-marker">Image Ready to Send!</div>
         </div>
     </div>
 </template>
@@ -31,7 +31,7 @@ import { useRoute, useRouter } from 'vue-router';
 const route = useRoute();
 const router = useRouter();
 
-interface Event {
+interface EventInfo {
     id: number;
     name: string;
     place: string;
@@ -46,7 +46,7 @@ interface Log {
     image?: string; // Optional image property
 }
 
-const event = ref<Event>({
+const eventData = ref<EventInfo>({
     id: 0,
     name: '',
     place: '',
@@ -70,19 +70,20 @@ const logs = ref<Log[]>([
 
 const newMessage = ref('');
 const newImage = ref<string | null>(null);
+const imageUploaded = ref(false);
 
 onMounted(() => {
     const eventId = Number(route.params.id);
     // Fetch event details based on eventId
     // This is a placeholder, replace with actual data fetching logic
-    const fetchedEvent: Event = {
+    const fetchedEvent: EventInfo = {
         id: eventId || 0,
         name: `Event ${eventId}`,
         place: `Place ${eventId}`,
         participants: ['Alice', 'Bob'],
         moreInfo: `Details about Event ${eventId}`
     };
-    event.value = fetchedEvent;
+    eventData.value = fetchedEvent;
 });
 
 function goBack(): void {
@@ -99,19 +100,21 @@ function sendMessage(): void {
         });
         newMessage.value = '';
         newImage.value = null;
+        imageUploaded.value = false;
     }
 }
-// TODO
-// function handleImageUpload(event: Event): void {
-//     const target = event.target as HTMLInputElement;
-//     if (target.files && target.files[0]) {
-//         const reader = new FileReader();
-//         reader.onload = (e) => {
-//             newImage.value = e.target?.result as string;
-//         };
-//         reader.readAsDataURL(target.files[0]);
-//     }
-// }
+
+function handleImageUpload(event: Event): void {
+    const target = event.target as HTMLInputElement;
+    if (target.files && target.files[0]) {
+        const reader = new FileReader();
+        reader.onload = (e) => {
+            newImage.value = e.target?.result as string;
+            imageUploaded.value = true;
+        };
+        reader.readAsDataURL(target.files[0]);
+    }
+}
 </script>
 
 <style scoped>
@@ -203,6 +206,7 @@ function sendMessage(): void {
     position: sticky;
     bottom: 0;
     background-color: #f3e9b5; /* Match the background color */
+    position: relative; /* Add this to position the marker */
 }
 
 .message-input {
@@ -242,6 +246,7 @@ function sendMessage(): void {
 
 .back-button {
     margin-top: 10px;
+    margin-bottom: 5px;
     padding: 10px 15px;
     background-color: rgba(179, 38, 30, 1);
     color: var(--Yellow-2, #f3e9b5);
@@ -249,5 +254,23 @@ function sendMessage(): void {
     border-radius: 10px;
     cursor: pointer;
     font: 700 16px/1 League Spartan, sans-serif;
+}
+
+.image-uploaded-marker {
+    position: absolute;
+    top: -30px;
+    right: 10px;
+    background-color: rgba(0, 128, 0, 0.8);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font: 700 14px/1 League Spartan, sans-serif;
+}
+
+.fade-enter-active, .fade-leave-active {
+    transition: opacity 0.5s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active in <2.1.8 */ {
+    opacity: 0;
 }
 </style>

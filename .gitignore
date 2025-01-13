@@ -42,5 +42,9 @@ out/
 **/*.pyc
 comment-analysis/*
 comment-analysis/*
+/.idea/
+*.venv
+.vscode/
+frontend/.vscode/
 
 bills/
