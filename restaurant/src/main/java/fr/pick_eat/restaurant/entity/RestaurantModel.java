@@ -3,8 +3,8 @@ package fr.pick_eat.restaurant.entity;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
-import org.hibernate.annotations.Generated;
 
 import java.util.UUID;
 
@@ -12,26 +12,28 @@ import java.util.UUID;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class RestaurantModel {
     @Id
-    @Generated
+    @GeneratedValue(strategy = jakarta.persistence.GenerationType.AUTO)
     private UUID id;
+    @JsonProperty("name")
     private String name;
     @JsonProperty("vicinity")
     private String address;
-
     @JsonProperty("geometry.location.lat")
-    private Double lat;
+    private double lat;
     @JsonProperty("geometry.location.lng")
-    private Double lon;
+    private double lon;
     private String type;
     @JsonProperty("icon")
     private String bucket;
     private String picture; // path
     private String GeneratedPicture; // path
-    private Integer price_level;
+    @JsonProperty("price_level")
+    private int price_level;
+    @JsonProperty("place_id")
+    private String place_id;
 
 
     public RestaurantModel() {
-        this.id = UUID.randomUUID();
     }
 
     public UUID getId() {
@@ -50,6 +52,9 @@ public class RestaurantModel {
         this.name = name;
     }
 
+    public String getPlace_id() {return place_id;}
+
+    public void setPlace_id(String place_id) {this.place_id = place_id;}
 
     public String getAddress() {
         return address;

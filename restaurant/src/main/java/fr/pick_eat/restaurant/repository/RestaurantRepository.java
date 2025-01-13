@@ -12,9 +12,8 @@ import java.util.UUID;
 public interface RestaurantRepository extends CrudRepository<RestaurantModel, UUID> {
 
 
-
-//    @Query("SELECT r FROM RestaurantModel r WHERE r.lat BETWEEN :minLat AND :maxLat AND r.lon BETWEEN :minLon AND maxLon")
-//    public <RestaurantDTO> void findBetweenLatAndLon(double minLat, double maxLat, double minLon, double maxLon);
+    @Query("SELECT r FROM RestaurantModel r WHERE r.lat BETWEEN :minLat AND :maxLat AND r.lon BETWEEN :minLon AND :maxLon")
+    List<fr.pick_eat.restaurant.entity.RestaurantModel> findBetweenLatAndLon(double minLat, double maxLat, double minLon, double maxLon);
 
 }
 
