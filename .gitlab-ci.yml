@@ -1,0 +1,134 @@
+stages:
+  - test
+  - build
+  - deploy
+
+variables:
+  GRADLE_OPTS: "-Dorg.gradle.daemon=false"
+  TAG: "$CI_COMMIT_SHORT_SHA"
+  REGISTRY: "$CI_REGISTRY/cpelyon/5eti-projet-2024-2025/groupe-7/pick-eat"
+
+test_event:
+  stage: test
+  image: gradle:7.6-jdk17
+  script:
+    - cd event
+    - gradle test
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+
+test_auth:
+  stage: test
+  image: gradle:7.6-jdk17
+  script:
+    - cd Auth
+    - gradle test
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+
+build_proxy:
+  stage: build
+  image: docker:20.10
+  services:
+    - docker:dind
+  before_script:
+    - echo "$CI_REGISTRY_PASSWORD" | docker login $CI_REGISTRY -u $CI_REGISTRY_USER --password-stdin
+  script:
+    - echo "Building the Docker image for proxy..."
+    - docker build -t $REGISTRY/proxy:$TAG -t $REGISTRY/proxy:latest proxy/
+    - echo "Pushing the Docker image to the registry..."
+    - docker push $REGISTRY/proxy:$TAG
+    - docker push $REGISTRY/proxy:latest
+  rules:
+    - if: $CI_COMMIT_BRANCH == "main" 
+    - if: $CI_PIPELINE_SOURCE == "push"
+  
+build_event:
+  stage: build
+  image: docker:20.10
+  services:
+    - docker:dind
+  before_script:
+    - echo "$CI_REGISTRY_PASSWORD" | docker login $CI_REGISTRY -u $CI_REGISTRY_USER --password-stdin
+  script:
+    - cd event
+    - docker build -t $REGISTRY/event:$TAG -t $REGISTRY/event:latest .
+    - docker push $REGISTRY/event:$TAG
+    - docker push $REGISTRY/event:latest
+  needs: 
+    - test_event
+  rules:
+    - if: $CI_COMMIT_BRANCH == "main"
+    - if: $CI_PIPELINE_SOURCE == "push"
+
+
+build_auth:
+  stage: build
+  image: docker:20.10
+  services:
+    - docker:dind
+  before_script:
+    - echo "$CI_REGISTRY_PASSWORD" | docker login $CI_REGISTRY -u $CI_REGISTRY_USER --password-stdin
+  script:
+    - cd Auth
+    - docker build -t $REGISTRY/auth:$TAG -t $REGISTRY/auth:latest .
+    - docker push $REGISTRY/auth:$TAG
+    - docker push $REGISTRY/auth:latest
+  needs: 
+    - test_auth
+  rules:
+    - if: $CI_COMMIT_BRANCH == "main"
+    - if: $CI_PIPELINE_SOURCE == "push"
+# Python service
+# build_python:
+#   image: python:3.11
+#   stage: build
+#   script:
+#     - for dir in $(find . -name 'requirements.txt' -exec dirname {} \;); do (cd $dir && pip install -r requirements.txt); done
+
+# test_python:
+#   image: python:3.11
+#   stage: test
+#   script:
+#     - for dir in $(find . -name 'requirements.txt' -exec dirname {} \;); do (cd $dir && pytest --junitxml=report.xml); done
+#   artifacts:
+#     when: always
+#     reports:
+#       junit:
+#         - report.xml
+
+# deploy:
+#   stage: deploy
+#   script:
+#     - echo "Deploying to production server..."
+#     # Add your deployment commands here
+#   only:
+#     - main
+
+
+
+# test_restaurant:
+#   stage: test
+#   image: gradle:7.6-jdk17
+#   script:
+#     - cd restaurant
+#     - gradle test
+#   only:
+#     - main
+
+# Build and push Docker images for all services
+
+# build_restaurant:
+#   stage: build
+#   image: docker:20.10
+#   services:
+#     - docker:dind
+#   before_script:
+#     - echo "$CI_REGISTRY_PASSWORD" | docker login $CI_REGISTRY -u $CI_REGISTRY_USER --password-stdin
+#   script:
+#     - cd restaurant
+#     - docker build -t $REGISTRY/restaurant:$TAG -t $REGISTRY/restaurant:latest .
+#     - docker push $REGISTRY/restaurant:$TAG
+#     - docker push $REGISTRY/restaurant:latest
+#   only:
+#     - main
