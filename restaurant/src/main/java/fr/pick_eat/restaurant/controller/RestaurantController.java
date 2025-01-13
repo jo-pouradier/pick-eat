@@ -1,6 +1,6 @@
 package fr.pick_eat.restaurant.controller;
 
-import fr.pick_eat.restaurant.dto.EventDTO;
+import fr.pick_eat.event.dto.EventDTO;
 import fr.pick_eat.restaurant.dto.RestaurantDTO;
 import fr.pick_eat.restaurant.entity.RestaurantModel;
 import fr.pick_eat.restaurant.service.RestaurantService;
