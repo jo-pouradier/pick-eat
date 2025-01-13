@@ -1,8 +1,16 @@
 services:
-  # The load balancer/ reverse proxy
+  # The load balancer / reverse proxy
   nginx:
     build:
       context: ./proxy
-      dockerfile: Dockerfile
+      dockerfile: ./Dockerfile
+    env_file: dev.env
     ports:
-      - "${NGINX_PORT}:8080"
+      - "${NGINX_PORT:-8080}:8080"
+  auth:
+    build:
+      context: ./auth
+      dockerfile: ./Dockerfile
+    env_file: dev.env
+    ports:
+      - "${AUTH_PORT:-8081}:8081"
