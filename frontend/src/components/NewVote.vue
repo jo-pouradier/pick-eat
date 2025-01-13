@@ -10,9 +10,14 @@
             <button class="open-map-button" @click="openMapModal">Open Map</button>
             <dialog v-if="showMapModal" class="modal-dialog" @close="showMapModal = false">
                 <div class="modal-content">
-                    <MapComponent @locationSelected="handleLocationSelected" />
+                    <MapComponent @locationSelected="handleLocationSelected" :selectedRange="selectedRange" />
                     <button class="close-map-button" @click="closeMapModal">Close Map</button>
                 </div>
+                <div class="range-container">
+                    <p>Select a range (metres):</p>
+                    <input type="range" v-model.number="selectedRange" min="1" max="1000" class="range-slider" />
+                    <p>Selected range: {{ selectedRange }}</p>
+               </div>
             </dialog>
             <button class="validate-button" @click="handleValidation">
                 Valider
@@ -25,10 +30,22 @@
 import { useRouter } from 'vue-router';
 import { ref, nextTick } from 'vue';
 import MapComponent from './MapComponent.vue'; // Import the new MapComponent
+import axios from 'axios';
+import type { EventInfo } from '@/types/EventInfo';
 
 const router = useRouter();
 const showMapModal = ref(false);
+const selectedRange = ref(50);
 const selectedCoords = ref<[number, number] | null>(null);
+const eventData = ref<EventInfo>({
+    id: "0",
+    name: '',
+    date: new Date(),
+    address: '',
+    latitude: selectedCoords.value ? selectedCoords.value[0] : 0,
+    longitude: selectedCoords.value ? selectedCoords.value[1] : 0,
+    radius:selectedRange.value,
+});
 const eventName = ref('');
 
 
@@ -36,6 +53,9 @@ function handleValidation(): void {
     console.log(eventName.value);
     if (selectedCoords.value && eventName.value !== '') {
         console.log('Selected coordinates:', selectedCoords.value);
+        axios.post('/event/create', {
+            eventData
+        });
         router.push('/event-page');
     } else {
         if (eventName.value === '') {
@@ -59,6 +79,12 @@ function closeMapModal(): void {
     showMapModal.value = false;
     const dialog = document.querySelector('.modal-dialog') as HTMLDialogElement;
     dialog.close();
+    if (selectedCoords.value) {
+        axios.get(`https://nominatim.openstreetmap.org/reverse?lat=${selectedCoords.value[0]}&lon=${selectedCoords.value[1]}`)
+            .then((response) => {
+                eventName.value = response.data.display_name;
+            });
+    }
 }
 
 function handleLocationSelected(coords: [number, number]): void {
@@ -171,5 +197,39 @@ function handleLocationSelected(coords: [number, number]): void {
     padding: 10px 20px;
     cursor: pointer;
     margin-top: 10px;
+}
+
+.range-slider {
+    -webkit-appearance: none;
+    width: 100%;
+    max-width: 300px;
+    height: 8px;
+    background: #ddd;
+    outline: none;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+    margin: 10px 0;
+}
+
+.range-slider:hover {
+    opacity: 1;
+}
+
+.range-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 25px;
+    height: 25px;
+    background: #b3261e;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+.range-slider::-moz-range-thumb {
+    width: 25px;
+    height: 25px;
+    background: #b3261e;
+    cursor: pointer;
+    border-radius: 50%;
 }
 </style>
