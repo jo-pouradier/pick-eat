@@ -402,5 +402,15 @@ function handleVote(): void {
   cursor: pointer;
   font: 700 14px/1 League Spartan, sans-serif;
   margin-top: 10px;
+.back-button {
+    margin-top: 10px;
+    margin-bottom: 5px;
+    padding: 10px 15px;
+    background-color: rgba(179, 38, 30, 1);
+    color: var(--Yellow-2, #f3e9b5);
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font: 700 16px/1 League Spartan, sans-serif;
 }
 </style>

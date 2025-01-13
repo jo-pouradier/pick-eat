@@ -3,7 +3,7 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, defineEmits, defineProps, watch, ref } from 'vue';
+import { onMounted, defineEmits } from 'vue';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 
