@@ -7,6 +7,8 @@ import fr.pick_eat.restaurant.service.RestaurantService;
 import fr.pick_eat.restaurant.utils.JWTUtils;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import io.swagger.v3.oas.annotations.Parameter;
+
 
 import java.util.List;
 import java.util.UUID;
@@ -21,7 +23,7 @@ public class RestaurantController {
     }
 
     @PostMapping("/{restaurantId}/comment")
-    public ResponseEntity<String> commentRestaurant(@RequestHeader("Authorization") String jwt, @PathVariable UUID restaurantId, String comment) {
+    public ResponseEntity<String> commentRestaurant(@Parameter(hidden=true) @CookieValue("jwt") String jwt, @PathVariable UUID restaurantId, String comment) {
         String userId = JWTUtils.extractUserId(jwt);
         UUID userUuid = UUID.fromString(userId);
 
@@ -35,7 +37,7 @@ public class RestaurantController {
     }
 
     @PostMapping("/{restaurantId}/note")
-    public ResponseEntity<String> noteRestaurant(@RequestHeader("Authorization") String jwt, @PathVariable UUID restaurantId, Integer note) {
+    public ResponseEntity<String> noteRestaurant(@Parameter(hidden=true) @CookieValue("jwt") String jwt, @PathVariable UUID restaurantId, Integer note) {
         String userId = JWTUtils.extractUserId(jwt);
         UUID userUuid = UUID.fromString(userId);
 

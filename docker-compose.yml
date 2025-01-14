@@ -28,3 +28,12 @@ services:
     env_file: dev.env
     ports:
       - "${EVENT_PORT:-8083}:${EVENT_PORT:-8083}"
+
+
+  restaurant:
+    build:
+      context: ./restaurant
+      dockerfile: ./Dockerfile
+    env_file: dev.env
+    ports:
+      - "${RESTAURANT_PORT:-8084}:${RESTAURANT_PORT:-8084}"
