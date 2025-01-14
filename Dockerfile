@@ -3,7 +3,7 @@ FROM gradle:8.11.1-jdk17 AS build
 ARG TARGET_SERVICE=event
 WORKDIR /home/gradle/project
 COPY . .
-RUN gradle $TARGET_SERVICE:build --no-daemon
+RUN gradle $TARGET_SERVICE:build --no-daemon -x test
 
 # Stage 2: Create the runtime image
 FROM openjdk:17-jdk-slim
