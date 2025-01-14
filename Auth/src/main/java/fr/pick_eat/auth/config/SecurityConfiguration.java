@@ -24,6 +24,8 @@ import org.springframework.security.oauth2.jwt.NimbusJwtDecoder;
 import org.springframework.security.oauth2.jwt.NimbusJwtEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.security.web.authentication.logout.HeaderWriterLogoutHandler;
+import org.springframework.security.web.header.writers.ClearSiteDataHeaderWriter;
 
 
 @Configuration
@@ -53,10 +55,10 @@ public class SecurityConfiguration {
         http.oauth2ResourceServer((oauth2) -> oauth2
                 .jwt(Customizer.withDefaults())
         );
-        http.oauth2Login(oauth2Login -> oauth2Login.loginPage("/login.html").userInfoEndpoint(userInfoEndpoint -> userInfoEndpoint.userService(customOAuth2UserService)).defaultSuccessUrl("/index.html", true));
+        http.oauth2Login(oauth2Login -> oauth2Login.loginPage("/login").userInfoEndpoint(userInfoEndpoint -> userInfoEndpoint.userService(customOAuth2UserService)).defaultSuccessUrl("/", true));
         http.formLogin(AbstractHttpConfigurer::disable);
         http.addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
-
+        http.logout((logout) -> logout.deleteCookies("jwt", "user").logoutSuccessUrl("/login"));
         return http.build();
     }
 

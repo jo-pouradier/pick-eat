@@ -61,7 +61,7 @@ public class AuthenticationService {
     }
 
 
-    public UserBasic authenticate(LoginUserDto input) {
+    public UserBasic authenticate(LoginUserDto input) throws ResponseStatusException {
         Optional<UserBasic> userOptional = userRepository.findByEmail(input.getEmail());
         if (userOptional.isEmpty()) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found");

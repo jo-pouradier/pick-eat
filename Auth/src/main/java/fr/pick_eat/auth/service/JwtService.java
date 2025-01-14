@@ -1,5 +1,6 @@
 package fr.pick_eat.auth.service;
 
+import fr.pick_eat.auth.utils.CookiesUtils;
 import jakarta.servlet.http.Cookie;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.userdetails.UserDetails;
