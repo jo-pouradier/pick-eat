@@ -1,5 +1,6 @@
 package fr.pick_eat.auth.controller;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.nimbusds.jose.shaded.gson.Gson;
 import fr.pick_eat.auth.dto.GuestUserDto;
 import org.junit.jupiter.api.Test;
@@ -22,7 +23,8 @@ class GuestAuthenticationControllerTest {
     @Autowired
     private MockMvc mockMvc;
 
-    private final Gson gson = new Gson();
+    @Autowired
+    private ObjectMapper objectMapper;
 
     private final GuestUserDto guestUserDto = new GuestUserDto(UUID.randomUUID(), "Bob", "BOBY");
 
@@ -32,6 +34,6 @@ class GuestAuthenticationControllerTest {
     }
 
     private ResultActions loginGuest() throws Exception {
-        return mockMvc.perform(MockMvcRequestBuilders.post("/guest/login").contentType(MediaType.APPLICATION_JSON).content(gson.toJson(guestUserDto)));
+        return mockMvc.perform(MockMvcRequestBuilders.post("/guest/login").contentType(MediaType.APPLICATION_JSON).content(objectMapper.writeValueAsString(guestUserDto)));
     }
 }
