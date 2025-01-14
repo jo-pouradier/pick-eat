@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.UUID;
 
+import fr.pick_eat.event.mapper.EventMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
@@ -17,9 +18,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import fr.pick_eat.event.dto.EventDTO;
-import fr.pick_eat.event.dto.EventFeedbackDTO;
-import fr.pick_eat.event.dto.EventVoteDTO;
+import dto.EventDTO;
+import dto.EventFeedbackDTO;
+import dto.EventVoteDTO;
 import fr.pick_eat.event.entity.EventFeedbackModel;
 import fr.pick_eat.event.entity.EventModel;
 import fr.pick_eat.event.service.EventService;
@@ -62,7 +63,7 @@ public class EventController {
         UUID userUuid = UUID.fromString(userId);
 
         List<EventModel> events = eventService.getHistory(userUuid);
-        List<EventDTO> eventsDTO = events.stream().map(EventDTO::fromEntity).toList();
+        List<EventDTO> eventsDTO = events.stream().map(EventMapper::toEventDTO).toList();
         return ResponseEntity.ok(eventsDTO);
     }
 
@@ -99,7 +100,7 @@ public class EventController {
             return ResponseEntity.badRequest().build(); // 400
         }
 
-        EventFeedbackDTO feedbackDTO = EventFeedbackDTO.fromEntity(savedEventFeedback);
+        EventFeedbackDTO feedbackDTO = EventMapper.toEventFeedbackDTO(savedEventFeedback);
         return ResponseEntity.ok(feedbackDTO);
     }
 
@@ -109,7 +110,7 @@ public class EventController {
         UUID userUuid = UUID.fromString(userId);
 
         List<EventFeedbackModel> feedbacks = eventService.getFeedbackHistory(userUuid);
-        List<EventFeedbackDTO> feedbacksDTO = feedbacks.stream().map(EventFeedbackDTO::fromEntity).toList();
+        List<EventFeedbackDTO> feedbacksDTO = feedbacks.stream().map(EventMapper::toEventFeedbackDTO).toList();
         return ResponseEntity.ok(feedbacksDTO);
     }
 

@@ -1,5 +1,6 @@
 package fr.pick_eat.restaurant.controller;
 
+import fr.pick_eat.restaurant.RestaurantApplication;
 import fr.pick_eat.restaurant.entity.RestaurantModel;
 import fr.pick_eat.restaurant.repository.RestaurantAvisRepository;
 import fr.pick_eat.restaurant.repository.RestaurantNoteRepository;
@@ -13,17 +14,13 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.configurationprocessor.json.JSONException;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.web.servlet.MockMvc;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.springframework.test.web.client.match.MockRestRequestMatchers.content;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @ExtendWith(MockitoExtension.class)
 public class RestaurantControllerTest {
@@ -41,11 +38,10 @@ public class RestaurantControllerTest {
 
 
     @Test
-    public void testGetAllRestaurants() throws IOException, JSONException, ParseException {
+    public void testGetAllRestaurants() throws IOException, JSONException, ParseException, URISyntaxException {
         // Arrange
-        String resto_path = "C:\\Users\\Adrien\\Cours\\pick-eat\\get_restaurants_data\\data\\all_restaurants_lyon.json";
-        String resto_details_path = "C:\\Users\\Adrien\\Cours\\pick-eat\\get_restaurants_data\\data\\restaurant_details.json";
-
+        URI resto_path = RestaurantApplication.class.getClassLoader().getResource("all_restaurants_lyon.json").toURI();
+        URI resto_details_path = RestaurantApplication.class.getClassLoader().getResource("restaurant_details.json").toURI();//        EventModel eventModel = new EventModel();
         // Act
         restaurantService.parseRestaurants(resto_path, resto_details_path);
         Iterable<RestaurantModel> restos = restaurantService.getAllRestaurants();

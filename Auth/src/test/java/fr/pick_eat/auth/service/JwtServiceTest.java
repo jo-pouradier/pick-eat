@@ -1,5 +1,6 @@
 package fr.pick_eat.auth.service;
 
+import fr.pick_eat.auth.scope.EScope;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -21,20 +22,21 @@ class JwtServiceTest {
 
     @Test
     void generateToken() {
-        jwtService.generateToken(userDetails1, user1UUID, "test");
+        String token = jwtService.generateToken(userDetails1, user1UUID, EScope.USER.getScope());
+        assert token != null;
     }
 
     @Test
     void extractUsername() {
-        String token = jwtService.generateToken(userDetails1, user1UUID, "test");
+        String token = jwtService.generateToken(userDetails1, user1UUID, EScope.USER.getScope());
         assert jwtService.extractUsername(token).equals("test");
     }
 
     @Test
     void validateToken() {
-        String token = jwtService.generateToken(userDetails1, user1UUID, "test");
+        String token = jwtService.generateToken(userDetails1, user1UUID, EScope.USER.getScope());
         assert jwtService.validateToken(token, userDetails1);
-        token = jwtService.generateToken(userDetails2, user2UUID, "test");
+        token = jwtService.generateToken(userDetails2, user2UUID, EScope.USER.getScope());
         assert !jwtService.validateToken(token, userDetails1);
     }
 }

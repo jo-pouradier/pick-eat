@@ -2,9 +2,9 @@ package fr.pick_eat.restaurant.service;
 
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import fr.pick_eat.event.dto.EventDTO;
+import dto.EventDTO;
+import fr.pick_eat.restaurant.RestaurantApplication;
 import fr.pick_eat.restaurant.dto.RestaurantDTO;
-import fr.pick_eat.event.entity.EventModel;
 import fr.pick_eat.restaurant.entity.RestaurantAvisModel;
 import fr.pick_eat.restaurant.entity.RestaurantModel;
 import fr.pick_eat.restaurant.entity.RestaurantNoteModel;
@@ -18,13 +18,14 @@ import org.springframework.boot.configurationprocessor.json.JSONException;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.List;
 import java.util.UUID;
 
 import static fr.pick_eat.restaurant.utils.CoordCalcul.getAreaFromRadius;
-import static org.hibernate.validator.internal.util.Contracts.assertNotNull;
 
 
 @Service
@@ -40,12 +41,16 @@ public class RestaurantService {
         this.restaurantRepository = restaurantRepository;
         this.restaurantNoteRepository = restaurantNoteRepository;
         this.restaurantAvisRepository = restaurantAvisRepository;
-        this.test();
+        try {
+            this.test();
+        } catch (URISyntaxException e) {
+            throw new RuntimeException(e);
+        }
     }
 
 
     @Transactional
-    public void parseRestaurants(String resto_path, String resto_detail_path) throws IOException, ParseException, JSONException {
+    public void parseRestaurants(URI resto_path, URI resto_detail_path) throws IOException, ParseException, JSONException {
         // Read the file content into a String
         String jsonContent = new String(Files.readAllBytes(Paths.get(resto_path)));
 
@@ -112,10 +117,9 @@ public class RestaurantService {
     }
 
 
-    public void test() throws JSONException, IOException, ParseException {
-        String resto_path = "get_restaurants_data\\data\\all_restaurants_lyon.json";
-        String resto_details_path = "pick-eat\\get_restaurants_data\\data\\restaurant_details.json";
-//        EventModel eventModel = new EventModel();
+    public void test() throws JSONException, IOException, ParseException, URISyntaxException {
+        URI resto_path = RestaurantApplication.class.getClassLoader().getResource("all_restaurants_lyon.json").toURI();
+        URI resto_details_path = RestaurantApplication.class.getClassLoader().getResource("restaurant_details.json").toURI();//        EventModel eventModel = new EventModel();
 //        eventModel.setName("test");
 //        eventModel.setAddress("test");
 //        eventModel.setDate(new java.util.Date());
@@ -123,7 +127,6 @@ public class RestaurantService {
 //        eventModel.setLongitude(4.804001f);
 //        eventModel.setRadius(1000);
 //        EventDTO event = EventDTO.fromEntity(eventModel);
-
         // Act
         parseRestaurants(resto_path, resto_details_path);
 //        Iterable<RestaurantModel> restos = getAllRestaurants();

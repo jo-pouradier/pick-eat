@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.UUID;
 
@@ -32,12 +33,20 @@ public class AuthenticationController {
     public ResponseEntity<UserBasic> register(@RequestBody RegisterUserDto registerUserDto, HttpServletResponse response) {
         UserBasic registeredUser = authenticationService.signup(registerUserDto);
         response.addCookie(jwtService.generateDeleteCookie());
+        String jwtToken = jwtService.generateToken(registeredUser, registeredUser.getUuid(), EScope.USER.getScope());
+        response.addCookie(jwtService.generateCookie(jwtToken));
+        CookiesUtils.addUserCookie(UserMapper.toDto(registeredUser));
         return ResponseEntity.ok(registeredUser);
     }
 
     @PostMapping("/login")
     public ResponseEntity<String> authenticate(@RequestBody LoginUserDto loginUserDto, HttpServletResponse response) {
-        UserBasic authenticatedUser = authenticationService.authenticate(loginUserDto);
+        UserBasic authenticatedUser;
+        try {
+            authenticatedUser = authenticationService.authenticate(loginUserDto);
+        } catch (ResponseStatusException e) {
+            return ResponseEntity.status(e.getStatusCode()).body(e.getReason());
+        }
         String jwtToken = jwtService.generateToken(authenticatedUser, authenticatedUser.getUuid(), EScope.USER.getScope());
         response.addCookie(jwtService.generateDeleteCookie());
         response.addCookie(jwtService.generateCookie(jwtToken));
@@ -45,13 +54,24 @@ public class AuthenticationController {
         return ResponseEntity.ok(jwtToken);
     }
 
+//    @PostMapping("verify")
+//    public ResponseEntity verify(@Parameter(hidden = true) @CookieValue("jwt") String jwt, @Parameter(hidden = true) @CookieValue("user") String user) {
+//        boolean valid = jwtService.validateToken(jwt, null);
+//        if (valid) {
+//            return ResponseEntity.ok(UserMapper.toEntity(CookiesUtils.getUserFromCookie(user)));
+//        } else {
+//            throw new Unh
+//        }
+//    }
 
-    @GetMapping("/logout")
-    public ResponseEntity<String> logout(HttpServletResponse response) {
-        response.addCookie(jwtService.generateDeleteCookie());
-        CookiesUtils.removeUserCookie();
-        return ResponseEntity.ok("Logout successful");
-    }
+
+// Note: already handled by Spring Security
+//    @GetMapping("/logout")
+//    public ResponseEntity<String> logout(HttpServletResponse response) {
+//        response.addCookie(jwtService.generateDeleteCookie());
+//        CookiesUtils.removeUserCookie();
+//        return ResponseEntity.ok("Logout successful");
+//    }
 
     @GetMapping("/adminToken")
     public ResponseEntity<String> adminToken() {

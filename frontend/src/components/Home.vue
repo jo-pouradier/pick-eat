@@ -1,6 +1,7 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 <template>
-  <img class="logo-image" src="@/assets/eating.png" alt="Home page background image" />
+  <img class="logo-image" src="@/assets/eating.png" alt="Home page background image"/>
+  <h1 class="title">Welcome {{ userName }}</h1>
   <button class="action-button action-button-primary" @click="handleNewVote" tabindex="0">
     New Vote
   </button>
@@ -10,13 +11,26 @@
 </template>
 
 <script setup lang="ts">
-import { useRouter } from 'vue-router';
-const router = useRouter();
-function handleNewVote() {
-  // Handle new vote 
-  router.push('/new-vote');
+import {useRouter} from 'vue-router';
+import {ref} from "vue";
 
+const router = useRouter();
+const userName = ref<string>('...');
+updateUserName();
+
+async function updateUserName() {
+  const userCookie = document.cookie.split('; ').find(row => row.startsWith('user='));
+    if (userCookie) {
+        const user = JSON.parse(decodeURIComponent(userCookie.split('=')[1]));
+        userName.value = user.lastName || '...';
+    }
+}
+
+function handleNewVote() {
+  // Handle new vote
+  router.push('/new-vote');
 };
+
 function handleJoin() {
   // Handle join action
   router.push('/swipe');
