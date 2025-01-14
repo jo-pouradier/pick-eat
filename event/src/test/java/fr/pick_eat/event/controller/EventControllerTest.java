@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
+import org.springframework.test.context.event.annotation.BeforeTestClass;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
@@ -46,7 +47,7 @@ public class EventControllerTest {
     private final EventDTO eventDTO = new EventDTO();
     private final EventFeedbackDTO feedbackDTO = new EventFeedbackDTO();
 
-    @BeforeEach
+    @BeforeTestClass
     public void setUp() {
         eventDTO.setName("Test Event");
         eventDTO.setAddress("Test Address");
@@ -54,7 +55,7 @@ public class EventControllerTest {
         eventDTO.setLongitude((float) 0.0);
         eventDTO.setDate(new Date());
         eventDTO.setRadius(1000);
-
+        eventDTO.setDescription("Test Description");
     }
 
     @Test
@@ -161,7 +162,8 @@ public class EventControllerTest {
                 .andExpect(content().string("true"));
     }
 
-    @Test void testLeaveEventOrganizer() throws Exception {
+    @Test
+    void testLeaveEventOrganizer() throws Exception {
         testCreateEvent();
         mockMvc.perform(MockMvcRequestBuilders.post("/leave/" + eventDTO.getId())
                 .cookie(COOKIE))
@@ -178,7 +180,7 @@ public class EventControllerTest {
         vote.setLike(true);
         votes.add(vote);
 
-        mockMvc.perform(MockMvcRequestBuilders.post("/swipe/"+ eventDTO.getId())
+        mockMvc.perform(MockMvcRequestBuilders.post("/swipe/" + eventDTO.getId())
                 .cookie(COOKIE)
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(votes)))
@@ -210,5 +212,38 @@ public class EventControllerTest {
         assert (uuid != null);
     }
 
+    @Test
+    public void testGetParticipants() throws Exception {
+        testCreateEvent();
+        String url = String.format("/participants/%s", eventDTO.getId().toString());
+
+        String participantsStr = mockMvc.perform(MockMvcRequestBuilders.get(url)
+                .cookie(COOKIE))
+                .andExpect(status().isOk())
+                .andReturn().getResponse().getContentAsString();
+
+        assert (!participantsStr.isEmpty());
+        List<?> participantsList = JsonPath.read(participantsStr, "$");
+        assert (participantsList.size() == 1);
+    }
+
+    @Test
+    public void testGetParticipantsNotFound() throws Exception {
+        String url = String.format("/participants/%s", UUID.randomUUID().toString());
+
+        mockMvc.perform(MockMvcRequestBuilders.get(url)
+                .cookie(COOKIE))
+                .andExpect(status().isNotFound());
+    }
+
+    @Test
+    public void testGetParticipantsBadRequest() throws Exception {
+        String invalidEventId = "invalid-uuid";
+        String url = String.format("/participants/%s", invalidEventId);
+
+        mockMvc.perform(MockMvcRequestBuilders.get(url)
+                .cookie(COOKIE))
+                .andExpect(status().isBadRequest());
+    }
 
 }

@@ -13,6 +13,7 @@ public class EventDTO {
     private Float latitude;
     private Float longitude;
     private Integer radius;
+    private String description;
 
     public String getName() {
         return name;
@@ -80,6 +81,14 @@ public class EventDTO {
 
     public void setId(UUID id) {
         this.id = id;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
 }

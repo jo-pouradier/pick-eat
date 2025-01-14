@@ -1,5 +1,6 @@
 package fr.pick_eat.event.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.UUID;
@@ -161,4 +162,22 @@ public class EventController {
         return ResponseEntity.ok(votes);
     }
 
+    @GetMapping("/participants/{eventId}")
+    public ResponseEntity<List<String>> getParticipants(@Parameter(hidden=true) @CookieValue("jwt") String jwt, @PathVariable("eventId") UUID eventUuid) {
+        String userId = JWTUtils.extractUserIdCookie(jwt, decoder);
+        UUID userUuid = UUID.fromString(userId);
+
+        List<String> participants = new ArrayList<>();
+        try{
+            participants = eventService.getParticipants(userUuid, eventUuid);
+        } catch (NoSuchElementException e) {
+            log.error("Error while getting participants", e);
+            return ResponseEntity.notFound().build();
+        } catch (Exception e) {
+            log.error("Error while getting participants", e);
+            return ResponseEntity.badRequest().build();
+        }
+        
+        return ResponseEntity.ok(participants);
+    }
 }

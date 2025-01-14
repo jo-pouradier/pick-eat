@@ -260,4 +260,24 @@ public class EventService {
         return votesDTO;
     }
 
+    public List<String> getParticipants(UUID userUuid, UUID eventUuid) throws NoSuchElementException {
+        EventModel event = eventRepository.findById(eventUuid).
+                orElseThrow(() -> new NoSuchElementException("Event does not exists"));
+        
+        List<EventParticipantModel> participants = event.getParticipants();
+        if (participants.isEmpty()) {
+            log.error("Event:{} has no participants", eventUuid);
+        return new ArrayList<>();
+        }
+
+        if (participants.stream().noneMatch(participant -> participant.getUserId().equals(userUuid))) {
+            log.error("User:{} is not a participant of event:{}", userUuid, eventUuid);
+            throw new NoSuchElementException("User is not a participant of event");
+        }
+
+        List<String> participantsList = participants.stream().map(participant -> participant.getUserId().toString()).toList();
+        log.info("Event:{} participants: {}", eventUuid, participantsList);
+        return participantsList;
+    }
+
 }
