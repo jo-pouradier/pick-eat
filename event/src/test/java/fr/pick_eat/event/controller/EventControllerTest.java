@@ -7,8 +7,6 @@ import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -20,13 +18,12 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.jayway.jsonpath.JsonPath;
 
-import fr.pick_eat.event.dto.EventDTO;
-import fr.pick_eat.event.dto.EventFeedbackDTO;
-import fr.pick_eat.event.dto.EventVoteDTO;
+import dto.EventDTO;
+import dto.EventFeedbackDTO;
+import dto.EventVoteDTO;
 import fr.pick_eat.event.entity.EventFeedbackModel;
 import jakarta.servlet.http.Cookie;
 
@@ -38,8 +35,8 @@ public class EventControllerTest {
     private MockMvc mockMvc;
 
     // dummy token
-    private final static String TOKEN = "eyJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJodWd1ZXMuZmFydGhvdWF0QHRlc3QuZnIiLCJzY29wZSI6IlVTRVIiLCJpc3MiOiJwaWNrLWVhdCIsImV4cCI6MTc0NTM5NzY4MywiaWF0IjoxNzM2NzU3NjgzLCJ1dWlkIjoiMDk1ZDE0NTktYjAwOS00MjFmLWI3YmUtMGVlZmY5NDVlYjcwIn0.H6v0J_A0Fqc2tjwl4oWdIbxbfi5O8k7cAa4cReyEixkZz7ub2ZDmJVSwDmD7dQMlA4nREsmLNtmlEkDw5GWNyczNwVN__LT-defWM6QYs5pcH72v2yEWAqAAxiwkYh6SIWOr8yKCOiMXuO-KBotwsCV8YjRoB2kLoI723YfbONC3Di2TI6LyaRG-7HnILpXPnLV7foc9zS6BSBYg3yetEyZ29KsNxaa2uZwpKHj8JMbwcfduJOvSPtIyTHlgj2XwL9TxrPKIX9-uVEK7fXr1YBNCYVFtYXe5bsQR231vNeGjCIDkxS6XVdL-nKMrv-k0tOmqY75vsQz1-doPpraGKQ";
-    private final static String TOKEN2 = "eyJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJib2IuYm9iQHRlc3QuZnIiLCJzY29wZSI6IlVTRVIiLCJpc3MiOiJwaWNrLWVhdCIsImV4cCI6MTczNjg1MTIxOCwiaWF0IjoxNzM2NzY0ODE4LCJ1dWlkIjoiZWZhYjQ3NGItMTMyYS00OTMwLTk0N2MtNTc1YmNhOThmYzVmIn0.CisuTBtE9VqXG7LOByh92TWWifqzPyEnk-ROLSnXptkMg8JfjL7mNoy3Hh5kce3MX_GUf4N-Jw2LjUMPf8zztD8QlaSTE5X1mlQS5kl0LC57Hwd5kON0fFQuuz1nmxnxLZOPMaiY1nIVbUVoxUS1hCc5_Mm7gJav604ZW2rGTwSt2Eq3OJTW8AltA-tic1yJ-STz8zc7gTtzQK-qiXAigJ57BnENn6NXJvdn7RaB11ue6bDHucVMuZt37QznF8vSjbk8anGi46MzWwblw5rD7bVgtfPA_JyELJLaG8WzMcy8pO3yneveOSI0aIzn0W0EFtstRIBfKSm0xa1bJjUO5g";
+    private final static String TOKEN = "eyJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJ0ZXN0Iiwic2NvcGUiOiJVU0VSIiwiaXNzIjoicGljay1lYXQiLCJleHAiOjE3NjgzODgzMDcsImlhdCI6MTczNjg1MjMwNywidXVpZCI6IjhiOGFjYTk4LWU5YjktNGFkNS1hOTAzLTc0MmU3NGVlMTViZiJ9.cp22oKCSuCwsOmCXntjx0ZKtIM6zPNF-yH-5v0q02rAK8_XcPCMHTV_u6PJkSs3djzK1TBPEjJODUPBdfBJt-h-L8XdEA-lJlgcB_wcVXSEfM-ZllIagdj9poUzGmQQSFIUy_u5OkqzP9zqOg0Sj7DEMhq8IntSHcK6rPpaQggb0N4VEgcBQ2hGvbyjYc6FsNE4p23V7FiML4P_eAFQmjT7eXY87ixLyXqBWT7-AOTqERQVN6BlPdFxC8QhJo1AXfWStcB9W2hk2Uz7sFkShk1BV0Ff0qCvYwUwXAv2Zv-B2ETLbrxqieXCkxPdi1k-G453PmMANZBpLFzuRsuOjFg";
+    private final static String TOKEN2 = "eyJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJ0ZXN0MiIsInNjb3BlIjoiVVNFUiIsImlzcyI6InBpY2stZWF0IiwiZXhwIjoxNzY4Mzg4MzUyLCJpYXQiOjE3MzY4NTIzNTIsInV1aWQiOiI3ZGZmOGRlZC1jZGQzLTRkYzUtYjhiNi00Mjg4ZjQwYTJiYmYifQ.fmICrGNVYZUCssB_iClleptwro-QOLrMUhOB5zKws_tbc-6Si_Rr99G0DEwRcc3cj4wSMFiOlSJTV3pGw-qwDMud_cuBjl39SAQDkk_T3NRRB3H2BgbVr-_v7OMLmT3GXm3rARr5bH0SJuXG6V_Xj-BidatTnaBWSnJe6FKK1fr-hhKPSF7PjVFFpsOtZIjgX4TcnkzsDr4tbrqe071OVNAh-11j8hxPafzizV36JsHjF9-DmSnWlVEQxMF9sNi_egy-10gVhOmrITW68SCB2IIeZSV1Q-gsmeHz7v3bnIr8Tu5pfesFNJ3mJFEHN9FmmodiJyYQsCYtZx-Bhx0v1g";
     private final static Cookie COOKIE = new Cookie("jwt", TOKEN);
     private final static Cookie COOKIE2 = new Cookie("jwt", TOKEN2);
 

@@ -8,21 +8,10 @@ variables:
   TAG: "$CI_COMMIT_SHORT_SHA"
   REGISTRY: "$CI_REGISTRY/cpelyon/5eti-projet-2024-2025/groupe-7/pick-eat"
 
-test_event:
+test_gradle:
   stage: test
   image: gradle:7.6-jdk17
   script:
-    - cd event
-    - gradle test
-  rules:
-    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
-    - if: $CI_COMMIT_BRANCH == "main" && $CI_PIPELINE_SOURCE == "push"
-
-test_auth:
-  stage: test
-  image: gradle:7.6-jdk17
-  script:
-    - cd Auth
     - gradle test
   rules:
     - if: $CI_PIPELINE_SOURCE == "merge_request_event"
@@ -52,12 +41,11 @@ build_event:
   before_script:
     - echo "$CI_REGISTRY_PASSWORD" | docker login $CI_REGISTRY -u $CI_REGISTRY_USER --password-stdin
   script:
-    - cd event
-    - docker build -t $REGISTRY/event:$TAG -t $REGISTRY/event:latest .
+    - docker build -build-arg TARGET_SERVICE=event -t $REGISTRY/event:$TAG -t $REGISTRY/event:latest .
     - docker push $REGISTRY/event:$TAG
     - docker push $REGISTRY/event:latest
   needs: 
-    - test_event
+    - test_gradle
   rules:
     - if: $CI_COMMIT_BRANCH == "main" && $CI_PIPELINE_SOURCE == "push"
 
@@ -70,29 +58,30 @@ build_auth:
     - echo "$CI_REGISTRY_PASSWORD" | docker login $CI_REGISTRY -u $CI_REGISTRY_USER --password-stdin
   script:
     - cd Auth
-    - docker build -t $REGISTRY/auth:$TAG -t $REGISTRY/auth:latest .
+    - docker build --build-arg TARGET_SERVICE=auth -t $REGISTRY/auth:$TAG -t $REGISTRY/auth:latest .
     - docker push $REGISTRY/auth:$TAG
     - docker push $REGISTRY/auth:latest
   needs: 
-    - test_auth
+    - test_gradle
   rules:
     - if: $CI_COMMIT_BRANCH == "main" && $CI_PIPELINE_SOURCE == "push"
 
-# build_restaurant:
-#   stage: build
-#   image: docker:20.10
-#   services:
-#     - docker:dind
-#   before_script:
-#     - echo "$CI_REGISTRY_PASSWORD" | docker login $CI_REGISTRY -u $CI_REGISTRY_USER --password-stdin
-#   script:
-#     - cd restaurant
-#     - docker build -t $REGISTRY/restaurant:$TAG -t $REGISTRY/restaurant:latest .
-#     - docker push $REGISTRY/restaurant:$TAG
-#     - docker push $REGISTRY/restaurant:latest
-#   only:
-#     - main
-
+build_restaurant:
+  stage: build
+  image: docker:20.10
+  services:
+    - docker:dind
+  before_script:
+    - echo "$CI_REGISTRY_PASSWORD" | docker login $CI_REGISTRY -u $CI_REGISTRY_USER --password-stdin
+  script:
+    - cd restaurant
+    - docker build --build-arg TARGET_SERVICE=restaurant -t $REGISTRY/restaurant:$TAG -t $REGISTRY/restaurant:latest .
+    - docker push $REGISTRY/restaurant:$TAG
+    - docker push $REGISTRY/restaurant:latest
+  needs:
+    - test_gradle
+  rules:
+    - if: $CI_COMMIT_BRANCH == "main" && $CI_PIPELINE_SOURCE == "push"
 
 # Python service
 # build_python:

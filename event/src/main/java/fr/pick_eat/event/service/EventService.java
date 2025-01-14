@@ -5,14 +5,15 @@ import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.UUID;
 
+import fr.pick_eat.event.mapper.EventMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import fr.pick_eat.event.dto.EventDTO;
-import fr.pick_eat.event.dto.EventFeedbackDTO;
-import fr.pick_eat.event.dto.EventVoteDTO;
+import dto.EventDTO;
+import dto.EventFeedbackDTO;
+import dto.EventVoteDTO;
 import fr.pick_eat.event.entity.EventFeedbackModel;
 import fr.pick_eat.event.entity.EventModel;
 import fr.pick_eat.event.entity.EventParticipantModel;
@@ -255,7 +256,7 @@ public class EventService {
         }
         EventParticipantModel eventParticipant = eventParticipantRepository.findByUserIdAndEventId(userUuid, event.getId());
         List<EventVoteModel> votes = eventParticipant.getVotes();
-        List<EventVoteDTO> votesDTO = votes.stream().map(EventVoteDTO::fromEntity).toList();
+        List<EventVoteDTO> votesDTO = votes.stream().map(EventMapper::toEventVoteDTO).toList();
         log.info("User:{} votes: {}", userUuid, votesDTO);
         return votesDTO;
     }

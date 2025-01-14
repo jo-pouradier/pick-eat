@@ -15,10 +15,10 @@ import java.nio.charset.StandardCharsets;
 @Component
 public class CookiesUtils {
     private static final ObjectMapper objectMapper = new ObjectMapper();
-    public static int EXPIRATION_TIME = 3600;
+    public static long EXPIRATION_TIME = 3600;
 
     @Value("${security.jwt.expiration-time}")
-    public void setExpirationTime(int expirationTime) {
+    public void setExpirationTime(long expirationTime) {
         EXPIRATION_TIME = expirationTime;
         System.out.println("Expiration time set to: " + EXPIRATION_TIME);
     }
@@ -40,7 +40,7 @@ public class CookiesUtils {
         cookie.setHttpOnly(false);
         cookie.setSecure(true);
         cookie.setPath("/");
-        cookie.setMaxAge(EXPIRATION_TIME); // 1 hour
+        cookie.setMaxAge((int) EXPIRATION_TIME); // 1 hour
 
         // Add the cookie to the response
         HttpServletResponse response = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getResponse();
