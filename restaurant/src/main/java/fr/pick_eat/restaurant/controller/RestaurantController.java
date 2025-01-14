@@ -13,7 +13,6 @@ import io.swagger.v3.oas.annotations.Parameter;
 import java.util.List;
 import java.util.UUID;
 
-@CrossOrigin
 @RestController
 public class RestaurantController {
     private final RestaurantService restaurantService;
