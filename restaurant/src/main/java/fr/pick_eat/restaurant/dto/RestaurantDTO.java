@@ -20,8 +20,6 @@ public class RestaurantDTO {
     private String GeneratedPicture; // path
     private Integer price_level;
 
-    public RestaurantDTO() {}
-
     public UUID getId() {return id;}
 
     public void setId(UUID id) {this.id = id;}
