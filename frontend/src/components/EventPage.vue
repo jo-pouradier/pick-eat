@@ -30,7 +30,16 @@ import { useRoute, useRouter } from 'vue-router';
 
 const route = useRoute();
 const router = useRouter();
-
+const eventId = ref(null)
+onMounted(() => {
+    console.log('Event ID:', route.query.data);
+    if (route.query.data) {
+        if (typeof route.query.data === 'string') {
+            eventId.value = JSON.parse(route.query.data);
+        }
+        console.log('Event Data:', eventData.value);
+    }
+});
 interface EventInfo {
     id: number;
     name: string;

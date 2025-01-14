@@ -20,8 +20,10 @@ updateUserName();
 
 async function updateUserName() {
   const userCookie = document.cookie.split('; ').find(row => row.startsWith('user='));
+  console.debug('User cookie:', userCookie);
     if (userCookie) {
         const user = JSON.parse(decodeURIComponent(userCookie.split('=')[1]));
+        console.debug('User:', user);
         userName.value = user.lastName || '...';
     }
 }

@@ -67,11 +67,14 @@ function handleValidation(): void {
         console.log('Selected coordinates:', eventData.value.getCoords());
         axios.post('/event/create', {
             ...toRaw(eventData.value)
-        }).then(() => {
-            console.log(Response);
+        }).then(response => {
+            console.log(response.data);
             console.log('Event created');
-        });
-        router.push('/event-page');
+            router.push({
+                path: '/event-page',
+                query: { data: JSON.stringify(response.data) }
+            });
+            });
     } else {
         if (eventData.value.name === '') {
             alert('Please select a name for the vote.');
