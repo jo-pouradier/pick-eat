@@ -41,7 +41,7 @@ build_event:
   before_script:
     - echo "$CI_REGISTRY_PASSWORD" | docker login $CI_REGISTRY -u $CI_REGISTRY_USER --password-stdin
   script:
-    - docker build -build-arg TARGET_SERVICE=event -t $REGISTRY/event:$TAG -t $REGISTRY/event:latest .
+    - docker build --build-arg TARGET_SERVICE=event -t $REGISTRY/event:$TAG -t $REGISTRY/event:latest .
     - docker push $REGISTRY/event:$TAG
     - docker push $REGISTRY/event:latest
   needs: 
@@ -57,7 +57,6 @@ build_auth:
   before_script:
     - echo "$CI_REGISTRY_PASSWORD" | docker login $CI_REGISTRY -u $CI_REGISTRY_USER --password-stdin
   script:
-    - cd Auth
     - docker build --build-arg TARGET_SERVICE=auth -t $REGISTRY/auth:$TAG -t $REGISTRY/auth:latest .
     - docker push $REGISTRY/auth:$TAG
     - docker push $REGISTRY/auth:latest
@@ -74,7 +73,6 @@ build_restaurant:
   before_script:
     - echo "$CI_REGISTRY_PASSWORD" | docker login $CI_REGISTRY -u $CI_REGISTRY_USER --password-stdin
   script:
-    - cd restaurant
     - docker build --build-arg TARGET_SERVICE=restaurant -t $REGISTRY/restaurant:$TAG -t $REGISTRY/restaurant:latest .
     - docker push $REGISTRY/restaurant:$TAG
     - docker push $REGISTRY/restaurant:latest
