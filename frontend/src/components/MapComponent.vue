@@ -3,13 +3,14 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, defineEmits,defineProps, watch, ref } from 'vue';
+import { onMounted, defineEmits, defineProps, watch, ref } from 'vue';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 
 const emits = defineEmits(['locationSelected']);
-const props = defineProps<{ selectedRange: number }>();
+const props = defineProps<{ selectedRange: number, selectedCoords: [number, number] | null }>();
 const DefaultRange = ref(50);
+
 onMounted(() => {
     const map = L.map('map').setView([45.7484600, 4.8467100], 13); // Set base map view to specified location
 
@@ -19,6 +20,13 @@ onMounted(() => {
 
     let marker: L.Marker | null = null;
     let circle: L.Circle | null = null;
+
+    if (props.selectedCoords && (props.selectedCoords[0] !== 0 || props.selectedCoords[1] !== 0)) {
+        console.log('Selected location:', props.selectedCoords[0], props.selectedCoords[1]);
+        marker = L.marker(props.selectedCoords).addTo(map);
+        circle = L.circle(props.selectedCoords, { radius: DefaultRange.value }).addTo(map);
+        map.setView([props.selectedCoords[0],props.selectedCoords[1]], 13);
+    }
 
     map.on('click', (e: L.LeafletMouseEvent) => {
         const { lat, lng } = e.latlng;
@@ -33,7 +41,7 @@ onMounted(() => {
             circle = L.circle(e.latlng, { radius: DefaultRange.value }).addTo(map);
         }
         circle.setRadius(DefaultRange.value);
-        console.log('Selected location:', lat, lng);
+        console.log('Selected lolcation:', lat, lng);
         console.log('Selected range:', DefaultRange.value);
         emits('locationSelected', [lat, lng]);
     });
@@ -41,6 +49,7 @@ onMounted(() => {
     watch(() => props.selectedRange, (newRadius) => {
         console.log('Selected range: circle', newRadius);
         if (circle) {
+            console.log('is circle');
             circle.setRadius(newRadius);
             DefaultRange.value = newRadius;
         }

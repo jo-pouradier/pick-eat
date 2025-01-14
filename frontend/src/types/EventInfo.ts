@@ -6,4 +6,8 @@ export interface EventInfo {
     latitude: number;
     longitude: number;
     radius: number;
+    description: string;
+    getCoords(): [number, number];
+    setCoords(lat: number, long: number): void;
+    setCoords(coords: [number, number]): void;
 }
