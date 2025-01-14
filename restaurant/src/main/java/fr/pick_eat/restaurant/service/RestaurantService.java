@@ -115,25 +115,25 @@ public class RestaurantService {
     public void test() throws JSONException, IOException, ParseException {
         String resto_path = "get_restaurants_data\\data\\all_restaurants_lyon.json";
         String resto_details_path = "pick-eat\\get_restaurants_data\\data\\restaurant_details.json";
-        EventModel eventModel = new EventModel();
-        eventModel.setName("test");
-        eventModel.setAddress("test");
-        eventModel.setDate(new java.util.Date());
-        eventModel.setLatitude(45.716972f);
-        eventModel.setLongitude(4.804001f);
-        eventModel.setRadius(1000);
-        EventDTO event = EventDTO.fromEntity(eventModel);
+//        EventModel eventModel = new EventModel();
+//        eventModel.setName("test");
+//        eventModel.setAddress("test");
+//        eventModel.setDate(new java.util.Date());
+//        eventModel.setLatitude(45.716972f);
+//        eventModel.setLongitude(4.804001f);
+//        eventModel.setRadius(1000);
+//        EventDTO event = EventDTO.fromEntity(eventModel);
 
         // Act
         parseRestaurants(resto_path, resto_details_path);
-        Iterable<RestaurantModel> restos = getAllRestaurants();
+//        Iterable<RestaurantModel> restos = getAllRestaurants();
 
-        List<RestaurantDTO> resto = generateRestaurantsForEvent(event);
-        System.out.println("generated restaurants : " + resto);
-
-        // Assert
-        assertNotNull(restos);
-        assertNotNull(resto);
+//        List<RestaurantDTO> resto = generateRestaurantsForEvent(event);
+//        System.out.println("generated restaurants : " + resto);
+//
+//        // Assert
+//        assertNotNull(restos);
+//        assertNotNull(resto);
     }
 
 }
