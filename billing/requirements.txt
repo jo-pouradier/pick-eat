@@ -1,0 +1,4 @@
+fastapi[standard]==0.115.6
+sqlmodel==0.0.22
+python-dotenv==1.0.1
+PyJWT==2.10.1
