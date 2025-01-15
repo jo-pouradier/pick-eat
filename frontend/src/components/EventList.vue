@@ -11,16 +11,14 @@
 
 <script setup lang="ts">
 import {onMounted, ref} from 'vue';
-import {useRouter} from 'vue-router';
 import EventComponent from "@/components/EventComponent.vue";
 import axios from "axios";
 import type {EventInfo} from "@/types/EventInfo.ts";
 
-const router = useRouter();
 const events = ref<EventInfo[]>([]);
-onMounted(){
+onMounted(() => {
   getEvents();
-}
+});
 
 function getEvents() {
   axios.get('/event/history').then(response => {
