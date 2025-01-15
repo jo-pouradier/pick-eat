@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.server.ResponseStatusException;
 
 import java.util.UUID;
 
@@ -41,12 +40,7 @@ public class AuthenticationController {
 
     @PostMapping("/login")
     public ResponseEntity<String> authenticate(@RequestBody LoginUserDto loginUserDto, HttpServletResponse response) {
-        UserBasic authenticatedUser;
-        try {
-            authenticatedUser = authenticationService.authenticate(loginUserDto);
-        } catch (ResponseStatusException e) {
-            return ResponseEntity.status(e.getStatusCode()).body(e.getReason());
-        }
+        UserBasic authenticatedUser = authenticationService.authenticate(loginUserDto);
         String jwtToken = jwtService.generateToken(authenticatedUser, authenticatedUser.getUuid(), EScope.USER.getScope());
         response.addCookie(jwtService.generateDeleteCookie());
         response.addCookie(jwtService.generateCookie(jwtToken));
