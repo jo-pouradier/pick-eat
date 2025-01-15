@@ -29,15 +29,15 @@ onMounted(() => {
     if (route.query.data) {
         if (typeof route.query.data === 'string') {
             eventId.value = JSON.parse(route.query.data);
-
-            axios.get(`/events/${eventId.value}`)
+            console.log('Event ID: swipe', eventId.value);
+            axios.get(`/event/${eventId.value}`)
             .then((response) => {
+              console.log(response) ;
                 eventData.value = response.data;
-                axios.get(`restaurants/generate-restaurants-for-event`,
+                console.log('Event data:', eventData.value);
+                axios.post(`/restaurant/generate-restaurants-for-event`,
                 {
-                    params: {
-                        event: eventId.value,
-                    },
+                  ...eventData.value,
                 }
                 )
             })
