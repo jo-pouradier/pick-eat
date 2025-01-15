@@ -78,7 +78,7 @@ public class EventController {
         return ResponseEntity.ok(eventsDTO);
     }
 
-    @PostMapping("/join/{eventId}")
+    @GetMapping("/join/{eventId}")
     public ResponseEntity<String> joinEvent(@Parameter(hidden=true) @CookieValue("jwt") String jwt,
             @PathVariable("eventId") UUID eventUuid) {
         String userId = JWTUtils.extractUserIdCookie(jwt, decoder);

@@ -1,13 +1,12 @@
 package fr.pick_eat.auth.controller;
 
 import fr.pick_eat.auth.dto.GuestUserDto;
+import fr.pick_eat.auth.dto.UserBasicDto;
 import fr.pick_eat.auth.scope.EScope;
-import fr.pick_eat.auth.service.AuthenticationService;
 import fr.pick_eat.auth.service.JwtService;
+import fr.pick_eat.auth.utils.CookiesUtils;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,17 +19,22 @@ import java.util.UUID;
 public class GuestAuthenticationController {
     private final JwtService jwtService;
 
-    public GuestAuthenticationController(JwtService jwtService, AuthenticationService authenticationService) {
+    public GuestAuthenticationController(JwtService jwtService) {
         this.jwtService = jwtService;
     }
 
     @PostMapping("/login")
-    public ResponseEntity<String> authenticateGuest(@RequestBody GuestUserDto guestUserDto, HttpServletResponse response) {
-        UserDetails userDetails = User.withUsername(guestUserDto.getFirstName().toLowerCase() + "." + guestUserDto.getLastName().toLowerCase() + "@guest.com").password("").build();
+    public ResponseEntity<UUID> authenticateGuest(@RequestBody GuestUserDto guestUserDto, HttpServletResponse response) {
         UUID guestUuid = guestUserDto.getUuid() != null ? guestUserDto.getUuid() : UUID.randomUUID();
-        String jwtToken = jwtService.generateToken(userDetails, guestUuid, EScope.GUEST.getScope());
+        UserBasicDto userBasicDto = new UserBasicDto()
+                .setEmail(guestUuid+"@guest.com")
+                .setFirstName(guestUserDto.getFirstName())
+                .setLastName(guestUserDto.getLastName())
+                .setUuid(guestUuid);
+        String jwtToken = jwtService.generateToken(userBasicDto, guestUuid, EScope.GUEST.getScope());
         response.addCookie(jwtService.generateDeleteCookie());
         response.addCookie(jwtService.generateCookie(jwtToken));
-        return ResponseEntity.ok(jwtToken);
+        CookiesUtils.addUserCookie(userBasicDto);
+        return ResponseEntity.ok(guestUuid);
     }
 }

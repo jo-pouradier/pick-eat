@@ -1,4 +1,4 @@
-FROM nginx:stable-alpine3.20-perl as final
+FROM nginx:stable-alpine3.20-perl AS final
 #FROM ghcr.io/max-lt/nginx-jwt-module:v3.4.0 as final
 
 ENV AUTH_PORT=8081

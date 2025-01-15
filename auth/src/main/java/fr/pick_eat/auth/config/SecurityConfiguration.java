@@ -24,8 +24,6 @@ import org.springframework.security.oauth2.jwt.NimbusJwtDecoder;
 import org.springframework.security.oauth2.jwt.NimbusJwtEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-import org.springframework.security.web.authentication.logout.HeaderWriterLogoutHandler;
-import org.springframework.security.web.header.writers.ClearSiteDataHeaderWriter;
 
 
 @Configuration
@@ -47,6 +45,7 @@ public class SecurityConfiguration {
         http.authorizeHttpRequests(authorizeRequests ->
                         authorizeRequests
                                 .requestMatchers("/register", "/login", "/logout", "/adminToken", "/guest/**", "/.well-known/jwks.json", "/swagger-ui/**", "/v3/api-docs/**").permitAll()
+                                .requestMatchers("/users/", "/users/**").hasAnyAuthority(EScope.GUEST.getAuthority(), EScope.USER.getAuthority())
                                 .requestMatchers(HttpMethod.GET, "/unsecured").permitAll()
                                 .requestMatchers(HttpMethod.GET, "/securedScopeGuest").hasAuthority(EScope.GUEST.getAuthority())
                                 .requestMatchers(HttpMethod.GET, "/securedScopeUser").hasAuthority(EScope.USER.getAuthority())
