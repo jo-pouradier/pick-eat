@@ -65,6 +65,22 @@ build_auth:
   rules:
     - if: $CI_COMMIT_BRANCH == "main" && $CI_PIPELINE_SOURCE == "push"
 
+build_auth_db:
+  stage: build
+  image: docker:20.10
+  services:
+    - docker:dind
+  before_script:
+    - echo "$CI_REGISTRY_PASSWORD" | docker login $CI_REGISTRY -u $CI_REGISTRY_USER --password-stdin
+  script:
+    - docker build -t $REGISTRY/auth_database:$TAG -t $REGISTRY/auth_database:latest PostgresDatabase/
+    - docker push $REGISTRY/auth_database:$TAG
+    - docker push $REGISTRY/auth_database:latest
+  needs: 
+    - test_gradle
+  rules:
+    - if: $CI_COMMIT_BRANCH == "main" && $CI_PIPELINE_SOURCE == "push"
+
 build_restaurant:
   stage: build
   image: docker:20.10

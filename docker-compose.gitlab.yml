@@ -1,0 +1,49 @@
+version: '3.8'
+
+services:
+  nginx:
+    image: $CI_REGISTRY/cpelyon/5eti-projet-2024-2025/groupe-7/pick-eat/nginx:latest
+    env_file: dev.env
+    ports:
+      - "${NGINX_PORT:-8080}:${NGINX_PORT:-8080}"
+  frontend:
+    image: $CI_REGISTRY/cpelyon/5eti-projet-2024-2025/groupe-7/pick-eat/frontend:latest
+    env_file: dev.env
+    ports:
+      - "${FRONTEND_PORT:-8081}:${FRONTEND_PORT:-8081}"
+  auth_database:
+    restart: always
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U postgres" ]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    image: $CI_REGISTRY/cpelyon/5eti-projet-2024-2025/groupe-7/pick-eat/auth_database:latest
+    environment:
+      POSTGRES_USER: ${AUTH_DB_USER:-postgres}
+      POSTGRES_PASSWORD: ${AUTH_DB_PASSWORD:-postgres}
+      POSTGRES_DB: ${AUTH_DB_NAME:-postgres}
+    ports:
+      - "${AUTH_DB_PORT:-5432}:5432"
+  auth:
+    image: $CI_REGISTRY/cpelyon/5eti-projet-2024-2025/groupe-7/pick-eat/auth:latest
+    depends_on:
+      auth_database:
+        condition: service_healthy
+    environment:
+      POSTGRES_USER: ${AUTH_DB_USER:-postgres}
+      POSTGRES_PASSWORD: ${AUTH_DB_PASSWORD:-postgres}
+      POSTGRES_DB: ${AUTH_DB_NAME:-postgres}
+    env_file: dev.env
+    ports:
+      - "${AUTH_PORT:-8082}:${AUTH_PORT:-8082}"
+  event:
+    image: $CI_REGISTRY/cpelyon/5eti-projet-2024-2025/groupe-7/pick-eat/event:latest
+    env_file: dev.env
+    ports:
+      - "${EVENT_PORT:-8083}:${EVENT_PORT:-8083}"
+  restaurant:
+    image: $CI_REGISTRY/cpelyon/5eti-projet-2024-2025/groupe-7/pick-eat/restaurant:latest
+    env_file: dev.env
+    ports:
+      - "${RESTAURANT_PORT:-8084}:${RESTAURANT_PORT:-8084}"
