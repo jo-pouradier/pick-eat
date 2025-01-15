@@ -1,13 +1,11 @@
 package fr.pick_eat.restaurant.dto;
 
 import fr.pick_eat.restaurant.entity.RestaurantNoteModel;
-import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 
 import java.util.UUID;
 
 public class RestaurantNoteDTO {
-    @Id
     private UUID id;
     private UUID restaurantId;
     private Integer note;
@@ -46,12 +44,4 @@ public class RestaurantNoteDTO {
         this.userId = userId;
     }
 
-    public static RestaurantNoteDTO fromEntity(RestaurantNoteModel entity) {
-        RestaurantNoteDTO dto = new RestaurantNoteDTO();
-        dto.setId(entity.getId());
-        dto.setRestaurantId(entity.getRestaurantId());
-        dto.setNote(entity.getNote());
-        dto.setUserId(entity.getUserId());
-        return dto;
-    }
 }
