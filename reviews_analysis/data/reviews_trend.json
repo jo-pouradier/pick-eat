@@ -1,0 +1,5737 @@
+{
+    "Le Fournil de Montmein": {
+        "average_sentiment_score": 0.71,
+        "average_rating": 4.0,
+        "num_reviews": 4
+    },
+    "Domino's Oullins": {
+        "average_sentiment_score": 0.14,
+        "average_rating": 1.25,
+        "num_reviews": 16
+    },
+    "Tartine et bonne humeur": {
+        "average_sentiment_score": 0.47,
+        "average_rating": 4.43,
+        "num_reviews": 7
+    },
+    "Le trente et un": {
+        "average_sentiment_score": 0.8,
+        "average_rating": 4.38,
+        "num_reviews": 8
+    },
+    "Le P’tit Diabl’au Thym": {
+        "average_sentiment_score": 0.8,
+        "average_rating": 4.14,
+        "num_reviews": 7
+    },
+    "The Speed Tacos": {
+        "average_sentiment_score": 0.7,
+        "average_rating": 4.55,
+        "num_reviews": 20
+    },
+    "Petit Osaka Oullins - Restaurant Japonais, Sushis, Poké Bowls à Oullins - Parc du Prado": {
+        "average_sentiment_score": 0.75,
+        "average_rating": 4.85,
+        "num_reviews": 20
+    },
+    "Abajour Beyrouth": {
+        "average_sentiment_score": 0.75,
+        "average_rating": 4.57,
+        "num_reviews": 14
+    },
+    "Malting-Pot Oullins": {
+        "average_sentiment_score": 0.39,
+        "average_rating": 3.88,
+        "num_reviews": 8
+    },
+    "Del Pasto": {
+        "average_sentiment_score": 0.57,
+        "average_rating": 5.0,
+        "num_reviews": 3
+    },
+    "LE MÉRION": {
+        "average_sentiment_score": 0.6,
+        "average_rating": 3.8,
+        "num_reviews": 5
+    },
+    "CREPE N' WAFFLE": {
+        "average_sentiment_score": 0.52,
+        "average_rating": 4.0,
+        "num_reviews": 4
+    },
+    "Boulangerie de la Mairie d'Oullins": {
+        "average_sentiment_score": 0.73,
+        "average_rating": 4.8,
+        "num_reviews": 20
+    },
+    "Le Remède - Restaurant Bar Evénements Oullins": {
+        "average_sentiment_score": 0.54,
+        "average_rating": 3.0,
+        "num_reviews": 2
+    },
+    "So Beer": {
+        "average_sentiment_score": 0.65,
+        "average_rating": 4.72,
+        "num_reviews": 18
+    },
+    "Pizza Delicieuse : Camion Pizza Four à Bois Oullins pierre -benite": {
+        "average_sentiment_score": 0.55,
+        "average_rating": 4.75,
+        "num_reviews": 20
+    },
+    "Tandoori Place": {
+        "average_sentiment_score": 0.56,
+        "average_rating": 4.83,
+        "num_reviews": 6
+    },
+    "Pokedo": {
+        "average_sentiment_score": 0.52,
+        "average_rating": 4.12,
+        "num_reviews": 8
+    },
+    "Chamas Tacos Oullins": {
+        "average_sentiment_score": 0.28,
+        "average_rating": 3.25,
+        "num_reviews": 4
+    },
+    "Doctor Miam Miam": {
+        "average_sentiment_score": 0.25,
+        "average_rating": 3.0,
+        "num_reviews": 4
+    },
+    "Bill's Burger Oullins-Pierre-Bénite": {
+        "average_sentiment_score": 0.4,
+        "average_rating": 3.95,
+        "num_reviews": 19
+    },
+    "Ramen Masa Oullins": {
+        "average_sentiment_score": 0.73,
+        "average_rating": 4.33,
+        "num_reviews": 6
+    },
+    "Haus Berliner Kebab": {
+        "average_sentiment_score": 0.69,
+        "average_rating": 4.62,
+        "num_reviews": 16
+    },
+    "Cocorico oullins": {
+        "average_sentiment_score": 0.52,
+        "average_rating": 3.75,
+        "num_reviews": 8
+    },
+    "Asmos pizza au feux de bois/burgers gourmets/tacos": {
+        "average_sentiment_score": 0.52,
+        "average_rating": 4.6,
+        "num_reviews": 15
+    },
+    "Creperie ok": {
+        "average_sentiment_score": 0.36,
+        "average_rating": 3.0,
+        "num_reviews": 2
+    },
+    "O’sushi oullins": {
+        "average_sentiment_score": 0.35,
+        "average_rating": 3.12,
+        "num_reviews": 8
+    },
+    "Burg’n tacos": {
+        "average_sentiment_score": 0.85,
+        "average_rating": 4.71,
+        "num_reviews": 7
+    },
+    "Café Charmant": {
+        "average_sentiment_score": 0.66,
+        "average_rating": 4.62,
+        "num_reviews": 16
+    },
+    "Beubeul Food (tacos lyonnais-oullins)": {
+        "average_sentiment_score": 0.68,
+        "average_rating": 4.7,
+        "num_reviews": 20
+    },
+    "Léo Sushi": {
+        "average_sentiment_score": 0.69,
+        "average_rating": 4.0,
+        "num_reviews": 4
+    },
+    "Le Minhoto": {
+        "average_sentiment_score": 1.0,
+        "average_rating": 5.0,
+        "num_reviews": 1
+    },
+    "LECCINO Pizzeria": {
+        "average_sentiment_score": 0.37,
+        "average_rating": 3.17,
+        "num_reviews": 6
+    },
+    "Boam": {
+        "average_sentiment_score": 0.83,
+        "average_rating": 4.92,
+        "num_reviews": 12
+    },
+    "L’Authentik Oullins": {
+        "average_sentiment_score": 0.62,
+        "average_rating": 4.65,
+        "num_reviews": 20
+    },
+    "Le Faitout - la cantine": {
+        "average_sentiment_score": 0.24,
+        "average_rating": 4.0,
+        "num_reviews": 2
+    },
+    "Le Siècle Lounge": {
+        "average_sentiment_score": 0.39,
+        "average_rating": 5.0,
+        "num_reviews": 1
+    },
+    "Gamma Restaurant": {
+        "average_sentiment_score": 0.73,
+        "average_rating": 5.0,
+        "num_reviews": 20
+    },
+    "Mix food Pierre bénite": {
+        "average_sentiment_score": 0.82,
+        "average_rating": 4.95,
+        "num_reviews": 20
+    },
+    "Shams food": {
+        "average_sentiment_score": 0.98,
+        "average_rating": 4.0,
+        "num_reviews": 1
+    },
+    "Restaurant CÉSAR LOUNGE": {
+        "average_sentiment_score": 0.74,
+        "average_rating": 4.67,
+        "num_reviews": 3
+    },
+    "Kebab Pachamm": {
+        "average_sentiment_score": 0.59,
+        "average_rating": 4.25,
+        "num_reviews": 12
+    },
+    "Le Délice Express": {
+        "average_sentiment_score": 0.7,
+        "average_rating": 5.0,
+        "num_reviews": 1
+    },
+    "Bar Le Liberty Restaurant": {
+        "average_sentiment_score": 0.85,
+        "average_rating": 5.0,
+        "num_reviews": 1
+    },
+    "Carton Rouge": {
+        "average_sentiment_score": 0.99,
+        "average_rating": 4.0,
+        "num_reviews": 1
+    },
+    "Chez Bougaci": {
+        "average_sentiment_score": 0.72,
+        "average_rating": 4.9,
+        "num_reviews": 20
+    },
+    "KFC Lyon Moulin-à-Vent": {
+        "average_sentiment_score": 0.42,
+        "average_rating": 2.3,
+        "num_reviews": 20
+    },
+    "Buffalo Grill Venissieux": {
+        "average_sentiment_score": 0.64,
+        "average_rating": 4.65,
+        "num_reviews": 20
+    },
+    "Urban Cook": {
+        "average_sentiment_score": 0.51,
+        "average_rating": 3.5,
+        "num_reviews": 4
+    },
+    "La Maison Saint Fons": {
+        "average_sentiment_score": 0.87,
+        "average_rating": 4.8,
+        "num_reviews": 20
+    },
+    "Léon - Lyon-Venissieux": {
+        "average_sentiment_score": 0.43,
+        "average_rating": 3.25,
+        "num_reviews": 20
+    },
+    "Bey Pacha": {
+        "average_sentiment_score": 0.98,
+        "average_rating": 5.0,
+        "num_reviews": 1
+    },
+    "Bar Portugalia Restaurant": {
+        "average_sentiment_score": 0.02,
+        "average_rating": 1.0,
+        "num_reviews": 1
+    },
+    "La Grillade des Barbares": {
+        "average_sentiment_score": 0.53,
+        "average_rating": 4.62,
+        "num_reviews": 8
+    },
+    "LA CRÊPERIE GOURMANDISES": {
+        "average_sentiment_score": 0.68,
+        "average_rating": 4.4,
+        "num_reviews": 15
+    },
+    "Restaurant Tanit St-Fons": {
+        "average_sentiment_score": 0.72,
+        "average_rating": 4.65,
+        "num_reviews": 20
+    },
+    "Enjoy Tacos Saint-Fons": {
+        "average_sentiment_score": 0.69,
+        "average_rating": 4.15,
+        "num_reviews": 20
+    },
+    "Hanedan Restaurant": {
+        "average_sentiment_score": 0.82,
+        "average_rating": 4.0,
+        "num_reviews": 10
+    },
+    "Mr. Tantuni": {
+        "average_sentiment_score": 0.5,
+        "average_rating": 4.0,
+        "num_reviews": 2
+    },
+    "Asian House Saint-Fons": {
+        "average_sentiment_score": 0.56,
+        "average_rating": 4.0,
+        "num_reviews": 9
+    },
+    "CLASSICO Grill": {
+        "average_sentiment_score": 0.58,
+        "average_rating": 5.0,
+        "num_reviews": 1
+    },
+    "Bar Restaurant Chez Lino": {
+        "average_sentiment_score": 0.98,
+        "average_rating": 4.0,
+        "num_reviews": 1
+    },
+    "L'Express Saint-Fons": {
+        "average_sentiment_score": 0.53,
+        "average_rating": 2.43,
+        "num_reviews": 7
+    },
+    "OH MY CRÊPE !": {
+        "average_sentiment_score": 0.67,
+        "average_rating": 5.0,
+        "num_reviews": 6
+    },
+    "Restaurant La Palme": {
+        "average_sentiment_score": 0.74,
+        "average_rating": 5.0,
+        "num_reviews": 8
+    },
+    "Park Events Lyon": {
+        "average_sentiment_score": 0.59,
+        "average_rating": 5.0,
+        "num_reviews": 20
+    },
+    "La Vache Rouge (Venissieux)": {
+        "average_sentiment_score": 0.92,
+        "average_rating": 3.67,
+        "num_reviews": 3
+    },
+    "Cosy Poké": {
+        "average_sentiment_score": 0.74,
+        "average_rating": 4.5,
+        "num_reviews": 10
+    },
+    "Konak": {
+        "average_sentiment_score": 0.45,
+        "average_rating": 4.11,
+        "num_reviews": 9
+    },
+    "Pizza La Fiamma": {
+        "average_sentiment_score": 0.5,
+        "average_rating": 5.0,
+        "num_reviews": 11
+    },
+    "BRASA GRILL": {
+        "average_sentiment_score": 0.88,
+        "average_rating": 5.0,
+        "num_reviews": 8
+    },
+    "Four Five": {
+        "average_sentiment_score": 0.52,
+        "average_rating": 4.89,
+        "num_reviews": 9
+    },
+    "Brasserie La Dégaine": {
+        "average_sentiment_score": 0.77,
+        "average_rating": 5.0,
+        "num_reviews": 7
+    },
+    "CHEZ LALE": {
+        "average_sentiment_score": 0.65,
+        "average_rating": 3.75,
+        "num_reviews": 12
+    },
+    "lili croustille": {
+        "average_sentiment_score": 0.54,
+        "average_rating": 3.0,
+        "num_reviews": 5
+    },
+    "Burger's Venissieux": {
+        "average_sentiment_score": 0.58,
+        "average_rating": 4.75,
+        "num_reviews": 20
+    },
+    "Wosu Wok Vénissieux": {
+        "average_sentiment_score": 0.73,
+        "average_rating": 4.6,
+        "num_reviews": 10
+    },
+    "Gold & black": {
+        "average_sentiment_score": 0.6,
+        "average_rating": 4.85,
+        "num_reviews": 20
+    },
+    "Centre commercial Carrefour Vénissieux": {
+        "average_sentiment_score": 0.57,
+        "average_rating": 3.5,
+        "num_reviews": 4
+    },
+    "LE BAR A DESSERT": {
+        "average_sentiment_score": 0.61,
+        "average_rating": 4.55,
+        "num_reviews": 20
+    },
+    "Starmash by Amixem": {
+        "average_sentiment_score": 0.42,
+        "average_rating": 3.33,
+        "num_reviews": 3
+    },
+    "O’692": {
+        "average_sentiment_score": 0.71,
+        "average_rating": 4.7,
+        "num_reviews": 20
+    },
+    "Le Cheese Nan Vénissieux": {
+        "average_sentiment_score": 0.55,
+        "average_rating": 4.75,
+        "num_reviews": 16
+    },
+    "La Verr'in Dallery Pittié": {
+        "average_sentiment_score": 0.74,
+        "average_rating": 3.67,
+        "num_reviews": 3
+    },
+    "Restaurant Les olympiens": {
+        "average_sentiment_score": 0.6,
+        "average_rating": 4.8,
+        "num_reviews": 20
+    },
+    "POP KITCHEN LYON": {
+        "average_sentiment_score": 1.0,
+        "average_rating": 5.0,
+        "num_reviews": 2
+    },
+    "Le Royaume": {
+        "average_sentiment_score": 0.54,
+        "average_rating": 4.6,
+        "num_reviews": 5
+    },
+    "La popote de Ginette": {
+        "average_sentiment_score": 0.96,
+        "average_rating": 5.0,
+        "num_reviews": 2
+    },
+    "Chez Roberto Pizza - Vénissieux": {
+        "average_sentiment_score": 0.63,
+        "average_rating": 5.0,
+        "num_reviews": 3
+    },
+    "Ninkasi Grand Parilly": {
+        "average_sentiment_score": 0.68,
+        "average_rating": 4.55,
+        "num_reviews": 20
+    },
+    "3 Brasseurs Venissieux - Grand Parilly": {
+        "average_sentiment_score": 0.73,
+        "average_rating": 4.65,
+        "num_reviews": 20
+    },
+    "Milano's Vénissieux": {
+        "average_sentiment_score": 0.53,
+        "average_rating": 3.17,
+        "num_reviews": 6
+    },
+    "J'Aime Chaud": {
+        "average_sentiment_score": 0.8,
+        "average_rating": 4.8,
+        "num_reviews": 5
+    },
+    "IT ALL | Vénissieux": {
+        "average_sentiment_score": 0.35,
+        "average_rating": 2.0,
+        "num_reviews": 20
+    },
+    "Restaurant IKEA Lyon Grand Parilly": {
+        "average_sentiment_score": 0.56,
+        "average_rating": 3.7,
+        "num_reviews": 20
+    },
+    "story kebab": {
+        "average_sentiment_score": 0.55,
+        "average_rating": 4.79,
+        "num_reviews": 19
+    },
+    "Eyup sultan kebab": {
+        "average_sentiment_score": 1.0,
+        "average_rating": 5.0,
+        "num_reviews": 1
+    },
+    "Royal sandwichs": {
+        "average_sentiment_score": 0.43,
+        "average_rating": 3.67,
+        "num_reviews": 3
+    },
+    "Restaurant Renault trucks": {
+        "average_sentiment_score": 1.0,
+        "average_rating": 5.0,
+        "num_reviews": 1
+    },
+    "KEBAB A LA BRAISE": {
+        "average_sentiment_score": 0.76,
+        "average_rating": 4.8,
+        "num_reviews": 20
+    },
+    "Pizza du clos verger": {
+        "average_sentiment_score": 1.0,
+        "average_rating": 5.0,
+        "num_reviews": 1
+    },
+    "Zeyno Grillade": {
+        "average_sentiment_score": 0.43,
+        "average_rating": 4.67,
+        "num_reviews": 6
+    },
+    "Brasserie de Parilly": {
+        "average_sentiment_score": 0.65,
+        "average_rating": 5.0,
+        "num_reviews": 3
+    },
+    "Intermarche Oullins": {
+        "average_sentiment_score": 0.41,
+        "average_rating": 3.7,
+        "num_reviews": 20
+    },
+    "Papillon Farasha": {
+        "average_sentiment_score": 0.64,
+        "average_rating": 5.0,
+        "num_reviews": 2
+    },
+    "Chez L’ancien Oullins": {
+        "average_sentiment_score": 0.54,
+        "average_rating": 4.43,
+        "num_reviews": 7
+    },
+    "Maison Argenson": {
+        "average_sentiment_score": 0.57,
+        "average_rating": 3.58,
+        "num_reviews": 12
+    },
+    "Brasserie du LOU": {
+        "average_sentiment_score": 0.78,
+        "average_rating": 3.9,
+        "num_reviews": 20
+    },
+    "L'ilo": {
+        "average_sentiment_score": 0.37,
+        "average_rating": 3.25,
+        "num_reviews": 20
+    },
+    "L'Atelier du Ruck": {
+        "average_sentiment_score": 0.78,
+        "average_rating": 4.3,
+        "num_reviews": 20
+    },
+    "L'instant Gerland": {
+        "average_sentiment_score": 0.47,
+        "average_rating": 4.0,
+        "num_reviews": 2
+    },
+    "O'pasoa": {
+        "average_sentiment_score": 0.54,
+        "average_rating": 4.33,
+        "num_reviews": 3
+    },
+    "Restaurant Chez Comet'": {
+        "average_sentiment_score": 0.78,
+        "average_rating": 4.75,
+        "num_reviews": 4
+    },
+    "Terrasse et Marmites": {
+        "average_sentiment_score": 0.71,
+        "average_rating": 4.12,
+        "num_reviews": 8
+    },
+    "Le Jardin de l'Orient": {
+        "average_sentiment_score": 0.62,
+        "average_rating": 3.75,
+        "num_reviews": 8
+    },
+    "Mis tacos": {
+        "average_sentiment_score": 0.81,
+        "average_rating": 5.0,
+        "num_reviews": 20
+    },
+    "Mis kebab": {
+        "average_sentiment_score": 0.53,
+        "average_rating": 4.15,
+        "num_reviews": 20
+    },
+    "Mis P&P - Restaurant Vénissieux": {
+        "average_sentiment_score": 0.75,
+        "average_rating": 4.5,
+        "num_reviews": 20
+    },
+    "Tacos pizzeria Day Day": {
+        "average_sentiment_score": 0.38,
+        "average_rating": 3.15,
+        "num_reviews": 20
+    },
+    "Bar Pizzeria Le Azevedo": {
+        "average_sentiment_score": 0.15,
+        "average_rating": 5.0,
+        "num_reviews": 1
+    },
+    "Saveurs d'Asie Vénissieux": {
+        "average_sentiment_score": 0.59,
+        "average_rating": 5.0,
+        "num_reviews": 1
+    },
+    "Chicken Time Lyon 8": {
+        "average_sentiment_score": 0.69,
+        "average_rating": 4.33,
+        "num_reviews": 12
+    },
+    "Le Nobu": {
+        "average_sentiment_score": 0.69,
+        "average_rating": 5.0,
+        "num_reviews": 20
+    },
+    "Le 131": {
+        "average_sentiment_score": 0.7,
+        "average_rating": 4.75,
+        "num_reviews": 20
+    },
+    "Au Bon Accueil": {
+        "average_sentiment_score": 0.58,
+        "average_rating": 4.83,
+        "num_reviews": 6
+    },
+    "Pizzeria Maison Pulcinella": {
+        "average_sentiment_score": 0.6,
+        "average_rating": 4.67,
+        "num_reviews": 3
+    },
+    "Les Frères Barbet": {
+        "average_sentiment_score": 0.74,
+        "average_rating": 4.64,
+        "num_reviews": 11
+    },
+    "Sumiyaki Restaurant Japonais": {
+        "average_sentiment_score": 0.75,
+        "average_rating": 4.86,
+        "num_reviews": 7
+    },
+    "Maison Campagnola": {
+        "average_sentiment_score": 0.67,
+        "average_rating": 4.2,
+        "num_reviews": 10
+    },
+    "PIZZA MIGUEL - Lyon Gerland - Distributeur pizzas fraîches 24h/24 et 7j/7": {
+        "average_sentiment_score": 1.0,
+        "average_rating": 5.0,
+        "num_reviews": 1
+    },
+    "Ninkasi Gerland": {
+        "average_sentiment_score": 0.56,
+        "average_rating": 3.33,
+        "num_reviews": 6
+    },
+    "C.R.O.U.S. Monod Restaurant": {
+        "average_sentiment_score": 0.15,
+        "average_rating": 5.0,
+        "num_reviews": 1
+    },
+    "Chez Carlo - Pizzas au feu de bois Gerland": {
+        "average_sentiment_score": 0.69,
+        "average_rating": 4.55,
+        "num_reviews": 20
+    },
+    "Epicerie Nobile Gerland": {
+        "average_sentiment_score": 0.36,
+        "average_rating": 3.0,
+        "num_reviews": 3
+    },
+    "L'Huîtrier": {
+        "average_sentiment_score": 0.8,
+        "average_rating": 5.0,
+        "num_reviews": 3
+    },
+    "L'heure de Manger": {
+        "average_sentiment_score": 0.38,
+        "average_rating": 5.0,
+        "num_reviews": 2
+    },
+    "Nomi Public House": {
+        "average_sentiment_score": 0.5,
+        "average_rating": 3.89,
+        "num_reviews": 9
+    },
+    "Zappo": {
+        "average_sentiment_score": 0.45,
+        "average_rating": 4.8,
+        "num_reviews": 20
+    },
+    "ZITO RESTAURANT GERLAND BAR A BIERES / BURGERS / TAPAS ...": {
+        "average_sentiment_score": 0.55,
+        "average_rating": 4.93,
+        "num_reviews": 14
+    },
+    "Grillade D’orient": {
+        "average_sentiment_score": 0.49,
+        "average_rating": 4.06,
+        "num_reviews": 18
+    },
+    "Sushimasa Gerland": {
+        "average_sentiment_score": 0.54,
+        "average_rating": 2.33,
+        "num_reviews": 6
+    },
+    "El bar Debourg": {
+        "average_sentiment_score": 0.83,
+        "average_rating": 4.71,
+        "num_reviews": 14
+    },
+    "ZAZA PASTA": {
+        "average_sentiment_score": 0.2,
+        "average_rating": 4.0,
+        "num_reviews": 1
+    },
+    "La Table De Jp": {
+        "average_sentiment_score": 1.0,
+        "average_rating": 5.0,
+        "num_reviews": 1
+    },
+    "Restaurant stadium beirut": {
+        "average_sentiment_score": 0.73,
+        "average_rating": 5.0,
+        "num_reviews": 20
+    },
+    "Pizzeria le napolitain Gerland": {
+        "average_sentiment_score": 0.83,
+        "average_rating": 4.17,
+        "num_reviews": 6
+    },
+    "Le pause et vous": {
+        "average_sentiment_score": 0.99,
+        "average_rating": 4.75,
+        "num_reviews": 4
+    },
+    "L’Autre Monde": {
+        "average_sentiment_score": 0.56,
+        "average_rating": 3.86,
+        "num_reviews": 14
+    },
+    "DKGONES Café bar restaurant, événementiel & coworking": {
+        "average_sentiment_score": 0.66,
+        "average_rating": 5.0,
+        "num_reviews": 10
+    },
+    "La Table de Georges": {
+        "average_sentiment_score": 0.98,
+        "average_rating": 4.8,
+        "num_reviews": 5
+    },
+    "House Pozzoli - Gerland": {
+        "average_sentiment_score": 0.08,
+        "average_rating": 1.0,
+        "num_reviews": 1
+    },
+    "LakayFood": {
+        "average_sentiment_score": 0.56,
+        "average_rating": 4.77,
+        "num_reviews": 13
+    },
+    "Rosti poulet Venissieux": {
+        "average_sentiment_score": 0.48,
+        "average_rating": 3.95,
+        "num_reviews": 20
+    },
+    "Fresh house": {
+        "average_sentiment_score": 0.8,
+        "average_rating": 4.92,
+        "num_reviews": 13
+    },
+    "Chez L'ancien Lyon 8": {
+        "average_sentiment_score": 0.65,
+        "average_rating": 4.35,
+        "num_reviews": 20
+    },
+    "Kalamis Baran": {
+        "average_sentiment_score": 0.27,
+        "average_rating": 5.0,
+        "num_reviews": 2
+    },
+    "Enjoy Tacos - Lyon 8": {
+        "average_sentiment_score": 0.74,
+        "average_rating": 4.35,
+        "num_reviews": 20
+    },
+    "Burger 24 🍔 Fast-Food Grill'": {
+        "average_sentiment_score": 0.65,
+        "average_rating": 4.0,
+        "num_reviews": 5
+    },
+    "Brasserie du Bon Coin": {
+        "average_sentiment_score": 1.0,
+        "average_rating": 4.0,
+        "num_reviews": 1
+    },
+    "Grillade avenue snacking": {
+        "average_sentiment_score": 0.06,
+        "average_rating": 4.0,
+        "num_reviews": 1
+    },
+    "Pizz'Avenue": {
+        "average_sentiment_score": 0.35,
+        "average_rating": 4.0,
+        "num_reviews": 10
+    },
+    "Pizza Safoura": {
+        "average_sentiment_score": 0.64,
+        "average_rating": 3.0,
+        "num_reviews": 6
+    },
+    "La pizza calabrese": {
+        "average_sentiment_score": 0.01,
+        "average_rating": 3.5,
+        "num_reviews": 2
+    },
+    "Smashy Burger Lyon 8": {
+        "average_sentiment_score": 0.42,
+        "average_rating": 3.9,
+        "num_reviews": 20
+    },
+    "POULAX LYON 8": {
+        "average_sentiment_score": 0.59,
+        "average_rating": 5.0,
+        "num_reviews": 20
+    },
+    "Chik'N Burger 8": {
+        "average_sentiment_score": 0.4,
+        "average_rating": 3.4,
+        "num_reviews": 20
+    },
+    "L'atelier de la pizza feu de bois. Nouveautés tandoori cuisine indo-pakistanaise": {
+        "average_sentiment_score": 0.94,
+        "average_rating": 5.0,
+        "num_reviews": 1
+    },
+    "ADIKTO Poulet 🔥🍗 - 𝐋𝐲𝐨𝐧 𝟖": {
+        "average_sentiment_score": 0.74,
+        "average_rating": 4.55,
+        "num_reviews": 20
+    },
+    "sandwicherie 111": {
+        "average_sentiment_score": 0.44,
+        "average_rating": 4.2,
+        "num_reviews": 20
+    },
+    "Le Why Not": {
+        "average_sentiment_score": 0.11,
+        "average_rating": 2.17,
+        "num_reviews": 6
+    },
+    "Restaurant La marsa Lyon": {
+        "average_sentiment_score": 0.67,
+        "average_rating": 4.25,
+        "num_reviews": 20
+    },
+    "Authentic Burger & Tacos": {
+        "average_sentiment_score": 0.02,
+        "average_rating": 1.0,
+        "num_reviews": 1
+    },
+    "Pizza Mermoz - Santy": {
+        "average_sentiment_score": 0.07,
+        "average_rating": 1.0,
+        "num_reviews": 2
+    },
+    "Restaurant Central Park": {
+        "average_sentiment_score": 0.69,
+        "average_rating": 4.8,
+        "num_reviews": 5
+    },
+    "Double F": {
+        "average_sentiment_score": 0.04,
+        "average_rating": 1.0,
+        "num_reviews": 1
+    },
+    "MOB HOTEL LYON - RESTAURANT": {
+        "average_sentiment_score": 0.62,
+        "average_rating": 4.25,
+        "num_reviews": 20
+    },
+    "Fratelli Trattoria": {
+        "average_sentiment_score": 0.99,
+        "average_rating": 4.5,
+        "num_reviews": 2
+    },
+    "Smokey": {
+        "average_sentiment_score": 0.48,
+        "average_rating": 4.7,
+        "num_reviews": 20
+    },
+    "Momiji café - Lyon 7 Gerland": {
+        "average_sentiment_score": 0.37,
+        "average_rating": 4.67,
+        "num_reviews": 3
+    },
+    "Brasserie Debourg": {
+        "average_sentiment_score": 0.65,
+        "average_rating": 4.65,
+        "num_reviews": 20
+    },
+    "Crêperie Bigoudène": {
+        "average_sentiment_score": 0.65,
+        "average_rating": 4.73,
+        "num_reviews": 15
+    },
+    "Miga": {
+        "average_sentiment_score": 0.7,
+        "average_rating": 5.0,
+        "num_reviews": 2
+    },
+    "Restaurant Istanbul 7": {
+        "average_sentiment_score": 0.54,
+        "average_rating": 4.62,
+        "num_reviews": 8
+    },
+    "Kebab Debourg": {
+        "average_sentiment_score": 0.31,
+        "average_rating": 2.0,
+        "num_reviews": 7
+    },
+    "PIZZ'AÏOLI": {
+        "average_sentiment_score": 0.61,
+        "average_rating": 5.0,
+        "num_reviews": 20
+    },
+    "La Taverne de L'Orque Assassine": {
+        "average_sentiment_score": 0.84,
+        "average_rating": 5.0,
+        "num_reviews": 19
+    },
+    "Les Tontons Zingueurs": {
+        "average_sentiment_score": 0.6,
+        "average_rating": 5.0,
+        "num_reviews": 1
+    },
+    "Restaurant Bergamote": {
+        "average_sentiment_score": 0.75,
+        "average_rating": 4.75,
+        "num_reviews": 20
+    },
+    "Mémo Kebab": {
+        "average_sentiment_score": 0.02,
+        "average_rating": 3.5,
+        "num_reviews": 2
+    },
+    "Le Carnel": {
+        "average_sentiment_score": 0.85,
+        "average_rating": 5.0,
+        "num_reviews": 4
+    },
+    "NEW TAJ MAHAL TANDOORI": {
+        "average_sentiment_score": 0.69,
+        "average_rating": 4.65,
+        "num_reviews": 20
+    },
+    "Le Casa Restaurant": {
+        "average_sentiment_score": 0.71,
+        "average_rating": 4.5,
+        "num_reviews": 20
+    },
+    "Le Very Table": {
+        "average_sentiment_score": 0.39,
+        "average_rating": 4.5,
+        "num_reviews": 12
+    },
+    "Restaurant El-Medina": {
+        "average_sentiment_score": 0.32,
+        "average_rating": 5.0,
+        "num_reviews": 5
+    },
+    "Tandoori World": {
+        "average_sentiment_score": 0.57,
+        "average_rating": 5.0,
+        "num_reviews": 4
+    },
+    "Kebab Azadi 2": {
+        "average_sentiment_score": 0.99,
+        "average_rating": 3.0,
+        "num_reviews": 1
+    },
+    "GRILLADE rte de Vienne": {
+        "average_sentiment_score": 0.71,
+        "average_rating": 4.36,
+        "num_reviews": 11
+    },
+    "Kaiyo Sushi": {
+        "average_sentiment_score": 0.81,
+        "average_rating": 5.0,
+        "num_reviews": 15
+    },
+    "Pizz'amore États-Unis": {
+        "average_sentiment_score": 0.27,
+        "average_rating": 3.46,
+        "num_reviews": 13
+    },
+    "Le Santy": {
+        "average_sentiment_score": 0.67,
+        "average_rating": 4.67,
+        "num_reviews": 6
+    },
+    "Maison de la danse": {
+        "average_sentiment_score": 0.55,
+        "average_rating": 4.56,
+        "num_reviews": 16
+    },
+    "Burger's Lyon 8": {
+        "average_sentiment_score": 0.6,
+        "average_rating": 4.75,
+        "num_reviews": 20
+    },
+    "Domino's Lyon 8 - Mermoz": {
+        "average_sentiment_score": 0.54,
+        "average_rating": 3.3,
+        "num_reviews": 20
+    },
+    "AUTHENTIC STEAKHOUSE": {
+        "average_sentiment_score": 0.86,
+        "average_rating": 4.75,
+        "num_reviews": 4
+    },
+    "K-Akdeniz Kebab": {
+        "average_sentiment_score": 0.64,
+        "average_rating": 5.0,
+        "num_reviews": 8
+    },
+    "Restaurant de la Maison de la danse": {
+        "average_sentiment_score": 0.98,
+        "average_rating": 5.0,
+        "num_reviews": 2
+    },
+    "Ta5ty Pizza - Lyon 8 - Bachut": {
+        "average_sentiment_score": 0.61,
+        "average_rating": 4.69,
+        "num_reviews": 16
+    },
+    "L'Atelier 72": {
+        "average_sentiment_score": 0.81,
+        "average_rating": 5.0,
+        "num_reviews": 6
+    },
+    "SMATCH & BEEF Lyon 08": {
+        "average_sentiment_score": 0.63,
+        "average_rating": 4.47,
+        "num_reviews": 15
+    },
+    "Ginette et Marius": {
+        "average_sentiment_score": 0.82,
+        "average_rating": 4.17,
+        "num_reviews": 6
+    },
+    "LE LYONNAIS : TACOS-BURGERS-PASTA": {
+        "average_sentiment_score": 0.99,
+        "average_rating": 5.0,
+        "num_reviews": 2
+    },
+    "Brasserie le Ste Foy": {
+        "average_sentiment_score": 0.58,
+        "average_rating": 4.75,
+        "num_reviews": 4
+    },
+    "Le wagon de La maman": {
+        "average_sentiment_score": 0.31,
+        "average_rating": 2.67,
+        "num_reviews": 3
+    },
+    "G2r": {
+        "average_sentiment_score": 0.69,
+        "average_rating": 5.0,
+        "num_reviews": 3
+    },
+    "DOCKS 40": {
+        "average_sentiment_score": 0.43,
+        "average_rating": 3.55,
+        "num_reviews": 20
+    },
+    "Selcius": {
+        "average_sentiment_score": 0.66,
+        "average_rating": 4.8,
+        "num_reviews": 20
+    },
+    "HEAT Lyon": {
+        "average_sentiment_score": 0.61,
+        "average_rating": 3.0,
+        "num_reviews": 5
+    },
+    "UGC Ciné Cité Confluence": {
+        "average_sentiment_score": 0.39,
+        "average_rating": 3.65,
+        "num_reviews": 20
+    },
+    "Lunicco - Confluence": {
+        "average_sentiment_score": 0.68,
+        "average_rating": 4.6,
+        "num_reviews": 20
+    },
+    "Stade 7": {
+        "average_sentiment_score": 0.69,
+        "average_rating": 4.67,
+        "num_reviews": 12
+    },
+    "Chamas Tacos Lyon 7": {
+        "average_sentiment_score": 0.61,
+        "average_rating": 4.31,
+        "num_reviews": 13
+    },
+    "Tandoor and Wok": {
+        "average_sentiment_score": 0.58,
+        "average_rating": 4.37,
+        "num_reviews": 19
+    },
+    "Domino's Pizza Lyon 7 Sud": {
+        "average_sentiment_score": 0.07,
+        "average_rating": 1.43,
+        "num_reviews": 7
+    },
+    "Seazen Buffet": {
+        "average_sentiment_score": 0.59,
+        "average_rating": 4.2,
+        "num_reviews": 20
+    },
+    "Bistrot du Potager Gerland": {
+        "average_sentiment_score": 0.98,
+        "average_rating": 5.0,
+        "num_reviews": 1
+    },
+    "L’Échalote": {
+        "average_sentiment_score": 0.85,
+        "average_rating": 5.0,
+        "num_reviews": 6
+    },
+    "Sushi and Sushis": {
+        "average_sentiment_score": 0.72,
+        "average_rating": 5.0,
+        "num_reviews": 5
+    },
+    "Jordan Tomas - Pizza Mamamia Lyon Gerland": {
+        "average_sentiment_score": 0.56,
+        "average_rating": 4.25,
+        "num_reviews": 20
+    },
+    "GERLAND KEBAB": {
+        "average_sentiment_score": 0.48,
+        "average_rating": 3.6,
+        "num_reviews": 5
+    },
+    "Boulangerie Patisserie Henon": {
+        "average_sentiment_score": 0.64,
+        "average_rating": 2.5,
+        "num_reviews": 8
+    },
+    "KALY SUSHI LYON 7": {
+        "average_sentiment_score": 0.44,
+        "average_rating": 4.27,
+        "num_reviews": 11
+    },
+    "Le Bouche B": {
+        "average_sentiment_score": 0.61,
+        "average_rating": 5.0,
+        "num_reviews": 9
+    },
+    "Trattino": {
+        "average_sentiment_score": 0.7,
+        "average_rating": 4.9,
+        "num_reviews": 20
+    },
+    "Des Bulles sous le Plafond": {
+        "average_sentiment_score": 0.38,
+        "average_rating": 3.0,
+        "num_reviews": 3
+    },
+    "Savory": {
+        "average_sentiment_score": 0.5,
+        "average_rating": 4.2,
+        "num_reviews": 20
+    },
+    "Mamie Couscous": {
+        "average_sentiment_score": 0.69,
+        "average_rating": 4.65,
+        "num_reviews": 20
+    },
+    "La Maison Bleue - Café, Restaurant et Bar à bières locales - Lyon 7": {
+        "average_sentiment_score": 0.71,
+        "average_rating": 4.43,
+        "num_reviews": 7
+    },
+    "Roliko": {
+        "average_sentiment_score": 0.69,
+        "average_rating": 5.0,
+        "num_reviews": 16
+    },
+    "Dar'Sakina": {
+        "average_sentiment_score": 0.31,
+        "average_rating": 5.0,
+        "num_reviews": 4
+    },
+    "Le Vétéran - Chez Gilles": {
+        "average_sentiment_score": 0.98,
+        "average_rating": 5.0,
+        "num_reviews": 4
+    },
+    "ZAÏQA Tandoori cuisine indienne": {
+        "average_sentiment_score": 0.98,
+        "average_rating": 5.0,
+        "num_reviews": 5
+    },
+    "JARDIN Sushi & Wok": {
+        "average_sentiment_score": 0.76,
+        "average_rating": 4.75,
+        "num_reviews": 8
+    },
+    "Shack & Thai": {
+        "average_sentiment_score": 0.72,
+        "average_rating": 4.4,
+        "num_reviews": 20
+    },
+    "Aux Phils Des Saveurs": {
+        "average_sentiment_score": 0.79,
+        "average_rating": 4.77,
+        "num_reviews": 13
+    },
+    "PEPPONE LYON": {
+        "average_sentiment_score": 0.6,
+        "average_rating": 3.0,
+        "num_reviews": 2
+    },
+    "LA FABRYK LYON": {
+        "average_sentiment_score": 0.7,
+        "average_rating": 4.2,
+        "num_reviews": 20
+    },
+    "La Récupéria": {
+        "average_sentiment_score": 0.99,
+        "average_rating": 5.0,
+        "num_reviews": 1
+    },
+    "GRILL & FOOD": {
+        "average_sentiment_score": 0.93,
+        "average_rating": 5.0,
+        "num_reviews": 2
+    },
+    "Chamas Tacos® Lyon 8": {
+        "average_sentiment_score": 0.61,
+        "average_rating": 4.4,
+        "num_reviews": 20
+    },
+    "PizzAlif Lyon": {
+        "average_sentiment_score": 0.7,
+        "average_rating": 4.35,
+        "num_reviews": 20
+    },
+    "Reyna restaurant lyon": {
+        "average_sentiment_score": 0.55,
+        "average_rating": 4.0,
+        "num_reviews": 20
+    },
+    "Amis Sushi": {
+        "average_sentiment_score": 0.69,
+        "average_rating": 5.0,
+        "num_reviews": 5
+    },
+    "Ngoc Thao Traiteur Vietnamien": {
+        "average_sentiment_score": 0.99,
+        "average_rating": 5.0,
+        "num_reviews": 2
+    },
+    "MRoc Laennec": {
+        "average_sentiment_score": 0.57,
+        "average_rating": 4.36,
+        "num_reviews": 11
+    },
+    "CASA LULA": {
+        "average_sentiment_score": 0.83,
+        "average_rating": 4.6,
+        "num_reviews": 5
+    },
+    "Le Chalet Fleury": {
+        "average_sentiment_score": 0.77,
+        "average_rating": 4.82,
+        "num_reviews": 17
+    },
+    "Crousti Cho": {
+        "average_sentiment_score": 0.49,
+        "average_rating": 2.71,
+        "num_reviews": 7
+    },
+    "Bois Pizza": {
+        "average_sentiment_score": 0.63,
+        "average_rating": 5.0,
+        "num_reviews": 5
+    },
+    "Le Petit Régal": {
+        "average_sentiment_score": 0.88,
+        "average_rating": 5.0,
+        "num_reviews": 3
+    },
+    "L' Artisan Kebab ®️": {
+        "average_sentiment_score": 0.55,
+        "average_rating": 4.0,
+        "num_reviews": 20
+    },
+    "Sushi Hand Lyon 8": {
+        "average_sentiment_score": 0.63,
+        "average_rating": 4.9,
+        "num_reviews": 20
+    },
+    "Le Rockefeller": {
+        "average_sentiment_score": 0.99,
+        "average_rating": 5.0,
+        "num_reviews": 2
+    },
+    "Restaurant MOI FLEXITARIEN": {
+        "average_sentiment_score": 0.62,
+        "average_rating": 3.75,
+        "num_reviews": 8
+    },
+    "La Criée Lyon Confluence": {
+        "average_sentiment_score": 0.73,
+        "average_rating": 4.8,
+        "num_reviews": 20
+    },
+    "Le Paradis Du Fruit - Lyon Confluence": {
+        "average_sentiment_score": 0.33,
+        "average_rating": 3.9,
+        "num_reviews": 20
+    },
+    "GOURMET BAR LYON CONFLUENCE": {
+        "average_sentiment_score": 0.75,
+        "average_rating": 4.6,
+        "num_reviews": 10
+    },
+    "Hanoï Cà Phê Lyon Confluence": {
+        "average_sentiment_score": 0.68,
+        "average_rating": 4.3,
+        "num_reviews": 20
+    },
+    "Bentomania Confluence : Curry & Ramen House": {
+        "average_sentiment_score": 0.31,
+        "average_rating": 4.43,
+        "num_reviews": 7
+    },
+    "Quick Lyon Confluence": {
+        "average_sentiment_score": 0.54,
+        "average_rating": 2.6,
+        "num_reviews": 20
+    },
+    "KFC Lyon Confluence": {
+        "average_sentiment_score": 0.65,
+        "average_rating": 4.55,
+        "num_reviews": 20
+    },
+    "Amélie Crêpe": {
+        "average_sentiment_score": 0.33,
+        "average_rating": 2.05,
+        "num_reviews": 20
+    },
+    "Fuxia": {
+        "average_sentiment_score": 0.64,
+        "average_rating": 3.65,
+        "num_reviews": 20
+    },
+    "Le St Trop": {
+        "average_sentiment_score": 0.74,
+        "average_rating": 3.92,
+        "num_reviews": 12
+    },
+    "Au Bercail": {
+        "average_sentiment_score": 0.73,
+        "average_rating": 4.7,
+        "num_reviews": 20
+    },
+    "Vapiano Lyon Confluence Pasta Pizza Bar": {
+        "average_sentiment_score": 0.53,
+        "average_rating": 4.6,
+        "num_reviews": 20
+    },
+    "Beau & Bùn- Bistrot Viêt (Lyon Confluence)": {
+        "average_sentiment_score": 0.57,
+        "average_rating": 4.7,
+        "num_reviews": 20
+    },
+    "Piada Confluence": {
+        "average_sentiment_score": 0.44,
+        "average_rating": 3.85,
+        "num_reviews": 13
+    },
+    "STEPPE BAR": {
+        "average_sentiment_score": 0.62,
+        "average_rating": 5.0,
+        "num_reviews": 8
+    },
+    "PRAIRIAL • Confluence": {
+        "average_sentiment_score": 0.54,
+        "average_rating": 4.85,
+        "num_reviews": 20
+    },
+    "C.comme avant": {
+        "average_sentiment_score": 0.98,
+        "average_rating": 5.0,
+        "num_reviews": 4
+    },
+    "Brasserie Midi Minuit Confluence": {
+        "average_sentiment_score": 0.62,
+        "average_rating": 3.65,
+        "num_reviews": 20
+    },
+    "INADA Confluence": {
+        "average_sentiment_score": 0.72,
+        "average_rating": 4.8,
+        "num_reviews": 5
+    },
+    "Le Comptoir de la Confluence": {
+        "average_sentiment_score": 0.67,
+        "average_rating": 5.0,
+        "num_reviews": 4
+    },
+    "La Maison du Bon Vivant - cuisine rapide et faite maison": {
+        "average_sentiment_score": 0.54,
+        "average_rating": 4.33,
+        "num_reviews": 3
+    },
+    "REM'S by Take a break": {
+        "average_sentiment_score": 0.68,
+        "average_rating": 5.0,
+        "num_reviews": 1
+    },
+    "Maison Pépin Confluence": {
+        "average_sentiment_score": 0.48,
+        "average_rating": 4.5,
+        "num_reviews": 8
+    },
+    "La Salle à Manger Restaurant-Ecole Apprentis d'Auteuil Confluence": {
+        "average_sentiment_score": 0.81,
+        "average_rating": 5.0,
+        "num_reviews": 5
+    },
+    "Restaurant South Food": {
+        "average_sentiment_score": 0.64,
+        "average_rating": 4.86,
+        "num_reviews": 7
+    },
+    "Ti Amo Maria": {
+        "average_sentiment_score": 0.8,
+        "average_rating": 4.95,
+        "num_reviews": 20
+    },
+    "ARGANE - Comptoir À Couscous": {
+        "average_sentiment_score": 0.77,
+        "average_rating": 5.0,
+        "num_reviews": 14
+    },
+    "ConfluTime": {
+        "average_sentiment_score": 0.4,
+        "average_rating": 4.36,
+        "num_reviews": 14
+    },
+    "My Beers Lyon Confluence": {
+        "average_sentiment_score": 0.37,
+        "average_rating": 4.3,
+        "num_reviews": 10
+    },
+    "La Commune : Food Court Lyonnais": {
+        "average_sentiment_score": 0.74,
+        "average_rating": 3.75,
+        "num_reviews": 20
+    },
+    "AUGUSTE LE BISTROT": {
+        "average_sentiment_score": 0.81,
+        "average_rating": 4.82,
+        "num_reviews": 17
+    },
+    "Kebab Grill House": {
+        "average_sentiment_score": 0.82,
+        "average_rating": 5.0,
+        "num_reviews": 20
+    },
+    "Bad's": {
+        "average_sentiment_score": 0.46,
+        "average_rating": 4.75,
+        "num_reviews": 8
+    },
+    "L'Écume": {
+        "average_sentiment_score": 0.64,
+        "average_rating": 4.42,
+        "num_reviews": 12
+    },
+    "Vas-y Vas-y": {
+        "average_sentiment_score": 0.21,
+        "average_rating": 5.0,
+        "num_reviews": 3
+    },
+    "Au Piment Poivré": {
+        "average_sentiment_score": 0.68,
+        "average_rating": 4.58,
+        "num_reviews": 12
+    },
+    "Chef Paolo Salvati - Traiteur et Chef à Domicile à Lyon - Cuisine Italienne raffinée": {
+        "average_sentiment_score": 0.52,
+        "average_rating": 5.0,
+        "num_reviews": 2
+    },
+    "Acanto Lyon 7- Italian Food & Bières Locales -": {
+        "average_sentiment_score": 0.4,
+        "average_rating": 4.5,
+        "num_reviews": 20
+    },
+    "Le Comptoir Jayet": {
+        "average_sentiment_score": 0.55,
+        "average_rating": 4.67,
+        "num_reviews": 3
+    },
+    "Au Coin de Table - Restaurant Pizza Lyon 7": {
+        "average_sentiment_score": 0.72,
+        "average_rating": 5.0,
+        "num_reviews": 4
+    },
+    "Flavors & Spices": {
+        "average_sentiment_score": 0.63,
+        "average_rating": 4.36,
+        "num_reviews": 11
+    },
+    "BATTAM Asian Food": {
+        "average_sentiment_score": 0.63,
+        "average_rating": 5.0,
+        "num_reviews": 13
+    },
+    "Station Pizza Lyon Gerland": {
+        "average_sentiment_score": 0.42,
+        "average_rating": 3.55,
+        "num_reviews": 20
+    },
+    "Punto Pizza": {
+        "average_sentiment_score": 0.65,
+        "average_rating": 4.5,
+        "num_reviews": 20
+    },
+    "Happy Day Sushis": {
+        "average_sentiment_score": 0.81,
+        "average_rating": 5.0,
+        "num_reviews": 20
+    },
+    "Casa Flavio": {
+        "average_sentiment_score": 0.77,
+        "average_rating": 4.85,
+        "num_reviews": 13
+    },
+    "Côté Berthelot": {
+        "average_sentiment_score": 0.51,
+        "average_rating": 1.0,
+        "num_reviews": 2
+    },
+    "Biso Na Biso Sarl": {
+        "average_sentiment_score": 0.97,
+        "average_rating": 5.0,
+        "num_reviews": 1
+    },
+    "Tacostore Lyon": {
+        "average_sentiment_score": 0.78,
+        "average_rating": 4.67,
+        "num_reviews": 3
+    },
+    "Bill's Burger Lyon 7": {
+        "average_sentiment_score": 0.6,
+        "average_rating": 3.93,
+        "num_reviews": 14
+    },
+    "The Peacock - Brunch & Restaurant": {
+        "average_sentiment_score": 0.51,
+        "average_rating": 4.4,
+        "num_reviews": 20
+    },
+    "Clef Dorée": {
+        "average_sentiment_score": 0.72,
+        "average_rating": 3.5,
+        "num_reviews": 2
+    },
+    "sushi one": {
+        "average_sentiment_score": 0.7,
+        "average_rating": 4.6,
+        "num_reviews": 20
+    },
+    "Indian Brothers": {
+        "average_sentiment_score": 0.72,
+        "average_rating": 4.95,
+        "num_reviews": 20
+    },
+    "Le Resto Chinois 惊叹号": {
+        "average_sentiment_score": 0.81,
+        "average_rating": 3.0,
+        "num_reviews": 4
+    },
+    "PAPITO LYON 8": {
+        "average_sentiment_score": 0.4,
+        "average_rating": 4.29,
+        "num_reviews": 7
+    },
+    "Sakana Sushi": {
+        "average_sentiment_score": 0.75,
+        "average_rating": 4.82,
+        "num_reviews": 17
+    },
+    "Times Square Lyon": {
+        "average_sentiment_score": 0.7,
+        "average_rating": 4.95,
+        "num_reviews": 20
+    },
+    "Végédal": {
+        "average_sentiment_score": 0.03,
+        "average_rating": 1.0,
+        "num_reviews": 1
+    },
+    "Monplaisir Côté Cour": {
+        "average_sentiment_score": 0.79,
+        "average_rating": 4.9,
+        "num_reviews": 20
+    },
+    "Chef KB": {
+        "average_sentiment_score": 0.76,
+        "average_rating": 5.0,
+        "num_reviews": 20
+    },
+    "Momotaro": {
+        "average_sentiment_score": 0.82,
+        "average_rating": 4.73,
+        "num_reviews": 15
+    },
+    "AHIKA Monplaisir": {
+        "average_sentiment_score": 0.66,
+        "average_rating": 4.9,
+        "num_reviews": 20
+    },
+    "Boulangerie de Marius": {
+        "average_sentiment_score": 0.54,
+        "average_rating": 4.15,
+        "num_reviews": 13
+    },
+    "Le Pastalicious (pâtes fraîches dans la meule)": {
+        "average_sentiment_score": 0.68,
+        "average_rating": 4.4,
+        "num_reviews": 20
+    },
+    "Restaurant Marguerite - Bocuse": {
+        "average_sentiment_score": 0.5,
+        "average_rating": 4.75,
+        "num_reviews": 20
+    },
+    "Pizza Pippo": {
+        "average_sentiment_score": 0.58,
+        "average_rating": 2.5,
+        "num_reviews": 6
+    },
+    "Don Vito": {
+        "average_sentiment_score": 0.92,
+        "average_rating": 5.0,
+        "num_reviews": 7
+    },
+    "Bar des Champ's": {
+        "average_sentiment_score": 0.49,
+        "average_rating": 4.06,
+        "num_reviews": 16
+    },
+    "Pizza Lina": {
+        "average_sentiment_score": 0.64,
+        "average_rating": 4.67,
+        "num_reviews": 12
+    },
+    "Concept Sandwich": {
+        "average_sentiment_score": 0.29,
+        "average_rating": 5.0,
+        "num_reviews": 4
+    },
+    "Le Sherrington": {
+        "average_sentiment_score": 0.02,
+        "average_rating": 1.0,
+        "num_reviews": 1
+    },
+    "Les Gamins de la Place": {
+        "average_sentiment_score": 0.5,
+        "average_rating": 4.5,
+        "num_reviews": 6
+    },
+    "Monplaisir, L'Esprit Bistrot": {
+        "average_sentiment_score": 0.57,
+        "average_rating": 3.88,
+        "num_reviews": 8
+    },
+    "Le 15 Grill": {
+        "average_sentiment_score": 0.55,
+        "average_rating": 4.65,
+        "num_reviews": 20
+    },
+    "Le Genova": {
+        "average_sentiment_score": 0.99,
+        "average_rating": 2.0,
+        "num_reviews": 1
+    },
+    "Sherrington Express": {
+        "average_sentiment_score": 1.0,
+        "average_rating": 5.0,
+        "num_reviews": 1
+    },
+    "Vasano Pizza (Camion)": {
+        "average_sentiment_score": 0.45,
+        "average_rating": 4.6,
+        "num_reviews": 10
+    },
+    "Only Tawouk - Les Frères Libanais": {
+        "average_sentiment_score": 0.66,
+        "average_rating": 5.0,
+        "num_reviews": 20
+    },
+    "Une histoire de gout": {
+        "average_sentiment_score": 0.5,
+        "average_rating": 3.5,
+        "num_reviews": 2
+    },
+    "Ultimate Burger": {
+        "average_sentiment_score": 0.58,
+        "average_rating": 3.0,
+        "num_reviews": 4
+    },
+    "Restaurant Du Chavril - Cocotte Chérie": {
+        "average_sentiment_score": 0.04,
+        "average_rating": 4.5,
+        "num_reviews": 2
+    },
+    "TerraMia pizza & cucina": {
+        "average_sentiment_score": 0.55,
+        "average_rating": 4.43,
+        "num_reviews": 14
+    },
+    "Litani Mezza Bar": {
+        "average_sentiment_score": 0.6,
+        "average_rating": 4.6,
+        "num_reviews": 20
+    },
+    "What's This Food": {
+        "average_sentiment_score": 0.61,
+        "average_rating": 4.15,
+        "num_reviews": 20
+    },
+    "Aux Bons Sauvages": {
+        "average_sentiment_score": 0.67,
+        "average_rating": 4.88,
+        "num_reviews": 8
+    },
+    "Domino's Pizza Lyon 2 Sud": {
+        "average_sentiment_score": 0.54,
+        "average_rating": 3.4,
+        "num_reviews": 5
+    },
+    "Platypus Brewpub - brasserie artisanale": {
+        "average_sentiment_score": 0.58,
+        "average_rating": 5.0,
+        "num_reviews": 3
+    },
+    "Pizzeria Avarello": {
+        "average_sentiment_score": 0.71,
+        "average_rating": 5.0,
+        "num_reviews": 7
+    },
+    "Le Galata": {
+        "average_sentiment_score": 0.5,
+        "average_rating": 3.1,
+        "num_reviews": 10
+    },
+    "Monna Lisa": {
+        "average_sentiment_score": 0.63,
+        "average_rating": 4.25,
+        "num_reviews": 20
+    },
+    "Brasserie Georges": {
+        "average_sentiment_score": 0.62,
+        "average_rating": 4.75,
+        "num_reviews": 20
+    },
+    "MELLE SIMONE RESTAURANT BAR JAZZ": {
+        "average_sentiment_score": 0.79,
+        "average_rating": 4.65,
+        "num_reviews": 20
+    },
+    "CASI CHEMINOTS SNCF de la Région de Lyon": {
+        "average_sentiment_score": 0.5,
+        "average_rating": 4.0,
+        "num_reviews": 2
+    },
+    "Boulangerie Pâtisserie Maison Clotilde": {
+        "average_sentiment_score": 0.39,
+        "average_rating": 2.6,
+        "num_reviews": 15
+    },
+    "Nutopia": {
+        "average_sentiment_score": 0.35,
+        "average_rating": 2.38,
+        "num_reviews": 8
+    },
+    "Casimir Pizza": {
+        "average_sentiment_score": 0.63,
+        "average_rating": 4.72,
+        "num_reviews": 18
+    },
+    "SHIFUMII Confluence - Bar Restaurant": {
+        "average_sentiment_score": 0.54,
+        "average_rating": 4.08,
+        "num_reviews": 12
+    },
+    "L´Osteria Lyon II Confluence": {
+        "average_sentiment_score": 0.63,
+        "average_rating": 4.55,
+        "num_reviews": 20
+    },
+    "Flair Restaurant": {
+        "average_sentiment_score": 0.89,
+        "average_rating": 4.95,
+        "num_reviews": 20
+    },
+    "Restaurant Vatel Lyon": {
+        "average_sentiment_score": 0.54,
+        "average_rating": 4.17,
+        "num_reviews": 12
+    },
+    "Toké Berthelot": {
+        "average_sentiment_score": 0.55,
+        "average_rating": 4.6,
+        "num_reviews": 15
+    },
+    "Mister Kebab": {
+        "average_sentiment_score": 0.69,
+        "average_rating": 4.5,
+        "num_reviews": 20
+    },
+    "Cuisine et Dépendances By Fabrice BONNOT": {
+        "average_sentiment_score": 0.78,
+        "average_rating": 5.0,
+        "num_reviews": 5
+    },
+    "Against the Grain": {
+        "average_sentiment_score": 0.76,
+        "average_rating": 5.0,
+        "num_reviews": 7
+    },
+    "Meza": {
+        "average_sentiment_score": 0.44,
+        "average_rating": 4.8,
+        "num_reviews": 10
+    },
+    "Simple Food": {
+        "average_sentiment_score": 0.66,
+        "average_rating": 5.0,
+        "num_reviews": 5
+    },
+    "KENBO": {
+        "average_sentiment_score": 0.53,
+        "average_rating": 4.79,
+        "num_reviews": 19
+    },
+    "Le Vivaldi - Nicolò e Maria - Ristorante Italiano Lyon 7": {
+        "average_sentiment_score": 0.67,
+        "average_rating": 4.87,
+        "num_reviews": 15
+    },
+    "Domino's Pizza Lyon 7 Nord": {
+        "average_sentiment_score": 0.13,
+        "average_rating": 1.65,
+        "num_reviews": 20
+    },
+    "Wasabi": {
+        "average_sentiment_score": 0.84,
+        "average_rating": 4.84,
+        "num_reviews": 19
+    },
+    "Le Chevreul": {
+        "average_sentiment_score": 0.61,
+        "average_rating": 4.78,
+        "num_reviews": 9
+    },
+    "COMME A LA MAISON Coffee Shop Chevreul": {
+        "average_sentiment_score": 0.55,
+        "average_rating": 4.6,
+        "num_reviews": 20
+    },
+    "Sushi Shop Lyon Jean Macé": {
+        "average_sentiment_score": 0.71,
+        "average_rating": 4.15,
+        "num_reviews": 20
+    },
+    "Tacos World Lyon 7": {
+        "average_sentiment_score": 0.5,
+        "average_rating": 4.05,
+        "num_reviews": 19
+    },
+    "Midi Vingt": {
+        "average_sentiment_score": 0.98,
+        "average_rating": 5.0,
+        "num_reviews": 1
+    },
+    "Farine Et Cannelle": {
+        "average_sentiment_score": 0.69,
+        "average_rating": 5.0,
+        "num_reviews": 3
+    },
+    "Amigo Food": {
+        "average_sentiment_score": 0.64,
+        "average_rating": 4.0,
+        "num_reviews": 12
+    },
+    "La Medina Bougn": {
+        "average_sentiment_score": 1.0,
+        "average_rating": 5.0,
+        "num_reviews": 1
+    },
+    "Lolita - Cuisine Bolivienne": {
+        "average_sentiment_score": 0.84,
+        "average_rating": 5.0,
+        "num_reviews": 4
+    },
+    "Victoria Hall": {
+        "average_sentiment_score": 0.51,
+        "average_rating": 3.67,
+        "num_reviews": 12
+    },
+    "Kebab Bodrum Lyon": {
+        "average_sentiment_score": 0.59,
+        "average_rating": 2.75,
+        "num_reviews": 4
+    },
+    "Sept Epices": {
+        "average_sentiment_score": 1.0,
+        "average_rating": 5.0,
+        "num_reviews": 2
+    },
+    "Palais du Sourire": {
+        "average_sentiment_score": 0.3,
+        "average_rating": 3.8,
+        "num_reviews": 5
+    },
+    "Sushimasa Jean Macé": {
+        "average_sentiment_score": 0.24,
+        "average_rating": 3.33,
+        "num_reviews": 9
+    },
+    "DiCi Sept": {
+        "average_sentiment_score": 0.77,
+        "average_rating": 4.71,
+        "num_reviews": 7
+    },
+    "Ô Bubble Tea": {
+        "average_sentiment_score": 0.55,
+        "average_rating": 4.11,
+        "num_reviews": 9
+    },
+    "DEB'S Bistro": {
+        "average_sentiment_score": 0.63,
+        "average_rating": 4.33,
+        "num_reviews": 15
+    },
+    "People's Kitchen": {
+        "average_sentiment_score": 0.46,
+        "average_rating": 4.33,
+        "num_reviews": 3
+    },
+    "LA CITÉ DES HALLES": {
+        "average_sentiment_score": 0.53,
+        "average_rating": 4.39,
+        "num_reviews": 18
+    },
+    "Veronatuti": {
+        "average_sentiment_score": 0.84,
+        "average_rating": 4.89,
+        "num_reviews": 9
+    },
+    "DOMO DE JANA, Comptoir de Sardaigne": {
+        "average_sentiment_score": 0.78,
+        "average_rating": 5.0,
+        "num_reviews": 3
+    },
+    "Fresh eat": {
+        "average_sentiment_score": 0.65,
+        "average_rating": 5.0,
+        "num_reviews": 7
+    },
+    "Festival Pizza": {
+        "average_sentiment_score": 0.56,
+        "average_rating": 5.0,
+        "num_reviews": 6
+    },
+    "Ry Restaurant": {
+        "average_sentiment_score": 0.57,
+        "average_rating": 4.44,
+        "num_reviews": 18
+    },
+    "Chaud Resto": {
+        "average_sentiment_score": 0.01,
+        "average_rating": 1.0,
+        "num_reviews": 2
+    },
+    "Obrigado Rodizio Lyon": {
+        "average_sentiment_score": 0.75,
+        "average_rating": 4.4,
+        "num_reviews": 20
+    },
+    "Restaurant Indien Lyon 7 - Agra Tandoori": {
+        "average_sentiment_score": 0.63,
+        "average_rating": 4.95,
+        "num_reviews": 20
+    },
+    "Ninkasi Sans Souci": {
+        "average_sentiment_score": 0.73,
+        "average_rating": 4.65,
+        "num_reviews": 20
+    },
+    "Senkichi": {
+        "average_sentiment_score": 0.8,
+        "average_rating": 4.85,
+        "num_reviews": 20
+    },
+    "L'Epicerie de Ginette - Bistrot à Tartines - Lyon 8": {
+        "average_sentiment_score": 0.72,
+        "average_rating": 4.62,
+        "num_reviews": 8
+    },
+    "Le Lyon de L'Atlas": {
+        "average_sentiment_score": 0.7,
+        "average_rating": 5.0,
+        "num_reviews": 13
+    },
+    "Éclair Café": {
+        "average_sentiment_score": 0.89,
+        "average_rating": 4.9,
+        "num_reviews": 20
+    },
+    "Au jardin d'Anaïs - Gaufres salées et sucrées": {
+        "average_sentiment_score": 0.51,
+        "average_rating": 4.89,
+        "num_reviews": 9
+    },
+    "My Tacos": {
+        "average_sentiment_score": 0.71,
+        "average_rating": 4.43,
+        "num_reviews": 7
+    },
+    "Bistrot 96": {
+        "average_sentiment_score": 0.63,
+        "average_rating": 4.67,
+        "num_reviews": 18
+    },
+    "Traiteur Sassoun Monplaisir": {
+        "average_sentiment_score": 0.67,
+        "average_rating": 4.29,
+        "num_reviews": 7
+    },
+    "Toasushi Lyon 8": {
+        "average_sentiment_score": 0.48,
+        "average_rating": 3.9,
+        "num_reviews": 20
+    },
+    "Best Bagels Monplaisir Lumière": {
+        "average_sentiment_score": 0.81,
+        "average_rating": 4.0,
+        "num_reviews": 7
+    },
+    "Icho Lyon": {
+        "average_sentiment_score": 0.6,
+        "average_rating": 4.55,
+        "num_reviews": 20
+    },
+    "L Ambroise Pizza": {
+        "average_sentiment_score": 0.28,
+        "average_rating": 2.2,
+        "num_reviews": 10
+    },
+    "casa viale lyon 8": {
+        "average_sentiment_score": 0.78,
+        "average_rating": 4.7,
+        "num_reviews": 20
+    },
+    "CHËF - berliner kebap | LUMIÈRE": {
+        "average_sentiment_score": 0.35,
+        "average_rating": 2.13,
+        "num_reviews": 15
+    },
+    "AHIKA Keishoku": {
+        "average_sentiment_score": 0.71,
+        "average_rating": 4.78,
+        "num_reviews": 9
+    },
+    "Le bistro autrement": {
+        "average_sentiment_score": 0.8,
+        "average_rating": 4.4,
+        "num_reviews": 20
+    },
+    "Greekia Lumière": {
+        "average_sentiment_score": 0.73,
+        "average_rating": 4.45,
+        "num_reviews": 20
+    },
+    "YAAFA MONPLAISIR": {
+        "average_sentiment_score": 0.68,
+        "average_rating": 4.0,
+        "num_reviews": 19
+    },
+    "CHEZ BABA": {
+        "average_sentiment_score": 0.41,
+        "average_rating": 4.5,
+        "num_reviews": 8
+    },
+    "Coté Château": {
+        "average_sentiment_score": 0.5,
+        "average_rating": 5.0,
+        "num_reviews": 4
+    },
+    "Microbrasserie de Montchat": {
+        "average_sentiment_score": 0.18,
+        "average_rating": 3.5,
+        "num_reviews": 4
+    },
+    "Le Drink": {
+        "average_sentiment_score": 0.43,
+        "average_rating": 3.0,
+        "num_reviews": 2
+    },
+    "Bistrot de Montchat": {
+        "average_sentiment_score": 0.46,
+        "average_rating": 4.67,
+        "num_reviews": 3
+    },
+    "Les tontons burgers montchat": {
+        "average_sentiment_score": 0.05,
+        "average_rating": 2.0,
+        "num_reviews": 3
+    },
+    "La sicilienne des pizzas": {
+        "average_sentiment_score": 0.78,
+        "average_rating": 5.0,
+        "num_reviews": 7
+    },
+    "TOTO LI VIGNI": {
+        "average_sentiment_score": 0.47,
+        "average_rating": 3.6,
+        "num_reviews": 5
+    },
+    "Aux Vignes de Montchat": {
+        "average_sentiment_score": 0.75,
+        "average_rating": 5.0,
+        "num_reviews": 1
+    },
+    "Jordan Tomas - Pizza Mamamia Lyon Montchat": {
+        "average_sentiment_score": 0.4,
+        "average_rating": 4.42,
+        "num_reviews": 12
+    },
+    "Restaurant McDonald's Lyon Charcot": {
+        "average_sentiment_score": 0.35,
+        "average_rating": 2.55,
+        "num_reviews": 20
+    },
+    "Minado restaurant japonais": {
+        "average_sentiment_score": 0.67,
+        "average_rating": 4.67,
+        "num_reviews": 18
+    },
+    "Bateau restaurant Hermès II": {
+        "average_sentiment_score": 0.48,
+        "average_rating": 4.43,
+        "num_reviews": 7
+    },
+    "Casa De Carne": {
+        "average_sentiment_score": 0.05,
+        "average_rating": 1.0,
+        "num_reviews": 1
+    },
+    "Gochi Perrache": {
+        "average_sentiment_score": 0.68,
+        "average_rating": 4.45,
+        "num_reviews": 11
+    },
+    "Calle Latino": {
+        "average_sentiment_score": 0.68,
+        "average_rating": 4.8,
+        "num_reviews": 20
+    },
+    "Aux Trois Fleuves": {
+        "average_sentiment_score": 0.31,
+        "average_rating": 2.0,
+        "num_reviews": 1
+    },
+    "L'Antre Amis": {
+        "average_sentiment_score": 0.6,
+        "average_rating": 5.0,
+        "num_reviews": 7
+    },
+    "En Voûte Et Moi": {
+        "average_sentiment_score": 0.63,
+        "average_rating": 5.0,
+        "num_reviews": 6
+    },
+    "Café Comptoir Abel": {
+        "average_sentiment_score": 0.58,
+        "average_rating": 4.45,
+        "num_reviews": 20
+    },
+    "Pizzeria Napoli Chez Nicolo & Franco Morreale": {
+        "average_sentiment_score": 0.43,
+        "average_rating": 3.95,
+        "num_reviews": 20
+    },
+    "Shalimar Restaurant": {
+        "average_sentiment_score": 0.69,
+        "average_rating": 4.4,
+        "num_reviews": 20
+    },
+    "Le Dandelion - Café - Restaurant Lyon 2": {
+        "average_sentiment_score": 0.65,
+        "average_rating": 4.85,
+        "num_reviews": 20
+    },
+    "Kebab Victor Hugo Lyon": {
+        "average_sentiment_score": 0.5,
+        "average_rating": 3.45,
+        "num_reviews": 11
+    },
+    "Bistro Martine": {
+        "average_sentiment_score": 0.99,
+        "average_rating": 5.0,
+        "num_reviews": 1
+    },
+    "Le GentleCat - Bar à chat - Restaurant - Coworking - Brunch - Salon de thé (interdit moins de 12 ans)": {
+        "average_sentiment_score": 0.44,
+        "average_rating": 3.65,
+        "num_reviews": 20
+    },
+    "Alter Ego L'Original": {
+        "average_sentiment_score": 0.59,
+        "average_rating": 4.4,
+        "num_reviews": 20
+    },
+    "Le Condé": {
+        "average_sentiment_score": 0.57,
+        "average_rating": 3.0,
+        "num_reviews": 20
+    },
+    "Boat Hermes Restaurant (Restaurant Cruises in Lyon)": {
+        "average_sentiment_score": 0.49,
+        "average_rating": 4.1,
+        "num_reviews": 10
+    },
+    "LES 3 DOMES": {
+        "average_sentiment_score": 0.59,
+        "average_rating": 4.85,
+        "num_reviews": 20
+    },
+    "Livestation DIY - Lyon": {
+        "average_sentiment_score": 0.6,
+        "average_rating": 4.9,
+        "num_reviews": 20
+    },
+    "Les Papas Sucrés": {
+        "average_sentiment_score": 0.57,
+        "average_rating": 4.8,
+        "num_reviews": 20
+    },
+    "Oto Oto": {
+        "average_sentiment_score": 0.47,
+        "average_rating": 4.1,
+        "num_reviews": 20
+    },
+    "Le Mondrian": {
+        "average_sentiment_score": 0.89,
+        "average_rating": 4.5,
+        "num_reviews": 16
+    },
+    "Café du Nain": {
+        "average_sentiment_score": 0.75,
+        "average_rating": 4.9,
+        "num_reviews": 20
+    },
+    "San Marco": {
+        "average_sentiment_score": 0.51,
+        "average_rating": 4.0,
+        "num_reviews": 4
+    },
+    "Restaurant A Gui Bon": {
+        "average_sentiment_score": 0.03,
+        "average_rating": 1.0,
+        "num_reviews": 1
+    },
+    "Cigkoftem": {
+        "average_sentiment_score": 0.77,
+        "average_rating": 4.83,
+        "num_reviews": 18
+    },
+    "Carrefour City Jaurès Lyon": {
+        "average_sentiment_score": 0.26,
+        "average_rating": 2.0,
+        "num_reviews": 5
+    },
+    "Bistro Zakka": {
+        "average_sentiment_score": 0.71,
+        "average_rating": 4.88,
+        "num_reviews": 8
+    },
+    "China Town": {
+        "average_sentiment_score": 0.46,
+        "average_rating": 2.5,
+        "num_reviews": 6
+    },
+    "Tai Thu": {
+        "average_sentiment_score": 0.44,
+        "average_rating": 3.0,
+        "num_reviews": 2
+    },
+    "L essentiel événementiel restaurant brunch traiteur": {
+        "average_sentiment_score": 0.49,
+        "average_rating": 5.0,
+        "num_reviews": 1
+    },
+    "Le Petit Carron": {
+        "average_sentiment_score": 0.57,
+        "average_rating": 4.0,
+        "num_reviews": 7
+    },
+    "Les Marmottes": {
+        "average_sentiment_score": 0.52,
+        "average_rating": 3.95,
+        "num_reviews": 20
+    },
+    "SAKU restaurant": {
+        "average_sentiment_score": 0.68,
+        "average_rating": 4.75,
+        "num_reviews": 20
+    },
+    "Chez Margotte": {
+        "average_sentiment_score": 0.86,
+        "average_rating": 4.38,
+        "num_reviews": 8
+    },
+    "La Blanche Hermine": {
+        "average_sentiment_score": 0.7,
+        "average_rating": 4.93,
+        "num_reviews": 14
+    },
+    "Piment & Citronnelle Thaï Café": {
+        "average_sentiment_score": 0.65,
+        "average_rating": 3.9,
+        "num_reviews": 10
+    },
+    "L'Art & la Manière": {
+        "average_sentiment_score": 0.63,
+        "average_rating": 3.73,
+        "num_reviews": 11
+    },
+    "Bar Restaurant FLORA": {
+        "average_sentiment_score": 1.0,
+        "average_rating": 4.5,
+        "num_reviews": 2
+    },
+    "136 Avenue": {
+        "average_sentiment_score": 0.46,
+        "average_rating": 4.11,
+        "num_reviews": 9
+    },
+    "ROI Alexandre": {
+        "average_sentiment_score": 0.46,
+        "average_rating": 4.0,
+        "num_reviews": 7
+    },
+    "Layali Beyrouth": {
+        "average_sentiment_score": 0.6,
+        "average_rating": 4.64,
+        "num_reviews": 14
+    },
+    "Le Comptoir du 3ème": {
+        "average_sentiment_score": 0.52,
+        "average_rating": 3.67,
+        "num_reviews": 6
+    },
+    "Piou!Piou! - Lyon 3": {
+        "average_sentiment_score": 0.85,
+        "average_rating": 4.7,
+        "num_reviews": 20
+    },
+    "Ça Kroustille!": {
+        "average_sentiment_score": 0.82,
+        "average_rating": 5.0,
+        "num_reviews": 20
+    },
+    "Delice kebab cafe-resto": {
+        "average_sentiment_score": 0.58,
+        "average_rating": 3.8,
+        "num_reviews": 5
+    },
+    "Bikube Lyon - Restaurant": {
+        "average_sentiment_score": 0.66,
+        "average_rating": 4.35,
+        "num_reviews": 20
+    },
+    "Canard De Rue (Bar-Restaurant)": {
+        "average_sentiment_score": 0.61,
+        "average_rating": 4.91,
+        "num_reviews": 11
+    },
+    "TWINS FOOD": {
+        "average_sentiment_score": 0.93,
+        "average_rating": 5.0,
+        "num_reviews": 1
+    },
+    "L'Équilibriste": {
+        "average_sentiment_score": 0.63,
+        "average_rating": 4.55,
+        "num_reviews": 20
+    },
+    "Les Glougloutons": {
+        "average_sentiment_score": 0.74,
+        "average_rating": 4.9,
+        "num_reviews": 20
+    },
+    "Sushi Love": {
+        "average_sentiment_score": 0.9,
+        "average_rating": 5.0,
+        "num_reviews": 1
+    },
+    "Carrefour City Lyon Louise": {
+        "average_sentiment_score": 0.5,
+        "average_rating": 2.14,
+        "num_reviews": 7
+    },
+    "Cuisine en cours": {
+        "average_sentiment_score": 0.99,
+        "average_rating": 5.0,
+        "num_reviews": 2
+    },
+    "La gamelle de Montchat": {
+        "average_sentiment_score": 0.75,
+        "average_rating": 5.0,
+        "num_reviews": 8
+    },
+    "Le Mont Chatois": {
+        "average_sentiment_score": 0.85,
+        "average_rating": 4.67,
+        "num_reviews": 3
+    },
+    "6AM Fried Chicken": {
+        "average_sentiment_score": 0.15,
+        "average_rating": 1.0,
+        "num_reviews": 1
+    },
+    "L'italianissima": {
+        "average_sentiment_score": 0.43,
+        "average_rating": 1.0,
+        "num_reviews": 2
+    },
+    "Mandi Al Sham": {
+        "average_sentiment_score": 0.61,
+        "average_rating": 4.94,
+        "num_reviews": 17
+    },
+    "Brasserie Le Comptoir du Narval- Tabac le Narval": {
+        "average_sentiment_score": 0.77,
+        "average_rating": 4.85,
+        "num_reviews": 13
+    },
+    "FAV": {
+        "average_sentiment_score": 0.73,
+        "average_rating": 4.25,
+        "num_reviews": 8
+    },
+    "Les Marionnettes": {
+        "average_sentiment_score": 0.82,
+        "average_rating": 4.92,
+        "num_reviews": 12
+    },
+    "Fantastico da Antonio e Marco Morreale": {
+        "average_sentiment_score": 0.66,
+        "average_rating": 4.5,
+        "num_reviews": 20
+    },
+    "Café Colombo": {
+        "average_sentiment_score": 0.43,
+        "average_rating": 3.71,
+        "num_reviews": 7
+    },
+    "MARMOCCHI PIZZERIA": {
+        "average_sentiment_score": 0.71,
+        "average_rating": 4.86,
+        "num_reviews": 14
+    },
+    "la table de Saint just": {
+        "average_sentiment_score": 0.77,
+        "average_rating": 4.89,
+        "num_reviews": 18
+    },
+    "Kazanowa Sushi": {
+        "average_sentiment_score": 0.32,
+        "average_rating": 5.0,
+        "num_reviews": 5
+    },
+    "Sunamis Restaurant THAI": {
+        "average_sentiment_score": 0.69,
+        "average_rating": 4.85,
+        "num_reviews": 13
+    },
+    "Bahoz": {
+        "average_sentiment_score": 0.76,
+        "average_rating": 4.7,
+        "num_reviews": 20
+    },
+    "Papa Pizz’ 🥇": {
+        "average_sentiment_score": 0.61,
+        "average_rating": 5.0,
+        "num_reviews": 20
+    },
+    "Chamas Tacos ® Lyon 5": {
+        "average_sentiment_score": 0.58,
+        "average_rating": 4.0,
+        "num_reviews": 20
+    },
+    "Le Bistrot Nicéphore": {
+        "average_sentiment_score": 0.52,
+        "average_rating": 5.0,
+        "num_reviews": 10
+    },
+    "Le Café des Maka-B": {
+        "average_sentiment_score": 0.36,
+        "average_rating": 5.0,
+        "num_reviews": 3
+    },
+    "Le four à pizza - Trion": {
+        "average_sentiment_score": 0.56,
+        "average_rating": 4.33,
+        "num_reviews": 12
+    },
+    "Les Téléphones Restaurant": {
+        "average_sentiment_score": 0.72,
+        "average_rating": 4.55,
+        "num_reviews": 20
+    },
+    "L’ARTIGIANO PIZZERIA": {
+        "average_sentiment_score": 0.71,
+        "average_rating": 5.0,
+        "num_reviews": 10
+    },
+    "POKYO | Restaurant Poke Bowl & Frozen Yogurt Lyon": {
+        "average_sentiment_score": 0.36,
+        "average_rating": 4.0,
+        "num_reviews": 1
+    },
+    "Sweet Bay": {
+        "average_sentiment_score": 0.63,
+        "average_rating": 4.95,
+        "num_reviews": 20
+    },
+    "Maxi Kebab Lyon 5ème": {
+        "average_sentiment_score": 0.57,
+        "average_rating": 4.4,
+        "num_reviews": 20
+    },
+    "La Tornade Blonde Sarl": {
+        "average_sentiment_score": 0.45,
+        "average_rating": 4.5,
+        "num_reviews": 6
+    },
+    "Campagne, L'Esprit Bistrot": {
+        "average_sentiment_score": 0.74,
+        "average_rating": 4.0,
+        "num_reviews": 14
+    },
+    "Sandwicherie Chez Morsi": {
+        "average_sentiment_score": 0.7,
+        "average_rating": 5.0,
+        "num_reviews": 2
+    },
+    "Restaurant Gastronomique Christian Tetedoie": {
+        "average_sentiment_score": 0.47,
+        "average_rating": 4.45,
+        "num_reviews": 20
+    },
+    "Durden": {
+        "average_sentiment_score": 0.61,
+        "average_rating": 3.71,
+        "num_reviews": 7
+    },
+    "Bombay Palace": {
+        "average_sentiment_score": 0.64,
+        "average_rating": 3.81,
+        "num_reviews": 16
+    },
+    "L'Encart": {
+        "average_sentiment_score": 0.81,
+        "average_rating": 5.0,
+        "num_reviews": 5
+    },
+    "CrepExpress": {
+        "average_sentiment_score": 0.35,
+        "average_rating": 3.75,
+        "num_reviews": 20
+    },
+    "Café 203 Vieux Lyon": {
+        "average_sentiment_score": 0.59,
+        "average_rating": 3.7,
+        "num_reviews": 20
+    },
+    "Le Poêlon d'Or": {
+        "average_sentiment_score": 0.75,
+        "average_rating": 4.55,
+        "num_reviews": 20
+    },
+    "La Mère Jean": {
+        "average_sentiment_score": 0.82,
+        "average_rating": 4.7,
+        "num_reviews": 20
+    },
+    "Chabert et Fils": {
+        "average_sentiment_score": 0.72,
+        "average_rating": 3.75,
+        "num_reviews": 20
+    },
+    "Le Bouchon des Carnivores": {
+        "average_sentiment_score": 0.62,
+        "average_rating": 3.4,
+        "num_reviews": 20
+    },
+    "L'Institut Restaurant": {
+        "average_sentiment_score": 0.52,
+        "average_rating": 4.85,
+        "num_reviews": 20
+    },
+    "Le Tabac De Boran (Bellecour) CB à partir de 15e": {
+        "average_sentiment_score": 0.67,
+        "average_rating": 5.0,
+        "num_reviews": 2
+    },
+    "Eat & Drink's": {
+        "average_sentiment_score": 0.43,
+        "average_rating": 2.25,
+        "num_reviews": 12
+    },
+    "Brasserie Le République": {
+        "average_sentiment_score": 0.28,
+        "average_rating": 2.7,
+        "num_reviews": 10
+    },
+    "Hôtel-Dieu de Lyon": {
+        "average_sentiment_score": 0.83,
+        "average_rating": 4.8,
+        "num_reviews": 20
+    },
+    "L' Atelier d' Yvonne": {
+        "average_sentiment_score": 0.66,
+        "average_rating": 5.0,
+        "num_reviews": 20
+    },
+    "Maison Eric Kayser - Artisan Boulanger": {
+        "average_sentiment_score": 0.3,
+        "average_rating": 2.8,
+        "num_reviews": 15
+    },
+    "Chez Riz": {
+        "average_sentiment_score": 0.51,
+        "average_rating": 4.25,
+        "num_reviews": 16
+    },
+    "La Cocagne": {
+        "average_sentiment_score": 0.98,
+        "average_rating": 4.86,
+        "num_reviews": 7
+    },
+    "Karachi Restaurant": {
+        "average_sentiment_score": 0.66,
+        "average_rating": 4.55,
+        "num_reviews": 20
+    },
+    "Restaurant Thaï Suois": {
+        "average_sentiment_score": 0.63,
+        "average_rating": 5.0,
+        "num_reviews": 2
+    },
+    "Piquin": {
+        "average_sentiment_score": 0.7,
+        "average_rating": 4.75,
+        "num_reviews": 20
+    },
+    "Gram é Basta": {
+        "average_sentiment_score": 0.97,
+        "average_rating": 4.5,
+        "num_reviews": 4
+    },
+    "Siam Bistrot": {
+        "average_sentiment_score": 0.79,
+        "average_rating": 4.6,
+        "num_reviews": 5
+    },
+    "Le Familial kebab": {
+        "average_sentiment_score": 0.74,
+        "average_rating": 4.6,
+        "num_reviews": 20
+    },
+    "Courtepaille Lyon Gare La Part Dieu": {
+        "average_sentiment_score": 0.38,
+        "average_rating": 4.3,
+        "num_reviews": 20
+    },
+    "Restaurant Interadministratif de Lyon": {
+        "average_sentiment_score": 0.5,
+        "average_rating": 4.38,
+        "num_reviews": 8
+    },
+    "Brasserie de la Villette": {
+        "average_sentiment_score": 0.61,
+        "average_rating": 4.44,
+        "num_reviews": 9
+    },
+    "Kan Food": {
+        "average_sentiment_score": 0.58,
+        "average_rating": 3.75,
+        "num_reviews": 8
+    },
+    "LE VIN GOURMAND": {
+        "average_sentiment_score": 0.7,
+        "average_rating": 4.8,
+        "num_reviews": 5
+    },
+    "Le Vivier Merle": {
+        "average_sentiment_score": 0.14,
+        "average_rating": 3.0,
+        "num_reviews": 1
+    },
+    "Les Dunes": {
+        "average_sentiment_score": 0.5,
+        "average_rating": 5.0,
+        "num_reviews": 4
+    },
+    "Les Délices de la Villette": {
+        "average_sentiment_score": 0.68,
+        "average_rating": 2.75,
+        "num_reviews": 4
+    },
+    "DADOU Lyon 3": {
+        "average_sentiment_score": 0.97,
+        "average_rating": 4.75,
+        "num_reviews": 8
+    },
+    "Boulangerie Banette - Le Petit Brivadois": {
+        "average_sentiment_score": 0.59,
+        "average_rating": 5.0,
+        "num_reviews": 3
+    },
+    "Divine Cafe": {
+        "average_sentiment_score": 0.95,
+        "average_rating": 4.71,
+        "num_reviews": 7
+    },
+    "Chamas Tacos® Lyon Dauphiné": {
+        "average_sentiment_score": 0.39,
+        "average_rating": 3.05,
+        "num_reviews": 20
+    },
+    "Café des Artisans, Le Bouchon de Muriel": {
+        "average_sentiment_score": 0.53,
+        "average_rating": 4.36,
+        "num_reviews": 11
+    },
+    "Noor Mahal": {
+        "average_sentiment_score": 0.69,
+        "average_rating": 4.63,
+        "num_reviews": 19
+    },
+    "Snack'n Go": {
+        "average_sentiment_score": 0.66,
+        "average_rating": 5.0,
+        "num_reviews": 5
+    },
+    "GRILL DAMAS": {
+        "average_sentiment_score": 0.84,
+        "average_rating": 5.0,
+        "num_reviews": 12
+    },
+    "MOYO": {
+        "average_sentiment_score": 0.48,
+        "average_rating": 5.0,
+        "num_reviews": 4
+    },
+    "Brasserie de l'Horloge": {
+        "average_sentiment_score": 0.12,
+        "average_rating": 2.0,
+        "num_reviews": 1
+    },
+    "Himalayan momo (Cuisine Népalaise et Tibétain )": {
+        "average_sentiment_score": 0.35,
+        "average_rating": 4.0,
+        "num_reviews": 8
+    },
+    "FASHIMI": {
+        "average_sentiment_score": 0.71,
+        "average_rating": 4.88,
+        "num_reviews": 8
+    },
+    "Sushi Hand Lyon 3": {
+        "average_sentiment_score": 0.7,
+        "average_rating": 4.89,
+        "num_reviews": 19
+    },
+    "Carrefour City Genas Villeurbanne": {
+        "average_sentiment_score": 0.75,
+        "average_rating": 2.75,
+        "num_reviews": 4
+    },
+    "Carthage snack": {
+        "average_sentiment_score": 0.36,
+        "average_rating": 3.0,
+        "num_reviews": 4
+    },
+    "Nawab": {
+        "average_sentiment_score": 0.86,
+        "average_rating": 4.67,
+        "num_reviews": 6
+    },
+    "BRUSCH": {
+        "average_sentiment_score": 0.84,
+        "average_rating": 5.0,
+        "num_reviews": 12
+    },
+    "Bnina Restaurant Tunisien": {
+        "average_sentiment_score": 0.85,
+        "average_rating": 4.5,
+        "num_reviews": 8
+    },
+    "MUST LUNCH": {
+        "average_sentiment_score": 0.72,
+        "average_rating": 4.92,
+        "num_reviews": 13
+    },
+    "Sarl la Fraternelle": {
+        "average_sentiment_score": 0.06,
+        "average_rating": 5.0,
+        "num_reviews": 1
+    },
+    "L'Atelier Espagnol": {
+        "average_sentiment_score": 0.67,
+        "average_rating": 4.75,
+        "num_reviews": 20
+    },
+    "Restaurant Montchat Sushi Lyon 3 - Nouveau Propriétaire | Restaurant Japonais, Sushis, Poké Bowl": {
+        "average_sentiment_score": 0.77,
+        "average_rating": 4.67,
+        "num_reviews": 9
+    },
+    "DUOMO Lyon 3": {
+        "average_sentiment_score": 0.47,
+        "average_rating": 4.7,
+        "num_reviews": 20
+    },
+    "Easy Lunch Lyon": {
+        "average_sentiment_score": 0.82,
+        "average_rating": 5.0,
+        "num_reviews": 6
+    },
+    "Sapristi": {
+        "average_sentiment_score": 0.5,
+        "average_rating": 5.0,
+        "num_reviews": 5
+    },
+    "153 Food": {
+        "average_sentiment_score": 0.43,
+        "average_rating": 3.4,
+        "num_reviews": 5
+    },
+    "La Petite Table des Nuits": {
+        "average_sentiment_score": 0.6,
+        "average_rating": 4.67,
+        "num_reviews": 6
+    },
+    "Le Coquemar": {
+        "average_sentiment_score": 0.43,
+        "average_rating": 3.0,
+        "num_reviews": 3
+    },
+    "LE ROOFTOP TETEDOIE": {
+        "average_sentiment_score": 0.62,
+        "average_rating": 3.44,
+        "num_reviews": 9
+    },
+    "KATIMAVIK : le restaurant solidaire de L'Arche à Lyon": {
+        "average_sentiment_score": 0.72,
+        "average_rating": 5.0,
+        "num_reviews": 3
+    },
+    "JOHNNY'S KITCHEN": {
+        "average_sentiment_score": 0.57,
+        "average_rating": 4.75,
+        "num_reviews": 16
+    },
+    "Sambahia - Restaurant Brésilien": {
+        "average_sentiment_score": 0.79,
+        "average_rating": 4.95,
+        "num_reviews": 20
+    },
+    "Restaurant Café du Soleil": {
+        "average_sentiment_score": 0.65,
+        "average_rating": 4.55,
+        "num_reviews": 20
+    },
+    "Daniel & Denise Saint Jean - Bouchon Lyonnais": {
+        "average_sentiment_score": 0.61,
+        "average_rating": 4.9,
+        "num_reviews": 20
+    },
+    "Little Italy lyon 2": {
+        "average_sentiment_score": 0.65,
+        "average_rating": 5.0,
+        "num_reviews": 9
+    },
+    "Au 14 Février": {
+        "average_sentiment_score": 0.84,
+        "average_rating": 5.0,
+        "num_reviews": 6
+    },
+    "Le Comptoir du Bœuf": {
+        "average_sentiment_score": 0.59,
+        "average_rating": 4.5,
+        "num_reviews": 20
+    },
+    "Aux Trois Maries": {
+        "average_sentiment_score": 0.46,
+        "average_rating": 4.15,
+        "num_reviews": 20
+    },
+    "Le Touareg": {
+        "average_sentiment_score": 0.73,
+        "average_rating": 4.25,
+        "num_reviews": 20
+    },
+    "La Nef Des Fous": {
+        "average_sentiment_score": 0.79,
+        "average_rating": 4.4,
+        "num_reviews": 20
+    },
+    "Le Pique Assiette": {
+        "average_sentiment_score": 0.61,
+        "average_rating": 3.85,
+        "num_reviews": 20
+    },
+    "MAITRE BOEUF": {
+        "average_sentiment_score": 0.66,
+        "average_rating": 4.36,
+        "num_reviews": 14
+    },
+    "Le Cèdre Bleu": {
+        "average_sentiment_score": 0.62,
+        "average_rating": 5.0,
+        "num_reviews": 5
+    },
+    "Teppan Yaki": {
+        "average_sentiment_score": 0.62,
+        "average_rating": 4.6,
+        "num_reviews": 20
+    },
+    "Quand Les Poules Auront Des Dents": {
+        "average_sentiment_score": 0.07,
+        "average_rating": 1.0,
+        "num_reviews": 1
+    },
+    "Le panier du Chef": {
+        "average_sentiment_score": 0.45,
+        "average_rating": 2.75,
+        "num_reviews": 20
+    },
+    "Le Palais Saint Jean": {
+        "average_sentiment_score": 0.72,
+        "average_rating": 4.85,
+        "num_reviews": 20
+    },
+    "Restaurant La Chimère": {
+        "average_sentiment_score": 0.62,
+        "average_rating": 3.3,
+        "num_reviews": 20
+    },
+    "Au Comptoir les Gones": {
+        "average_sentiment_score": 0.57,
+        "average_rating": 3.36,
+        "num_reviews": 11
+    },
+    "L’AS de PIZZ - Pizzeria du Vieux-Lyon": {
+        "average_sentiment_score": 0.05,
+        "average_rating": 3.5,
+        "num_reviews": 2
+    },
+    "In Cuisine": {
+        "average_sentiment_score": 0.31,
+        "average_rating": 5.0,
+        "num_reviews": 4
+    },
+    "Bouchon Les Lyonnais": {
+        "average_sentiment_score": 0.63,
+        "average_rating": 4.35,
+        "num_reviews": 20
+    },
+    "Le Raj Mahal": {
+        "average_sentiment_score": 0.64,
+        "average_rating": 4.9,
+        "num_reviews": 10
+    },
+    "Le Mercière": {
+        "average_sentiment_score": 0.85,
+        "average_rating": 4.75,
+        "num_reviews": 20
+    },
+    "Le Bistrot de Lyon": {
+        "average_sentiment_score": 0.56,
+        "average_rating": 3.7,
+        "num_reviews": 20
+    },
+    "Au Pied Dans L'Plat": {
+        "average_sentiment_score": 0.47,
+        "average_rating": 4.9,
+        "num_reviews": 20
+    },
+    "Le Layon": {
+        "average_sentiment_score": 0.6,
+        "average_rating": 4.6,
+        "num_reviews": 20
+    },
+    "Berthom Old Lyon": {
+        "average_sentiment_score": 0.57,
+        "average_rating": 4.43,
+        "num_reviews": 7
+    },
+    "Flam's Lyon": {
+        "average_sentiment_score": 0.6,
+        "average_rating": 4.45,
+        "num_reviews": 20
+    },
+    "Les Petits Siamois": {
+        "average_sentiment_score": 0.72,
+        "average_rating": 3.94,
+        "num_reviews": 18
+    },
+    "Le Grand Café des Négociants": {
+        "average_sentiment_score": 0.31,
+        "average_rating": 2.75,
+        "num_reviews": 20
+    },
+    "Chez Carlo Cordeliers - Pizzas au feu de bois": {
+        "average_sentiment_score": 0.35,
+        "average_rating": 3.3,
+        "num_reviews": 20
+    },
+    "Le Ré-confort": {
+        "average_sentiment_score": 0.63,
+        "average_rating": 4.25,
+        "num_reviews": 8
+    },
+    "LalQila": {
+        "average_sentiment_score": 0.68,
+        "average_rating": 4.8,
+        "num_reviews": 20
+    },
+    "Brasserie le Nord": {
+        "average_sentiment_score": 0.75,
+        "average_rating": 4.75,
+        "num_reviews": 20
+    },
+    "Matsuri Lyon Presqu'ile": {
+        "average_sentiment_score": 0.77,
+        "average_rating": 4.45,
+        "num_reviews": 20
+    },
+    "Le Cintra": {
+        "average_sentiment_score": 0.5,
+        "average_rating": 3.6,
+        "num_reviews": 20
+    },
+    "Rivière Kwaï": {
+        "average_sentiment_score": 0.76,
+        "average_rating": 3.82,
+        "num_reviews": 17
+    },
+    "La Meuniere.Bouchon Lyonnais": {
+        "average_sentiment_score": 0.53,
+        "average_rating": 3.8,
+        "num_reviews": 20
+    },
+    "Le Garage Restaurant": {
+        "average_sentiment_score": 0.77,
+        "average_rating": 4.55,
+        "num_reviews": 20
+    },
+    "Daniel et Denise Créqui - Bouchon Lyonnais": {
+        "average_sentiment_score": 0.73,
+        "average_rating": 4.45,
+        "num_reviews": 20
+    },
+    "L'Alexandrin": {
+        "average_sentiment_score": 0.57,
+        "average_rating": 4.6,
+        "num_reviews": 20
+    },
+    "Le Bistrot d'Odette": {
+        "average_sentiment_score": 0.78,
+        "average_rating": 4.84,
+        "num_reviews": 19
+    },
+    "Arsenic": {
+        "average_sentiment_score": 0.56,
+        "average_rating": 4.85,
+        "num_reviews": 20
+    },
+    "Pathé Bellecour": {
+        "average_sentiment_score": 0.49,
+        "average_rating": 2.95,
+        "num_reviews": 20
+    },
+    "Le City | Restaurant Italien Lyon": {
+        "average_sentiment_score": 0.99,
+        "average_rating": 5.0,
+        "num_reviews": 2
+    },
+    "Matsuri Lyon Part-Dieu": {
+        "average_sentiment_score": 0.76,
+        "average_rating": 3.95,
+        "num_reviews": 20
+    },
+    "Giraudet - Les Halles de Lyon | Quenelles, Soupes & Ravioles artisanales": {
+        "average_sentiment_score": 0.72,
+        "average_rating": 4.9,
+        "num_reviews": 20
+    },
+    "ojap sushi": {
+        "average_sentiment_score": 0.71,
+        "average_rating": 5.0,
+        "num_reviews": 5
+    },
+    "La Panetteria": {
+        "average_sentiment_score": 0.61,
+        "average_rating": 4.0,
+        "num_reviews": 2
+    },
+    "Brasserie de la Bourse du Travail": {
+        "average_sentiment_score": 0.84,
+        "average_rating": 3.12,
+        "num_reviews": 8
+    },
+    "Bistrot Bonnel": {
+        "average_sentiment_score": 0.72,
+        "average_rating": 4.75,
+        "num_reviews": 8
+    },
+    "Neroliva": {
+        "average_sentiment_score": 0.73,
+        "average_rating": 4.56,
+        "num_reviews": 9
+    },
+    "Passionnement Truffes": {
+        "average_sentiment_score": 0.46,
+        "average_rating": 3.86,
+        "num_reviews": 14
+    },
+    "Le Celest": {
+        "average_sentiment_score": 0.79,
+        "average_rating": 4.6,
+        "num_reviews": 20
+    },
+    "Baba La Grenouille": {
+        "average_sentiment_score": 0.57,
+        "average_rating": 4.0,
+        "num_reviews": 17
+    },
+    "Aldo Pizza": {
+        "average_sentiment_score": 0.61,
+        "average_rating": 5.0,
+        "num_reviews": 18
+    },
+    "Bentomania Partdieu: Curry & Ramen House": {
+        "average_sentiment_score": 0.45,
+        "average_rating": 4.0,
+        "num_reviews": 18
+    },
+    "Brasserie Marius": {
+        "average_sentiment_score": 0.37,
+        "average_rating": 2.83,
+        "num_reviews": 12
+    },
+    "Class & Kebab": {
+        "average_sentiment_score": 0.29,
+        "average_rating": 4.75,
+        "num_reviews": 4
+    },
+    "UGC Ciné Cité Part-Dieu": {
+        "average_sentiment_score": 0.47,
+        "average_rating": 3.2,
+        "num_reviews": 20
+    },
+    "Chez Paolino": {
+        "average_sentiment_score": 0.58,
+        "average_rating": 5.0,
+        "num_reviews": 2
+    },
+    "Arepado": {
+        "average_sentiment_score": 0.55,
+        "average_rating": 3.71,
+        "num_reviews": 14
+    },
+    "Comptoir de Beyrouth": {
+        "average_sentiment_score": 0.72,
+        "average_rating": 4.5,
+        "num_reviews": 20
+    },
+    "Gurgussum": {
+        "average_sentiment_score": 0.75,
+        "average_rating": 5.0,
+        "num_reviews": 9
+    },
+    "L'Appart des frangines": {
+        "average_sentiment_score": 0.68,
+        "average_rating": 4.42,
+        "num_reviews": 12
+    },
+    "La Casa Pompeï": {
+        "average_sentiment_score": 0.43,
+        "average_rating": 4.6,
+        "num_reviews": 5
+    },
+    "Rita-Plage": {
+        "average_sentiment_score": 0.75,
+        "average_rating": 5.0,
+        "num_reviews": 6
+    },
+    "Mak DeaL’s": {
+        "average_sentiment_score": 0.73,
+        "average_rating": 4.0,
+        "num_reviews": 4
+    },
+    "Cafe Lobut": {
+        "average_sentiment_score": 0.8,
+        "average_rating": 4.94,
+        "num_reviews": 17
+    },
+    "Le Valentinoo": {
+        "average_sentiment_score": 0.65,
+        "average_rating": 4.0,
+        "num_reviews": 20
+    },
+    "la gratinade": {
+        "average_sentiment_score": 0.6,
+        "average_rating": 4.8,
+        "num_reviews": 20
+    },
+    "The BHR": {
+        "average_sentiment_score": 0.67,
+        "average_rating": 4.4,
+        "num_reviews": 15
+    },
+    "Kopain et Café": {
+        "average_sentiment_score": 0.38,
+        "average_rating": 4.9,
+        "num_reviews": 20
+    },
+    "Pizzeria Zampano": {
+        "average_sentiment_score": 0.6,
+        "average_rating": 5.0,
+        "num_reviews": 5
+    },
+    "Le Coq et la Mule - Lyon": {
+        "average_sentiment_score": 0.8,
+        "average_rating": 4.75,
+        "num_reviews": 20
+    },
+    "YASI Bar": {
+        "average_sentiment_score": 0.74,
+        "average_rating": 4.29,
+        "num_reviews": 7
+    },
+    "Ararat": {
+        "average_sentiment_score": 0.46,
+        "average_rating": 4.3,
+        "num_reviews": 20
+    },
+    "LE MAXI TACOS": {
+        "average_sentiment_score": 0.48,
+        "average_rating": 2.25,
+        "num_reviews": 8
+    },
+    "Ptit Bistroy": {
+        "average_sentiment_score": 0.62,
+        "average_rating": 4.17,
+        "num_reviews": 12
+    },
+    "Entre Mimi & Franky": {
+        "average_sentiment_score": 0.74,
+        "average_rating": 5.0,
+        "num_reviews": 4
+    },
+    "Angkor Thom": {
+        "average_sentiment_score": 0.85,
+        "average_rating": 5.0,
+        "num_reviews": 11
+    },
+    "PANORAMA FOOD": {
+        "average_sentiment_score": 0.82,
+        "average_rating": 4.67,
+        "num_reviews": 3
+    },
+    "Le Kreyoleat Grill": {
+        "average_sentiment_score": 0.65,
+        "average_rating": 5.0,
+        "num_reviews": 20
+    },
+    "CHILLS": {
+        "average_sentiment_score": 0.69,
+        "average_rating": 5.0,
+        "num_reviews": 13
+    },
+    "KRUSTY CLASSIC BURGER VILLEURBANNE": {
+        "average_sentiment_score": 0.49,
+        "average_rating": 3.0,
+        "num_reviews": 20
+    },
+    "Lart'isan Burger": {
+        "average_sentiment_score": 0.83,
+        "average_rating": 4.6,
+        "num_reviews": 10
+    },
+    "Tex Orient - Uniquement sur réservation": {
+        "average_sentiment_score": 0.8,
+        "average_rating": 5.0,
+        "num_reviews": 20
+    },
+    "Aux Amities Gourmandes Chez Klevis": {
+        "average_sentiment_score": 0.61,
+        "average_rating": 4.47,
+        "num_reviews": 15
+    },
+    "Enjoy Tacos - Tolstoï": {
+        "average_sentiment_score": 0.77,
+        "average_rating": 4.65,
+        "num_reviews": 20
+    },
+    "Restaurant Curcuma": {
+        "average_sentiment_score": 0.56,
+        "average_rating": 4.2,
+        "num_reviews": 20
+    },
+    "Le Tassili": {
+        "average_sentiment_score": 0.63,
+        "average_rating": 4.95,
+        "num_reviews": 19
+    },
+    "Nouba Restaurant": {
+        "average_sentiment_score": 0.71,
+        "average_rating": 4.35,
+        "num_reviews": 20
+    },
+    "Grillades La Mamma": {
+        "average_sentiment_score": 0.93,
+        "average_rating": 4.11,
+        "num_reviews": 9
+    },
+    "La Tamtamerie - Restaurant /Bar Villeurbanne": {
+        "average_sentiment_score": 0.81,
+        "average_rating": 4.73,
+        "num_reviews": 11
+    },
+    "PIZZA PANOZZO": {
+        "average_sentiment_score": 0.69,
+        "average_rating": 4.0,
+        "num_reviews": 6
+    },
+    "GRAND CLEMENT-TANDOORI": {
+        "average_sentiment_score": 0.95,
+        "average_rating": 4.5,
+        "num_reviews": 2
+    },
+    "Pap's": {
+        "average_sentiment_score": 0.53,
+        "average_rating": 4.2,
+        "num_reviews": 5
+    },
+    "Villeurbanne Food Club": {
+        "average_sentiment_score": 0.61,
+        "average_rating": 3.25,
+        "num_reviews": 4
+    },
+    "Coeur d'artichaut Lyon": {
+        "average_sentiment_score": 0.75,
+        "average_rating": 4.14,
+        "num_reviews": 7
+    },
+    "Comptoir 41": {
+        "average_sentiment_score": 0.72,
+        "average_rating": 4.6,
+        "num_reviews": 10
+    },
+    "School Jehanne De France, Group La Favorite": {
+        "average_sentiment_score": 0.56,
+        "average_rating": 4.75,
+        "num_reviews": 20
+    },
+    "La Divina": {
+        "average_sentiment_score": 0.44,
+        "average_rating": 4.17,
+        "num_reviews": 6
+    },
+    "poissonchat": {
+        "average_sentiment_score": 0.52,
+        "average_rating": 2.6,
+        "num_reviews": 20
+    },
+    "A pas de loup - Restaurant Lyon 9": {
+        "average_sentiment_score": 0.37,
+        "average_rating": 4.88,
+        "num_reviews": 8
+    },
+    "Coupés-Coupés France": {
+        "average_sentiment_score": 0.64,
+        "average_rating": 4.8,
+        "num_reviews": 20
+    },
+    "La Grange - Street-food paysanne": {
+        "average_sentiment_score": 0.8,
+        "average_rating": 5.0,
+        "num_reviews": 3
+    },
+    "Le Bistrot Neuf": {
+        "average_sentiment_score": 0.13,
+        "average_rating": 5.0,
+        "num_reviews": 1
+    },
+    "Restaurant Le Petit Marché d'Une Faim d'Apprendre": {
+        "average_sentiment_score": 0.57,
+        "average_rating": 5.0,
+        "num_reviews": 6
+    },
+    "Bar Le 42": {
+        "average_sentiment_score": 0.99,
+        "average_rating": 4.0,
+        "num_reviews": 1
+    },
+    "Au P'tit Zinc": {
+        "average_sentiment_score": 0.7,
+        "average_rating": 4.55,
+        "num_reviews": 20
+    },
+    "La Salle à Manger Restaurant-Ecole Apprentis d'Auteuil Fourvière": {
+        "average_sentiment_score": 0.85,
+        "average_rating": 4.83,
+        "num_reviews": 6
+    },
+    "Bulle - Restaurant de Fourvière - Guy Lassausaie": {
+        "average_sentiment_score": 0.7,
+        "average_rating": 4.4,
+        "num_reviews": 20
+    },
+    "Distrikt": {
+        "average_sentiment_score": 0.08,
+        "average_rating": 3.0,
+        "num_reviews": 2
+    },
+    "Pignol Fourvière": {
+        "average_sentiment_score": 0.41,
+        "average_rating": 4.44,
+        "num_reviews": 18
+    },
+    "Chez Grand-Mère": {
+        "average_sentiment_score": 0.63,
+        "average_rating": 4.5,
+        "num_reviews": 20
+    },
+    "Les Terrasses de Lyon": {
+        "average_sentiment_score": 0.51,
+        "average_rating": 3.92,
+        "num_reviews": 12
+    },
+    "Café Gadagne": {
+        "average_sentiment_score": 0.6,
+        "average_rating": 4.35,
+        "num_reviews": 20
+    },
+    "Le François Villon": {
+        "average_sentiment_score": 0.7,
+        "average_rating": 4.05,
+        "num_reviews": 20
+    },
+    "Sol Café": {
+        "average_sentiment_score": 0.65,
+        "average_rating": 4.5,
+        "num_reviews": 14
+    },
+    "La Grillardière AVS": {
+        "average_sentiment_score": 0.57,
+        "average_rating": 4.3,
+        "num_reviews": 20
+    },
+    "Notre Maison": {
+        "average_sentiment_score": 0.5,
+        "average_rating": 4.3,
+        "num_reviews": 20
+    },
+    "Les Ventres Jaunes": {
+        "average_sentiment_score": 0.65,
+        "average_rating": 4.7,
+        "num_reviews": 20
+    },
+    "Dolce Follia": {
+        "average_sentiment_score": 0.41,
+        "average_rating": 3.5,
+        "num_reviews": 14
+    },
+    "Cactus Bar": {
+        "average_sentiment_score": 0.71,
+        "average_rating": 4.5,
+        "num_reviews": 20
+    },
+    "René Nardone": {
+        "average_sentiment_score": 0.58,
+        "average_rating": 4.44,
+        "num_reviews": 9
+    },
+    "The Elephant & Castle": {
+        "average_sentiment_score": 0.84,
+        "average_rating": 4.95,
+        "num_reviews": 20
+    },
+    "Le Bouchon des Filles": {
+        "average_sentiment_score": 0.79,
+        "average_rating": 5.0,
+        "num_reviews": 20
+    },
+    "Burgundy Lounge": {
+        "average_sentiment_score": 0.66,
+        "average_rating": 4.94,
+        "num_reviews": 16
+    },
+    "Le Café Des Fédérations": {
+        "average_sentiment_score": 0.73,
+        "average_rating": 4.25,
+        "num_reviews": 20
+    },
+    "Restaurant Léon de Lyon": {
+        "average_sentiment_score": 0.47,
+        "average_rating": 4.5,
+        "num_reviews": 20
+    },
+    "La Mamounia": {
+        "average_sentiment_score": 0.61,
+        "average_rating": 4.05,
+        "num_reviews": 20
+    },
+    "El Sombrero": {
+        "average_sentiment_score": 0.8,
+        "average_rating": 4.74,
+        "num_reviews": 19
+    },
+    "Chez Hugon": {
+        "average_sentiment_score": 0.69,
+        "average_rating": 5.0,
+        "num_reviews": 18
+    },
+    "L Bar food & drink": {
+        "average_sentiment_score": 0.72,
+        "average_rating": 4.9,
+        "num_reviews": 20
+    },
+    "‍ 👨‍🍳 L'Étage - Restaurant Gastronomique Lyon": {
+        "average_sentiment_score": 0.76,
+        "average_rating": 5.0,
+        "num_reviews": 20
+    },
+    "Le Grenette café": {
+        "average_sentiment_score": 0.65,
+        "average_rating": 4.0,
+        "num_reviews": 9
+    },
+    "Au Petit Bouchon Chez Georges": {
+        "average_sentiment_score": 0.62,
+        "average_rating": 4.35,
+        "num_reviews": 20
+    },
+    "Les Fils À Maman Lyon": {
+        "average_sentiment_score": 0.31,
+        "average_rating": 4.25,
+        "num_reviews": 20
+    },
+    "Boulangerie Eric Kayser - Opéra": {
+        "average_sentiment_score": 0.42,
+        "average_rating": 2.43,
+        "num_reviews": 7
+    },
+    "Le Bouchon de l'Opéra": {
+        "average_sentiment_score": 0.72,
+        "average_rating": 4.55,
+        "num_reviews": 20
+    },
+    "La Tête De Lard": {
+        "average_sentiment_score": 0.62,
+        "average_rating": 4.15,
+        "num_reviews": 20
+    },
+    "Le Flan' Ruin Pub": {
+        "average_sentiment_score": 0.61,
+        "average_rating": 4.3,
+        "num_reviews": 20
+    },
+    "Bernachon Chocolats": {
+        "average_sentiment_score": 0.59,
+        "average_rating": 3.85,
+        "num_reviews": 20
+    },
+    "M Restaurant": {
+        "average_sentiment_score": 0.68,
+        "average_rating": 4.65,
+        "num_reviews": 20
+    },
+    "Le Garet": {
+        "average_sentiment_score": 0.78,
+        "average_rating": 4.65,
+        "num_reviews": 20
+    },
+    "Restaurant Cazenove de Pierre ORSI": {
+        "average_sentiment_score": 0.88,
+        "average_rating": 5.0,
+        "num_reviews": 7
+    },
+    "Restaurant brésilien-Lyon-Le Pain de Sucre": {
+        "average_sentiment_score": 0.64,
+        "average_rating": 4.62,
+        "num_reviews": 8
+    },
+    "Yzumi": {
+        "average_sentiment_score": 0.68,
+        "average_rating": 4.5,
+        "num_reviews": 20
+    },
+    "Les Garçons Bouchers": {
+        "average_sentiment_score": 0.45,
+        "average_rating": 4.06,
+        "num_reviews": 17
+    },
+    "Saumon et Cie": {
+        "average_sentiment_score": 0.6,
+        "average_rating": 4.17,
+        "num_reviews": 6
+    },
+    "CROC&GO": {
+        "average_sentiment_score": 0.15,
+        "average_rating": 2.83,
+        "num_reviews": 6
+    },
+    "EAT SUSHI CORDELIER": {
+        "average_sentiment_score": 0.52,
+        "average_rating": 4.6,
+        "num_reviews": 20
+    },
+    "La Patrie": {
+        "average_sentiment_score": 0.6,
+        "average_rating": 3.25,
+        "num_reviews": 8
+    },
+    "Sushi Shop Lyon Vitton": {
+        "average_sentiment_score": 0.54,
+        "average_rating": 3.94,
+        "num_reviews": 18
+    },
+    "Brasserie des Brotteaux": {
+        "average_sentiment_score": 0.78,
+        "average_rating": 4.75,
+        "num_reviews": 20
+    },
+    "Restaurant le Gourmet de Séze": {
+        "average_sentiment_score": 0.61,
+        "average_rating": 4.47,
+        "num_reviews": 17
+    },
+    "Brasserie L'Est - Bocuse": {
+        "average_sentiment_score": 0.56,
+        "average_rating": 4.35,
+        "num_reviews": 20
+    },
+    "F&K Bistroclub": {
+        "average_sentiment_score": 0.51,
+        "average_rating": 2.55,
+        "num_reviews": 20
+    },
+    "Restaurant Le Verdi": {
+        "average_sentiment_score": 0.49,
+        "average_rating": 3.37,
+        "num_reviews": 19
+    },
+    "La Nonna - Restaurant Italien et Pizzeria Lyon": {
+        "average_sentiment_score": 0.57,
+        "average_rating": 4.75,
+        "num_reviews": 20
+    },
+    "Le ch'ti Pot Ney": {
+        "average_sentiment_score": 0.66,
+        "average_rating": 4.67,
+        "num_reviews": 12
+    },
+    "Akle - la boutique des Halles": {
+        "average_sentiment_score": 0.94,
+        "average_rating": 5.0,
+        "num_reviews": 2
+    },
+    "Namdo Bobun Pho du Vietnam": {
+        "average_sentiment_score": 0.48,
+        "average_rating": 3.5,
+        "num_reviews": 6
+    },
+    "Restaurant La Belle Colombe": {
+        "average_sentiment_score": 0.68,
+        "average_rating": 4.64,
+        "num_reviews": 11
+    },
+    "Mika Sushi Gratte-Ciel": {
+        "average_sentiment_score": 0.83,
+        "average_rating": 4.0,
+        "num_reviews": 8
+    },
+    "SHAHEEN (tandoor Time)": {
+        "average_sentiment_score": 0.94,
+        "average_rating": 4.88,
+        "num_reviews": 8
+    },
+    "Au Rendez vous des Amis lyon 6": {
+        "average_sentiment_score": 0.55,
+        "average_rating": 4.2,
+        "num_reviews": 15
+    },
+    "MAISON SAVEUR RESTAURANT Asiatique": {
+        "average_sentiment_score": 0.61,
+        "average_rating": 5.0,
+        "num_reviews": 5
+    },
+    "Miwa Sushi": {
+        "average_sentiment_score": 0.5,
+        "average_rating": 4.6,
+        "num_reviews": 5
+    },
+    "JET PIZZA": {
+        "average_sentiment_score": 0.63,
+        "average_rating": 5.0,
+        "num_reviews": 5
+    },
+    "Pizza Cash": {
+        "average_sentiment_score": 0.34,
+        "average_rating": 3.67,
+        "num_reviews": 3
+    },
+    "TACOS SIX NEUF - restaurant Dar El Bey": {
+        "average_sentiment_score": 0.13,
+        "average_rating": 1.0,
+        "num_reviews": 1
+    },
+    "Ninkasi Gratte-Ciel": {
+        "average_sentiment_score": 0.75,
+        "average_rating": 4.6,
+        "num_reviews": 20
+    },
+    "Le Bosphorus kebab halal": {
+        "average_sentiment_score": 0.45,
+        "average_rating": 5.0,
+        "num_reviews": 4
+    },
+    "Le Bieristan": {
+        "average_sentiment_score": 0.37,
+        "average_rating": 4.82,
+        "num_reviews": 11
+    },
+    "Maison Bettant": {
+        "average_sentiment_score": 0.44,
+        "average_rating": 2.9,
+        "num_reviews": 20
+    },
+    "Hash Burger": {
+        "average_sentiment_score": 0.76,
+        "average_rating": 5.0,
+        "num_reviews": 6
+    },
+    "Mac-king": {
+        "average_sentiment_score": 0.77,
+        "average_rating": 4.75,
+        "num_reviews": 16
+    },
+    "La caveja": {
+        "average_sentiment_score": 0.8,
+        "average_rating": 5.0,
+        "num_reviews": 5
+    },
+    "ROSTI POULET Villeurbanne": {
+        "average_sentiment_score": 0.5,
+        "average_rating": 4.65,
+        "num_reviews": 20
+    },
+    "Bistrot Le Filanthrope": {
+        "average_sentiment_score": 0.73,
+        "average_rating": 4.55,
+        "num_reviews": 20
+    },
+    "3Poivres Villeurbanne": {
+        "average_sentiment_score": 0.66,
+        "average_rating": 4.45,
+        "num_reviews": 20
+    },
+    "Giovanni Ristorante": {
+        "average_sentiment_score": 0.35,
+        "average_rating": 3.29,
+        "num_reviews": 7
+    },
+    "Domino's Pizza Villeurbanne - Cusset": {
+        "average_sentiment_score": 0.21,
+        "average_rating": 1.33,
+        "num_reviews": 15
+    },
+    "Crêperie Tonnerre de Brest": {
+        "average_sentiment_score": 0.78,
+        "average_rating": 4.25,
+        "num_reviews": 8
+    },
+    "La Marinade": {
+        "average_sentiment_score": 0.43,
+        "average_rating": 2.8,
+        "num_reviews": 20
+    },
+    "Le Bistrot d'Alexis": {
+        "average_sentiment_score": 0.66,
+        "average_rating": 4.75,
+        "num_reviews": 4
+    },
+    "AT FOOD": {
+        "average_sentiment_score": 0.58,
+        "average_rating": 3.67,
+        "num_reviews": 3
+    },
+    "Le Kashmir": {
+        "average_sentiment_score": 0.75,
+        "average_rating": 4.9,
+        "num_reviews": 20
+    },
+    "Chicken Street Villeurbanne Naan & Fried Chicken": {
+        "average_sentiment_score": 0.41,
+        "average_rating": 2.35,
+        "num_reviews": 20
+    },
+    "La Fraîche Crêperie": {
+        "average_sentiment_score": 0.75,
+        "average_rating": 4.7,
+        "num_reviews": 20
+    },
+    "Domino's Pizza Lyon 9": {
+        "average_sentiment_score": 0.28,
+        "average_rating": 2.75,
+        "num_reviews": 12
+    },
+    "Ninkasi Gorge de Loup": {
+        "average_sentiment_score": 0.62,
+        "average_rating": 4.22,
+        "num_reviews": 18
+    },
+    "Valmy Tandoori": {
+        "average_sentiment_score": 0.74,
+        "average_rating": 4.31,
+        "num_reviews": 13
+    },
+    "Brasserie Le Tagalou": {
+        "average_sentiment_score": 0.56,
+        "average_rating": 3.78,
+        "num_reviews": 9
+    },
+    "ZiGana": {
+        "average_sentiment_score": 0.43,
+        "average_rating": 3.0,
+        "num_reviews": 10
+    },
+    "Naruto Sushi": {
+        "average_sentiment_score": 0.67,
+        "average_rating": 4.67,
+        "num_reviews": 12
+    },
+    "Kebab d'Or Le Marietton": {
+        "average_sentiment_score": 0.76,
+        "average_rating": 4.85,
+        "num_reviews": 20
+    },
+    "Rock n'Eat": {
+        "average_sentiment_score": 0.79,
+        "average_rating": 4.85,
+        "num_reviews": 13
+    },
+    "Enjoy Tacos - Lyon 9": {
+        "average_sentiment_score": 0.68,
+        "average_rating": 4.9,
+        "num_reviews": 20
+    },
+    "Santosha Lyon Vaise - Cantine Asiatique": {
+        "average_sentiment_score": 0.52,
+        "average_rating": 4.95,
+        "num_reviews": 20
+    },
+    "Le Moment d’y Goûter": {
+        "average_sentiment_score": 0.72,
+        "average_rating": 4.0,
+        "num_reviews": 1
+    },
+    "O'Kypos": {
+        "average_sentiment_score": 0.83,
+        "average_rating": 4.92,
+        "num_reviews": 12
+    },
+    "Pizza Locale": {
+        "average_sentiment_score": 0.75,
+        "average_rating": 5.0,
+        "num_reviews": 20
+    },
+    "Fenotte - Traiteur Militant Éco-Responsable Bio Zéro Déchet Lyon": {
+        "average_sentiment_score": 0.59,
+        "average_rating": 5.0,
+        "num_reviews": 8
+    },
+    "My Little Warung Lyon Vaise": {
+        "average_sentiment_score": 0.38,
+        "average_rating": 4.2,
+        "num_reviews": 20
+    },
+    "Comptoir B": {
+        "average_sentiment_score": 0.94,
+        "average_rating": 5.0,
+        "num_reviews": 9
+    },
+    "Le Plat Canaille": {
+        "average_sentiment_score": 0.51,
+        "average_rating": 4.43,
+        "num_reviews": 7
+    },
+    "Les Tontons Burgers Vaise": {
+        "average_sentiment_score": 0.23,
+        "average_rating": 4.09,
+        "num_reviews": 11
+    },
+    "L'Esterina": {
+        "average_sentiment_score": 0.49,
+        "average_rating": 5.0,
+        "num_reviews": 4
+    },
+    "Le Pas Sage Antillais": {
+        "average_sentiment_score": 0.97,
+        "average_rating": 4.0,
+        "num_reviews": 2
+    },
+    "Asian House Lyon 9": {
+        "average_sentiment_score": 0.7,
+        "average_rating": 4.6,
+        "num_reviews": 20
+    },
+    "Mr. Canaille - Chef Caterer Centre Lyon": {
+        "average_sentiment_score": 0.99,
+        "average_rating": 5.0,
+        "num_reviews": 2
+    },
+    "La Plante Du Loup Vaise": {
+        "average_sentiment_score": 0.04,
+        "average_rating": 4.0,
+        "num_reviews": 1
+    },
+    "Cabaret L'ane Rouge Dîner Spectacle": {
+        "average_sentiment_score": 0.56,
+        "average_rating": 4.74,
+        "num_reviews": 19
+    },
+    "Café J'Adore": {
+        "average_sentiment_score": 0.41,
+        "average_rating": 1.0,
+        "num_reviews": 3
+    },
+    "La Cave Des Voyageurs": {
+        "average_sentiment_score": 0.45,
+        "average_rating": 3.88,
+        "num_reviews": 8
+    },
+    "Chez Pimousse": {
+        "average_sentiment_score": 0.67,
+        "average_rating": 4.65,
+        "num_reviews": 20
+    },
+    "Cabana Café \"Latino Social Club\" -Bar latino festif - Tapas": {
+        "average_sentiment_score": 0.8,
+        "average_rating": 3.56,
+        "num_reviews": 9
+    },
+    "Dam's Pub": {
+        "average_sentiment_score": 0.68,
+        "average_rating": 4.4,
+        "num_reviews": 20
+    },
+    "Hopstore": {
+        "average_sentiment_score": 0.65,
+        "average_rating": 4.75,
+        "num_reviews": 20
+    },
+    "HAPE - Pizza & Ravioles": {
+        "average_sentiment_score": 0.77,
+        "average_rating": 4.8,
+        "num_reviews": 20
+    },
+    "L'Atelier des Augustins": {
+        "average_sentiment_score": 0.68,
+        "average_rating": 4.9,
+        "num_reviews": 20
+    },
+    "robert croix rousse": {
+        "average_sentiment_score": 1.0,
+        "average_rating": 5.0,
+        "num_reviews": 1
+    },
+    "Komé Izakaya ｜restaurant sushi - ramen - saké - cocktails": {
+        "average_sentiment_score": 0.87,
+        "average_rating": 4.6,
+        "num_reviews": 20
+    },
+    "405 Bar à Bières": {
+        "average_sentiment_score": 0.77,
+        "average_rating": 4.44,
+        "num_reviews": 9
+    },
+    "Maison Villemanzy": {
+        "average_sentiment_score": 0.66,
+        "average_rating": 4.71,
+        "num_reviews": 14
+    },
+    "Toutes les Couleurs": {
+        "average_sentiment_score": 0.86,
+        "average_rating": 5.0,
+        "num_reviews": 5
+    },
+    "La Clef de Voûte": {
+        "average_sentiment_score": 0.83,
+        "average_rating": 5.0,
+        "num_reviews": 20
+    },
+    "L'Assiette du Vin": {
+        "average_sentiment_score": 0.89,
+        "average_rating": 4.71,
+        "num_reviews": 7
+    },
+    "Le Cochon Qui Boit": {
+        "average_sentiment_score": 0.89,
+        "average_rating": 4.71,
+        "num_reviews": 17
+    },
+    "La Mère Brazier": {
+        "average_sentiment_score": 0.66,
+        "average_rating": 4.95,
+        "num_reviews": 20
+    },
+    "Café du Gros Caillou": {
+        "average_sentiment_score": 0.58,
+        "average_rating": 2.4,
+        "num_reviews": 10
+    },
+    "Le Morand": {
+        "average_sentiment_score": 0.9,
+        "average_rating": 4.29,
+        "num_reviews": 7
+    },
+    "Via Barcatta": {
+        "average_sentiment_score": 0.96,
+        "average_rating": 5.0,
+        "num_reviews": 2
+    },
+    "O 6ème délices": {
+        "average_sentiment_score": 0.25,
+        "average_rating": 3.67,
+        "num_reviews": 3
+    },
+    "Tire-toi une Bûche": {
+        "average_sentiment_score": 0.74,
+        "average_rating": 4.6,
+        "num_reviews": 20
+    },
+    "ok sushi": {
+        "average_sentiment_score": 0.78,
+        "average_rating": 5.0,
+        "num_reviews": 2
+    },
+    "Le Book-Lard": {
+        "average_sentiment_score": 0.5,
+        "average_rating": 4.36,
+        "num_reviews": 11
+    },
+    "Le zeste gourmand": {
+        "average_sentiment_score": 0.57,
+        "average_rating": 4.5,
+        "num_reviews": 18
+    },
+    "UGC Astoria": {
+        "average_sentiment_score": 0.43,
+        "average_rating": 3.88,
+        "num_reviews": 16
+    },
+    "Il Fico - Pizzas & panuozzos au feu de bois": {
+        "average_sentiment_score": 0.63,
+        "average_rating": 4.91,
+        "num_reviews": 11
+    },
+    "Milonga Restaurante": {
+        "average_sentiment_score": 0.66,
+        "average_rating": 4.92,
+        "num_reviews": 12
+    },
+    "Restaurant El Cafetero": {
+        "average_sentiment_score": 0.85,
+        "average_rating": 5.0,
+        "num_reviews": 6
+    },
+    "Chez Song": {
+        "average_sentiment_score": 0.58,
+        "average_rating": 3.95,
+        "num_reviews": 20
+    },
+    "La casa Vito Morreale": {
+        "average_sentiment_score": 0.73,
+        "average_rating": 4.45,
+        "num_reviews": 11
+    },
+    "BISTRO B": {
+        "average_sentiment_score": 0.62,
+        "average_rating": 5.0,
+        "num_reviews": 12
+    },
+    "WAKAI Restaurant Japonais": {
+        "average_sentiment_score": 0.43,
+        "average_rating": 5.0,
+        "num_reviews": 1
+    },
+    "The Oriental House": {
+        "average_sentiment_score": 0.43,
+        "average_rating": 3.67,
+        "num_reviews": 3
+    },
+    "Le Neuvième Art": {
+        "average_sentiment_score": 0.54,
+        "average_rating": 4.82,
+        "num_reviews": 11
+    },
+    "CLOS BIS": {
+        "average_sentiment_score": 0.89,
+        "average_rating": 5.0,
+        "num_reviews": 2
+    },
+    "A l'Improviste": {
+        "average_sentiment_score": 0.77,
+        "average_rating": 4.85,
+        "num_reviews": 13
+    },
+    "Au Fût et à mesure Lyon": {
+        "average_sentiment_score": 0.59,
+        "average_rating": 4.54,
+        "num_reviews": 13
+    },
+    "Le Bouchon Comtois": {
+        "average_sentiment_score": 0.94,
+        "average_rating": 5.0,
+        "num_reviews": 7
+    },
+    "Les saveurs du Bistrot": {
+        "average_sentiment_score": 0.76,
+        "average_rating": 5.0,
+        "num_reviews": 9
+    },
+    "Le Comptoir Des Cousins": {
+        "average_sentiment_score": 0.63,
+        "average_rating": 5.0,
+        "num_reviews": 13
+    },
+    "Boulangerie Eric Kayser - Cours Vitton": {
+        "average_sentiment_score": 0.34,
+        "average_rating": 2.5,
+        "num_reviews": 4
+    },
+    "Cuisine En Ville - Restaurant Halal": {
+        "average_sentiment_score": 0.76,
+        "average_rating": 4.4,
+        "num_reviews": 20
+    },
+    "Le Simple Goût Des Choses": {
+        "average_sentiment_score": 0.87,
+        "average_rating": 4.85,
+        "num_reviews": 20
+    },
+    "DD Sushi Charpennes": {
+        "average_sentiment_score": 0.67,
+        "average_rating": 4.17,
+        "num_reviews": 6
+    },
+    "MISTER TACOS": {
+        "average_sentiment_score": 0.65,
+        "average_rating": 3.86,
+        "num_reviews": 7
+    },
+    "Hamamet Tacos": {
+        "average_sentiment_score": 0.54,
+        "average_rating": 4.0,
+        "num_reviews": 20
+    },
+    "Nelsao Lyon Charpennes": {
+        "average_sentiment_score": 0.69,
+        "average_rating": 4.9,
+        "num_reviews": 10
+    },
+    "Triptik Gourmand": {
+        "average_sentiment_score": 0.56,
+        "average_rating": 4.4,
+        "num_reviews": 5
+    },
+    "Ain El Fouara": {
+        "average_sentiment_score": 0.61,
+        "average_rating": 4.5,
+        "num_reviews": 20
+    },
+    "Storia Nostra": {
+        "average_sentiment_score": 0.61,
+        "average_rating": 4.22,
+        "num_reviews": 18
+    },
+    "Bryan's Café": {
+        "average_sentiment_score": 0.69,
+        "average_rating": 4.18,
+        "num_reviews": 17
+    },
+    "Le Shimla": {
+        "average_sentiment_score": 0.95,
+        "average_rating": 4.79,
+        "num_reviews": 14
+    },
+    "Okawali Charpennes pâtes faites maison": {
+        "average_sentiment_score": 0.81,
+        "average_rating": 4.56,
+        "num_reviews": 9
+    },
+    "MRoc Villeurbanne": {
+        "average_sentiment_score": 0.81,
+        "average_rating": 4.5,
+        "num_reviews": 20
+    },
+    "Seven Days Restaurant": {
+        "average_sentiment_score": 0.02,
+        "average_rating": 5.0,
+        "num_reviews": 1
+    },
+    "Casa de Carolis": {
+        "average_sentiment_score": 0.44,
+        "average_rating": 4.88,
+        "num_reviews": 8
+    },
+    "Au Pain Gourmand": {
+        "average_sentiment_score": 0.43,
+        "average_rating": 3.33,
+        "num_reviews": 3
+    },
+    "La Pizza Italienne": {
+        "average_sentiment_score": 0.74,
+        "average_rating": 5.0,
+        "num_reviews": 4
+    },
+    "Le Tourbillon de la Vigne - Restaurant": {
+        "average_sentiment_score": 0.81,
+        "average_rating": 5.0,
+        "num_reviews": 6
+    },
+    "Loop's Pub": {
+        "average_sentiment_score": 0.5,
+        "average_rating": 4.65,
+        "num_reviews": 20
+    },
+    "ETIENNE Coffee & Shop Villeurbanne Gratte-Ciel": {
+        "average_sentiment_score": 0.47,
+        "average_rating": 2.85,
+        "num_reviews": 13
+    },
+    "Ato Sushi Gratte-ciel": {
+        "average_sentiment_score": 0.82,
+        "average_rating": 3.5,
+        "num_reviews": 2
+    },
+    "Crêpy": {
+        "average_sentiment_score": 0.73,
+        "average_rating": 5.0,
+        "num_reviews": 4
+    },
+    "YAAFA GRATTE-CIEL": {
+        "average_sentiment_score": 0.27,
+        "average_rating": 3.22,
+        "num_reviews": 9
+    },
+    "Okto Sushi": {
+        "average_sentiment_score": 0.63,
+        "average_rating": 4.7,
+        "num_reviews": 20
+    },
+    "NEW FIVE'S": {
+        "average_sentiment_score": 0.69,
+        "average_rating": 4.73,
+        "num_reviews": 11
+    },
+    "Café PMU Le Stadium": {
+        "average_sentiment_score": 0.55,
+        "average_rating": 3.67,
+        "num_reviews": 3
+    },
+    "Pizza'YASS": {
+        "average_sentiment_score": 0.32,
+        "average_rating": 4.67,
+        "num_reviews": 6
+    },
+    "Casa Di Tacos": {
+        "average_sentiment_score": 0.44,
+        "average_rating": 5.0,
+        "num_reviews": 3
+    },
+    "Couscous Full Food": {
+        "average_sentiment_score": 0.66,
+        "average_rating": 4.67,
+        "num_reviews": 3
+    },
+    "Le Taille-Crayon": {
+        "average_sentiment_score": 0.49,
+        "average_rating": 4.05,
+        "num_reviews": 20
+    },
+    "MARIETTE Cours Emile Zola Villeurbanne": {
+        "average_sentiment_score": 0.34,
+        "average_rating": 1.62,
+        "num_reviews": 13
+    },
+    "O’LAFFA": {
+        "average_sentiment_score": 0.89,
+        "average_rating": 5.0,
+        "num_reviews": 4
+    },
+    "Pizzeria Bella Pizza Villeurbanne": {
+        "average_sentiment_score": 0.73,
+        "average_rating": 5.0,
+        "num_reviews": 20
+    },
+    "Le Delta Du Strauss": {
+        "average_sentiment_score": 0.96,
+        "average_rating": 5.0,
+        "num_reviews": 1
+    },
+    "Bombay Tandoori": {
+        "average_sentiment_score": 0.62,
+        "average_rating": 5.0,
+        "num_reviews": 11
+    },
+    "Kebab Le 315": {
+        "average_sentiment_score": 0.75,
+        "average_rating": 4.62,
+        "num_reviews": 8
+    },
+    "Saveurs D'Armenie": {
+        "average_sentiment_score": 0.95,
+        "average_rating": 5.0,
+        "num_reviews": 2
+    },
+    "Bangkok Factory Villeurbanne": {
+        "average_sentiment_score": 0.65,
+        "average_rating": 4.62,
+        "num_reviews": 13
+    },
+    "Restaurant Le Monde d'Angkor": {
+        "average_sentiment_score": 0.49,
+        "average_rating": 4.0,
+        "num_reviews": 5
+    },
+    "Mont D'Or Pizza": {
+        "average_sentiment_score": 0.62,
+        "average_rating": 5.0,
+        "num_reviews": 7
+    },
+    "Domeva Restaurant Et Pizzeria": {
+        "average_sentiment_score": 0.28,
+        "average_rating": 3.67,
+        "num_reviews": 6
+    },
+    "Chamas Tacos Lyon Vaise": {
+        "average_sentiment_score": 0.53,
+        "average_rating": 3.29,
+        "num_reviews": 7
+    },
+    "OPPA": {
+        "average_sentiment_score": 0.71,
+        "average_rating": 4.25,
+        "num_reviews": 20
+    },
+    "Cappello Rosso": {
+        "average_sentiment_score": 0.66,
+        "average_rating": 4.4,
+        "num_reviews": 20
+    },
+    "Grand Café du Commerce": {
+        "average_sentiment_score": 0.51,
+        "average_rating": 4.75,
+        "num_reviews": 4
+    },
+    "NAAN Boulangerie & Pâtisserie - Valmy": {
+        "average_sentiment_score": 0.43,
+        "average_rating": 2.43,
+        "num_reviews": 14
+    },
+    "Les Boulistes": {
+        "average_sentiment_score": 0.74,
+        "average_rating": 4.8,
+        "num_reviews": 20
+    },
+    "Les Enfants du Paradis": {
+        "average_sentiment_score": 0.91,
+        "average_rating": 5.0,
+        "num_reviews": 4
+    },
+    "Café Clos Jouve": {
+        "average_sentiment_score": 0.57,
+        "average_rating": 5.0,
+        "num_reviews": 12
+    },
+    "Bistrot du Boulevard": {
+        "average_sentiment_score": 0.3,
+        "average_rating": 5.0,
+        "num_reviews": 1
+    },
+    "Saito": {
+        "average_sentiment_score": 0.66,
+        "average_rating": 5.0,
+        "num_reviews": 5
+    },
+    "Restaurant RONEY KEBAB": {
+        "average_sentiment_score": 0.53,
+        "average_rating": 4.5,
+        "num_reviews": 20
+    },
+    "Buongiorno Épicerie Fine": {
+        "average_sentiment_score": 0.96,
+        "average_rating": 5.0,
+        "num_reviews": 1
+    },
+    "Daniel et Denise Croix Rousse - Bouchon Lyonnais": {
+        "average_sentiment_score": 0.77,
+        "average_rating": 4.4,
+        "num_reviews": 20
+    },
+    "La Cagette de L’Algérois": {
+        "average_sentiment_score": 0.52,
+        "average_rating": 4.67,
+        "num_reviews": 6
+    },
+    "Le Desjeuneur": {
+        "average_sentiment_score": 0.59,
+        "average_rating": 4.8,
+        "num_reviews": 20
+    },
+    "Le Plato": {
+        "average_sentiment_score": 0.72,
+        "average_rating": 4.95,
+        "num_reviews": 20
+    },
+    "Le Sacré Cœur des Pentes": {
+        "average_sentiment_score": 0.6,
+        "average_rating": 4.71,
+        "num_reviews": 14
+    },
+    "Bangkok Royal": {
+        "average_sentiment_score": 0.49,
+        "average_rating": 4.4,
+        "num_reviews": 5
+    },
+    "La Mangue Amère": {
+        "average_sentiment_score": 0.55,
+        "average_rating": 5.0,
+        "num_reviews": 15
+    },
+    "Balthaz'Art": {
+        "average_sentiment_score": 0.75,
+        "average_rating": 4.75,
+        "num_reviews": 20
+    },
+    "Brasserie Chanteclair": {
+        "average_sentiment_score": 0.55,
+        "average_rating": 3.55,
+        "num_reviews": 20
+    },
+    "Soda Bar": {
+        "average_sentiment_score": 0.69,
+        "average_rating": 4.93,
+        "num_reviews": 14
+    },
+    "Copains Copines sur la Colline": {
+        "average_sentiment_score": 0.81,
+        "average_rating": 4.6,
+        "num_reviews": 20
+    },
+    "Bistrot Jutard": {
+        "average_sentiment_score": 0.63,
+        "average_rating": 4.1,
+        "num_reviews": 20
+    },
+    "Le Pailleron": {
+        "average_sentiment_score": 0.59,
+        "average_rating": 4.6,
+        "num_reviews": 20
+    },
+    "Casseroles et Vieilles Gamelles": {
+        "average_sentiment_score": 0.74,
+        "average_rating": 5.0,
+        "num_reviews": 4
+    },
+    "Pizzeria chez Puce Lyon Croix rousse Caluire": {
+        "average_sentiment_score": 0.47,
+        "average_rating": 3.4,
+        "num_reviews": 10
+    },
+    "Chicken House": {
+        "average_sentiment_score": 0.51,
+        "average_rating": 3.6,
+        "num_reviews": 10
+    },
+    "Les Demoiselles de Rochefort": {
+        "average_sentiment_score": 0.57,
+        "average_rating": 4.9,
+        "num_reviews": 10
+    },
+    "NoZe": {
+        "average_sentiment_score": 0.48,
+        "average_rating": 3.5,
+        "num_reviews": 4
+    },
+    "La Monella": {
+        "average_sentiment_score": 0.76,
+        "average_rating": 5.0,
+        "num_reviews": 3
+    },
+    "Le Martini": {
+        "average_sentiment_score": 0.99,
+        "average_rating": 4.5,
+        "num_reviews": 2
+    },
+    "RESTAURANT Takao Takano": {
+        "average_sentiment_score": 0.69,
+        "average_rating": 4.46,
+        "num_reviews": 13
+    },
+    "Mont Fuji": {
+        "average_sentiment_score": 0.23,
+        "average_rating": 4.75,
+        "num_reviews": 20
+    },
+    "Le Sully": {
+        "average_sentiment_score": 0.81,
+        "average_rating": 4.7,
+        "num_reviews": 20
+    },
+    "Casareccio": {
+        "average_sentiment_score": 0.65,
+        "average_rating": 4.9,
+        "num_reviews": 20
+    },
+    "Bar Restaurant Le Molière": {
+        "average_sentiment_score": 0.96,
+        "average_rating": 5.0,
+        "num_reviews": 1
+    },
+    "Cercle Rouge": {
+        "average_sentiment_score": 0.88,
+        "average_rating": 5.0,
+        "num_reviews": 17
+    },
+    "La Quintessence ( Anthony Baud )": {
+        "average_sentiment_score": 0.55,
+        "average_rating": 4.45,
+        "num_reviews": 20
+    },
+    "L'Etoile Opéra": {
+        "average_sentiment_score": 0.75,
+        "average_rating": 3.56,
+        "num_reviews": 9
+    },
+    "L'original Royal couscous": {
+        "average_sentiment_score": 0.29,
+        "average_rating": 3.8,
+        "num_reviews": 5
+    },
+    "À la bonne franquette": {
+        "average_sentiment_score": 0.54,
+        "average_rating": 5.0,
+        "num_reviews": 5
+    },
+    "Pizza Capricci - Camion Pizza": {
+        "average_sentiment_score": 0.28,
+        "average_rating": 4.8,
+        "num_reviews": 5
+    },
+    "Restaurant Universitaire Puvis de Chavannes": {
+        "average_sentiment_score": 0.35,
+        "average_rating": 3.62,
+        "num_reviews": 8
+    },
+    "Pointe De Rêve": {
+        "average_sentiment_score": 0.62,
+        "average_rating": 4.71,
+        "num_reviews": 7
+    },
+    "Ninkasi La Doua": {
+        "average_sentiment_score": 0.73,
+        "average_rating": 4.9,
+        "num_reviews": 20
+    },
+    "Pizza Dina": {
+        "average_sentiment_score": 0.28,
+        "average_rating": 4.33,
+        "num_reviews": 3
+    },
+    "Univers Café": {
+        "average_sentiment_score": 0.56,
+        "average_rating": 4.0,
+        "num_reviews": 9
+    },
+    "OXXO Pub": {
+        "average_sentiment_score": 0.53,
+        "average_rating": 4.75,
+        "num_reviews": 4
+    },
+    "Spicy Tandoori": {
+        "average_sentiment_score": 0.59,
+        "average_rating": 4.71,
+        "num_reviews": 17
+    },
+    "KFé Thiers": {
+        "average_sentiment_score": 1.0,
+        "average_rating": 5.0,
+        "num_reviews": 1
+    },
+    "Toï Toï Le Zinc": {
+        "average_sentiment_score": 0.56,
+        "average_rating": 4.33,
+        "num_reviews": 12
+    },
+    "Arcaneum Bar Gaming": {
+        "average_sentiment_score": 0.17,
+        "average_rating": 5.0,
+        "num_reviews": 1
+    },
+    "Ristretto": {
+        "average_sentiment_score": 0.49,
+        "average_rating": 3.5,
+        "num_reviews": 8
+    },
+    "La Panetière des Charpennes": {
+        "average_sentiment_score": 0.98,
+        "average_rating": 2.5,
+        "num_reviews": 2
+    },
+    "Döner Gang": {
+        "average_sentiment_score": 0.62,
+        "average_rating": 4.4,
+        "num_reviews": 20
+    },
+    "Pizzeria Ristorante Da Mario": {
+        "average_sentiment_score": 0.71,
+        "average_rating": 4.73,
+        "num_reviews": 11
+    },
+    "Chô Chaï Villeurbanne - Thaï Street Food": {
+        "average_sentiment_score": 0.63,
+        "average_rating": 3.3,
+        "num_reviews": 10
+    },
+    "HAYASHI—SUSHI RAMEN": {
+        "average_sentiment_score": 0.56,
+        "average_rating": 4.88,
+        "num_reviews": 8
+    },
+    "Net Pizza Lyon": {
+        "average_sentiment_score": 0.45,
+        "average_rating": 5.0,
+        "num_reviews": 8
+    },
+    "La Palmeraie des Saveurs": {
+        "average_sentiment_score": 0.53,
+        "average_rating": 3.7,
+        "num_reviews": 20
+    },
+    "Krousty Sabaidi - Villeurbanne": {
+        "average_sentiment_score": 0.37,
+        "average_rating": 4.06,
+        "num_reviews": 18
+    },
+    "Asian House Villeurbanne": {
+        "average_sentiment_score": 0.54,
+        "average_rating": 4.15,
+        "num_reviews": 20
+    },
+    "MEXI KEBAB GRATTE-CIEL": {
+        "average_sentiment_score": 0.6,
+        "average_rating": 4.25,
+        "num_reviews": 12
+    },
+    "Maison Peycelon": {
+        "average_sentiment_score": 0.57,
+        "average_rating": 4.67,
+        "num_reviews": 9
+    },
+    "G la Dalle Villeurbanne": {
+        "average_sentiment_score": 0.99,
+        "average_rating": 5.0,
+        "num_reviews": 1
+    },
+    "DELIZIA TRATTORIA - VILLEURBANNE": {
+        "average_sentiment_score": 0.26,
+        "average_rating": 3.33,
+        "num_reviews": 3
+    },
+    "Le Gewid": {
+        "average_sentiment_score": 0.06,
+        "average_rating": 1.67,
+        "num_reviews": 3
+    },
+    "Planet' Burger": {
+        "average_sentiment_score": 0.62,
+        "average_rating": 4.75,
+        "num_reviews": 20
+    },
+    "Bar-Tabac Le Café de la Paix (PMU, FDJ, RELAIS COLIS, NICKEL) - Diffusion des courses PMU.": {
+        "average_sentiment_score": 0.4,
+        "average_rating": 5.0,
+        "num_reviews": 2
+    },
+    "GOTTAY TACOS": {
+        "average_sentiment_score": 0.78,
+        "average_rating": 4.56,
+        "num_reviews": 16
+    },
+    "Matsuri Lyon Vaise": {
+        "average_sentiment_score": 0.48,
+        "average_rating": 4.4,
+        "num_reviews": 20
+    },
+    "Kass Poz Restaurant Mauricien": {
+        "average_sentiment_score": 0.58,
+        "average_rating": 4.6,
+        "num_reviews": 10
+    },
+    "Restaurant Valmidi": {
+        "average_sentiment_score": 0.97,
+        "average_rating": 4.83,
+        "num_reviews": 6
+    },
+    "Tacos Story": {
+        "average_sentiment_score": 0.58,
+        "average_rating": 3.65,
+        "num_reviews": 20
+    },
+    "Ta5ty Pizza - Lyon 9 - Valmy": {
+        "average_sentiment_score": 0.57,
+        "average_rating": 4.3,
+        "num_reviews": 10
+    },
+    "Restaurant La Bouteille": {
+        "average_sentiment_score": 0.84,
+        "average_rating": 4.0,
+        "num_reviews": 1
+    },
+    "Chicken Chips": {
+        "average_sentiment_score": 0.31,
+        "average_rating": 3.08,
+        "num_reviews": 13
+    },
+    "Li Beirut": {
+        "average_sentiment_score": 0.66,
+        "average_rating": 4.4,
+        "num_reviews": 20
+    },
+    "Plan Pizza - Lyon - Vaise": {
+        "average_sentiment_score": 0.67,
+        "average_rating": 4.6,
+        "num_reviews": 20
+    },
+    "CRÊPERIE BUBBLE TEA The Garden": {
+        "average_sentiment_score": 0.76,
+        "average_rating": 4.73,
+        "num_reviews": 11
+    },
+    "Lac de van": {
+        "average_sentiment_score": 0.76,
+        "average_rating": 5.0,
+        "num_reviews": 4
+    },
+    "Chez L'ancien Lyon 9": {
+        "average_sentiment_score": 0.4,
+        "average_rating": 4.36,
+        "num_reviews": 14
+    },
+    "Brasserie L'Ouest - Bocuse": {
+        "average_sentiment_score": 0.58,
+        "average_rating": 4.05,
+        "num_reviews": 20
+    },
+    "Restaurant L'emeraude": {
+        "average_sentiment_score": 0.67,
+        "average_rating": 4.8,
+        "num_reviews": 20
+    },
+    "La Passeggiata": {
+        "average_sentiment_score": 0.96,
+        "average_rating": 5.0,
+        "num_reviews": 8
+    },
+    "Milord Circus": {
+        "average_sentiment_score": 0.75,
+        "average_rating": 4.75,
+        "num_reviews": 20
+    },
+    "Takumi Ramen": {
+        "average_sentiment_score": 0.7,
+        "average_rating": 4.57,
+        "num_reviews": 14
+    },
+    "Accords Gourmands": {
+        "average_sentiment_score": 0.75,
+        "average_rating": 5.0,
+        "num_reviews": 7
+    },
+    "Le Tiroir": {
+        "average_sentiment_score": 0.67,
+        "average_rating": 4.78,
+        "num_reviews": 18
+    },
+    "Lanka - Good Indian Food": {
+        "average_sentiment_score": 0.67,
+        "average_rating": 5.0,
+        "num_reviews": 20
+    },
+    "Bleuvert": {
+        "average_sentiment_score": 0.72,
+        "average_rating": 5.0,
+        "num_reviews": 8
+    },
+    "Café du 4ème": {
+        "average_sentiment_score": 0.79,
+        "average_rating": 4.91,
+        "num_reviews": 11
+    },
+    "Le Plateau de Manu": {
+        "average_sentiment_score": 0.58,
+        "average_rating": 5.0,
+        "num_reviews": 5
+    },
+    "Sushi Shop Lyon Croix Rousse": {
+        "average_sentiment_score": 0.38,
+        "average_rating": 3.0,
+        "num_reviews": 4
+    },
+    "LA BODEGUITA CUBANA": {
+        "average_sentiment_score": 0.93,
+        "average_rating": 4.9,
+        "num_reviews": 10
+    },
+    "L'Oiseau Perché": {
+        "average_sentiment_score": 0.66,
+        "average_rating": 4.8,
+        "num_reviews": 5
+    },
+    "Canuts Kebab": {
+        "average_sentiment_score": 0.44,
+        "average_rating": 4.5,
+        "num_reviews": 12
+    },
+    "Alveoles cantine": {
+        "average_sentiment_score": 0.99,
+        "average_rating": 1.0,
+        "num_reviews": 1
+    },
+    "Bistrot Thélème": {
+        "average_sentiment_score": 0.53,
+        "average_rating": 4.5,
+        "num_reviews": 20
+    },
+    "Le Vitis Bar": {
+        "average_sentiment_score": 0.87,
+        "average_rating": 5.0,
+        "num_reviews": 16
+    },
+    "Quantine": {
+        "average_sentiment_score": 0.82,
+        "average_rating": 4.6,
+        "num_reviews": 20
+    },
+    "Aux Trois Cochons": {
+        "average_sentiment_score": 0.8,
+        "average_rating": 4.8,
+        "num_reviews": 10
+    },
+    "Bobun boulevard": {
+        "average_sentiment_score": 0.74,
+        "average_rating": 4.0,
+        "num_reviews": 12
+    },
+    "PIZZ'APPEL • CROIX ROUSSE": {
+        "average_sentiment_score": 0.7,
+        "average_rating": 4.67,
+        "num_reviews": 15
+    },
+    "Fortune": {
+        "average_sentiment_score": 0.98,
+        "average_rating": 5.0,
+        "num_reviews": 2
+    },
+    "MARZA": {
+        "average_sentiment_score": 0.66,
+        "average_rating": 5.0,
+        "num_reviews": 5
+    },
+    "Aromatic Restaurant": {
+        "average_sentiment_score": 0.52,
+        "average_rating": 4.7,
+        "num_reviews": 20
+    },
+    "Le Canut et Les Gones": {
+        "average_sentiment_score": 0.52,
+        "average_rating": 4.33,
+        "num_reviews": 15
+    },
+    "Tonka Croix Rousse": {
+        "average_sentiment_score": 0.53,
+        "average_rating": 3.83,
+        "num_reviews": 6
+    },
+    "Aux Gogniols": {
+        "average_sentiment_score": 0.78,
+        "average_rating": 4.5,
+        "num_reviews": 8
+    },
+    "Pizzeria Bocca Di Rosa": {
+        "average_sentiment_score": 0.87,
+        "average_rating": 5.0,
+        "num_reviews": 8
+    },
+    "Bistrot des Voraces": {
+        "average_sentiment_score": 0.89,
+        "average_rating": 4.73,
+        "num_reviews": 11
+    },
+    "Domino's Pizza Lyon 4 - Caluire": {
+        "average_sentiment_score": 0.42,
+        "average_rating": 2.67,
+        "num_reviews": 15
+    },
+    "Toki sushi": {
+        "average_sentiment_score": 0.91,
+        "average_rating": 4.86,
+        "num_reviews": 7
+    },
+    "Restaurant de la Soie": {
+        "average_sentiment_score": 0.82,
+        "average_rating": 5.0,
+        "num_reviews": 6
+    },
+    "La Jonque": {
+        "average_sentiment_score": 0.71,
+        "average_rating": 5.0,
+        "num_reviews": 2
+    },
+    "La Gargotte": {
+        "average_sentiment_score": 0.71,
+        "average_rating": 4.77,
+        "num_reviews": 13
+    },
+    "Bar L'Habit Rouge": {
+        "average_sentiment_score": 0.52,
+        "average_rating": 5.0,
+        "num_reviews": 3
+    },
+    "Comptoir du Sixième": {
+        "average_sentiment_score": 0.81,
+        "average_rating": 5.0,
+        "num_reviews": 7
+    },
+    "À Chacun Sa Tasse": {
+        "average_sentiment_score": 0.52,
+        "average_rating": 4.55,
+        "num_reviews": 20
+    },
+    "Chez Terra": {
+        "average_sentiment_score": 0.53,
+        "average_rating": 5.0,
+        "num_reviews": 2
+    },
+    "Pignol Vendôme": {
+        "average_sentiment_score": 0.72,
+        "average_rating": 3.86,
+        "num_reviews": 7
+    },
+    "Restaurant MUTSUKI-Au Petit Poisson Rouge": {
+        "average_sentiment_score": 0.45,
+        "average_rating": 5.0,
+        "num_reviews": 1
+    },
+    "Le Président Restaurant": {
+        "average_sentiment_score": 0.97,
+        "average_rating": 5.0,
+        "num_reviews": 5
+    },
+    "Buvette de l'Observatoire": {
+        "average_sentiment_score": 0.88,
+        "average_rating": 4.75,
+        "num_reviews": 8
+    },
+    "UGC Ciné Cité Internationale": {
+        "average_sentiment_score": 0.48,
+        "average_rating": 3.1,
+        "num_reviews": 20
+    },
+    "Le Nouveau Hong-Kong": {
+        "average_sentiment_score": 0.4,
+        "average_rating": 3.17,
+        "num_reviews": 6
+    },
+    "Crêperie du Parc": {
+        "average_sentiment_score": 0.51,
+        "average_rating": 5.0,
+        "num_reviews": 1
+    },
+    "Steff Restaurant": {
+        "average_sentiment_score": 0.92,
+        "average_rating": 4.0,
+        "num_reviews": 1
+    },
+    "Côté Parc": {
+        "average_sentiment_score": 0.98,
+        "average_rating": 5.0,
+        "num_reviews": 1
+    },
+    "Zucca": {
+        "average_sentiment_score": 0.5,
+        "average_rating": 2.5,
+        "num_reviews": 12
+    },
+    "PY Restaurant": {
+        "average_sentiment_score": 0.76,
+        "average_rating": 4.8,
+        "num_reviews": 20
+    },
+    "33 Cité": {
+        "average_sentiment_score": 0.88,
+        "average_rating": 4.57,
+        "num_reviews": 7
+    },
+    "Comptoir Cité": {
+        "average_sentiment_score": 1.0,
+        "average_rating": 5.0,
+        "num_reviews": 2
+    },
+    "Restaurant MELKONYAN": {
+        "average_sentiment_score": 0.76,
+        "average_rating": 5.0,
+        "num_reviews": 4
+    },
+    "Caviste Lyon 6 Brotteaux - Les Domaines Qui Montent": {
+        "average_sentiment_score": 0.62,
+        "average_rating": 4.67,
+        "num_reviews": 3
+    },
+    "Suelta Californian Restaurant & Mojito Bar": {
+        "average_sentiment_score": 0.57,
+        "average_rating": 3.85,
+        "num_reviews": 20
+    },
+    "Café Restaurant Tête d'Or": {
+        "average_sentiment_score": 0.51,
+        "average_rating": 1.8,
+        "num_reviews": 5
+    },
+    "SH Restaurant du Tennis Club de Lyon": {
+        "average_sentiment_score": 0.01,
+        "average_rating": 5.0,
+        "num_reviews": 1
+    },
+    "Sucré & Salé": {
+        "average_sentiment_score": 0.28,
+        "average_rating": 3.0,
+        "num_reviews": 2
+    },
+    "Amour & Cuisine": {
+        "average_sentiment_score": 0.85,
+        "average_rating": 5.0,
+        "num_reviews": 14
+    },
+    "Divan restaurant & pâtisserie": {
+        "average_sentiment_score": 0.81,
+        "average_rating": 4.95,
+        "num_reviews": 20
+    },
+    "Street Corner - Food Truck Lyon": {
+        "average_sentiment_score": 0.5,
+        "average_rating": 5.0,
+        "num_reviews": 3
+    },
+    "LES DÉLICES D'AYA": {
+        "average_sentiment_score": 0.51,
+        "average_rating": 2.5,
+        "num_reviews": 2
+    },
+    "MOON RESTAURANT, Villeurbanne/Lyon": {
+        "average_sentiment_score": 0.71,
+        "average_rating": 5.0,
+        "num_reviews": 20
+    },
+    "Le Jum's - Restaurant": {
+        "average_sentiment_score": 0.81,
+        "average_rating": 4.93,
+        "num_reviews": 15
+    },
+    "LA CARAIBEENNE": {
+        "average_sentiment_score": 0.68,
+        "average_rating": 4.9,
+        "num_reviews": 20
+    },
+    "LE JARDIN D'ALINE": {
+        "average_sentiment_score": 0.53,
+        "average_rating": 3.33,
+        "num_reviews": 6
+    },
+    "Viand'o Chwa": {
+        "average_sentiment_score": 0.65,
+        "average_rating": 4.64,
+        "num_reviews": 14
+    },
+    "Salengro Tandoori": {
+        "average_sentiment_score": 0.73,
+        "average_rating": 3.86,
+        "num_reviews": 7
+    },
+    "Powok - Asian Fast-Good": {
+        "average_sentiment_score": 0.51,
+        "average_rating": 4.07,
+        "num_reviews": 15
+    },
+    "La petite Auberge de la Doua": {
+        "average_sentiment_score": 0.94,
+        "average_rating": 5.0,
+        "num_reviews": 1
+    },
+    "Le Roccasecca": {
+        "average_sentiment_score": 0.63,
+        "average_rating": 4.43,
+        "num_reviews": 7
+    },
+    "Happy Tuo Rapido": {
+        "average_sentiment_score": 0.65,
+        "average_rating": 5.0,
+        "num_reviews": 3
+    },
+    "Ta5ty Pizza - Villeurbanne - Croix Luizet": {
+        "average_sentiment_score": 0.68,
+        "average_rating": 4.4,
+        "num_reviews": 20
+    },
+    "Chez L’ancien Villeurbanne": {
+        "average_sentiment_score": 0.63,
+        "average_rating": 4.5,
+        "num_reviews": 10
+    },
+    "Salengro Kebab": {
+        "average_sentiment_score": 0.73,
+        "average_rating": 5.0,
+        "num_reviews": 4
+    },
+    "JOYS TACOS - Villeurbanne": {
+        "average_sentiment_score": 0.51,
+        "average_rating": 3.29,
+        "num_reviews": 17
+    },
+    "Meal Grill": {
+        "average_sentiment_score": 0.55,
+        "average_rating": 5.0,
+        "num_reviews": 2
+    },
+    "Naan Street Tandoori Villeurbanne": {
+        "average_sentiment_score": 0.46,
+        "average_rating": 4.27,
+        "num_reviews": 15
+    },
+    "Gratinés": {
+        "average_sentiment_score": 0.7,
+        "average_rating": 4.2,
+        "num_reviews": 5
+    },
+    "GRILL TIME": {
+        "average_sentiment_score": 0.79,
+        "average_rating": 4.65,
+        "num_reviews": 20
+    },
+    "Sushi Life & Wok - Villeurbanne - Lyon": {
+        "average_sentiment_score": 0.66,
+        "average_rating": 4.0,
+        "num_reviews": 3
+    },
+    "Speed Tandoori": {
+        "average_sentiment_score": 0.74,
+        "average_rating": 4.86,
+        "num_reviews": 7
+    },
+    "Komalakaz": {
+        "average_sentiment_score": 0.25,
+        "average_rating": 3.4,
+        "num_reviews": 5
+    },
+    "45th Avenue - Terrasse - Restaurant - Club": {
+        "average_sentiment_score": 0.66,
+        "average_rating": 3.45,
+        "num_reviews": 20
+    },
+    "Big M Villeurbanne/Salengro-Croix-Luizet": {
+        "average_sentiment_score": 0.77,
+        "average_rating": 4.75,
+        "num_reviews": 8
+    },
+    "The W": {
+        "average_sentiment_score": 0.57,
+        "average_rating": 3.75,
+        "num_reviews": 4
+    },
+    "ARICI KEBAB": {
+        "average_sentiment_score": 0.45,
+        "average_rating": 3.6,
+        "num_reviews": 20
+    },
+    "L'Olympique - Villeurbanne": {
+        "average_sentiment_score": 0.43,
+        "average_rating": 3.67,
+        "num_reviews": 6
+    },
+    "Pizza Carloni": {
+        "average_sentiment_score": 0.37,
+        "average_rating": 5.0,
+        "num_reviews": 7
+    },
+    "Chez SALAH - aux 4 saveurs": {
+        "average_sentiment_score": 0.85,
+        "average_rating": 5.0,
+        "num_reviews": 2
+    },
+    "Beau & Bún - Bistrot Viêt (Lyon Vaise)": {
+        "average_sentiment_score": 0.5,
+        "average_rating": 4.75,
+        "num_reviews": 20
+    },
+    "Pathé Vaise": {
+        "average_sentiment_score": 0.4,
+        "average_rating": 3.4,
+        "num_reviews": 20
+    },
+    "L'octave": {
+        "average_sentiment_score": 0.58,
+        "average_rating": 4.5,
+        "num_reviews": 12
+    },
+    "Belle Lurette": {
+        "average_sentiment_score": 0.61,
+        "average_rating": 4.91,
+        "num_reviews": 11
+    },
+    "La Station - Brasserie New-Yorkaise à Lyon Vaise": {
+        "average_sentiment_score": 0.47,
+        "average_rating": 4.0,
+        "num_reviews": 5
+    },
+    "Kebab Place de Paris": {
+        "average_sentiment_score": 0.65,
+        "average_rating": 4.6,
+        "num_reviews": 15
+    },
+    "Dangerous Burger Lyon": {
+        "average_sentiment_score": 0.25,
+        "average_rating": 3.1,
+        "num_reviews": 20
+    },
+    "Bistrot & co": {
+        "average_sentiment_score": 0.95,
+        "average_rating": 4.8,
+        "num_reviews": 5
+    },
+    "Quai 50": {
+        "average_sentiment_score": 0.94,
+        "average_rating": 5.0,
+        "num_reviews": 2
+    },
+    "L'Epick": {
+        "average_sentiment_score": 0.57,
+        "average_rating": 5.0,
+        "num_reviews": 2
+    },
+    "La cantine des voyageurs": {
+        "average_sentiment_score": 0.97,
+        "average_rating": 5.0,
+        "num_reviews": 1
+    },
+    "Chez Emma": {
+        "average_sentiment_score": 0.76,
+        "average_rating": 4.0,
+        "num_reviews": 7
+    },
+    "Bocuse Original Comptoir Vaise": {
+        "average_sentiment_score": 0.11,
+        "average_rating": 4.0,
+        "num_reviews": 2
+    },
+    "One Minute": {
+        "average_sentiment_score": 0.78,
+        "average_rating": 5.0,
+        "num_reviews": 9
+    },
+    "Has": {
+        "average_sentiment_score": 0.26,
+        "average_rating": 1.07,
+        "num_reviews": 14
+    },
+    "Ninkasi Vaise Industrie": {
+        "average_sentiment_score": 0.64,
+        "average_rating": 4.7,
+        "num_reviews": 20
+    },
+    "Nano Trattoria - Lyon 9": {
+        "average_sentiment_score": 0.73,
+        "average_rating": 4.65,
+        "num_reviews": 20
+    },
+    "MSB - Cuisine de choix Lyon 9": {
+        "average_sentiment_score": 0.15,
+        "average_rating": 1.0,
+        "num_reviews": 1
+    },
+    "La terrasse de Rochecardon": {
+        "average_sentiment_score": 0.87,
+        "average_rating": 4.5,
+        "num_reviews": 2
+    },
+    "perret avenir sa": {
+        "average_sentiment_score": 0.55,
+        "average_rating": 4.45,
+        "num_reviews": 11
+    },
+    "TinaTane": {
+        "average_sentiment_score": 0.7,
+        "average_rating": 4.95,
+        "num_reviews": 20
+    },
+    "Crêperie Galiane II": {
+        "average_sentiment_score": 0.68,
+        "average_rating": 4.91,
+        "num_reviews": 11
+    },
+    "Osteria Bella Vista Da Antonio e Marco": {
+        "average_sentiment_score": 0.71,
+        "average_rating": 4.95,
+        "num_reviews": 20
+    },
+    "Maison Courgette": {
+        "average_sentiment_score": 0.78,
+        "average_rating": 4.8,
+        "num_reviews": 20
+    },
+    "SEVEN STREET": {
+        "average_sentiment_score": 0.58,
+        "average_rating": 4.8,
+        "num_reviews": 5
+    },
+    "Carrefour City Janin Lyon": {
+        "average_sentiment_score": 0.52,
+        "average_rating": 4.0,
+        "num_reviews": 4
+    },
+    "La Popote de Nicole": {
+        "average_sentiment_score": 0.92,
+        "average_rating": 5.0,
+        "num_reviews": 8
+    },
+    "Poke Wave Croix-Rousse - Poke Bowl Restaurant": {
+        "average_sentiment_score": 0.61,
+        "average_rating": 2.8,
+        "num_reviews": 5
+    },
+    "Restaurant de l’Angle - Restaurant Turque Kebab - LYON": {
+        "average_sentiment_score": 0.43,
+        "average_rating": 3.6,
+        "num_reviews": 20
+    },
+    "Le Joannes": {
+        "average_sentiment_score": 0.47,
+        "average_rating": 4.83,
+        "num_reviews": 6
+    },
+    "Jena Pizza": {
+        "average_sentiment_score": 0.89,
+        "average_rating": 5.0,
+        "num_reviews": 2
+    },
+    "Au Bon Beurre": {
+        "average_sentiment_score": 0.75,
+        "average_rating": 4.88,
+        "num_reviews": 8
+    },
+    "Toasushi Caluire-et-Cuire": {
+        "average_sentiment_score": 0.63,
+        "average_rating": 4.26,
+        "num_reviews": 19
+    },
+    "TRIBE Table Lyon Croix-Rousse": {
+        "average_sentiment_score": 0.3,
+        "average_rating": 5.0,
+        "num_reviews": 4
+    },
+    "Ma Sushi à volonté sur place": {
+        "average_sentiment_score": 0.67,
+        "average_rating": 4.45,
+        "num_reviews": 20
+    },
+    "Restaurant OPALINE": {
+        "average_sentiment_score": 0.73,
+        "average_rating": 4.9,
+        "num_reviews": 20
+    },
+    "Le Mouton Masqué": {
+        "average_sentiment_score": 0.75,
+        "average_rating": 4.67,
+        "num_reviews": 3
+    },
+    "Café De La Crêche": {
+        "average_sentiment_score": 0.56,
+        "average_rating": 3.9,
+        "num_reviews": 10
+    },
+    "Chez Grégoire Pâtisserie Croix Rousse": {
+        "average_sentiment_score": 0.53,
+        "average_rating": 5.0,
+        "num_reviews": 2
+    },
+    "Le Petit Coin- Bistrot Pétanque": {
+        "average_sentiment_score": 0.99,
+        "average_rating": 5.0,
+        "num_reviews": 5
+    },
+    "Rocket's - Food Truck Lyon et Traiteur": {
+        "average_sentiment_score": 0.02,
+        "average_rating": 5.0,
+        "num_reviews": 2
+    },
+    "La Terrasse Saint Clair": {
+        "average_sentiment_score": 0.72,
+        "average_rating": 4.9,
+        "num_reviews": 20
+    },
+    "La Table Du Boucher": {
+        "average_sentiment_score": 0.73,
+        "average_rating": 5.0,
+        "num_reviews": 4
+    },
+    "Zibibbo Ristorante": {
+        "average_sentiment_score": 0.89,
+        "average_rating": 4.88,
+        "num_reviews": 17
+    },
+    "Restaurant Sun and Moon": {
+        "average_sentiment_score": 0.76,
+        "average_rating": 4.38,
+        "num_reviews": 8
+    },
+    "Mikate Restaurant": {
+        "average_sentiment_score": 0.7,
+        "average_rating": 4.75,
+        "num_reviews": 20
+    },
+    "macBar": {
+        "average_sentiment_score": 0.65,
+        "average_rating": 3.87,
+        "num_reviews": 15
+    },
+    "Café du Lac": {
+        "average_sentiment_score": 0.64,
+        "average_rating": 3.85,
+        "num_reviews": 13
+    },
+    "Restaurant l'Acacia": {
+        "average_sentiment_score": 0.8,
+        "average_rating": 3.4,
+        "num_reviews": 5
+    },
+    "Bistrot Bar Des Gens Bien": {
+        "average_sentiment_score": 0.77,
+        "average_rating": 4.75,
+        "num_reviews": 8
+    },
+    "Crocus - Creative Salad": {
+        "average_sentiment_score": 0.3,
+        "average_rating": 4.33,
+        "num_reviews": 3
+    },
+    "Croc Burger": {
+        "average_sentiment_score": 0.54,
+        "average_rating": 2.5,
+        "num_reviews": 2
+    },
+    "La Table en Braille": {
+        "average_sentiment_score": 0.62,
+        "average_rating": 4.5,
+        "num_reviews": 20
+    },
+    "Casa Raphaela": {
+        "average_sentiment_score": 0.67,
+        "average_rating": 4.6,
+        "num_reviews": 20
+    },
+    "FADY | Cuisine Libanaise Créative | Coffeeshop": {
+        "average_sentiment_score": 0.51,
+        "average_rating": 3.5,
+        "num_reviews": 2
+    },
+    "NEW DELHI'CE": {
+        "average_sentiment_score": 0.72,
+        "average_rating": 4.33,
+        "num_reviews": 9
+    },
+    "ANTIPASTO": {
+        "average_sentiment_score": 0.72,
+        "average_rating": 4.25,
+        "num_reviews": 20
+    },
+    "MIZAKAYA": {
+        "average_sentiment_score": 0.67,
+        "average_rating": 4.95,
+        "num_reviews": 20
+    },
+    "Park View": {
+        "average_sentiment_score": 0.77,
+        "average_rating": 4.0,
+        "num_reviews": 2
+    },
+    "Brasserie Park": {
+        "average_sentiment_score": 0.71,
+        "average_rating": 4.83,
+        "num_reviews": 6
+    },
+    "Restaurant Parmigianino": {
+        "average_sentiment_score": 0.87,
+        "average_rating": 5.0,
+        "num_reviews": 11
+    },
+    "Les Cent - Pizzeria": {
+        "average_sentiment_score": 0.6,
+        "average_rating": 5.0,
+        "num_reviews": 20
+    },
+    "Asie Express Caluire": {
+        "average_sentiment_score": 0.76,
+        "average_rating": 5.0,
+        "num_reviews": 20
+    },
+    "Le Duke Burger (Foodtruck)": {
+        "average_sentiment_score": 0.05,
+        "average_rating": 5.0,
+        "num_reviews": 1
+    },
+    "Comptoir Burgers & Co": {
+        "average_sentiment_score": 0.05,
+        "average_rating": 1.0,
+        "num_reviews": 1
+    },
+    "Cafétéria Universitaire le Studio": {
+        "average_sentiment_score": 0.74,
+        "average_rating": 5.0,
+        "num_reviews": 20
+    },
+    "La Maricola": {
+        "average_sentiment_score": 0.73,
+        "average_rating": 5.0,
+        "num_reviews": 2
+    },
+    "Le VIPuces": {
+        "average_sentiment_score": 0.99,
+        "average_rating": 5.0,
+        "num_reviews": 1
+    },
+    "Aux Saveurs": {
+        "average_sentiment_score": 0.98,
+        "average_rating": 5.0,
+        "num_reviews": 3
+    },
+    "Les Trois Sakuras": {
+        "average_sentiment_score": 0.66,
+        "average_rating": 3.5,
+        "num_reviews": 14
+    },
+    "Restaurant Fond Rose - Bocuse": {
+        "average_sentiment_score": 0.69,
+        "average_rating": 4.7,
+        "num_reviews": 20
+    },
+    "Bistrò Valenti": {
+        "average_sentiment_score": 0.67,
+        "average_rating": 4.85,
+        "num_reviews": 20
+    },
+    "O CAPOT": {
+        "average_sentiment_score": 0.73,
+        "average_rating": 4.73,
+        "num_reviews": 15
+    },
+    "Pizza Mary": {
+        "average_sentiment_score": 0.95,
+        "average_rating": 5.0,
+        "num_reviews": 1
+    },
+    "Au p’tit bonheur la planche": {
+        "average_sentiment_score": 0.63,
+        "average_rating": 5.0,
+        "num_reviews": 3
+    },
+    "Le Special kebab": {
+        "average_sentiment_score": 0.16,
+        "average_rating": 3.5,
+        "num_reviews": 2
+    },
+    "KdB - Le Kiosque du Boucher": {
+        "average_sentiment_score": 0.32,
+        "average_rating": 3.25,
+        "num_reviews": 4
+    },
+    "Bistrot City Caluire": {
+        "average_sentiment_score": 0.02,
+        "average_rating": 1.0,
+        "num_reviews": 1
+    },
+    "Il Fornello": {
+        "average_sentiment_score": 1.0,
+        "average_rating": 5.0,
+        "num_reviews": 1
+    },
+    "Chez L'ancien Caluire": {
+        "average_sentiment_score": 0.53,
+        "average_rating": 4.0,
+        "num_reviews": 2
+    },
+    "Restaurant l'Arôme": {
+        "average_sentiment_score": 0.88,
+        "average_rating": 5.0,
+        "num_reviews": 14
+    },
+    "LA BOÎTE NOIRE CHAMPAGNE ❤️": {
+        "average_sentiment_score": 0.94,
+        "average_rating": 4.75,
+        "num_reviews": 4
+    },
+    "Les Terrasses de l'île barbe": {
+        "average_sentiment_score": 0.36,
+        "average_rating": 5.0,
+        "num_reviews": 2
+    },
+    "Les Voûtes Restaurant & Live Music": {
+        "average_sentiment_score": 0.65,
+        "average_rating": 4.95,
+        "num_reviews": 20
+    },
+    "Fée Maison": {
+        "average_sentiment_score": 0.5,
+        "average_rating": 4.5,
+        "num_reviews": 2
+    },
+    "Pistou": {
+        "average_sentiment_score": 0.58,
+        "average_rating": 5.0,
+        "num_reviews": 9
+    },
+    "Les 6 céréales gourmandes": {
+        "average_sentiment_score": 0.66,
+        "average_rating": 4.5,
+        "num_reviews": 2
+    },
+    "La Petite Sicile - Lyon 9": {
+        "average_sentiment_score": 0.84,
+        "average_rating": 5.0,
+        "num_reviews": 8
+    },
+    "Pasta & Dolci Genuini": {
+        "average_sentiment_score": 0.34,
+        "average_rating": 4.0,
+        "num_reviews": 3
+    },
+    "Au Jean Moulin": {
+        "average_sentiment_score": 0.99,
+        "average_rating": 5.0,
+        "num_reviews": 2
+    },
+    "Dompi Pizzeria": {
+        "average_sentiment_score": 0.11,
+        "average_rating": 3.0,
+        "num_reviews": 2
+    },
+    "LA HALTE GOURMANDE": {
+        "average_sentiment_score": 0.36,
+        "average_rating": 5.0,
+        "num_reviews": 3
+    },
+    "LES PLANTEURS (RESTAURANT ANTILLAIS A LYON)": {
+        "average_sentiment_score": 0.37,
+        "average_rating": 5.0,
+        "num_reviews": 2
+    },
+    "Poupoul rôtisserie": {
+        "average_sentiment_score": 0.65,
+        "average_rating": 4.5,
+        "num_reviews": 2
+    },
+    "Le Comptoir de St Cyr": {
+        "average_sentiment_score": 0.6,
+        "average_rating": 4.33,
+        "num_reviews": 9
+    },
+    "La Minoterie Pizzeria": {
+        "average_sentiment_score": 0.68,
+        "average_rating": 5.0,
+        "num_reviews": 20
+    },
+    "La gloriette kebab": {
+        "average_sentiment_score": 0.62,
+        "average_rating": 4.4,
+        "num_reviews": 20
+    },
+    "Le Cabanon à Pizzas - Caluire": {
+        "average_sentiment_score": 0.99,
+        "average_rating": 5.0,
+        "num_reviews": 2
+    }
+}

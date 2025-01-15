@@ -1,11 +1,12 @@
 import requests
 import json
 import time
+import os
 
 API_KEY = ""
 DETAILS_BASE_URL = "https://maps.googleapis.com/maps/api/place/details/json"
-INPUT_FILE = r"data\all_restaurants_lyon.json"
-OUTPUT_FILE = r"data\restaurant_details.json"
+INPUT_FILE = os.path.join(".", "get_restaurants_data", "data", "all_restaurants_lyon.json")
+OUTPUT_FILE = os.path.join(".", "get_restaurants_data", "data", "restaurant_details.json")
 
 def fetch_place_details(api_key, place_id):
     """Récupère les détails d'un lieu à partir de son place_id via l'API Place Details."""
