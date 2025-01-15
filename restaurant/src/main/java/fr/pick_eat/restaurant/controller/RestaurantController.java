@@ -38,7 +38,7 @@ public class RestaurantController {
 
     }
 
-    @GetMapping("/{restaurantId}/comments")
+    @PostMapping("/{restaurantId}/comments")
     public ResponseEntity<String> getComments(@PathVariable UUID restaurantId) {
         try {
             List<RestaurantAvisDTO> listAvis = restaurantService.getComments(restaurantId);
@@ -63,7 +63,7 @@ public class RestaurantController {
 
     }
 
-    @GetMapping("/{restaurantId}")
+    @PostMapping("/{restaurantId}")
     public ResponseEntity<RestaurantDTO> getRestaurant(@PathVariable UUID restaurantId) {
         try {
             return ResponseEntity.ok(RestaurantMapper.toRestaurantDTO(restaurantService.getRestaurant(restaurantId)));
@@ -93,7 +93,7 @@ public class RestaurantController {
         }
     }
 
-    @GetMapping("/generate-restaurants-for-event")
+    @PostMapping("/generate-restaurants-for-event")
     public ResponseEntity<List<RestaurantDTO>> generateRestaurantsForEvent(EventDTO event) {
         try {
             List<RestaurantDTO> listRestaurant = restaurantService.generateRestaurantsForEvent(event);
