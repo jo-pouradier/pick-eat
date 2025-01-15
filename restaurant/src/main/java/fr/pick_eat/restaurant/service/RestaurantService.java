@@ -114,6 +114,11 @@ public class RestaurantService {
         return restaurantRepository.findById(restaurantId).orElseThrow();
     }
 
+    public String retrieveRestaurantPhoto(UUID restaurantId) {
+        String name = restaurantRepository.findById(restaurantId).orElseThrow().getName();
+        String photo = name.replace(" ", "_").replace("/", "_").replace("|", "_").replace("&","and");
+        return photo;
+    }
 
     public List<RestaurantDTO> generateRestaurantsForEvent(EventDTO event) {
         float lat = event.getLatitude();
