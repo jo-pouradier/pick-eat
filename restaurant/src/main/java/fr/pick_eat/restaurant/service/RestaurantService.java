@@ -2,7 +2,8 @@ package fr.pick_eat.restaurant.service;
 
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import dto.EventDTO;
+
+import fr.pick_eat.event.dto.EventDTO;
 import fr.pick_eat.restaurant.RestaurantApplication;
 import fr.pick_eat.restaurant.dto.RestaurantDTO;
 import fr.pick_eat.restaurant.entity.RestaurantAvisModel;
