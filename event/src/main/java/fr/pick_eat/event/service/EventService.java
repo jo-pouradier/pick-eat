@@ -11,9 +11,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import dto.EventDTO;
-import dto.EventFeedbackDTO;
-import dto.EventVoteDTO;
+import fr.pick_eat.event.dto.EventDTO;
+import fr.pick_eat.event.dto.EventFeedbackDTO;
+import fr.pick_eat.event.dto.EventVoteDTO;
 import fr.pick_eat.event.entity.EventFeedbackModel;
 import fr.pick_eat.event.entity.EventModel;
 import fr.pick_eat.event.entity.EventParticipantModel;
@@ -47,11 +47,16 @@ public class EventService {
         return events;
     }
 
-    public boolean joinEvent(UUID userUuid, UUID eventUuid) {
+    public boolean joinEvent(UUID userUuid, UUID eventUuid) throws NoSuchElementException, IllegalArgumentException, Error {
         EventModel event = eventRepository.findById(eventUuid).orElse(null);
         if (event == null) {
             log.error("Event {} does not exists", eventUuid);
-            return false;
+            throw new NoSuchElementException("Event does not exists"); 
+        }
+        // if participant already exists
+        if (event.getParticipants().stream().anyMatch(participant -> participant.getUserId().equals(userUuid))) {
+            log.error("User already joined event");
+            throw new IllegalArgumentException("User already joined event");
         }
         try {
             EventParticipantModel eventParticipant = new EventParticipantModel();
@@ -62,7 +67,7 @@ public class EventService {
             return true;
         } catch (Exception e) {
             log.error("Error while joining event", e.getMessage());
-            return false;
+            throw new Error("Error while joining event");
         }
     }
 
@@ -279,6 +284,10 @@ public class EventService {
         List<String> participantsList = participants.stream().map(participant -> participant.getUserId().toString()).toList();
         log.info("Event:{} participants: {}", eventUuid, participantsList);
         return participantsList;
+    }
+
+    public EventModel getEvent(UUID eventUuid) {
+        return eventRepository.findById(eventUuid).orElse(null);
     }
 
 }

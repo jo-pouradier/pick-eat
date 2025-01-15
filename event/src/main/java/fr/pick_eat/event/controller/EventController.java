@@ -18,9 +18,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import dto.EventDTO;
-import dto.EventFeedbackDTO;
-import dto.EventVoteDTO;
+import fr.pick_eat.event.dto.EventDTO;
+import fr.pick_eat.event.dto.EventFeedbackDTO;
+import fr.pick_eat.event.dto.EventVoteDTO;
 import fr.pick_eat.event.entity.EventFeedbackModel;
 import fr.pick_eat.event.entity.EventModel;
 import fr.pick_eat.event.service.EventService;
@@ -37,6 +37,17 @@ public class EventController {
     public EventController(EventService eventService, JwtDecoder jwtDecoder) {
         this.eventService = eventService;
         this.decoder = jwtDecoder;
+    }
+
+    @GetMapping("/{eventUuid}")
+    public ResponseEntity<EventDTO> getEvent(@PathVariable("eventUuid") UUID eventUuid) {
+        EventModel event = eventService.getEvent(eventUuid);
+        if (event == null) {
+            return ResponseEntity.notFound().build();
+        }
+
+        EventDTO eventDTO = EventMapper.toEventDTO(event);
+        return ResponseEntity.ok(eventDTO);
     }
 
     @PostMapping("/create")
@@ -73,7 +84,21 @@ public class EventController {
         String userId = JWTUtils.extractUserIdCookie(jwt, decoder);
         UUID userUuid = UUID.fromString(userId);
 
-        Boolean isJoined = eventService.joinEvent(userUuid, eventUuid);
+        Boolean isJoined = false;
+
+        try{ 
+            isJoined = eventService.joinEvent(userUuid, eventUuid);
+        } catch (IllegalArgumentException e) {
+            log.error("Error while joining event", e);
+            return ResponseEntity.badRequest().body("Error while joining event");
+        } catch (NoSuchElementException e) {
+            log.error("Error while joining event", e);
+            return ResponseEntity.notFound().build();
+        } catch (Exception e) {
+            log.error("Error while joining event", e);
+            return ResponseEntity.badRequest().body("Error while joining event");
+        }
+
         return ResponseEntity.ok(isJoined.toString());
     }
 

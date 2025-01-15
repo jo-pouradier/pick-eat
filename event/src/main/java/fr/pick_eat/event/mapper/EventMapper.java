@@ -1,8 +1,8 @@
 package fr.pick_eat.event.mapper;
 
-import dto.EventDTO;
-import dto.EventFeedbackDTO;
-import dto.EventVoteDTO;
+import fr.pick_eat.event.dto.EventDTO;
+import fr.pick_eat.event.dto.EventFeedbackDTO;
+import fr.pick_eat.event.dto.EventVoteDTO;
 import fr.pick_eat.event.entity.EventFeedbackModel;
 import fr.pick_eat.event.entity.EventModel;
 import fr.pick_eat.event.entity.EventVoteModel;

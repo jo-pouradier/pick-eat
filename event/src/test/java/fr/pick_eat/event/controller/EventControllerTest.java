@@ -21,9 +21,9 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.jayway.jsonpath.JsonPath;
 
-import dto.EventDTO;
-import dto.EventFeedbackDTO;
-import dto.EventVoteDTO;
+import fr.pick_eat.event.dto.EventDTO;
+import fr.pick_eat.event.dto.EventFeedbackDTO;
+import fr.pick_eat.event.dto.EventVoteDTO;
 import fr.pick_eat.event.entity.EventFeedbackModel;
 import jakarta.servlet.http.Cookie;
 
@@ -105,8 +105,7 @@ public class EventControllerTest {
         String url = String.format("/join/%s", eventDTO.getId().toString());
         mockMvc.perform(MockMvcRequestBuilders.post(url)
                 .cookie(COOKIE))
-                .andExpect(status().isOk())
-                .andExpect(content().string("false"));
+                .andExpect(status().isBadRequest());
     }
 
     @Test

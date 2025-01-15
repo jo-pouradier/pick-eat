@@ -1,4 +1,4 @@
-package dto;
+package fr.pick_eat.event.dto;
 
 import java.util.Date;
 import java.util.UUID;
