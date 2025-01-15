@@ -14,6 +14,26 @@ services:
     env_file: dev.env
     ports:
       - "${FRONTEND_PORT:-8081}:${FRONTEND_PORT:-8081}"
+  active_mq:
+    restart: always
+    healthcheck:
+      test: [ "CMD-SHELL", "nc -z localhost 61616" ]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    build:
+      context: ./activemq
+      dockerfile: ./Dockerfile
+    environment:
+      ACTIVEMQ_DISALLOW_WEBCONSOLE: ${ACTIVEMQ_DISALLOW_WEBCONSOLE:-false}
+      ACTIVEMQ_PASSWORD: ${ACTIVEMQ_PASSWORD:-admin}
+      ACTIVEMQ_USERNAME: ${ACTIVEMQ_USERNAME:-admin}
+      ACTIVEMQ_WEBADMIN_PASSWORD: ${ACTIVEMQ_WEBADMIN_PASSWORD:-adminweb}
+      ACTIVEMQ_WEBADMIN_USERNAME: ${ACTIVEMQ_WEBADMIN_USERNAME:-adminweb}
+    ports:
+      - "${ACTIVE_MQ_PORT_TCP:-61616}:61616"
+      - "${ACTIVE_MQ_PORT_WEB:-8161}:8161"
+      - "${ACTIVE_MQ_PORT_STOMP:-61613}:61613"
   auth_database:
     restart: always
     healthcheck:
