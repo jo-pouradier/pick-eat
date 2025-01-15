@@ -38,4 +38,6 @@ out/
 /.gradle/
 
 
+**/*.db
+**/*.pyc
 comment-analysis/*
