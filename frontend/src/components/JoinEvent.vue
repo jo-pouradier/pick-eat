@@ -1,16 +1,14 @@
 <script setup lang="ts">
 import {onMounted, ref} from 'vue';
-import type {EventInfo} from "@/types/EventInfo.ts";
-import axios from "axios";
-import EventComponent from "@/components/EventComponent.vue";
 import {useRouter} from "vue-router";
+import {joinEvent} from "@/lib/EventUtils.ts";
 
 const router = useRouter();
 const uuid = ref<string | null>(null);
 const error = ref<string>('');
 onMounted(() => {
   const urlParams = new URLSearchParams(window.location.search);
-  const uuidParam = urlParams.get('uuid');
+  const uuidParam = urlParams.get('eventId');
   if (uuidParam) {
     uuid.value = uuidParam;
     handleValidation();
@@ -18,12 +16,17 @@ onMounted(() => {
 });
 
 function handleValidation(): void {
-  axios.get<EventInfo>(`/event/join/${uuid.value}`).then(response => {
-    if(response.data) {
+  if (!uuid.value) {
+    error.value = 'Please enter a vote code.';
+    return;
+  }
+  joinEvent(uuid.value).then(response => {
+    console.log('Join event response:', response);
+    if (response.data) {
       router.push(`/event-list`);
-    } else {
-      error.value = 'Something went wrong.\n Maybe you are already part of this event?';
     }
+  }).catch(() => {
+    error.value = 'Something went wrong.\n Maybe you are already part of this event?';
   });
 }
 
@@ -42,7 +45,9 @@ function handleJoin(): void {
       <button class="validate-button" @click="handleValidation">
         Valider
       </button>
-      <p v-if="error" class="error">{{ error }}</p>
+      <div v-if="error" class="error-message">
+        <span class="error-text">{{ error }}</span>
+      </div>
     </div>
   </div>
 </template>
@@ -106,5 +111,21 @@ function handleJoin(): void {
   font: 700 27px/1 League Spartan, sans-serif;
   border: none;
   cursor: pointer;
+}
+
+.error-message {
+  background-color: #fce4e4;
+  border: 1px solid #fcc2c3;
+  float: left;
+  padding: 20px 30px;
+}
+
+.error-text {
+  color: #cc0033;
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 13px;
+  font-weight: bold;
+  line-height: 20px;
+  text-shadow: 1px 1px rgba(250, 250, 250, .3);
 }
 </style>

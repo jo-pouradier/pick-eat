@@ -1,7 +1,7 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 <template>
   <img class="logo-image" src="@/assets/eating.png" alt="Home page background image"/>
-  <h1 class="title">Welcome {{ userName }}</h1>
+  <h1 v-if="userName!='...'" class="title">Welcome {{ userName }}</h1>
   <button class="action-button action-button-primary" @click="handleNewVote" tabindex="0">
     New Vote
   </button>

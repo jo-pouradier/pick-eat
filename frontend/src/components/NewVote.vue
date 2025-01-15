@@ -3,14 +3,14 @@
         <div class="event-creation-wrapper">
             <h1 class="main-title">Create a vote!</h1>
             <p class="input-label">Vote name :</p>
-            <input class="name-selector" tabindex="0" role="textbox" 
+            <input class="name-selector" tabindex="0" role="textbox"
             placeholder="Select a name"
             v-model="eventData.name" />
             <p>Description :</p>
             <textarea class="description-textarea" placeholder="Enter description" v-model="eventData.description"></textarea>
             <p>Select a place :</p>
             <button class="open-map-button" @click="openMapModal">Open Map</button>
-            <h1 class="second-title" v-if="eventData.address"> Selected place : 
+            <h1 class="second-title" v-if="eventData.address"> Selected place :
                 <br> {{ eventData.address }}</h1>
             <dialog v-if="showMapModal" class="modal-dialog" @close="showMapModal = false">
                 <div class="modal-content">
@@ -72,7 +72,7 @@ function handleValidation(): void {
             console.log('Event created');
             router.push({
                 path: '/event-page',
-                query: { data: JSON.stringify(response.data) }
+                query: { eventId: response.data }
             });
             });
     } else {
@@ -89,7 +89,6 @@ function openMapModal(): void {
     nextTick(() => {
         const dialog = document.querySelector('.modal-dialog') as HTMLDialogElement;
         dialog.showModal();
-        
     });
 }
 

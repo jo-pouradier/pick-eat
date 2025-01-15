@@ -5,6 +5,7 @@ import type {EventInfo} from "@/types/EventInfo.ts";
 import axios from "axios";
 import type {Participant} from "@/types/Participant.ts";
 import {useRouter} from "vue-router";
+import {getParticipants, loadParticipants} from "@/lib/EventUtils.ts";
 
 const props = defineProps<{ event: EventInfo }>();
 const router = useRouter();
@@ -15,22 +16,13 @@ const showDetails = ref(false);
 
 
 onMounted(() => {
-  loadParticipants();
-});
-
-function loadParticipants(): void {
-  console.log('Fetching participants...', event.value.id);
-  axios.get(`/event/participants/${event.value.id}`).then(response => {
-    participants.value = [];
-    for (const data of response.data) {
-      console.log('Fetching user:', data);
-      axios.get(`/auth/users/${data}`).then(response => {
-        console.log('Data:', response.data);
-        participants.value.push(response.data);
-      });
-    }
+  getParticipants(event.value.id).then(response => {
+    loadParticipants(response.data).then(response => {
+        participants.value = response.data;
+      }
+    );
   });
-}
+});
 
 function toggleEventDetails(eventId: string): void {
   if (event.value.id === eventId) {
@@ -42,7 +34,7 @@ function goToEventPage(eventId: string): void {
   console.log('Navigating to event page:', eventId);
   router.push({
     path: '/event-page',
-    query: {data: event.value.id}
+    query: {eventId: event.value.id}
   });
 }
 
