@@ -94,7 +94,7 @@ public class RestaurantController {
     }
 
     @PostMapping("/generate-restaurants-for-event")
-    public ResponseEntity<List<RestaurantDTO>> generateRestaurantsForEvent(EventDTO event) {
+    public ResponseEntity<List<RestaurantDTO>> generateRestaurantsForEvent(@RequestBody EventDTO event) {
         try {
             List<RestaurantDTO> listRestaurant = restaurantService.generateRestaurantsForEvent(event);
             return ResponseEntity.ok(listRestaurant);
