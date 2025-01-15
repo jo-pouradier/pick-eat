@@ -5,6 +5,7 @@ import fr.pick_eat.auth.dto.RegisterUserDto;
 import fr.pick_eat.auth.entity.UserBasic;
 import fr.pick_eat.auth.repository.UserRepository;
 import fr.pick_eat.auth.scope.EScope;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -40,8 +41,10 @@ public class AuthenticationService {
                 .setRoles(EScope.USER.getScope());
         try {
             return userRepository.save(user);
-        } catch (Exception e) {
+        } catch (DataIntegrityViolationException e) {
             throw new ResponseStatusException(HttpStatus.CONFLICT, "User already exists");
+        } catch (Exception e) {
+            throw new ResponseStatusException(HttpStatus.CONFLICT, "Error while saving user");
         }
     }
 
@@ -68,11 +71,15 @@ public class AuthenticationService {
         }
         UserBasic user = userOptional.get();
         if (user.isGitHubUser()) {
-            throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Unauthorized access");
+            throw new ResponseStatusException(HttpStatus.FORBIDDEN, "Unauthorized access");
         }
-        authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(input.getEmail(), input.getPassword()));
+        try {
+            authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(input.getEmail(), input.getPassword()));
+        } catch (Exception e) {
+            throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Invalid credentials");
+        }
 
-        return userRepository.findByEmail(input.getEmail()).orElseThrow();
+        return userRepository.findByEmail(input.getEmail()).orElseThrow(() -> new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Invalid credentials"));
     }
 
     public boolean isRegistered(String email) {
