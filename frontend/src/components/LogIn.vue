@@ -3,14 +3,14 @@
         <div class="event-creation-wrapper">
             <h1 class="main-title">Log in</h1>
             <p class="input-label">Email :</p>
-            <input ref="nameInput" class="name-selector" tabindex="0" role="textbox" type="email"
+            <input class="name-selector" tabindex="0" role="textbox" type="email"
                 @focus="handleEmailSelection" placeholder="Email" v-model="email" />
             <p class="input-label">Mot de passe :</p>
-            <input ref="nameInput" class="name-selector" tabindex="0" role="textbox" type="password"
+            <input class="name-selector" tabindex="0" role="textbox" type="password"
                 @focus="handleEmailSelection" placeholder="Mot de passe" v-model="password" />
             <button class="validate-button" @click="handleValidation">
                 Valider
-            </button>        
+            </button>
             <p class="input-label">Vous n'avez pas de compte ?</p>
             <button class="validate-button" @click="handleRegister">
                 Créer un compte

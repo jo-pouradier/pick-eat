@@ -18,7 +18,7 @@ const router = useRouter();
 const userName = ref<string>('...');
 updateUserName();
 
-async function updateUserName() {
+function updateUserName() {
   const userCookie = document.cookie.split('; ').find(row => row.startsWith('user='));
   console.debug('User cookie:', userCookie);
     if (userCookie) {
@@ -35,7 +35,7 @@ function handleNewVote() {
 
 function handleJoin() {
   // Handle join action
-  router.push('/swipe');
+  router.push('/join-event');
 }
 
 </script>

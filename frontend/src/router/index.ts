@@ -43,6 +43,11 @@ const router = createRouter({
       path:"/profile",
       name:"account",
       component: () => import('../components/ProfilPage.vue')
+    },
+    {
+      path:"/join-event",
+      name:"join-event",
+      component: () => import('../components/JoinEvent.vue')
     }
     // {
     //   path: '/about',
