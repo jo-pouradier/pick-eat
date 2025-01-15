@@ -5,10 +5,12 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import fr.pick_eat.event.dto.EventDTO;
 import fr.pick_eat.restaurant.RestaurantApplication;
+import fr.pick_eat.restaurant.dto.RestaurantAvisDTO;
 import fr.pick_eat.restaurant.dto.RestaurantDTO;
 import fr.pick_eat.restaurant.entity.RestaurantAvisModel;
 import fr.pick_eat.restaurant.entity.RestaurantModel;
 import fr.pick_eat.restaurant.entity.RestaurantNoteModel;
+import fr.pick_eat.restaurant.mapper.RestaurantMapper;
 import fr.pick_eat.restaurant.repository.RestaurantAvisRepository;
 import fr.pick_eat.restaurant.repository.RestaurantNoteRepository;
 import fr.pick_eat.restaurant.repository.RestaurantRepository;
@@ -51,7 +53,7 @@ public class RestaurantService {
 
 
     @Transactional
-    public void parseRestaurants(URI resto_path, URI resto_detail_path) throws IOException, ParseException, JSONException {
+    public void parseRestaurants(URI resto_path, URI resto_detail_path) throws IOException {
         // Read the file content into a String
         String jsonContent = new String(Files.readAllBytes(Paths.get(resto_path)));
 
@@ -94,6 +96,11 @@ public class RestaurantService {
         restaurantAvisRepository.save(restaurantAvisModel);
     }
 
+    public List<RestaurantAvisDTO> getComments(UUID restaurantId) {
+        return restaurantAvisRepository.findByRestaurantId(restaurantId).stream().map(RestaurantMapper::toRestaurantAvisDTO).toList();
+    }
+
+
     public void noteRestaurant(UUID restaurantId, Integer note, UUID userId) {
         RestaurantNoteModel restaurantNoteModel = new RestaurantNoteModel();
         restaurantNoteModel.setRestaurantId(restaurantId);
@@ -104,17 +111,22 @@ public class RestaurantService {
         restaurantNoteRepository.save(restaurantNoteModel);
     }
 
-    public String getRestaurant(UUID restaurantId) {
-        return restaurantRepository.findById(restaurantId).toString();
+    public RestaurantModel getRestaurant(UUID restaurantId) {
+        return restaurantRepository.findById(restaurantId).orElseThrow();
     }
 
+    public String retrieveRestaurantPhoto(UUID restaurantId) {
+        String name = restaurantRepository.findById(restaurantId).orElseThrow().getName();
+        String photo = name.replace(" ", "_").replace("/", "_").replace("|", "_").replace("&","and");
+        return photo;
+    }
 
     public List<RestaurantDTO> generateRestaurantsForEvent(EventDTO event) {
         float lat = event.getLatitude();
         float lon = event.getLongitude();
         float radius = event.getRadius();
         List<Float> coords = getAreaFromRadius(lat, lon, radius);
-        return RestaurantDTO.fromEntityAll(restaurantRepository.findBetweenLatAndLon(coords.get(0), coords.get(1), coords.get(2), coords.get(3)));
+        return restaurantRepository.findBetweenLatAndLon(coords.get(0), coords.get(1), coords.get(2), coords.get(3)).stream().map(RestaurantMapper::toRestaurantDTO).toList();
     }
 
 
@@ -130,7 +142,6 @@ public class RestaurantService {
 //        EventDTO event = EventDTO.fromEntity(eventModel);
         // Act
         parseRestaurants(resto_path, resto_details_path);
-//        Iterable<RestaurantModel> restos = getAllRestaurants();
 
 //        List<RestaurantDTO> resto = generateRestaurantsForEvent(event);
 //        System.out.println("generated restaurants : " + resto);

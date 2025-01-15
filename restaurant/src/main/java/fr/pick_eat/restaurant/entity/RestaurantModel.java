@@ -92,7 +92,7 @@ public class RestaurantModel {
         this.GeneratedPicture = GeneratedPicture;
     }
 
-    public double getLat() {
+    public float getLat() {
         return lat;
     }
 
@@ -100,7 +100,7 @@ public class RestaurantModel {
         this.lat = lat;
     }
 
-    public double getLon() {
+    public float getLon() {
         return lon;
     }
 
