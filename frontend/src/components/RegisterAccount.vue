@@ -41,7 +41,7 @@ function handleEmailSelection(): void {
 
 function handleValidation(): void {
   if (password.value !== confirmPassword.value) {
-    errorMessage.value = 'Les mots de passe ne correspondent pas';
+    errorMessage.value = 'Les mots de passe ne correspondent pas !';
   } else {
     axios.post('/auth/register',
       {
@@ -56,7 +56,7 @@ function handleValidation(): void {
         // Handle successful response
       })
       .catch(error => {
-        alert('Invalid email or password.');
+        alert(`Invalid email or password : ${error}`);
       });
   }
 };
