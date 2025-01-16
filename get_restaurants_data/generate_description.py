@@ -10,7 +10,7 @@ import time
 
 pytesseract.pytesseract.tesseract_cmd = os.path.join(".", "scan_ticket_caisse", "tools", "Tesseract-OCR", "tesseract.exe")
 
-def generate_restaurants_descriptions(input_json_path = os.path.join(".", "get_restaurants_data", "data", "restaurants_treated_data.json")):
+def generate_restaurants_descriptions(input_json_path=os.path.join(".", "get_restaurants_data", "data", "restaurants_treated_data.json"), num_restaurants=None):
     # Load the JSON data
     with open(input_json_path, 'r', encoding='utf-8') as file:
         restaurants_data = json.load(file)
@@ -20,7 +20,7 @@ def generate_restaurants_descriptions(input_json_path = os.path.join(".", "get_r
     # Extract notes and types for each restaurant
     for place_id, restaurant in restaurants_data.items():
 
-        if count >= 20:
+        if num_restaurants is not None and count >= num_restaurants:
             break
 
         if 'description' in restaurant:
@@ -39,6 +39,9 @@ def generate_restaurants_descriptions(input_json_path = os.path.join(".", "get_r
             + "Rating: " + str(note) + "\n"
             + "Types: " + ", ".join(types_list) + "\n\n"
             + "Use the rating to describe the quality of the restaurant and the types translated in french to describe the cuisine.\n"
+            + "A rating of 4 or more should be considered as a good restaurant.\n"
+            + "A rating between 3 and 4 should be considered as an average restaurant.\n"
+            + "A rating below 3 should be considered as a very bad restaurant.\n"
             + "Return only the description text."
         )
 
@@ -77,7 +80,7 @@ def generate_restaurants_descriptions(input_json_path = os.path.join(".", "get_r
 
 if __name__ == "__main__":
     start_time = time.time()
-    generate_restaurants_descriptions()
+    generate_restaurants_descriptions(num_restaurants=5)
     end_time = time.time()
     execution_time = end_time - start_time
     print(f"\nTotal execution time: {execution_time:.2f} seconds")
