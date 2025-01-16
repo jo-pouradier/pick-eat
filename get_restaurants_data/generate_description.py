@@ -65,6 +65,7 @@ def generate_restaurants_descriptions(input_json_path=os.path.join(".", "get_res
                 for restaurant_id, restaurant in restaurants_data.items():
                     if restaurant_id == place_id:
                         restaurant['description'] = response_content
+                        print("Avancement: ", count, "/", num_restaurants)
                         print("Description generated:", response_content)
                         break
             else:

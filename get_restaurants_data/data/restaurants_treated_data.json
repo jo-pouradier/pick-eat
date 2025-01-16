@@ -3737,7 +3737,8 @@
             "food",
             "point_of_interest",
             "establishment"
-        ]
+        ],
+        "description": "Ce restaurant, évalué à 5 étoiles, propose une cuisine de haute qualité offrant une expérience gastronomique exceptionnelle."
     },
     "ChIJU4frEOfp9EcRcpeD1DOzbjA": {
         "place_id": "ChIJU4frEOfp9EcRcpeD1DOzbjA",
@@ -3763,7 +3764,8 @@
             "food",
             "point_of_interest",
             "establishment"
-        ]
+        ],
+        "description": "Ce restaurant, excellent selon son classement de 5 étoiles, propose une cuisine de qualité supérieure."
     },
     "ChIJ_b-AkZbp9EcRc35cWLKLBig": {
         "place_id": "ChIJ_b-AkZbp9EcRc35cWLKLBig",
@@ -3792,7 +3794,8 @@
             "food",
             "point_of_interest",
             "establishment"
-        ]
+        ],
+        "description": "Ce restaurant, offrant une cuisine sushi, américaine et japonaise, est une excellente adresse avec un classement de 4,9 étoiles."
     },
     "ChIJI18me-fp9EcRxJTLJ4TwoaA": {
         "place_id": "ChIJI18me-fp9EcRxJTLJ4TwoaA",
@@ -3821,7 +3824,8 @@
             "food",
             "point_of_interest",
             "establishment"
-        ]
+        ],
+        "description": "Ce restaurant turc et méditerranéen, qui propose également des plats rapides, offre une cuisine de qualité excellente avec un classement de 4,1 étoiles. Vous y trouverez à la fois des spécialités turques traditionnelles et des plats méditerranéens savoureux, ainsi que des options plus pratiques pour un repas rapide."
     },
     "ChIJmVPZMW_p9EcRthUINwS5pcQ": {
         "place_id": "ChIJmVPZMW_p9EcRthUINwS5pcQ",
@@ -3851,7 +3855,8 @@
             "food",
             "point_of_interest",
             "establishment"
-        ]
+        ],
+        "description": "Ce magasin de desserts et pâtisseries offre une qualité exceptionnelle, avec un classement d'excellence de 4,8 étoiles. Spécialisé dans les délicieuses gâteaux et confiseries, il convient aussi bien aux amateurs de sucreries qu'aux clients cherchant des articles culinaires de première qualité."
     },
     "ChIJF2oSZefp9EcRHAiuLMeCQ7U": {
         "place_id": "ChIJF2oSZefp9EcRHAiuLMeCQ7U",
@@ -3869,7 +3874,8 @@
             "food",
             "point_of_interest",
             "establishment"
-        ]
+        ],
+        "description": "Ce restaurant, réputé pour sa cuisine de qualité supérieure, offre une expérience gastronomique exceptionnelle, reflet d'un établissement excellent comme en atteste son note de 4,8."
     },
     "ChIJH95WvHnp9EcROTwzacKi0_A": {
         "place_id": "ChIJH95WvHnp9EcROTwzacKi0_A",
@@ -3895,7 +3901,8 @@
             "food",
             "point_of_interest",
             "establishment"
-        ]
+        ],
+        "description": "Ce restaurant, classé au rang des excellents avec une note de 5, offre une cuisine de qualité supérieure, proposant un menu savoureux et varié."
     },
     "ChIJD3xrivvp9EcRKR-QobtdsEA": {
         "place_id": "ChIJD3xrivvp9EcRKR-QobtdsEA",
@@ -3921,7 +3928,8 @@
             "food",
             "point_of_interest",
             "establishment"
-        ]
+        ],
+        "description": "Ce restaurant, d'excellente qualité avec une note de 4,3, vous propose une cuisine savoureuse et variée."
     },
     "ChIJzVywvqPp9EcR3LoF7cMjeLw": {
         "place_id": "ChIJzVywvqPp9EcR3LoF7cMjeLw",
@@ -3939,7 +3947,8 @@
             "food",
             "point_of_interest",
             "establishment"
-        ]
+        ],
+        "description": "Ce restaurant, avec une note de 5/5, offre une cuisine de qualité exceptionnelle."
     },
     "ChIJo5E-EgDp9EcR8gGNiOlJw5o": {
         "place_id": "ChIJo5E-EgDp9EcR8gGNiOlJw5o",
@@ -3965,7 +3974,8 @@
             "food",
             "point_of_interest",
             "establishment"
-        ]
+        ],
+        "description": "Ce restaurant, évalué à 5 étoiles, propose une cuisine de qualité exceptionnelle."
     },
     "ChIJp2j5rfzp9EcRL-GrUNoy8j4": {
         "place_id": "ChIJp2j5rfzp9EcRL-GrUNoy8j4",
@@ -3999,7 +4009,8 @@
             "event_venue",
             "point_of_interest",
             "establishment"
-        ]
+        ],
+        "description": "Ce restaurant est une excellente adresse avec un avis client de 4,1 étoiles. Il propose une variété d'options allant du fast-food aux jeux arcade en passant par la pétanque et les événements sociaux. Que vous cherchiez un repas rapide, des boissons conviviales ou des moments de divertissement, cet endroit a tout ce dont vous avez besoin dans un complexe sportif et social complet."
     },
     "ChIJCfnhXNfp9EcR858XnDX_9hw": {
         "place_id": "ChIJCfnhXNfp9EcR858XnDX_9hw",
@@ -4029,7 +4040,8 @@
             "point_of_interest",
             "store",
             "establishment"
-        ]
+        ],
+        "description": "Ce restaurant, qui propose des desserts et des confiseries de qualité, obtient une note excellente de 4,7 étoiles. Idéal pour savourer de délicieux gâteaux et sucres d'oranges tout en profitant du confort de son ambiance chaleureuse."
     },
     "ChIJrwTYEPvp9EcRj0hTaOskNmM": {
         "place_id": "ChIJrwTYEPvp9EcRj0hTaOskNmM",
@@ -4059,7 +4071,8 @@
             "food",
             "point_of_interest",
             "establishment"
-        ]
+        ],
+        "description": "Ce restaurant propose une large gamme de cuisines, incluant un buffet, du sushi et des plats japonais et chinois, offrant une expérience culinaire variée. Avec une note moyenne de 3,7, il est considéré comme un établissement de qualité moyenne."
     },
     "ChIJ4VliAfrp9EcRdrL_M893ySI": {
         "place_id": "ChIJ4VliAfrp9EcRdrL_M893ySI",
@@ -4087,7 +4100,8 @@
             "food",
             "point_of_interest",
             "establishment"
-        ]
+        ],
+        "description": "Ce restaurant turc et méditerranéen propose une cuisine de qualité supérieure, avec un taux d'évaluation de 4,3 étoiles. Les amateurs de plats traditionnels turcs et méditerranéens apprécieront l'expérience gastronomique offerte ici."
     },
     "ChIJC1D2Qv3p9EcRkpWylQiV4D4": {
         "place_id": "ChIJC1D2Qv3p9EcRkpWylQiV4D4",
@@ -4113,7 +4127,8 @@
             "food",
             "point_of_interest",
             "establishment"
-        ]
+        ],
+        "description": "Ce restaurant, d'excellente qualité avec une note de 4,3, propose une cuisine savoureuse et bien préparée."
     },
     "ChIJLaQoYArC9EcRJtBmOxXwGDQ": {
         "place_id": "ChIJLaQoYArC9EcRJtBmOxXwGDQ",
@@ -4131,7 +4146,8 @@
             "food",
             "point_of_interest",
             "establishment"
-        ]
+        ],
+        "description": "Ce restaurant propose une cuisine de qualité exceptionnelle, offrant une expérience gastronomique remarquable qui mérite tous les éloges. Situé dans un cadre idéal, il est incontestablement l’endroit idéal pour savourer des plats délicieux et bien préparés."
     },
     "ChIJ64LQhuHp9EcRAWIFCqtGq-k": {
         "place_id": "ChIJ64LQhuHp9EcRAWIFCqtGq-k",
@@ -4166,7 +4182,8 @@
             "point_of_interest",
             "store",
             "establishment"
-        ]
+        ],
+        "description": "Ce restaurant, dont le rating est de 4,5, est un établissement exceptionnel offrant une cuisine américaine et des hamburgers de qualité supérieure. Il propose également des zones de barbecue pour profiter pleinement du bon air, ainsi que des shops de glaces et de confiserie pour les douceurs après le repas. Situé aussi bien dans un restaurant traditionnel que dans une fast-food, il convient parfaitement aux familles et aux amateurs de grillades."
     },
     "ChIJZypAIajp9EcRxL_6Xyo7bbQ": {
         "place_id": "ChIJZypAIajp9EcRxL_6Xyo7bbQ",
@@ -4192,7 +4209,8 @@
             "food",
             "point_of_interest",
             "establishment"
-        ]
+        ],
+        "description": "Ce restaurant offre une qualité exceptionnelle, avec un classement de 4,5 étoiles. Spécialisé dans la cuisine [type de cuisine en français], il propose des plats savoureux et bien préparés."
     },
     "ChIJmeDHvivp9EcR-_FGDyToC4Q": {
         "place_id": "ChIJmeDHvivp9EcR-_FGDyToC4Q",
@@ -4219,7 +4237,8 @@
             "food",
             "point_of_interest",
             "establishment"
-        ]
+        ],
+        "description": "Le restaurant propose une excellente qualité de pizzas et d'autres plats, avec un classement de 4,4 étoiles. Vous y trouverez une variété de délicieuses pizzas ainsi que d'autres选项未提供完成的语言，但我可以继续用法语完成：\n\n...cuisines. Le personnel est accueillant et la atmosphere chaleureuse. Idéal pour un repas familial ou entre amis."
     },
     "ChIJBUrW2ODp9EcRaQNRuhhUiE8": {
         "place_id": "ChIJBUrW2ODp9EcRaQNRuhhUiE8",
@@ -4237,7 +4256,8 @@
             "food",
             "point_of_interest",
             "establishment"
-        ]
+        ],
+        "description": "C'est un卓越的餐厅，提供美味的菜肴。坐落于美食爱好者们的天堂，这里的每一道菜都能带来非凡的味觉享受。无论是家庭聚餐还是朋友小酌，这里都是您的理想选择。"
     },
     "ChIJE447SnPC9EcR8DqqVqgrJH0": {
         "place_id": "ChIJE447SnPC9EcR8DqqVqgrJH0",
@@ -4264,7 +4284,8 @@
             "food",
             "point_of_interest",
             "establishment"
-        ]
+        ],
+        "description": "Ce restaurant américain offre une expérience gastronomique exceptionnelle, avec un classement de 4,7 étoiles, attirant les clients par sa qualité supérieure et son ambiance conviviale."
     },
     "ChIJ2aTN0-Lp9EcR2e65ix2b97U": {
         "place_id": "ChIJ2aTN0-Lp9EcR2e65ix2b97U",
@@ -4290,7 +4311,8 @@
             "food",
             "point_of_interest",
             "establishment"
-        ]
+        ],
+        "description": "Ce restaurant, réputé pour sa cuisine de qualité supérieure, propose une expérience gastronomique exceptionnelle, confirmée par son classement étoilé de 4,9."
     },
     "ChIJNUosXH7p9EcR2bqEe5Qm0nQ": {
         "place_id": "ChIJNUosXH7p9EcR2bqEe5Qm0nQ",
@@ -4317,7 +4339,8 @@
             "food",
             "point_of_interest",
             "establishment"
-        ]
+        ],
+        "description": "Le restaurant turc propose une cuisine de qualité moyenne, selon un classement de 3,9 étoiles. Vous y trouverez des plats traditionnels turcs savoureux dans une atmosphère conviviale."
     },
     "ChIJ6VXBr4jD9EcRe5pC4w86oHQ": {
         "place_id": "ChIJ6VXBr4jD9EcRe5pC4w86oHQ",
@@ -4344,7 +4367,8 @@
             "food",
             "point_of_interest",
             "establishment"
-        ]
+        ],
+        "description": "Ce restaurant de pizzeria offre une qualité exceptionnelle, comme atteste son note de 4,9. On y trouve également des plats traditionnels italiens."
     },
     "ChIJaSxxGwDD9EcRac83w33Ozi8": {
         "place_id": "ChIJaSxxGwDD9EcRac83w33Ozi8",
@@ -4370,7 +4394,8 @@
             "food",
             "point_of_interest",
             "establishment"
-        ]
+        ],
+        "description": "Ce restaurant, avec une note de 5/5, offre une cuisine de qualité exceptionnelle."
     },
     "ChIJnTfomLrD9EcRhOPqWLcety0": {
         "place_id": "ChIJnTfomLrD9EcRhOPqWLcety0",
@@ -4398,7 +4423,8 @@
             "food",
             "point_of_interest",
             "establishment"
-        ]
+        ],
+        "description": "Ce restaurant, qui offre une cuisine variée comprenant du fast-food et des cafés traditionnels, est d'une qualité excellente, avec un taux de satisfaction client de 4,8 étoiles."
     },
     "ChIJ-5X8-rbD9EcRCiaCNtymRhQ": {
         "place_id": "ChIJ-5X8-rbD9EcRCiaCNtymRhQ",
@@ -4424,7 +4450,8 @@
             "food",
             "point_of_interest",
             "establishment"
-        ]
+        ],
+        "description": "Ce restaurant, d'une qualité excellente avec un classement de 4,5 étoiles, propose une cuisine savoureuse et variée."
     },
     "ChIJIwm02zvD9EcRbPTIw9bpYAE": {
         "place_id": "ChIJIwm02zvD9EcRbPTIw9bpYAE",
@@ -4450,7 +4477,8 @@
             "food",
             "point_of_interest",
             "establishment"
-        ]
+        ],
+        "description": "Ce restaurant propose une cuisine moyenne, avec un classement de 2,3. Bien que la qualité ne soit pas exceptionnelle, il peut tout de même être visité pour ses plats spécifiques ou sa ambiance."
     },
     "ChIJQ1YXEurp9EcR2onvi3KEurk": {
         "place_id": "ChIJQ1YXEurp9EcR2onvi3KEurk",
@@ -4476,7 +4504,8 @@
             "food",
             "point_of_interest",
             "establishment"
-        ]
+        ],
+        "description": "Ce restaurant, d'une qualité excellente avec un classement de 4,6, vous propose une cuisine savoureuse et variée."
     },
     "ChIJHyIRHpHD9EcR52I9ynbJqWg": {
         "place_id": "ChIJHyIRHpHD9EcR52I9ynbJqWg",
@@ -4502,7 +4531,8 @@
             "food",
             "point_of_interest",
             "establishment"
-        ]
+        ],
+        "description": "Ce restaurant, d'une qualité exceptionnelle avec un classement de 4,8 étoiles, offre une cuisine savoureuse et sophistiquée."
     },
     "ChIJmUkrVwrC9EcRov8CL4j6uU8": {
         "place_id": "ChIJmUkrVwrC9EcRov8CL4j6uU8",
@@ -4528,7 +4558,8 @@
             "food",
             "point_of_interest",
             "establishment"
-        ]
+        ],
+        "description": "Ce restaurant propose une cuisine de qualité moyenne, avec un taux d'évaluation de 3,6 étoiles. La cuisine proposée peut varié, offrant diverses options culinaires."
     },
     "ChIJMx8TMnfD9EcRA0erPCnwOyI": {
         "place_id": "ChIJMx8TMnfD9EcRA0erPCnwOyI",
@@ -4548,7 +4579,8 @@
             "food",
             "point_of_interest",
             "establishment"
-        ]
+        ],
+        "description": "Ce pub, bar et restaurant propose une cuisine de grande qualité, tantôt conviviale, tantôt élégante, offrant une expérience gastronomique exceptionnelle qui mérite amplement sa note de 5 étoiles."
     },
     "ChIJA8Pi6eDp9EcROESjrjGMv6Y": {
         "place_id": "ChIJA8Pi6eDp9EcROESjrjGMv6Y",
@@ -4567,7 +4599,8 @@
             "food",
             "point_of_interest",
             "establishment"
-        ]
+        ],
+        "description": "Ce restaurant de fast-food propose une excellente qualité des plats, avec un taux d'approbation de 5 étoiles. Bien que being classifié comme un restaurant de fast-food, l’expérience y est tout sauf rapide et impersonnelle, offrant une cuisine savoureuse et satisfaisante."
     },
     "ChIJVQby6eDp9EcRSfkkzedXUVM": {
         "place_id": "ChIJVQby6eDp9EcRSfkkzedXUVM",
@@ -4597,7 +4630,8 @@
             "food",
             "point_of_interest",
             "establishment"
-        ]
+        ],
+        "description": "Ce restaurant américain, spécialiste en pizza, hamburgers et sandwiches, offre une cuisine de qualité supérieure, justifiant son excellent classement de 4 étoiles. Que vous aimiez les classiques américains ou les pizzas délicieuses, cet endroit saura combler vos attentes."
     },
     "ChIJ0fi9r0zD9EcRDVQE7Ogctrg": {
         "place_id": "ChIJ0fi9r0zD9EcRDVQE7Ogctrg",
@@ -4624,7 +4658,8 @@
             "food",
             "point_of_interest",
             "establishment"
-        ]
+        ],
+        "description": "Le restaurant turc propose une cuisine de qualité excellente, avec un classement de 4,4 étoiles. Vous pouvez y goûter aux saveurs traditionnelles du Moyen-Orient dans un atmosphère conviviale."
     },
     "ChIJ1-cnEfvp9EcRJL1PlbW2S5w": {
         "place_id": "ChIJ1-cnEfvp9EcRJL1PlbW2S5w",
@@ -4654,7 +4689,8 @@
             "food",
             "point_of_interest",
             "establishment"
-        ]
+        ],
+        "description": "Ce restaurant, qui propose des pains, des sandwichs et des produits alimentaires variés, offre une cuisine de qualité moyenne, selon un classement de 3,6 étoiles. Vous y trouverez à la fois des desserts savoureux et des sandwichs pratiques pour le repas du midi."
     },
     "ChIJDY6BaBnp9EcRffLJsKC8AFg": {
         "place_id": "ChIJDY6BaBnp9EcRffLJsKC8AFg",
@@ -4681,7 +4717,8 @@
             "food",
             "point_of_interest",
             "establishment"
-        ]
+        ],
+        "description": "Ce restaurant, d'un type rapide et convivial, offre une cuisine de qualité excellente avec un classement de 4,4 étoiles."
     },
     "ChIJPQbzlPzD9EcRbu_9ns6CLvU": {
         "place_id": "ChIJPQbzlPzD9EcRbu_9ns6CLvU",
@@ -4708,7 +4745,8 @@
             "food",
             "point_of_interest",
             "establishment"
-        ]
+        ],
+        "description": "Ce restaurant, offrant des plats à emporter et un service de restauration sur place, est réputé pour sa qualité excellente, avec une note de 4,4."
     },
     "ChIJjZ7cYnPD9EcRQ9tpEtxwqvg": {
         "place_id": "ChIJjZ7cYnPD9EcRQ9tpEtxwqvg",
@@ -4735,7 +4773,8 @@
             "food",
             "point_of_interest",
             "establishment"
-        ]
+        ],
+        "description": "Ce restaurant, excellente adresse avec une note de 4,5, offre des repas à emporter de haute qualité ainsi que des déjeuners et dîners sur place."
     },
     "ChIJPfLIQrnD9EcRP-n80UspH9U": {
         "place_id": "ChIJPfLIQrnD9EcRP-n80UspH9U",
@@ -4762,7 +4801,8 @@
             "food",
             "point_of_interest",
             "establishment"
-        ]
+        ],
+        "description": "Ce restaurant, offrant des plats à emporter et un service de restauration sur place, est réputé pour sa qualité excellente, avec un classement de 4,5 étoiles."
     },
     "ChIJt4uugenD9EcRtYjUgrWCTAQ": {
         "place_id": "ChIJt4uugenD9EcRtYjUgrWCTAQ",
@@ -4789,7 +4829,8 @@
             "food",
             "point_of_interest",
             "establishment"
-        ]
+        ],
+        "description": "Ce sandwich shop et restaurant propose une cuisine de qualité excellente, avec un classement de 4,5 étoiles."
     },
     "ChIJVbCQnOXD9EcRkiwnquPqm9c": {
         "place_id": "ChIJVbCQnOXD9EcRkiwnquPqm9c",
@@ -4816,7 +4857,8 @@
             "food",
             "point_of_interest",
             "establishment"
-        ]
+        ],
+        "description": "Le restaurant asiatique propose une cuisine de grande qualité, avec un avis client exceptionnel de 4,5 étoiles."
     },
     "ChIJ9an844fp9EcRw2kl_GI-8xk": {
         "place_id": "ChIJ9an844fp9EcRw2kl_GI-8xk",
@@ -4842,7 +4884,8 @@
             "food",
             "point_of_interest",
             "establishment"
-        ]
+        ],
+        "description": "Ce restaurant, connu pour sa cuisine de qualité supérieure, offre une expérience gastronomique exceptionnelle, reflétée dans son classement de 4,8 étoiles."
     },
     "ChIJOymEocPp9EcRGU-YuEyqVOk": {
         "place_id": "ChIJOymEocPp9EcRGU-YuEyqVOk",
@@ -4872,7 +4915,8 @@
             "point_of_interest",
             "store",
             "establishment"
-        ]
+        ],
+        "description": "Ce café-gâteau propose une qualité exceptionnelle, avec un classement de 4,7 étoiles. Spécialisé dans les gâteaux et confiseries artisanaux, ce lieu unique en son genre allie le charme d'un magasin de nourriture à l'atmosphère conviviale d'un restaurant."
     },
     "ChIJH409ShfC9EcR1Nv4mhV2Ec8": {
         "place_id": "ChIJH409ShfC9EcR1Nv4mhV2Ec8",
@@ -4907,7 +4951,8 @@
             "finance",
             "store",
             "establishment"
-        ]
+        ],
+        "description": "Ce restaurant, situé dans le centre commercial, offre une cuisine de qualité moyenne, avec une note de 3,7. Vous pourrez y déguster des plats inspirés d'une variété de cuisines, allant du fast-food au végétarien, en passant par la cuisine internationale. N'oubliez pas que vous trouverez également des pharmacies, des magasins de joaillerie et des services bancaires à proximité."
     },
     "ChIJi_4wzhHC9EcRdwOrxW2d_Eo": {
         "place_id": "ChIJi_4wzhHC9EcRdwOrxW2d_Eo",
@@ -4933,7 +4978,8 @@
             "food",
             "point_of_interest",
             "establishment"
-        ]
+        ],
+        "description": "Ce restaurant, classé comme excellent avec une note de 4, offre une cuisine de qualité supérieure, assurant un expérience gastronomique incontestablement satisfaisante pour ses clients."
     },
     "ChIJ4VoYuk7D9EcR8vwVt0U-7Io": {
         "place_id": "ChIJ4VoYuk7D9EcR8vwVt0U-7Io",
@@ -4964,7 +5010,8 @@
             "food",
             "point_of_interest",
             "establishment"
-        ]
+        ],
+        "description": "Ce restaurant américain propose des hamburgers délicieux et des plats à emporter ou à livrer directement chez vous. Avec un excellent classement de 4,7 étoiles, il est clair que la qualité culinaire est remarquable. Que vous ayez envie d'un déjeuner rapide ou d'un repas complet, cette adresse convient parfaitement pour tous vos besoins en nourriture."
     },
     "ChIJGyKk28bD9EcRq3TXPycp_2I": {
         "place_id": "ChIJGyKk28bD9EcRq3TXPycp_2I",
@@ -4990,7 +5037,8 @@
             "food",
             "point_of_interest",
             "establishment"
-        ]
+        ],
+        "description": "Ce restaurant, avec une note excellente de 4,4, propose une cuisine de qualité supérieure."
     },
     "ChIJR6sox2_D9EcRah8bJu6VHOo": {
         "place_id": "ChIJR6sox2_D9EcRah8bJu6VHOo",
@@ -5016,7 +5064,8 @@
             "food",
             "point_of_interest",
             "establishment"
-        ]
+        ],
+        "description": "Ce restaurant, connu pour sa cuisine de qualité, offre une expérience gastronomique exceptionnelle et est estimé à 4,3 étoiles, ce qui le classe parmi les excellents établissements locaux."
     },
     "ChIJo2hHXQDD9EcRYkaQFisMJ6g": {
         "place_id": "ChIJo2hHXQDD9EcRYkaQFisMJ6g",
@@ -5036,7 +5085,8 @@
             "food",
             "point_of_interest",
             "establishment"
-        ]
+        ],
+        "description": "Ce restaurant américain spécialiste des hamburgers propose une cuisine de qualité moyenne, bien que ses plats soient appréciés par la clientèle."
     },
     "ChIJ-Vv6cUjD9EcR9wGCcI_SOo4": {
         "place_id": "ChIJ-Vv6cUjD9EcR9wGCcI_SOo4",
@@ -5062,7 +5112,8 @@
             "food",
             "point_of_interest",
             "establishment"
-        ]
+        ],
+        "description": "Ce restaurant, réputé pour sa cuisine de qualité, offre une expérience gastronomique exceptionnelle, reflétée par son classement étoiles remarquable de 4,8."
     },
     "ChIJUSVb2_DD9EcRygGp1WW8ky8": {
         "place_id": "ChIJUSVb2_DD9EcRygGp1WW8ky8",
@@ -5088,7 +5139,8 @@
             "food",
             "point_of_interest",
             "establishment"
-        ]
+        ],
+        "description": "Ce restaurant propose une cuisine de qualité moyenne, avec un avis clients de 3,8 étoiles. On y trouve une cuisine généralement bien préparée et servie dans un environnement convivial."
     },
     "ChIJV-vCZWDD9EcR2w-Lfo-JIvY": {
         "place_id": "ChIJV-vCZWDD9EcR2w-Lfo-JIvY",
@@ -5115,7 +5167,8 @@
             "food",
             "point_of_interest",
             "establishment"
-        ]
+        ],
+        "description": "Ce restaurant rapide et traditionnel propose une cuisine de qualité excellente, avec un classement de 4,1 étoiles."
     },
     "ChIJ0ZLz6KzD9EcReJlqnqQrOZg": {
         "place_id": "ChIJ0ZLz6KzD9EcReJlqnqQrOZg",
@@ -5141,7 +5194,8 @@
             "food",
             "point_of_interest",
             "establishment"
-        ]
+        ],
+        "description": "Ce restaurant, d'une qualité excellente avec un classement de 4,5 étoiles, propose une cuisine savoureuse et variée."
     },
     "ChIJ8QETx0_D9EcRoso2Lq9PA7A": {
         "place_id": "ChIJ8QETx0_D9EcRoso2Lq9PA7A",
@@ -5167,7 +5221,8 @@
             "food",
             "point_of_interest",
             "establishment"
-        ]
+        ],
+        "description": "Ce restaurant propose une cuisine de qualité moyenne, avec un classement de 3,6 étoiles. L'offre culinaire n'est pas exceptionnelle mais reste tout de même appréciable."
     },
     "ChIJTbvv6OjD9EcRmlWmEJxNr4o": {
         "place_id": "ChIJTbvv6OjD9EcRmlWmEJxNr4o",
@@ -5193,7 +5248,8 @@
             "food",
             "point_of_interest",
             "establishment"
-        ]
+        ],
+        "description": "Ce restaurant propose une cuisine de qualité excellente, avec un classement de 4,7 étoiles. Il s'agit d'un établissement offrant des plats savoureux et une expérience gastronomique inoubliable."
     },
     "ChIJ2Y3Q9gzC9EcRL29MzSmihYA": {
         "place_id": "ChIJ2Y3Q9gzC9EcRL29MzSmihYA",
@@ -5222,7 +5278,8 @@
             "food",
             "point_of_interest",
             "establishment"
-        ]
+        ],
+        "description": "Ce restaurant français propose une qualité exceptionnelle, avec un taux d'évaluation de 4,6. Spécialisé dans le service de restauration sur mesure et la livraison, il offre également des services traditionnels de restaurant."
     },
     "ChIJNaqMc4fD9EcRefFfgHACM7Y": {
         "place_id": "ChIJNaqMc4fD9EcRefFfgHACM7Y",
@@ -5252,7 +5309,8 @@
             "bar",
             "point_of_interest",
             "establishment"
-        ]
+        ],
+        "description": "Ce restaurant, doté d'une note exceptionnelle de 4,8, offre une cuisine africaine de qualité supérieure dans un cadre idéal pour les banquets et les événements. Idéal pour profiter d'une expérience gourmande authentique en compagnie de amis ou lors d'un événement spécial, il propose également un espace bar accueillant."
     },
     "ChIJZ8zPDFrB9EcRwuWv4uZnEiU": {
         "place_id": "ChIJZ8zPDFrB9EcRwuWv4uZnEiU",
@@ -5281,7 +5339,8 @@
             "food",
             "point_of_interest",
             "establishment"
-        ]
+        ],
+        "description": "Ce restaurant, d'une qualité exceptionnelle grâce à son classement de 5 étoiles, offre une variété de services incluant la restauration rapide, le service d'événements et la livraison à domicile. Situé à la jonction des tendances culinaires contemporaines, il propose un mélange attrayant de cuisine rapide savoureuse et de repas soigneusement préparés pour tous vos besoins en matière de restauration."
     },
     "ChIJfc9OzdXD9EcR26imrNuJ5f8": {
         "place_id": "ChIJfc9OzdXD9EcR26imrNuJ5f8",
@@ -5300,7 +5359,8 @@
             "food",
             "point_of_interest",
             "establishment"
-        ]
+        ],
+        "description": "Ce restaurant rapide et traditionnel possède une note excellente de 4,3, offrant ainsi une qualité supérieure à ses clients."
     },
     "ChIJw9HSGg3C9EcR5konPC5kKfA": {
         "place_id": "ChIJw9HSGg3C9EcR5konPC5kKfA",
