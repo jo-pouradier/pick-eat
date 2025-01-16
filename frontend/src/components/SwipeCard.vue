@@ -8,7 +8,9 @@
           class="pizza-thumbnail"
           alt="Pizza variety showcase thumbnail"
         />
-        <div class="pizza-display"></div>
+        <div class="pizza-display">
+          <img :src="restaurant.picture" class="pizza-image" alt="Pizza variety showcase thumbnail" />
+        </div>
         <img
           loading="lazy"
           src="https://cdn.builder.io/api/v1/image/assets/TEMP/6bb35bb0cada82ac439a3eb29df1c6c13a26edcb5f26238ccc798a6341f77bba?placeholderIfAbsent=true&apiKey=e6ddd9cad30b4b528d92a08d5f92673d"
@@ -18,6 +20,7 @@
       </div>
     </div>
     <div class="pizza-options">
+      <p class="price-level">{{ priceLevelString }}</p>
       <img
         loading="lazy"
         src="https://cdn.builder.io/api/v1/image/assets/TEMP/fa708cecc73e8b32335f52d05da68f9984267ad789adb3657ccd4c965f3a1297?placeholderIfAbsent=true&apiKey=e6ddd9cad30b4b528d92a08d5f92673d"
@@ -37,14 +40,15 @@
         alt="Pizza topping option"
       />
     </div>
-    <h1 class="menu-title">{{ props.title }}</h1>
+    <h1 class="menu-title">{{ restaurant.name }}</h1>
     <div class="menu-divider">____________________<br />_______________</div>
 </div>
 </template>
 
 <script setup lang="ts">
-import { defineProps,onMounted,ref, watch, defineEmits } from 'vue';
+import { defineProps,onMounted,ref, watch, defineEmits, computed } from 'vue';
 import interact from 'interactjs';
+import type Restaurant from '@/types/Restaurants';
 
 const interactPosition = {
     x: 0,
@@ -66,7 +70,7 @@ const maxLimits : {
     interactXThreshold: 400
 }
 const props = defineProps<{
-  title: string;
+  restaurant: Restaurant;
   isCurrent: boolean;
   isNext: boolean;
   isLast: boolean;
@@ -74,7 +78,7 @@ const props = defineProps<{
 const transformString = ref<string>('translate3D(0,0,0) rotate(0deg)');
 
 function setTransformString(x: number, y: number, rotation: number) {
-    console.log('seting transform string',props.title,props.isCurrent);
+    console.log('seting transform string',props.restaurant.name,props.isCurrent);
     if (props.isCurrent) {
         transformString.value = `translate3D(${x}px, ${y}px, 0) rotate(${rotation}deg)`;
     }
@@ -84,6 +88,10 @@ function setTransformString(x: number, y: number, rotation: number) {
 function resetTransformString() {
     transformString.value = 'translate3D(0, 0, 0) rotate(0deg)';
 }
+
+const priceLevelString = computed(() => {
+  return '€'.repeat(props.restaurant.price_level);
+});
    
 function initializeInteract() {  
 interact('.isCurrent')
@@ -109,12 +117,12 @@ interact('.isCurrent')
         }
       },
       end() {
-        console.log('endIS te',props.title,interactPosition.x,maxLimits.interactXThreshold);
+        console.log('endIS te',props.restaurant.name,interactPosition.x,maxLimits.interactXThreshold);
         if (interactPosition.x > maxLimits.interactXThreshold) {
-            console.log('emit remove card',props.title);
-            emit('removeCardRight', props.title);
+            console.log('emit remove card',props.restaurant.name);
+            emit('removeCardRight', props.restaurant.name);
         } else if (interactPosition.x < -maxLimits.interactXThreshold) {
-            emit('removeCardLeft', props.title);
+            emit('removeCardLeft', props.restaurant.name);
         } else {
             resetTransformString();
         }
@@ -207,6 +215,11 @@ onMounted(() => {
   height: 186px;
 }
 
+.pizza-image {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: cover;
+}
 .pizza-options {
   display: flex;
   margin-top: 7px;
@@ -221,6 +234,11 @@ onMounted(() => {
   object-fit: contain;
   object-position: center;
   width: 22px;
+}
+
+.price-level {
+  font-size: 1.2em; /* Increase font size */
+  font-weight: bold; /* Make text bold */
 }
 
 .menu-title {

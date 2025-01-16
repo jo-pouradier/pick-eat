@@ -2,7 +2,6 @@
 
 import {defineProps, onMounted, ref} from 'vue';
 import type {EventInfo} from "@/types/EventInfo.ts";
-import axios from "axios";
 import type {Participant} from "@/types/Participant.ts";
 import {useRouter} from "vue-router";
 import {getParticipants, loadParticipants} from "@/lib/EventUtils.ts";
