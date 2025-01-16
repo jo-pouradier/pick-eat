@@ -39,9 +39,9 @@ def generate_restaurants_descriptions(input_json_path=os.path.join(".", "get_res
             + "Rating: " + str(note) + "\n"
             + "Types: " + ", ".join(types_list) + "\n\n"
             + "Use the rating to describe the quality of the restaurant and the types translated in french to describe the cuisine.\n"
-            + "A rating of 4 or more should be considered as a good restaurant.\n"
+            + "A rating of 4 or more should be considered as an excellent restaurant.\n"
             + "A rating between 3 and 4 should be considered as an average restaurant.\n"
-            + "A rating below 3 should be considered as a very bad restaurant.\n"
+            + "A rating below 3 should be considered as a bad restaurant.\n"
             + "Return only the description text."
         )
 
@@ -80,7 +80,7 @@ def generate_restaurants_descriptions(input_json_path=os.path.join(".", "get_res
 
 if __name__ == "__main__":
     start_time = time.time()
-    generate_restaurants_descriptions(num_restaurants=5)
+    generate_restaurants_descriptions(num_restaurants=10)
     end_time = time.time()
     execution_time = end_time - start_time
     print(f"\nTotal execution time: {execution_time:.2f} seconds")
