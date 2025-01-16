@@ -7,8 +7,11 @@ from .BillPartModel import BillPartModel
 
 class BillModel(SQLModel, table=True):
     id: UUID = Field(default_factory=uuid4, primary_key=True)
-    userId: UUID = Field()
+    userId: UUID = Field(index=True)
     bucketName: Optional[str] = Field(default=None)
-    path: str = Field(default=None)
-    # list of bill parts
-    parts : list[BillPartModel] = Relationship(back_populates="billmodel")
+    path: str = Field()
+    parts: Optional[list[BillPartModel]] = Relationship(back_populates="bill")
+
+    model_config = {
+        "from_attributes": True
+    }

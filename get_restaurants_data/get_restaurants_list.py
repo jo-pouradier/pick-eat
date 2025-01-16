@@ -7,13 +7,14 @@ API_KEY = ""
 BASE_URL = "https://maps.googleapis.com/maps/api/place/nearbysearch/json"
 OUTPUT_FILE = os.path.join(".", "get_restaurants_data", "data", "all_restaurants_lyon.json")
 
+
 def fetch_restaurants_in_area(api_key, location, radius=1000):
     """Effectue une requête à l'API Google Places pour un point spécifique."""
     params = {
         "location": location,
         "radius": radius,
         "type": "restaurant",
-        "key": api_key
+        "key": api_key,
     }
     restaurants = []
     request_count = 0
@@ -22,7 +23,9 @@ def fetch_restaurants_in_area(api_key, location, radius=1000):
         # Envoi de la requête à l'API
         response = requests.get(BASE_URL, params=params).json()
         request_count += 1
-        print(f"Requête #{request_count}: {len(response.get('results', []))} résultats récupérés.")
+        print(
+            f"Requête #{request_count}: {len(response.get('results', []))} résultats récupérés."
+        )
 
         # Ajouter les résultats à la liste
         results = response.get("results", [])
@@ -38,6 +41,7 @@ def fetch_restaurants_in_area(api_key, location, radius=1000):
         params = {"pagetoken": next_page_token, "key": api_key}
 
     return restaurants
+
 
 def generate_grid_coordinates(lat, lng, sw_lat, sw_lng, ne_lat, ne_lng, step=0.005):
     """Génère une grille de points à partir des coordonnées SW et NE."""
@@ -56,12 +60,13 @@ def generate_grid_coordinates(lat, lng, sw_lat, sw_lng, ne_lat, ne_lng, step=0.0
         lat += step
     return grid_points
 
+
 def divide_area_and_fetch(api_key, center_lat, center_lng, radius=5000, step=0.005):
     """Divise la zone en une grille et récupère les restaurants à chaque point."""
     # Calculer les coordonnées des coins de la zone d'intérêt
     lat_step = step  # Environ 555 m pour 0.005 degré de latitude
     lng_step = step  # Environ 555 m pour 0.005 degré de longitude (plus ou moins)
-    
+
     # Calculer les coordonnées du coin sud-ouest et nord-est
     sw_lat = center_lat - (radius / 111320)  # Sud-ouest
     sw_lng = center_lng - (radius / 40008000 * 360)
@@ -69,7 +74,9 @@ def divide_area_and_fetch(api_key, center_lat, center_lng, radius=5000, step=0.0
     ne_lng = center_lng + (radius / 40008000 * 360)
 
     # Générer les points de la grille
-    grid_points = generate_grid_coordinates(center_lat, center_lng, sw_lat, sw_lng, ne_lat, ne_lng, step)
+    grid_points = generate_grid_coordinates(
+        center_lat, center_lng, sw_lat, sw_lng, ne_lat, ne_lng, step
+    )
 
     all_restaurants = {}
 
@@ -78,13 +85,18 @@ def divide_area_and_fetch(api_key, center_lat, center_lng, radius=5000, step=0.0
         print(f"Recherche autour de {location}...")
         restaurants = fetch_restaurants_in_area(api_key, location, radius=1000)
         for restaurant in restaurants:
-            all_restaurants[restaurant["place_id"]] = restaurant  # Utiliser place_id pour éviter les doublons
+            all_restaurants[
+                restaurant["place_id"]
+            ] = restaurant  # Utiliser place_id pour éviter les doublons
 
     return list(all_restaurants.values())
 
+
 # Recherche des restaurants à Lyon
 center_lat, center_lng = 45.7568, 4.8509  # Coordonnées de Lyon
-restaurants = divide_area_and_fetch(API_KEY, center_lat, center_lng, radius=5000, step=0.005)
+restaurants = divide_area_and_fetch(
+    API_KEY, center_lat, center_lng, radius=5000, step=0.005
+)
 
 # Sauvegarder les résultats dans un fichier JSON
 with open(OUTPUT_FILE, "w", encoding="utf-8") as file:

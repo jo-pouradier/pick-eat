@@ -41,3 +41,4 @@ out/
 **/*.db
 **/*.pyc
 comment-analysis/*
+comment-analysis/*
