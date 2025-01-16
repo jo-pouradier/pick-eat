@@ -8,22 +8,24 @@ DETAILS_BASE_URL = "https://maps.googleapis.com/maps/api/place/details/json"
 INPUT_FILE = os.path.join(".", "get_restaurants_data", "data", "all_restaurants_lyon.json")
 OUTPUT_FILE = os.path.join(".", "get_restaurants_data", "data", "restaurant_details.json")
 
+
 def fetch_place_details(api_key, place_id):
     """Récupère les détails d'un lieu à partir de son place_id via l'API Place Details."""
     params = {
         "place_id": place_id,
         "key": api_key,
-        "fields": "name,rating,formatted_address,geometry,formatted_phone_number,opening_hours,website"
+        "fields": "name,rating,formatted_address,geometry,formatted_phone_number,opening_hours,website",
     }
     response = requests.get(DETAILS_BASE_URL, params=params)
     return response.json()
+
 
 def get_details_for_all_restaurants(api_key, input_file, output_file):
     """Récupère les détails de tous les restaurants à partir d'un fichier JSON."""
     # Charger les restaurants depuis le fichier JSON
     with open(input_file, "r", encoding="utf-8") as file:
         restaurants = json.load(file)
-    
+
     restaurant_details = {}
     request_count = 0
 
@@ -53,7 +55,10 @@ def get_details_for_all_restaurants(api_key, input_file, output_file):
     with open(output_file, "w", encoding="utf-8") as file:
         json.dump(restaurant_details, file, ensure_ascii=False, indent=4)
 
-    print(f"Détails de {len(restaurant_details)} restaurants sauvegardés dans {output_file}")
+    print(
+        f"Détails de {len(restaurant_details)} restaurants sauvegardés dans {output_file}"
+    )
+
 
 # Appel de la fonction pour récupérer les détails
 get_details_for_all_restaurants(API_KEY, INPUT_FILE, OUTPUT_FILE)

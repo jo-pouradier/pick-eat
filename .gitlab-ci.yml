@@ -115,6 +115,39 @@ build_restaurant:
 #       junit:
 #         - report.xml
 
+test_billing:
+  stage: test
+  image: python:3.10
+  script:
+    - cd billing
+    - pip install -r requirements.txt
+    - pytest --junitxml=report.xml
+  artifacts:
+    when: always
+    reports:
+      junit:
+        - report.xml
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+    - if: $CI_COMMIT_BRANCH == "main" && $CI_PIPELINE_SOURCE == "push"
+
+build_billing:
+  image: docker:20.10
+  stage: build
+  services:
+    - docker:dind
+  before_script:
+    - echo "$CI_REGISTRY_PASSWORD" | docker login $CI_REGISTRY -u $CI_REGISTRY_USER --password-stdin
+  script:
+    - cd billing
+    - docker build -t $REGISTRY/billing:$TAG -t $REGISTRY/billing:latest .
+    - docker push $REGISTRY/billing:$TAG
+    - docker push $REGISTRY/billing:latest
+  needs:
+    - test_billing
+  rules:
+    - if: $CI_COMMIT_BRANCH == "main" && $CI_PIPELINE_SOURCE == "push"
+
 # deploy:
 #   stage: deploy
 #   script:

@@ -130,6 +130,7 @@ def getReviewsForRestaurants(restaurant_file, num_reviews=20, num_restos=None, o
 
     print(f"Tous les avis ont été sauvegardés dans {output_file}.")
 
+
 if __name__ == "__main__":
     input_file = os.path.join(".", "get_restaurants_data", "data", "all_restaurants_lyon.json")
     getReviewsForRestaurants(input_file, num_reviews=20)
