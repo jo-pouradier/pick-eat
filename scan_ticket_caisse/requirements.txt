@@ -2,3 +2,6 @@ imutils==0.5.4
 ollama==0.4.6
 opencv-python==4.10.0.84
 pytesseract==0.3.13
+scipy==1.13.1
+stomp.py==8.2.0
+python-dotenv==0.21.0

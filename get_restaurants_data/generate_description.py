@@ -81,7 +81,7 @@ def generate_restaurants_descriptions(input_json_path=os.path.join(".", "get_res
 
 if __name__ == "__main__":
     start_time = time.time()
-    generate_restaurants_descriptions(num_restaurants=10)
+    generate_restaurants_descriptions(num_restaurants=20)
     end_time = time.time()
     execution_time = end_time - start_time
     print(f"\nTotal execution time: {execution_time:.2f} seconds")
