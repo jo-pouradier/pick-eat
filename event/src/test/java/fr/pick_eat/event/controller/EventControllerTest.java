@@ -58,9 +58,9 @@ public class EventControllerTest {
     @Test
     public void testCreateEvent() throws Exception {
         String uuid = mockMvc.perform(MockMvcRequestBuilders.post("/create")
-                .cookie(COOKIE)
-                .contentType(MediaType.APPLICATION_JSON)
-                .content(objectMapper.writeValueAsString(eventDTO)))
+                        .cookie(COOKIE)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(eventDTO)))
                 .andExpect(status().isOk())
                 // extract content to uuid
                 .andReturn().getResponse().getContentAsString();
@@ -72,8 +72,8 @@ public class EventControllerTest {
     @Test
     public void testGetHistoryNotEmpty() throws Exception {
         String historyStr = mockMvc.perform(MockMvcRequestBuilders.get("/history")
-                .cookie(COOKIE)
-                .contentType(MediaType.APPLICATION_JSON))
+                        .cookie(COOKIE)
+                        .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andReturn().getResponse().getContentAsString();
 
@@ -86,7 +86,7 @@ public class EventControllerTest {
         testCreateEvent();
 
         String historyStr2 = mockMvc.perform(MockMvcRequestBuilders.get("/history")
-                .cookie(COOKIE))
+                        .cookie(COOKIE))
                 .andExpect(status().isOk())
                 .andReturn().getResponse().getContentAsString();
 
@@ -104,7 +104,7 @@ public class EventControllerTest {
         testCreateEvent();
         String url = String.format("/join/%s", eventDTO.getId().toString());
         mockMvc.perform(MockMvcRequestBuilders.post(url)
-                .cookie(COOKIE))
+                        .cookie(COOKIE))
                 .andExpect(status().isBadRequest());
     }
 
@@ -113,7 +113,7 @@ public class EventControllerTest {
         testCreateEvent();
 
         mockMvc.perform(MockMvcRequestBuilders.post("/join/" + eventDTO.getId())
-                .cookie(COOKIE2))
+                        .cookie(COOKIE2))
                 .andExpect(status().isOk())
                 .andExpect(content().string("true"));
     }
@@ -133,9 +133,9 @@ public class EventControllerTest {
 
         String url = String.format("/feedback/%s", feedbackDTO.getEventId().toString());
         String feedbackString = mockMvc.perform(MockMvcRequestBuilders.post(url)
-                .cookie(COOKIE)
-                .contentType(MediaType.APPLICATION_JSON)
-                .content(objectMapper.writeValueAsString(feedbackDTO)))
+                        .cookie(COOKIE)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(feedbackDTO)))
                 .andExpect(status().isOk())
                 .andReturn().getResponse().getContentAsString();
 
@@ -153,7 +153,7 @@ public class EventControllerTest {
         testCreateEvent();
         testJoinEvent();
         mockMvc.perform(MockMvcRequestBuilders.post("/leave/" + eventDTO.getId())
-                .cookie(COOKIE2))
+                        .cookie(COOKIE2))
                 .andExpect(status().isOk())
                 .andExpect(content().string("true"));
     }
@@ -162,7 +162,7 @@ public class EventControllerTest {
     void testLeaveEventOrganizer() throws Exception {
         testCreateEvent();
         mockMvc.perform(MockMvcRequestBuilders.post("/leave/" + eventDTO.getId())
-                .cookie(COOKIE))
+                        .cookie(COOKIE))
                 .andExpect(status().isBadRequest());
     }
 
@@ -177,16 +177,72 @@ public class EventControllerTest {
         votes.add(vote);
 
         mockMvc.perform(MockMvcRequestBuilders.post("/swipe/" + eventDTO.getId())
-                .cookie(COOKIE)
-                .contentType(MediaType.APPLICATION_JSON)
-                .content(objectMapper.writeValueAsString(votes)))
+                        .cookie(COOKIE)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(votes)))
                 .andExpect(status().isOk());
+    }
+
+    private EventVoteDTO createVote(UUID restaurantId, boolean like) {
+        EventVoteDTO vote = new EventVoteDTO();
+        vote.setRestaurantId(restaurantId);
+        vote.setLike(like);
+        return vote;
+    }
+    @Test
+    public void testVoteResult() throws Exception{
+        testCreateEvent();
+
+        List<EventVoteDTO> votes = new ArrayList<>();
+        UUID restaurant1 = UUID.randomUUID();
+        UUID restaurant2 = UUID.randomUUID();
+        UUID restaurant3 = UUID.randomUUID();
+
+        // Create 2 votes for each restaurant
+        votes.add(createVote(restaurant1, true));
+        votes.add(createVote(restaurant1, true));
+        votes.add(createVote(restaurant2, true));
+        votes.add(createVote(restaurant2, false));
+        votes.add(createVote(restaurant3, false));
+        votes.add(createVote(restaurant3, false));
+
+        mockMvc.perform(MockMvcRequestBuilders.post("/swipe/" + eventDTO.getId())
+                        .cookie(COOKIE)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(votes)))
+                .andExpect(status().isOk());
+
+        mockMvc.perform(MockMvcRequestBuilders.get("/result/" + eventDTO.getId())
+                        .cookie(COOKIE)
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(content().string(restaurant1.toString()));
+    }
+
+    @Test
+    public void testCloseVote() throws Exception {
+        testCreateEvent();
+
+        mockMvc.perform(MockMvcRequestBuilders.get("/close/" + eventDTO.getId())
+                        .cookie(COOKIE))
+                .andExpect(status().isOk())
+                .andExpect(content().string("Event closed"));
+    }
+
+    @Test
+    public void testCloseVoteBadUser() throws Exception {
+        testCreateEvent();
+
+        mockMvc.perform(MockMvcRequestBuilders.get("/close/" + eventDTO.getId())
+                        .cookie(COOKIE2))
+                .andExpect(status().isBadRequest())
+                .andExpect(content().string("Event not closed"));
     }
 
     @Test
     public void testGetFeedbackHistory() throws Exception {
         String feedbackHistoryStr = mockMvc.perform(MockMvcRequestBuilders.get("/feedback/history")
-                .cookie(COOKIE))
+                        .cookie(COOKIE))
                 .andExpect(status().isOk())
                 .andReturn().getResponse().getContentAsString();
 
@@ -197,7 +253,7 @@ public class EventControllerTest {
         testSubmitFeedback();
 
         String feedbackHistoryStr2 = mockMvc.perform(MockMvcRequestBuilders.get("/feedback/history")
-                .cookie(COOKIE))
+                        .cookie(COOKIE))
                 .andExpect(status().isOk())
                 .andReturn().getResponse().getContentAsString();
 
@@ -214,7 +270,7 @@ public class EventControllerTest {
         String url = String.format("/participants/%s", eventDTO.getId().toString());
 
         String participantsStr = mockMvc.perform(MockMvcRequestBuilders.get(url)
-                .cookie(COOKIE))
+                        .cookie(COOKIE))
                 .andExpect(status().isOk())
                 .andReturn().getResponse().getContentAsString();
 
@@ -228,7 +284,7 @@ public class EventControllerTest {
         String url = String.format("/participants/%s", UUID.randomUUID().toString());
 
         mockMvc.perform(MockMvcRequestBuilders.get(url)
-                .cookie(COOKIE))
+                        .cookie(COOKIE))
                 .andExpect(status().isNotFound());
     }
 
@@ -238,7 +294,7 @@ public class EventControllerTest {
         String url = String.format("/participants/%s", invalidEventId);
 
         mockMvc.perform(MockMvcRequestBuilders.get(url)
-                .cookie(COOKIE))
+                        .cookie(COOKIE))
                 .andExpect(status().isBadRequest());
     }
 
