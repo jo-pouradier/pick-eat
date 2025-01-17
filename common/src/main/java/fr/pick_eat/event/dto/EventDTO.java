@@ -1,5 +1,8 @@
 package fr.pick_eat.event.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -20,5 +23,4 @@ public class EventDTO {
     private UUID organizerId;
     private UUID selectedRestaurantId;
     private boolean isVoteFinished;
-
 }

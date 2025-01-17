@@ -1,6 +1,10 @@
+import type {EventVote} from "@/types/EventVote.ts";
+
 export interface Participant {
-  id: string;
-  firstName: string;
-  lastName: string;
-  email: string;
+    uuid: string;
+    eventId: string;
+    userId: string;
+    isOrganizer: boolean;
+    hasVoted: boolean;
+    votes: EventVote[];
 }

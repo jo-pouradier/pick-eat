@@ -8,70 +8,128 @@
       <h1 class="main-title">{{ event.name }}</h1>
       <p class="event-place">{{ event.address }}</p>
       <p class="event-participants">Participants: {{
-          participants.map(
+          users.map(
             participant => participant.firstName + ' ' + participant.lastName
           ).join(', ')
         }}</p>
       <p class="event-more-info">More Info: {{ event.description }}</p>
     </div>
     <div>
-      <button class="vote-button" @click="handleVote">Vote</button>
+      <button v-if="!hasVoted" class="vote-button" @click="handleVote">Vote</button>
+      <button v-if="user!=null && event.organizerId==user.uuid" class="close-vote-button" @click="handleCloseVote">Close
+        vote
+      </button>
     </div>
     <div id="messages-logs-container" class="logs-container">
-      <div v-for="log in logs.sort(sortByTime)" :key="log.id" class="log-item">
-        <p class="log-time">{{ log.time.toLocaleTimeString() }}</p>
-        <p class="log-message">{{ log.message }}</p>
-        <img v-if="log.image" :src="log.image" alt="Log image" class="log-image"/>
-      </div>
+      <ChatComponent v-for="log in logs.sort(sortByTime)" :key="log.chatId" :chat="log"
+                     :user="retrieveUser(log.userId)"/>
     </div>
     <div>
       <img v-if="newImage" :src="newImage" alt="Image preview" class="image-thumbnail"/>
+      <span v-if="imageLoadError" class="error-text">{{ imageLoadError }}</span>
     </div>
     <div class="message-input-container">
       <input v-model="newMessage" class="message-input" placeholder="Write a message..." @keyup.enter="sendMessage"/>
       <label class="image-upload-label send-button">
         📷
-        <input type="file" @change="handleImageUpload" class="image-upload-input"/>
+        <input type="file" @change="handleImageUpload" class="image-upload-input"
+               accept="image/png, image/jpeg, image/jpg, image/gif"/>
       </label>
       <button class="send-button" @click="sendMessage">Send</button>
     </div>
   </div>
 </template>
 <script setup lang="ts">
-import {onMounted, ref} from 'vue';
+import {onMounted, onUnmounted, ref} from 'vue';
 import {useRoute, useRouter} from 'vue-router';
 import type {EventInfo} from "@/types/EventInfo.ts";
-import {getParticipants, loadEvent, loadParticipants} from "@/lib/EventUtils.ts";
+import {getParticipants, loadEvent, loadUser, loadUsers} from "@/lib/EventUtils.ts";
+import type {User} from "@/types/User.ts";
+import {socket} from "@/socket.ts";
+import axios from "axios";
+import {type ChatInfo} from "@/types/ChatInfo.ts";
+import {getUserCookie} from "@/lib/CookieUtils.ts";
+import ChatComponent from "@/components/ChatComponent.vue";
 import type {Participant} from "@/types/Participant.ts";
 
 const route = useRoute();
 const router = useRouter();
-const eventId = ref<string | null>(null)
+const eventId = ref<string>("")
 const event = ref<EventInfo>();
-const participants = ref<Participant[]>([]);
+const users = ref<User[]>([]);
+const hasVoted = ref(false);
+const user = ref<User>();
+const logs = ref<ChatInfo[]>([]);
 onMounted(() => {
+  if (socket.connected) {
+    socket.on('new_message', handleNewMessageReceived);
+  } else {
+    socket.on('connect', () => {
+      socket.on('new_message', handleNewMessageReceived);
+    });
+  }
+  user.value = getUserCookie();
+  if (!user.value) {
+    router.push('/login');
+  }
   if (route.query.eventId) {
     eventId.value = route.query.eventId as string;
     loadEvent(eventId.value).then(response => {
       event.value = response.data;
-      console.log('Event loaded:', event.value);
     }).catch(() =>
       router.push("/event-list")
     );
-    getParticipants(eventId.value).then(response => {
-      loadParticipants(response.data).then(response => {
-          participants.value = response.data;
-        }
-      );
-    });
+    reloadParticipants(eventId.value);
   } else {
     router.push("/event-list");
   }
 });
 
+onUnmounted(() => {
+  socket.off('new_message', handleNewMessageReceived);
+});
+
+async function retrieveUser(userId: string): Promise<User | null> {
+  if (!userId) {
+    return Promise.resolve(null);
+  }
+  const part = users.value.find(participant => participant.uuid === userId) as User;
+  if (part === undefined || part) {
+    return loadUser(userId).then(response => {
+      const participant = response as User;
+      if (!users.value.find(participant => participant.uuid === userId)) {
+        users.value.push(participant);
+      }
+      return response;
+    });
+  }
+  return Promise.resolve(part);
+}
+
+async function reloadParticipants(eventId: string): Promise<void> {
+  return getParticipants(eventId).then(response => {
+    console.log('Participants:', response);
+    const participantsUuids = response.map(participant => participant.userId);
+    hasVoted.value = response.filter(participant => participant.uuid === user.value?.uuid && participant.votes.length > 0).length > 0;
+    loadUsers(participantsUuids).then(response => {
+      users.value = response;
+    }).then(() => {
+      axios.get('/event/' + eventId + '/messages').then(response => {
+        const datas = response.data as ChatInfo[];
+        datas.forEach(data => {
+          data.date = new Date(data.date);
+        });
+        logs.value = datas.map(formatMessage);
+      }).catch(error => {
+        console.error('Error loading messages:', error);
+      });
+    });
+  });
+}
+
 // Invert sort order to show latest logs at the bottom
-function sortByTime(a: Log, b: Log): number {
-  return b.time.getTime() - a.time.getTime();
+function sortByTime(a: ChatInfo, b: ChatInfo): number {
+  return b.date.getTime() - a.date.getTime();
 }
 
 
@@ -79,28 +137,39 @@ function handleCopyLink(): void {
   navigator.clipboard.writeText(window.location.host + '/join-event?eventId=' + eventId.value);
 }
 
-interface Log {
-  id: number;
-  time: Date;
-  message: string;
-  image?: string; // Optional image property
+function handleCloseVote(): void {
+  console.log('Close vote');
 }
 
-const logs = ref<Log[]>([
-  {id: 1, time: new Date(), message: 'Event created'},
-  {id: 2, time: new Date(), message: 'Participants joined'},
-  {id: 3, time: new Date(), message: 'Event started'},
-  {id: 4, time: new Date(), message: 'Event ended', image: 'path/to/image.jpg'},
-  {id: 1, time: new Date(), message: 'Event created'},
-  {id: 2, time: new Date(), message: 'Participants joined'},
-  {id: 3, time: new Date(), message: 'Event started'},
-  {id: 4, time: new Date(), message: 'Event ended', image: 'path/to/image.jpg'},
-  {id: 1, time: new Date(), message: 'Event created'},
-]);
+function handleNewMessageReceived(message: any): void {
+  console.log('New message received:', message);
+  const chat = message.content as ChatInfo;
+  if (chat.eventId !== eventId.value) {
+    return;
+  }
+  chat.date = new Date(chat.date);
+  if (!users.value.find(participant => participant.uuid === chat.userId)) {
+    retrieveUser(chat.userId).then(() => {
+      logs.value.push(formatMessage(chat));
+    });
+  } else {
+    logs.value.push(formatMessage(chat));
+  }
+}
+
+function formatMessage(message: ChatInfo): ChatInfo {
+  if (users.value) {
+    users.value.forEach(participant => {
+      message.content = message.content.replace(`{${participant.uuid}}`, participant.firstName + ' ' + participant.lastName);
+    });
+  }
+  return message;
+}
 
 const newMessage = ref('');
 const newImage = ref<string | null>(null);
 const imageUploaded = ref(false);
+const imageLoadError = ref<string | null>(null);
 
 function goBack(): void {
   router.push({name: 'event-list'});
@@ -108,29 +177,29 @@ function goBack(): void {
 
 function sendMessage(): void {
   if (newMessage.value.trim() || newImage.value) {
-    logs.value.push({
-      id: logs.value.length + 1,
-      time: new Date(),
-      message: newMessage.value,
-      image: newImage.value || undefined
+    const formData = new FormData();
+    formData.append('message', newMessage.value);
+    if (newImage.value) {
+      formData.append('file', newImage.value);
+    }
+    axios.post('/event/' + eventId.value + '/message', formData).catch(error => {
+      console.error('Error sending message:', error);
     });
     newMessage.value = '';
     newImage.value = null;
     imageUploaded.value = false;
-    scrollToBottom();
   }
-}
-
-function scrollToBottom(): void {
-  // const logsContainer = document.getElementById('messages-logs-container');
-  // if (logsContainer) {
-  //   logsContainer.scrollTop = logsContainer.clientHeight;
-  // }
 }
 
 function handleImageUpload(event: Event): void {
   const target = event.target as HTMLInputElement;
   if (target.files && target.files[0]) {
+    const size = target.files?.[0].size;
+    console.log('Image size:', size);
+    if (size && size > 10000000) {
+      imageLoadError.value = 'Image size is too large. Please upload an image smaller than 10MB.';
+      return;
+    }
     const reader = new FileReader();
     reader.onload = (e) => {
       newImage.value = e.target?.result as string;
@@ -322,5 +391,16 @@ function handleVote(): void {
   position: absolute;
   top: 10px;
   left: 10px;
+}
+
+.vote-button, .close-vote-button {
+  padding: 10px 15px;
+  background-color: rgba(179, 38, 30, 1);
+  color: var(--Yellow-2, #f3e9b5);
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font: 700 14px/1 League Spartan, sans-serif;
+  margin-top: 10px;
 }
 </style>

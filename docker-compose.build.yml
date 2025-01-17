@@ -1,3 +1,11 @@
+volumes:
+  ssd_storage:
+    driver: local
+    driver_opts:
+      type: none
+      device: ./uploads
+      o: bind
+
 services:
   # The load balancer / reverse proxy
   nginx:
@@ -6,7 +14,11 @@ services:
       dockerfile: ./Dockerfile
     env_file: dev.env
     ports:
-      - "${NGINX_PORT:-8080}:${NGINX_PORT:-8080}"
+      - "${NGINX_PORT_HTTP:-80}:80"
+      - "${NGINX_PORT_HTTPS:-443}:443"
+    volumes:
+      - ssd_storage:${SSD_STORAGE_PATH}
+
   frontend:
     build:
       context: ./frontend
@@ -14,6 +26,7 @@ services:
     env_file: dev.env
     ports:
       - "${FRONTEND_PORT:-8081}:${FRONTEND_PORT:-8081}"
+
   active_mq:
     restart: always
     healthcheck:
@@ -34,6 +47,7 @@ services:
       - "${ACTIVE_MQ_PORT_TCP:-61616}:61616"
       - "${ACTIVE_MQ_PORT_WEB:-8161}:8161"
       - "${ACTIVE_MQ_PORT_STOMP:-61613}:61613"
+
   auth_database:
     restart: always
     healthcheck:
@@ -50,6 +64,7 @@ services:
       POSTGRES_DB: ${AUTH_DB_NAME:-postgres}
     ports:
       - "${AUTH_DB_PORT:-5432}:5432"
+
   auth:
     build:
       context: ./
@@ -66,6 +81,7 @@ services:
     env_file: dev.env
     ports:
       - "${AUTH_PORT:-8082}:${AUTH_PORT:-8082}"
+
   event:
     build:
       context: ./
@@ -78,6 +94,7 @@ services:
     env_file: dev.env
     ports:
       - "${EVENT_PORT:-8083}:${EVENT_PORT:-8083}"
+
   restaurant:
     build:
       context: ./
@@ -87,6 +104,7 @@ services:
     env_file: dev.env
     ports:
       - "${RESTAURANT_PORT:-8084}:${RESTAURANT_PORT:-8084}"
+
   socket-spring:
     build:
       context: ./

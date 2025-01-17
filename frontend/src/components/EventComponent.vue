@@ -2,22 +2,23 @@
 
 import {defineProps, onMounted, ref} from 'vue';
 import type {EventInfo} from "@/types/EventInfo.ts";
-import type {Participant} from "@/types/Participant.ts";
+import type {User} from "@/types/User.ts";
 import {useRouter} from "vue-router";
-import {getParticipants, loadParticipants} from "@/lib/EventUtils.ts";
+import {getParticipants, loadUsers} from "@/lib/EventUtils.ts";
 
 const props = defineProps<{ event: EventInfo }>();
 const router = useRouter();
 
 const event = ref<EventInfo>(props.event);
-const participants = ref<Participant[]>([]);
+const users = ref<User[]>([]);
 const showDetails = ref(false);
 
 
 onMounted(() => {
-  getParticipants(event.value.id).then(response => {
-    loadParticipants(response.data).then(response => {
-        participants.value = response.data;
+  getParticipants(event.value.id).then(participants => {
+    const participantsUuids = participants.map(participant => participant.userId);
+    loadUsers(participantsUuids).then(response => {
+        users.value = response;
       }
     );
   });
@@ -47,7 +48,7 @@ function goToEventPage(eventId: string): void {
   <transition name="fade">
     <div v-if="showDetails" class="event-details">
       <p>Participants: {{
-          participants.map(
+          users.map(
             participant => participant.firstName + ' ' + participant.lastName
           ).join(', ')
         }}</p>

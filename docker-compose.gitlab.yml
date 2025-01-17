@@ -5,7 +5,8 @@ services:
     image: registry.gitlab.com/cpelyon/5eti-projet-2024-2025/groupe-7/pick-eat/nginx:latest
     env_file: dev.env
     ports:
-      - "${NGINX_PORT:-8080}:${NGINX_PORT:-8080}"
+      - "${NGINX_PORT_HTTP:-80}:${NGINX_PORT_HTTP:-80}"
+      - "${NGINX_PORT_HTTPS:-443}:${NGINX_PORT_HTTPS:-443}"
   frontend:
     image: registry.gitlab.com/cpelyon/5eti-projet-2024-2025/groupe-7/pick-eat/frontend:latest
     env_file: dev.env

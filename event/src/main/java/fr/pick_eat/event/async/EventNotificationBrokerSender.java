@@ -26,21 +26,16 @@ public class EventNotificationBrokerSender {
 
     public EventNotificationBrokerSender(JmsTemplate jmsTemplate) {
         this.jmsTemplate = jmsTemplate;
-
-        this.jmsTemplate.setDestinationResolver(new CustomDestinationResolver());
     }
 
     public void sendEventChatDto(EventChatDto chatDto, List<UUID> participantsUuid) {
+        if (participantsUuid.isEmpty()) {
+            return;
+        }
         NotificationDto<EventChatDto> notificationDto = new EventChatNotificationDto(ENotificationType.NEW_MESSAGE, participantsUuid, chatDto);
         jmsTemplate.convertAndSend(topicName, notificationDto, message -> {
             message.setJMSType(notificationDto.getClass().getName());
             return message;
         });
-    }
-
-    class CustomDestinationResolver implements DestinationResolver {
-        public Destination resolveDestinationName(Session session, String destinationName, boolean pubSubDomain) throws JMSException {
-            return session.createTopic(destinationName);
-        }
     }
 }

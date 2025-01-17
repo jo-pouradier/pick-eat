@@ -47,4 +47,5 @@ comment-analysis/*
 .vscode/
 frontend/.vscode/
 
+/uploads
 bills/

@@ -8,6 +8,7 @@ import fr.pick_eat.socketspring.service.JwtService;
 import fr.pick_eat.socketspring.service.SocketService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Lazy;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
@@ -27,6 +28,7 @@ public class ChatConnectListener implements ConnectListener {
 
     @Override
     public void onConnect(SocketIOClient client) {
+        log.info("New connection from {}", client.getRemoteAddress());
         String cookie = client.getHandshakeData().getHttpHeaders().get("Cookie");
         if (cookie == null || cookie.isBlank()) {
             log.info("Cookie not found");
@@ -50,6 +52,10 @@ public class ChatConnectListener implements ConnectListener {
         client.set("scope", Arrays.stream(jwtService.extractRoles(jwt.get()).split(",")).map(EScope::valueOf).toArray(EScope[]::new));
         client.set("expiration", jwtService.getExpirationTime(jwt.get()));
         log.info("Connected user : {} {} {} {}", Optional.ofNullable(client.get("username")).orElse("null"), Optional.ofNullable(client.get("uuid")).orElse("null"), Optional.ofNullable(client.get("scope")).orElse("null"), client.getSessionId().toString());
-        socketService.registerFromJwtToken(client);
+        try {
+            socketService.registerFromJwtToken(client);
+        }catch (DataIntegrityViolationException e) {
+            log.error("Error while registering client");
+        }
     }
 }

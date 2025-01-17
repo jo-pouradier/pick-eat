@@ -37,7 +37,7 @@ public class SocketService {
         List<SocketIOClient> clients = this.getClients(notificationDto.getDestination());
         System.out.println("Sending notification to " + clients.size() + " clients");
         clients.forEach(client -> {
-            client.sendEvent(notificationDto.getType().name(), notificationDto);
+            client.sendEvent(notificationDto.getType().getEvent(), notificationDto);
             System.out.println("Notification sent to " + client.getSessionId());
         });
     }
@@ -64,6 +64,10 @@ public class SocketService {
         });
     }
 
+    public boolean isSocketConnected(UUID socketId) {
+        return socketRepository.existsById(socketId);
+    }
+
     public void registerFromJwtToken(SocketIOClient client) {
         UUID userId = jwtService.extractUuid(client.get("jwt"));
         String username = jwtService.extractUsername(client.get("jwt"));
@@ -72,6 +76,10 @@ public class SocketService {
     }
 
     public void unregister(SocketIOClient client) {
-        socketRepository.deleteBySocketId(client.getSessionId());
+        try {
+            socketRepository.deleteBySocketId(client.getSessionId());
+        } catch (Exception e) {
+            log.error("Error while deleting socket user model");
+        }
     }
 }

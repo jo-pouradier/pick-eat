@@ -23,7 +23,7 @@ function handleValidation(): void {
   joinEvent(uuid.value).then(response => {
     console.log('Join event response:', response);
     if (response.data) {
-      router.push(`/event-list`);
+      router.push(`/event-page?eventId=${uuid.value}`);
     }
   }).catch(() => {
     error.value = 'Something went wrong.\n Maybe you are already part of this event?';

@@ -29,8 +29,9 @@ public class SocketIOConfig {
     @Bean
     public SocketIOServer socketIOServer() {
         com.corundumstudio.socketio.Configuration config = new com.corundumstudio.socketio.Configuration();
-        config.setHostname(SOCKET_HOST);
         config.setPort(SOCKET_PORT);
+        config.setContext("/ws");
+        config.setOrigin("*");
         server = new SocketIOServer(config);
         server.start();
         return server;

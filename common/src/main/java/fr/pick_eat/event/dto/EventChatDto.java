@@ -1,11 +1,13 @@
 package fr.pick_eat.event.dto;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.Date;
 import java.util.UUID;
 
-@Data
+@Getter
+@Setter
 public class EventChatDto {
 
     private UUID chatId;
@@ -14,4 +16,6 @@ public class EventChatDto {
     private String content;
     private String imagePath;
     private Date date;
+    private EChatType type;
 }
+

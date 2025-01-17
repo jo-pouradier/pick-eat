@@ -6,10 +6,13 @@ import fr.pick_eat.notification.NotificationDto;
 import fr.pick_eat.socketspring.service.SocketService;
 import jakarta.jms.JMSException;
 import jakarta.jms.TextMessage;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.jms.annotation.JmsListener;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
-@Component
+@Service
+@Slf4j
 public class NotificationBrokerReceiver {
     private final SocketService socketService;
     private final ObjectMapper objectMapper;
@@ -28,7 +31,7 @@ public class NotificationBrokerReceiver {
             System.out.println("Received message: " + notificationDtoAbstract);
             socketService.sendNotification(notificationDtoAbstract);
         } catch (JMSException | ClassNotFoundException | JsonProcessingException e) {
-            throw new RuntimeException(e);
+            log.error("Error while receiving message", e);
         }
     }
 

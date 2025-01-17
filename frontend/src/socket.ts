@@ -6,14 +6,21 @@ export const state = reactive({
   fooEvents: [],
   barEvents: []
 });
-const URL = "http://localhost:8080/ws/";
+const host = window.location.hostname;
+const URL = `https://${host}:443`;
+console.log("Connecting to websocket server at", URL);
 
-export const socket = io(URL, {withCredentials: true});
+export const socket = io(URL, {
+    path: "/ws", withCredentials: true, secure: true
+  }
+);
 
 socket.on("connect", () => {
   state.connected = true;
+  console.log("Connected to websocket server");
 });
 
 socket.on("disconnect", () => {
   state.connected = false;
+  console.log("Disconnected from websocket server");
 });

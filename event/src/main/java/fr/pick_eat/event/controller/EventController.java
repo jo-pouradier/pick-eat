@@ -1,31 +1,26 @@
 package fr.pick_eat.event.controller;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.NoSuchElementException;
-import java.util.UUID;
-
+import fr.pick_eat.event.dto.EventDTO;
+import fr.pick_eat.event.dto.EventFeedbackDTO;
+import fr.pick_eat.event.dto.EventParticipantDTO;
+import fr.pick_eat.event.dto.EventVoteDTO;
+import fr.pick_eat.event.entity.EventFeedbackModel;
+import fr.pick_eat.event.entity.EventModel;
+import fr.pick_eat.event.entity.EventParticipantModel;
 import fr.pick_eat.event.mapper.EventMapper;
+import fr.pick_eat.event.service.EventService;
+import fr.pick_eat.event.utils.JWTUtils;
+import io.swagger.v3.oas.annotations.Parameter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.oauth2.jwt.JwtDecoder;
-import org.springframework.web.bind.annotation.CookieValue;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-import fr.pick_eat.event.dto.EventDTO;
-import fr.pick_eat.event.dto.EventFeedbackDTO;
-import fr.pick_eat.event.dto.EventVoteDTO;
-import fr.pick_eat.event.entity.EventFeedbackModel;
-import fr.pick_eat.event.entity.EventModel;
-import fr.pick_eat.event.service.EventService;
-import fr.pick_eat.event.utils.JWTUtils;
-import io.swagger.v3.oas.annotations.Parameter;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.NoSuchElementException;
+import java.util.UUID;
 
 @CrossOrigin
 @RestController
@@ -69,7 +64,7 @@ public class EventController {
     }
 
     @GetMapping("/history")
-    public ResponseEntity<List<EventDTO>> getHistory(@Parameter(hidden=true) @CookieValue("jwt") String jwt) {
+    public ResponseEntity<List<EventDTO>> getHistory(@Parameter(hidden = true) @CookieValue("jwt") String jwt) {
         String userId = JWTUtils.extractUserIdCookie(jwt, decoder);
         UUID userUuid = UUID.fromString(userId);
 
@@ -79,14 +74,14 @@ public class EventController {
     }
 
     @GetMapping("/join/{eventId}")
-    public ResponseEntity<String> joinEvent(@Parameter(hidden=true) @CookieValue("jwt") String jwt,
-            @PathVariable("eventId") UUID eventUuid) {
+    public ResponseEntity<String> joinEvent(@Parameter(hidden = true) @CookieValue("jwt") String jwt,
+                                            @PathVariable("eventId") UUID eventUuid) {
         String userId = JWTUtils.extractUserIdCookie(jwt, decoder);
         UUID userUuid = UUID.fromString(userId);
 
         Boolean isJoined = false;
 
-        try{ 
+        try {
             isJoined = eventService.joinEvent(userUuid, eventUuid);
         } catch (IllegalArgumentException e) {
             log.error("Error while joining event", e);
@@ -103,8 +98,8 @@ public class EventController {
     }
 
     @PostMapping("/feedback/{eventId}")
-    public ResponseEntity<EventFeedbackDTO> submitFeedback(@Parameter(hidden=true) @CookieValue("jwt") String jwt,
-            @RequestBody EventFeedbackDTO eventFeedbackDTO, @PathVariable("eventId") UUID eventId) {
+    public ResponseEntity<EventFeedbackDTO> submitFeedback(@Parameter(hidden = true) @CookieValue("jwt") String jwt,
+                                                           @RequestBody EventFeedbackDTO eventFeedbackDTO, @PathVariable("eventId") UUID eventId) {
         String userId = JWTUtils.extractUserIdCookie(jwt, decoder);
         UUID userUuid = UUID.fromString(userId);
         if (!eventFeedbackDTO.getEventId().equals(eventId)) {
@@ -130,7 +125,7 @@ public class EventController {
     }
 
     @GetMapping("/feedback/history")
-    public ResponseEntity<List<EventFeedbackDTO>> getFeedbackHistory(@Parameter(hidden=true) @CookieValue("jwt") String jwt) {
+    public ResponseEntity<List<EventFeedbackDTO>> getFeedbackHistory(@Parameter(hidden = true) @CookieValue("jwt") String jwt) {
         String userId = JWTUtils.extractUserIdCookie(jwt, decoder);
         UUID userUuid = UUID.fromString(userId);
 
@@ -140,8 +135,8 @@ public class EventController {
     }
 
     @PostMapping("/leave/{eventId}")
-    public ResponseEntity<Boolean> leaveEvent(@Parameter(hidden=true) @CookieValue("jwt") String jwt,
-            @PathVariable("eventId") UUID eventId) {
+    public ResponseEntity<Boolean> leaveEvent(@Parameter(hidden = true) @CookieValue("jwt") String jwt,
+                                              @PathVariable("eventId") UUID eventId) {
         String userId = JWTUtils.extractUserIdCookie(jwt, decoder);
         UUID userUuid = UUID.fromString(userId);
 
@@ -154,9 +149,9 @@ public class EventController {
     }
 
     @PostMapping("/swipe/{eventId}")
-    public ResponseEntity<Boolean> swipeEvent(@Parameter(hidden=true) @CookieValue("jwt") String jwt,
-            @PathVariable("eventId") UUID eventId,
-            @RequestBody List<EventVoteDTO> votes) {
+    public ResponseEntity<Boolean> swipeEvent(@Parameter(hidden = true) @CookieValue("jwt") String jwt,
+                                              @PathVariable("eventId") UUID eventId,
+                                              @RequestBody List<EventVoteDTO> votes) {
         String userId = JWTUtils.extractUserIdCookie(jwt, decoder);
         UUID userUuid = UUID.fromString(userId);
 
@@ -179,8 +174,8 @@ public class EventController {
     }
 
     @GetMapping("/swipe/history/{eventId}")
-    public ResponseEntity<List<EventVoteDTO>> getSwipeHistory(@Parameter(hidden=true) @CookieValue("jwt") String jwt,
-            @PathVariable("eventId") UUID eventId) {
+    public ResponseEntity<List<EventVoteDTO>> getSwipeHistory(@Parameter(hidden = true) @CookieValue("jwt") String jwt,
+                                                              @PathVariable("eventId") UUID eventId) {
         String userId = JWTUtils.extractUserIdCookie(jwt, decoder);
         UUID userUuid = UUID.fromString(userId);
 
@@ -189,13 +184,13 @@ public class EventController {
     }
 
     @GetMapping("/participants/{eventId}")
-    public ResponseEntity<List<String>> getParticipants(@Parameter(hidden=true) @CookieValue("jwt") String jwt, @PathVariable("eventId") UUID eventUuid) {
+    public ResponseEntity<List<EventParticipantDTO>> getParticipants(@Parameter(hidden = true) @CookieValue("jwt") String jwt, @PathVariable("eventId") UUID eventUuid) {
         String userId = JWTUtils.extractUserIdCookie(jwt, decoder);
         UUID userUuid = UUID.fromString(userId);
 
-        List<String> participants = new ArrayList<>();
-        try{
-            participants = eventService.getParticipants(userUuid, eventUuid);
+        List<EventParticipantModel> participants;
+        try {
+            participants = eventService.getEventParticipant(userUuid, eventUuid);
         } catch (NoSuchElementException e) {
             log.error("Error while getting participants", e);
             return ResponseEntity.notFound().build();
@@ -203,11 +198,12 @@ public class EventController {
             log.error("Error while getting participants", e);
             return ResponseEntity.badRequest().build();
         }
-        
-        return ResponseEntity.ok(participants);
+
+        return ResponseEntity.ok(participants.stream().map(EventMapper::toParticipantDTO).toList());
     }
+
     @GetMapping("/result/{eventId}")
-    public ResponseEntity<String> getResult(@Parameter(hidden = true)  @CookieValue("jwt") String jwt, @PathVariable("eventId") UUID eventUuid) {
+    public ResponseEntity<String> getResult(@Parameter(hidden = true) @CookieValue("jwt") String jwt, @PathVariable("eventId") UUID eventUuid) {
 
         String userId = JWTUtils.extractUserIdCookie(jwt, decoder);
         UUID userUuid = UUID.fromString(userId);
@@ -225,7 +221,7 @@ public class EventController {
     }
 
     @GetMapping("/close/{eventId}")
-    public ResponseEntity<String> closeVote(@Parameter(hidden = true)  @CookieValue("jwt") String jwt,@PathVariable("eventId") UUID eventUuid) {
+    public ResponseEntity<String> closeVote(@Parameter(hidden = true) @CookieValue("jwt") String jwt, @PathVariable("eventId") UUID eventUuid) {
         String userId = JWTUtils.extractUserIdCookie(jwt, decoder);
         UUID userUuid = UUID.fromString(userId);
 
