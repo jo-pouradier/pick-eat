@@ -1,2 +1,2 @@
 rootProject.name = 'pick-eat'
-include 'auth', 'common', 'event', 'restaurant'
+include 'auth', 'common', 'event', 'restaurant', 'socketspring'

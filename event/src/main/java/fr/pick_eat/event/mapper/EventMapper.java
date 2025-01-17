@@ -1,8 +1,10 @@
 package fr.pick_eat.event.mapper;
 
+import fr.pick_eat.event.dto.EventChatDto;
 import fr.pick_eat.event.dto.EventDTO;
 import fr.pick_eat.event.dto.EventFeedbackDTO;
 import fr.pick_eat.event.dto.EventVoteDTO;
+import fr.pick_eat.event.entity.EventChatModel;
 import fr.pick_eat.event.entity.EventFeedbackModel;
 import fr.pick_eat.event.entity.EventModel;
 import fr.pick_eat.event.entity.EventVoteModel;
@@ -19,6 +21,9 @@ public class EventMapper {
         eventDTO.setLatitude(event.getLatitude());
         eventDTO.setLongitude(event.getLongitude());
         eventDTO.setRadius(event.getRadius());
+        eventDTO.setSelectedRestaurantId(event.getSelectedRestaurantId());
+        eventDTO.setOrganizerId(event.getOrganizerId());
+        eventDTO.setDescription(event.getDescription());
         return eventDTO;
     }
 
@@ -38,6 +43,17 @@ public class EventMapper {
         dto.setRestaurantId(vote.getRestaurantId());
         dto.setLike(vote.isLiked());
         dto.setEventId(vote.getEvent().getId());
+        return dto;
+    }
+
+    public static EventChatDto toEventChatDto(EventChatModel chat) {
+        EventChatDto dto = new EventChatDto();
+        dto.setChatId(chat.getChatId());
+        dto.setEventId(chat.getEventId());
+        dto.setUserId(chat.getUserId());
+        dto.setContent(chat.getContent());
+        dto.setImagePath(chat.getImagePath());
+        dto.setDate(chat.getDate());
         return dto;
     }
 }

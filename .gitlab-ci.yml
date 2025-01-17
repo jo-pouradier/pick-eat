@@ -97,6 +97,22 @@ build_restaurant:
   rules:
     - if: $CI_COMMIT_BRANCH == "main" && $CI_PIPELINE_SOURCE == "push"
 
+build_socket_spring:
+  stage: build
+  image: docker:20.10
+  services:
+    - docker:dind
+  before_script:
+    - echo "$CI_REGISTRY_PASSWORD" | docker login $CI_REGISTRY -u $CI_REGISTRY_USER --password-stdin
+  script:
+    - docker build --build-arg TARGET_SERVICE=socketspring -t $REGISTRY/socketspring:$TAG -t $REGISTRY/socketspring:latest .
+    - docker push $REGISTRY/socketspring:$TAG
+    - docker push $REGISTRY/socketspring:latest
+  needs:
+    - test_gradle
+  rules:
+    - if: $CI_COMMIT_BRANCH == "main" && $CI_PIPELINE_SOURCE == "push"
+
 # Python service
 # build_python:
 #   image: python:3.11

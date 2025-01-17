@@ -72,6 +72,9 @@ services:
       dockerfile: ./Dockerfile
       args:
         - TARGET_SERVICE=event
+    depends_on:
+      active_mq:
+        condition: service_healthy
     env_file: dev.env
     ports:
       - "${EVENT_PORT:-8083}:${EVENT_PORT:-8083}"
@@ -84,3 +87,15 @@ services:
     env_file: dev.env
     ports:
       - "${RESTAURANT_PORT:-8084}:${RESTAURANT_PORT:-8084}"
+  socket-spring:
+    build:
+      context: ./
+      dockerfile: ./Dockerfile
+      args:
+        - TARGET_SERVICE=socketspring
+    depends_on:
+      active_mq:
+        condition: service_healthy
+    env_file: dev.env
+    ports:
+      - "${SOCKET_SPRING_PORT:-8085}:${SOCKET_SPRING_PORT:-8085}"
