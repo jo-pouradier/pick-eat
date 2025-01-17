@@ -17,10 +17,12 @@ class TestBillsRouter:
     @classmethod
     def setup_class(cls):
         cls.user_uuid = uuid4()
+        cls.eventId = uuid4()
         cls.bill = {
             "path": "test_path",
             "bucketName": "test_bucket",
             "userId": str(cls.user_uuid),
+            "eventId": str(cls.eventId),
             "parts": [],
             "total_price": None
         }
@@ -40,6 +42,11 @@ class TestBillsRouter:
         # Assert the response
         assert response.status_code == 200
         assert response.json() == self.bill
+ 
+        response = self.client.get(f"/bills/event/{self.eventId}")
+        # Assert the response
+        assert response.status_code == 200
+        assert response.json() == [self.bill]
 
     def test_put_bill(self):
         self.bill["bucketName"] = "new_bucket"
