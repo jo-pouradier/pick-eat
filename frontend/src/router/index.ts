@@ -52,8 +52,8 @@ const router = createRouter({
     {
       path: '/bill/:eventId',
       name: 'bill',
-      component: () => import('../components/BillPage.vue'),
-    },
+      component: () => import('../pages/BillPage.vue'),
+    }
     // {
     //   path: '/about',
     //   name: 'about',
