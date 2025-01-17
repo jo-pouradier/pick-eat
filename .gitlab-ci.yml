@@ -164,6 +164,21 @@ build_billing:
   rules:
     - if: $CI_COMMIT_BRANCH == "main" && $CI_PIPELINE_SOURCE == "push"
 
+build_broker:
+  stage: build
+  image: docker:20.10
+  services:
+    - docker:dind
+  before_script:
+    - echo "$CI_REGISTRY_PASSWORD" | docker login $CI_REGISTRY -u $CI_REGISTRY_USER --password-stdin
+  script:
+    - echo "Building the Docker image for proxy..."
+    - docker build -t $REGISTRY/broker:$TAG -t $REGISTRY/broker:latest activemq/
+    - echo "Pushing the Docker image to the registry..."
+    - docker push $REGISTRY/broker:$TAG
+    - docker push $REGISTRY/broker:latest
+  rules:
+    - if: $CI_COMMIT_BRANCH == "main" && $CI_PIPELINE_SOURCE == "push"
 # deploy:
 #   stage: deploy
 #   script:
