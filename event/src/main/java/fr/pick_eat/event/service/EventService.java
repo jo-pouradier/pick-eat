@@ -29,7 +29,7 @@ public class EventService {
     private final EventVoteRepository eventVoteRepository;
 
     public EventService(EventRepository eventRepository, EventParticipantRepository eventParticipantRepository,
-                        EventFeedbackRepository eventFeedbackRepository, EventVoteRepository eventVoteRepository) {
+            EventFeedbackRepository eventFeedbackRepository, EventVoteRepository eventVoteRepository) {
         this.eventRepository = eventRepository;
         this.eventParticipantRepository = eventParticipantRepository;
         this.eventFeedbackRepository = eventFeedbackRepository;

@@ -10,11 +10,6 @@ const router = createRouter({
       component: Home,
     },
     {
-      path: "/figma",
-      name:"figma",
-      component: () => import('../components/figma.vue')
-    },
-    {
       path: "/new-vote",
       name:"new-vote",
       component: () => import('../components/NewVote.vue')
