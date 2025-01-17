@@ -4,3 +4,8 @@ python-dotenv==1.0.1
 PyJWT==2.10.1
 pytest==8.3.4
 cryptography
+imutils==0.5.4
+opencv-python==4.10.0.84
+pytesseract==0.3.13
+scipy==1.15.1
+stomp.py==8.2.0

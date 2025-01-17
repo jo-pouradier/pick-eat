@@ -21,7 +21,8 @@ class TestBillsRouter:
             "path": "test_path",
             "bucketName": "test_bucket",
             "userId": str(cls.user_uuid),
-            "parts": []
+            "parts": [],
+            "total_price": None
         }
         cls.client = TestClient(app, cookies={"jwt": TOKEN, "domain": "localhost:8080"})
 

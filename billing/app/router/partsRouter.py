@@ -36,7 +36,6 @@ async def update_part(part_id: UUID, newPart: BillPartDTO, session: SessionDep):
         return None
 
 
-
 @router.post("", description="Create a new part")
 async def create_part(part: BillPartDTO, session: SessionDep):
     newPart = MapperDTO.to_bill_part(part)

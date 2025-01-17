@@ -133,11 +133,14 @@ build_socket_spring:
 
 test_billing:
   stage: test
-  image: python:3.10
+  image: python:3.10.16
+  before_script:
+    - apt update
+    - apt install -y libgl1-mesa-glx
   script:
     - cd billing
     - pip install -r requirements.txt
-    - pytest --junitxml=report.xml
+    - pytest -vv
   artifacts:
     when: always
     reports:

@@ -12,7 +12,6 @@ class BillDTO(BaseModel):
     bucketName: Optional[str] = None
     path: str
     parts: Optional[List[BillPartDTO]] = None
+    total_price: Optional[float] = None
 
-    model_config = {
-        "from_attributes": True
-    }
+    model_config = {"from_attributes": True}
