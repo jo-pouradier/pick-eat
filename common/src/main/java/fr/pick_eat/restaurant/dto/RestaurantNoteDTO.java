@@ -1,8 +1,5 @@
 package fr.pick_eat.restaurant.dto;
 
-import fr.pick_eat.restaurant.entity.RestaurantNoteModel;
-import jakarta.persistence.Id;
-
 import java.util.UUID;
 
 public class RestaurantNoteDTO {

@@ -17,7 +17,9 @@ import fr.pick_eat.restaurant.repository.RestaurantRepository;
 import jakarta.transaction.Transactional;
 import org.apache.tomcat.util.json.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.configurationprocessor.json.JSONArray;
 import org.springframework.boot.configurationprocessor.json.JSONException;
+import org.springframework.boot.configurationprocessor.json.JSONObject;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
@@ -25,8 +27,9 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.List;
-import java.util.UUID;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.util.*;
 
 import static fr.pick_eat.restaurant.utils.CoordCalcul.getAreaFromRadius;
 
@@ -45,7 +48,7 @@ public class RestaurantService {
         this.restaurantNoteRepository = restaurantNoteRepository;
         this.restaurantAvisRepository = restaurantAvisRepository;
         try {
-            this.test();
+            this.initialize();
         } catch (URISyntaxException e) {
             throw new RuntimeException(e);
         }
@@ -115,10 +118,14 @@ public class RestaurantService {
         return restaurantRepository.findById(restaurantId).orElseThrow();
     }
 
-    public String retrieveRestaurantPhoto(UUID restaurantId) {
-        String name = restaurantRepository.findById(restaurantId).orElseThrow().getName();
-        String photo = name.replace(" ", "_").replace("/", "_").replace("|", "_").replace("&","and");
-        return photo;
+    public void setRestaurantPhotos() {
+        restaurantRepository.findAll().forEach(restaurant -> {
+            String name = restaurant.getName();
+            String photo = name.replace(" ", "_").replace("/", "_").replace("|", "_").replace("&","and");
+            String photo_path = photo.replaceAll("[<>,:\"/\\\\|?*]", "_");
+            restaurant.setPicture("get_restaurant_data/data/restaurants_photos/" + photo_path + ".jpg");
+            restaurantRepository.save(restaurant);
+        });
     }
 
     public List<RestaurantDTO> generateRestaurantsForEvent(EventDTO event) {
@@ -129,24 +136,208 @@ public class RestaurantService {
         return restaurantRepository.findBetweenLatAndLon(coords.get(0), coords.get(1), coords.get(2), coords.get(3)).stream().map(RestaurantMapper::toRestaurantDTO).toList();
     }
 
+    public void updateDescriptionColumnSize() {
+        restaurantRepository.updateSizeDescription();
+    }
 
-    public void test() throws JSONException, IOException, ParseException, URISyntaxException {
+    @Transactional
+    public void parseOpeningHours() throws IOException, JSONException {
+        updateDescriptionColumnSize();
+        // Read JSON file as String
+        String content = new String(Files.readAllBytes(Paths.get("restaurant/src/main/resources/dataResto.json")));
+        JSONObject jsonObject = new JSONObject(content);
+        for (Iterator<String> it = jsonObject.keys(); it.hasNext(); ) {
+            String key = it.next();
+            RestaurantModel resto = restaurantRepository.findByPlaceId(key);
+            JSONObject restaurant = jsonObject.getJSONObject(key);
+            JSONArray opening_hours = restaurant.getJSONArray("opening_hours");
+            resto.setAddress(restaurant.getString("address"));
+            if (restaurant.has("types")) {
+                List<String> useless = List.of("restaurant", "food", "point_of_interest", "establishment");
+                List<String> types = new ArrayList<>();
+                JSONArray types_array = restaurant.getJSONArray("types");
+                for (int i = 0; i < types_array.length(); i++) {
+                    if (useless.contains(types_array.get(i))) {
+                        continue;
+                    }
+                    types.add(types_array.getString(i));
+                }
+                resto.setTypes(types);
+            }
+            if (restaurant.has("description")) {
+                resto.setDescription(restaurant.getString("description"));
+            }
+            resto.setRating((float) restaurant.getDouble("rating"));
+            resto.setNumberRatings(restaurant.getInt("user_ratings_number"));
+            for (int i = 0; i < opening_hours.length(); i++) {
+                String opening = (String) opening_hours.get(i);
+                if (opening.split(":")[1].replaceAll(" ", "").equals("Closed")) {
+                    opening = opening.split(":")[0] + ":0:00–0:00";
+                }
+                if (opening.split(":")[1].replaceAll(" ", "").equals("Open24hours")) {
+                    opening = opening.split(":")[0] + ":0:00–23:59";
+                }
+                String day = opening.split(":")[0];
+                String hours = opening.replace(day.split(":")[0] + ":", "");
+
+                List<String> valren = new ArrayList<>();
+                List<String> hours_list = List.of(hours.split(","));
+                for (String hour : hours_list) {
+                    String time1 = hour.split("–")[0];
+                    String time2 = hour.split("–")[1];
+                    if (!time1.contains("PM") && !time1.contains("AM")) {
+                        time1 = time1 + "PM";
+                    }
+                    if (!time2.contains("PM") && !time2.contains("AM")) {
+                        time2 = time2 + "PM";
+                    }
+                    if (time1.contains("PM")) {
+                        String[] time1_split = time1.split(":");
+                        int t1 = (Integer.parseInt(time1_split[0].replaceAll("\\D", "").trim()) + 12)%24;
+                        time1 = t1 + ":" + time1_split[1];
+                    }
+                    if (time2.contains("PM")) {
+                        String[] time2_split = time2.split(":");
+                        int t2 = (Integer.parseInt(time2_split[0].replaceAll("\\D", "").trim()) + 12)%24;
+                        time2 = t2 + ":" + time2_split[1];
+                    }
+                    time1 = time1.replace(" ", "").replace("AM", "").replace("PM", "");
+                    time2 = time2.replace(" ", "").replace("AM", "").replace("PM", "");
+                    valren.add((time1 + "-" + time2).replace(" ", "").replace("\u202F", ""));
+                }
+                day = day.toLowerCase().trim();
+                switch (day) {
+                    case "monday" -> resto.getMonday().setHours(valren);
+                    case "tuesday" -> resto.getTuesday().setHours(valren);
+                    case "wednesday" -> resto.getWednesday().setHours(valren);
+                    case "thursday" -> resto.getThursday().setHours(valren);
+                    case "friday" -> resto.getFriday().setHours(valren);
+                    case "saturday" -> resto.getSaturday().setHours(valren);
+                    case "sunday" -> resto.getSunday().setHours(valren);
+                }
+                restaurantRepository.save(resto);
+            }
+        }
+
+    }
+
+    public List<RestaurantDTO> selectRestaurants(List<String> types, EventDTO event) {
+        List<RestaurantModel> selectedRestaurants = new ArrayList<>();
+        List<RestaurantModel> otherRestaurants = new ArrayList<>();
+
+        while (selectedRestaurants.size() < 10) {
+            List<RestaurantModel> restaurants = new ArrayList<>();
+            List<RestaurantDTO> rest = generateRestaurantsForEvent(event);
+            for (RestaurantDTO restaurant : rest) {
+                System.out.println(restaurant.getName() + " " + isRestaurantOpen(restaurant.getId()));
+                if (isRestaurantOpen(restaurant.getId())){
+                    restaurants.add(restaurantRepository.findById(restaurant.getId()).orElseThrow());
+                }
+            }
+            for (RestaurantModel restaurant : restaurants) {
+                if (restaurant.getTypes().retainAll(types)) {
+                    selectedRestaurants.add(restaurant);
+                    System.out.println("more : " + selectedRestaurants.size());
+                } else {
+                    otherRestaurants.add(restaurant);
+                }
+            }
+            while (selectedRestaurants.size() > 10) {
+                float lowRate = 5;
+                RestaurantModel lowRateRestaurant = null;
+                for (RestaurantModel restaurant : selectedRestaurants) {
+                    if (restaurant.getRating() < lowRate) {
+                        lowRate = restaurant.getRating();
+                        lowRateRestaurant = restaurant;
+                    }
+                }
+                selectedRestaurants.remove(lowRateRestaurant);
+            }
+            while (selectedRestaurants.size() < 10) {
+                if (otherRestaurants.isEmpty()) {
+                    break;
+                }
+                float highRate = 0;
+                RestaurantModel highRateRestaurant = null;
+                for (RestaurantModel restaurant : otherRestaurants) {
+                    if (restaurant.getRating() > highRate) {
+                        highRate = restaurant.getRating();
+                        highRateRestaurant = restaurant;
+                    }
+                }
+                selectedRestaurants.add(highRateRestaurant);
+                otherRestaurants.remove(highRateRestaurant);
+                System.out.println("less : " + selectedRestaurants.size());
+            }
+            event.setRadius(event.getRadius() + 500);
+        }
+        return selectedRestaurants.stream().map(RestaurantMapper::toRestaurantDTO).toList();
+    }
+
+    public boolean isRestaurantPopular(float restaurantRating, int restaurantReviews) {
+        // Averages and multiplier
+        double averageRating = 4.2625375;
+        double averageReviews = 481.78152;
+        double popularityMultiplier = 1.2; // 20% more than average reviews
+
+        // Determine if the restaurant is popular
+        return restaurantRating >= averageRating && restaurantReviews >= (averageReviews * popularityMultiplier);
+    }
+
+    public boolean isRestaurantOpen(UUID uuid) {
+        LocalTime currentTime = LocalTime.now();
+        RestaurantModel restaurant = restaurantRepository.findById(uuid).orElseThrow();
+        Integer day = LocalDate.now().getDayOfWeek().getValue();
+        List<String> hours = new ArrayList<>();
+        hours = switch (day) {
+            case 1 -> restaurant.getMonday().getHours();
+            case 2 -> restaurant.getTuesday().getHours();
+            case 3 -> restaurant.getWednesday().getHours();
+            case 4 -> restaurant.getThursday().getHours();
+            case 5 -> restaurant.getFriday().getHours();
+            case 6 -> restaurant.getSaturday().getHours();
+            case 7 -> restaurant.getSunday().getHours();
+            default -> hours;
+        };
+        System.out.println(restaurant.getName()+hours);
+        if (hours.isEmpty()) {
+            return false;
+        }
+        for (String hour : hours) {
+            System.out.println("okkkk");
+            String[] time_split = hour.split("-");
+            int hour1 = Integer.parseInt(time_split[0].split(":")[0].replaceAll("\\D", ""));
+            int hour2 = Integer.parseInt(time_split[1].split(":")[0].replaceAll("\\D", ""));
+            int minute1 = Integer.parseInt(time_split[0].split(":")[1].replaceAll("\\D", ""));
+            int minute2 = Integer.parseInt(time_split[1].split(":")[1].replaceAll("\\D", ""));
+            LocalTime startTime = LocalTime.of(hour1, minute1);
+            LocalTime endTime = LocalTime.of(hour2, minute2);
+            return currentTime.isAfter(startTime) && currentTime.isBefore(endTime);
+        }
+        return false;
+    }
+
+    @Transactional
+    public void initialize() throws IOException, URISyntaxException, JSONException {
         URI resto_path = RestaurantApplication.class.getClassLoader().getResource("all_restaurants_lyon.json").toURI();
-        URI resto_details_path = RestaurantApplication.class.getClassLoader().getResource("restaurant_details.json").toURI();//        EventModel eventModel = new EventModel();
-//        eventModel.setName("test");
-//        eventModel.setAddress("test");
-//        eventModel.setDate(new java.util.Date());
-//        eventModel.setLatitude(45.716972f);
-//        eventModel.setLongitude(4.804001f);
-//        eventModel.setRadius(1000);
-//        EventDTO event = EventDTO.fromEntity(eventModel);
+        URI resto_details_path = RestaurantApplication.class.getClassLoader().getResource("restaurant_details.json").toURI();
+        EventDTO eventModel = new EventDTO();
+        eventModel.setName("test");
+        eventModel.setAddress("test");
+        eventModel.setDate(new java.util.Date());
+        eventModel.setLatitude(45.716972f);
+        eventModel.setLongitude(4.804001f);
+        eventModel.setRadius(1000);
+        eventModel.setDescription("test");
         // Act
         parseRestaurants(resto_path, resto_details_path);
+        setRestaurantPhotos();
+        parseOpeningHours();
 
-//        List<RestaurantDTO> resto = generateRestaurantsForEvent(event);
-//        System.out.println("generated restaurants : " + resto);
-//
-//        // Assert
+        UUID uuid = restaurantRepository.findByPlaceId("ChIJXxeBzmzp9EcR_dBhY9_QUXw").getId();
+        RestaurantModel restaurant = restaurantRepository.findById(uuid).orElseThrow();
+
+        System.out.println("opened : " + isRestaurantOpen(restaurantRepository.findByPlaceId("ChIJXxeBzmzp9EcR_dBhY9_QUXw").getId()));
 //        assertNotNull(restos);
 //        assertNotNull(resto);
     }
