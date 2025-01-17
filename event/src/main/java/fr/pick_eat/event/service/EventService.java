@@ -1,9 +1,7 @@
 package fr.pick_eat.event.service;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.NoSuchElementException;
-import java.util.UUID;
+import java.util.*;
+import java.util.stream.Collectors;
 
 import fr.pick_eat.event.mapper.EventMapper;
 import org.slf4j.Logger;
@@ -31,7 +29,7 @@ public class EventService {
     private final EventVoteRepository eventVoteRepository;
 
     public EventService(EventRepository eventRepository, EventParticipantRepository eventParticipantRepository,
-            EventFeedbackRepository eventFeedbackRepository, EventVoteRepository eventVoteRepository) {
+                        EventFeedbackRepository eventFeedbackRepository, EventVoteRepository eventVoteRepository) {
         this.eventRepository = eventRepository;
         this.eventParticipantRepository = eventParticipantRepository;
         this.eventFeedbackRepository = eventFeedbackRepository;
@@ -40,6 +38,12 @@ public class EventService {
 
     Logger log = LoggerFactory.getLogger(EventService.class);
 
+    public boolean isUserParticipant(UUID userUuid, UUID eventUuid) {
+        EventModel event = eventRepository.findById(eventUuid)
+                .orElseThrow(() -> new NoSuchElementException("Event does not exist"));
+        return event.getParticipants().stream()
+                .anyMatch(participant -> participant.getUserId().equals(userUuid));
+    }
     public List<EventModel> getHistory(UUID userUuid) {
         List<EventParticipantModel> participantEvents = eventParticipantRepository.findByUserId(userUuid);
         List<EventModel> events = participantEvents.stream().map(EventParticipantModel::getEvent).toList();
@@ -51,7 +55,7 @@ public class EventService {
         EventModel event = eventRepository.findById(eventUuid).orElse(null);
         if (event == null) {
             log.error("Event {} does not exists", eventUuid);
-            throw new NoSuchElementException("Event does not exists"); 
+            throw new NoSuchElementException("Event does not exists");
         }
         // if participant already exists
         if (event.getParticipants().stream().anyMatch(participant -> participant.getUserId().equals(userUuid))) {
@@ -132,8 +136,8 @@ public class EventService {
     public void registerUserVotes(UUID userUuid, UUID eventUuid, List<EventVoteDTO> votes) {
         EventParticipantModel participant;
         try{
-        participant = eventParticipantRepository.findByUserIdAndEventId(userUuid, eventRepository
-                .findById(eventUuid).get().getId());
+            participant = eventParticipantRepository.findByUserIdAndEventId(userUuid, eventRepository
+                    .findById(eventUuid).get().getId());
         } catch (Exception e) {
             log.error("Error while getting participant", e.getMessage());
             throw new NoSuchElementException("Error while getting participant");
@@ -143,12 +147,16 @@ public class EventService {
             throw new Error("User has already voted");
         }
         participant.setHasVoted(true);
-        EventModel event = participant.getEvent();
         try {
             eventParticipantRepository.save(participant);
         } catch (Exception e) {
             log.error("Error while saving participant", e.getMessage());
             throw new Error("Error while saving participant", e);
+        }
+        EventModel event = participant.getEvent();
+        if (event.getIsVoteFinished()) {
+            log.error("Event is closed");
+            throw new Error("Event is closed");
         }
         List<EventVoteModel> eventVotes;
         try {
@@ -177,6 +185,7 @@ public class EventService {
     public EventModel create(EventDTO eventDTO, UUID userUuid) {
         EventModel event = new EventModel();
         event.setName(eventDTO.getName());
+        event.setOrganizerId(userUuid);
         event.setDate(eventDTO.getDate());
         event.setAddress(eventDTO.getAddress());
         event.setLatitude(eventDTO.getLatitude());
@@ -269,11 +278,11 @@ public class EventService {
     public List<String> getParticipants(UUID userUuid, UUID eventUuid) throws NoSuchElementException {
         EventModel event = eventRepository.findById(eventUuid).
                 orElseThrow(() -> new NoSuchElementException("Event does not exists"));
-        
+
         List<EventParticipantModel> participants = event.getParticipants();
         if (participants.isEmpty()) {
             log.error("Event:{} has no participants", eventUuid);
-        return new ArrayList<>();
+            return new ArrayList<>();
         }
 
         if (participants.stream().noneMatch(participant -> participant.getUserId().equals(userUuid))) {
@@ -290,4 +299,39 @@ public class EventService {
         return eventRepository.findById(eventUuid).orElse(null);
     }
 
+    public UUID getResult(UUID eventUuid, UUID userUuid) {
+        if (isUserParticipant(userUuid, eventUuid)) {
+            List<EventVoteModel> votes = eventVoteRepository.getVotesByEventId(eventUuid);
+            UUID mostVotedRestaurant = votes.stream()
+                    .filter(EventVoteModel::isLiked)
+                    .collect(Collectors.groupingBy(EventVoteModel::getRestaurantId, Collectors.counting()))
+                    .entrySet().stream()
+                    .max(Map.Entry.comparingByValue())
+                    .map(Map.Entry::getKey)
+                    .orElse(null);
+            log.info("Most voted restaurant: {}", mostVotedRestaurant);
+            EventModel event = eventRepository.findById(eventUuid).
+                    orElseThrow(() -> new NoSuchElementException("Event does not exists"));
+            event.setSelectedRestaurantId(mostVotedRestaurant);
+            eventRepository.save(event);
+            return mostVotedRestaurant;
+        } else {
+            log.error("User:{} is not a participant of event:{}", userUuid, eventUuid);
+            throw new NoSuchElementException("User is not a participant of event");
+        }
+    }
+
+    public boolean closeEvent(UUID eventUuid, UUID userUuid) {
+        EventModel event = eventRepository.findById(eventUuid).
+                orElseThrow(() -> new NoSuchElementException("Event does not exists"));
+
+        if (event.getOrganizerId().equals(userUuid)) {
+            event.setIsVoteFinished(true);
+            eventRepository.save(event);
+            return true;
+        } else {
+            log.error("User:{} is not the organizer of event:{}", userUuid, eventUuid);
+            return false;
+        }
+    }
 }

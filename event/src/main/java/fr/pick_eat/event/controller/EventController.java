@@ -206,4 +206,41 @@ public class EventController {
         
         return ResponseEntity.ok(participants);
     }
+    @GetMapping("/result/{eventId}")
+    public ResponseEntity<String> getResult(@Parameter(hidden = true)  @CookieValue("jwt") String jwt, @PathVariable("eventId") UUID eventUuid) {
+
+        String userId = JWTUtils.extractUserIdCookie(jwt, decoder);
+        UUID userUuid = UUID.fromString(userId);
+        UUID mostVotedResult;
+        try {
+            mostVotedResult = eventService.getResult(eventUuid, userUuid);
+            return ResponseEntity.ok(mostVotedResult.toString());
+        } catch (NoSuchElementException e) {
+            log.error("Error while getting result", e);
+            return ResponseEntity.notFound().build();
+        } catch (Exception e) {
+            log.error("Error while getting result", e);
+            return ResponseEntity.badRequest().build();
+        }
+    }
+
+    @GetMapping("/close/{eventId}")
+    public ResponseEntity<String> closeVote(@Parameter(hidden = true)  @CookieValue("jwt") String jwt,@PathVariable("eventId") UUID eventUuid) {
+        String userId = JWTUtils.extractUserIdCookie(jwt, decoder);
+        UUID userUuid = UUID.fromString(userId);
+
+        try {
+            boolean isClosed = eventService.closeEvent(eventUuid, userUuid);
+            if (!isClosed) {
+                return ResponseEntity.badRequest().body("Event not closed");
+            }
+            return ResponseEntity.ok("Event closed");
+        } catch (NoSuchElementException e) {
+            log.error("Error while deleting event", e);
+            return ResponseEntity.notFound().build();
+        } catch (Exception e) {
+            log.error("Error while deleting event", e);
+            return ResponseEntity.badRequest().build();
+        }
+    }
 }

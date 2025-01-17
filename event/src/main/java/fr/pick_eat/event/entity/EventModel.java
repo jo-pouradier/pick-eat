@@ -4,12 +4,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
+import jakarta.persistence.*;
 import org.hibernate.annotations.UuidGenerator;
-
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
 
 @Entity
 public class EventModel {
@@ -25,6 +21,9 @@ public class EventModel {
     @OneToMany(mappedBy = "event", fetch=FetchType.LAZY)
     private List<EventParticipantModel> participants;
     private String description;
+    private UUID organizerId;
+    private UUID selectedRestaurantId;
+    private boolean isVoteFinished;
 
     public String getDescription() {
         return description;
@@ -94,4 +93,27 @@ public class EventModel {
         return participants;
     }
 
+    public void setOrganizerId(UUID organizerId) {
+        this.organizerId = organizerId;
+    }
+
+    public UUID getOrganizerId() {
+        return organizerId;
+    }
+
+    public void setIsVoteFinished(boolean isVoteFinished) {
+        this.isVoteFinished = isVoteFinished;
+    }
+
+    public boolean getIsVoteFinished() {
+        return isVoteFinished;
+    }
+
+    public void setSelectedRestaurantId(UUID selectedRestaurantId) {
+        this.selectedRestaurantId = selectedRestaurantId;
+    }
+
+    public UUID getSelectedRestaurantId() {
+        return selectedRestaurantId;
+    }
 }
