@@ -4,16 +4,19 @@ from fastapi.concurrency import asynccontextmanager
 
 from .middleware import jwt_mdlw
 from .router import billsRouter, partsRouter
+from .utils import get_logger
 
 dotenv.load_dotenv()
+
+logger = get_logger()
 
 
 @asynccontextmanager
 async def app_lifespan(app: FastAPI):
-    print("Starting database")
-    print("Database started")
+    logger.info("Starting database")
+    logger.info("Database started")
     yield
-    print("Closing database")
+    logger.info("Closing database")
 
 
 app = FastAPI(lifespan=app_lifespan)
