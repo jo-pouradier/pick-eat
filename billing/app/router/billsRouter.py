@@ -4,6 +4,7 @@ import shutil
 from uuid import UUID
 from fastapi import APIRouter, File, HTTPException, UploadFile
 from fastapi.responses import FileResponse
+from sqlmodel import select
 
 from ..service import process_bill_img
 from ..dto.mapper import MapperDTO
@@ -13,9 +14,10 @@ from ..db import BillModel, SessionDep
 router = APIRouter()
 
 # Directory to store images locally (for simplicity)
-ROOT_PATH = os.getenv("SSD_STORAGE_PATH", "..")
+ROOT_PATH = Path(os.getenv("SSD_STORAGE_PATH", ".."))
 IMAGE_DIR = Path("/bills")
-IMAGE_DIR.mkdir(exist_ok=True)
+# IMAGE_DIR.mkdir(exist_ok=True)
+ROOT_PATH.mkdir(parents=ROOT_PATH, exist_ok=True)
 
 
 @router.get("/{bill_id}", description="Get a bill by ID")
@@ -24,6 +26,13 @@ async def get_bill(bill_id: UUID, session: SessionDep) -> BillDTO | None:
     if bill is None:
         return None
     return BillDTO.model_validate(bill)
+
+@router.get("/event/{event_id}", description="Get all bills for an event")
+async def get_bills_by_event(event_id: UUID, session: SessionDep) -> list[BillDTO]:
+    bills = session.exec(
+        select(BillModel).where(BillModel.eventId == event_id)
+    ).all()
+    return [BillDTO.model_validate(bill) for bill in bills]
 
 
 @router.post("/", description="Create a new bill")
@@ -82,7 +91,7 @@ async def upload_bill_image(
             status_code=400, detail="Invalid file type. Only JPEG or PNG is allowed."
         )
 
-    file_path = IMAGE_DIR / f"{bill_id}_{file.filename}"
+    file_path =ROOT_PATH / IMAGE_DIR / f"{bill_id}_{file.filename}"
     with open(file_path, "wb") as buffer:
         shutil.copyfileobj(file.file, buffer)
     bill.path = str(file_path)

@@ -22,6 +22,7 @@ class TestPartsRouter:
             "path": "test_path",
             "bucketName": "test_bucket",
             "userId": str(cls.user_uuid),
+            "eventId": str(uuid4()),
             "parts": [],
         }
         cls.client = TestClient(app, cookies={"jwt": TOKEN})

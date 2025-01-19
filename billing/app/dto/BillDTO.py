@@ -9,6 +9,7 @@ from .BillPartDTO import BillPartDTO
 class BillDTO(BaseModel):
     id: Optional[UUID] = None
     userId: UUID
+    eventId: UUID
     bucketName: Optional[str] = None
     path: str
     parts: Optional[List[BillPartDTO]] = None
