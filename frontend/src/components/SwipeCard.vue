@@ -67,7 +67,7 @@ const maxLimits : {
     interactOutOfSightXCoordinate: 450,
     interactOutOfSightYCoordinate: 600,
     interactYThreshold: 150,
-    interactXThreshold: 400
+    interactXThreshold:  window.innerWidth/3,
 }
 const props = defineProps<{
   restaurant: Restaurant;
@@ -78,30 +78,38 @@ const props = defineProps<{
 const transformString = ref<string>('translate3D(0,0,0) rotate(0deg)');
 
 function setTransformString(x: number, y: number, rotation: number) {
-    console.log('seting transform string',props.restaurant.name,props.isCurrent);
-    if (props.isCurrent) {
-        transformString.value = `translate3D(${x}px, ${y}px, 0) rotate(${rotation}deg)`;
+ if (props.isCurrent) {
+    let   element = document.querySelector('.isCurrent') as HTMLElement;
+    if (element) {
+      element.style.transform =`translate3D(${x}px, ${y}px, 0) rotate(${rotation}deg)` ;
     }
-    
+  }
 }
 
 function resetTransformString() {
-    transformString.value = 'translate3D(0, 0, 0) rotate(0deg)';
+  let element = document.querySelector('.isCurrent') as HTMLElement;
+  if (element) {
+    element.style.transform ='translate3D(0, 0, 0) rotate(0deg)';
+  }
 }
 
 const priceLevelString = computed(() => {
   return '€'.repeat(props.restaurant.price_level);
 });
-   
-function initializeInteract() {  
+
+function initializeInteract() {
 interact('.isCurrent')
   .draggable({
     startAxis: 'x',
     lockAxis: 'x',
+    inertia: true,
     listeners: {
         move(event) {
-        interactPosition.x += event.dx;
-        interactPosition.y += event.dy;
+          console.log(event.dx,event.dy);
+          if (isMouseDown) {
+            interactPosition.y += event.dy;
+            interactPosition.x += event.dx;
+          }
         let rotation = maxLimits.interactMaxRotation * (interactPosition.x / maxLimits.interactXThreshold);
 
         if (rotation > maxLimits.interactMaxRotation) rotation = maxLimits.interactMaxRotation;
@@ -123,7 +131,8 @@ interact('.isCurrent')
             emit('removeCardRight', props.restaurant.name);
         } else if (interactPosition.x < -maxLimits.interactXThreshold) {
             emit('removeCardLeft', props.restaurant.name);
-        } else {
+        }
+        else {
             resetTransformString();
         }
     },
@@ -148,11 +157,20 @@ watch(
   { immediate: true }
 );
 
-
-
+const isMouseDown = ref(false)
+const xPosAtRelease = ref(0)
 onMounted(() => {
   if (props.isCurrent) {
     initializeInteract();
+    addEventListener("mousedown", (event) => {
+      isMouseDown.value =true
+      }
+    )
+    addEventListener("mouseup",(event) => {
+      isMouseDown.value =false
+      console.log("x pos at release",interactPosition.x)
+      xPosAtRelease.value = interactPosition.x
+    })
   }
 });
 
@@ -170,6 +188,7 @@ onMounted(() => {
   padding: 21px 0 46px;
   transition: transform 0.3s ease-in-out; /* Add transition for swipe animation */
   user-select: none;
+  touch-action: none;
 }
 
 .menu-card.isCurrent {

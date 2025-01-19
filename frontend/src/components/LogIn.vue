@@ -15,7 +15,7 @@
             <button class="validate-button" @click="handleRegister">
                 Créer un compte
             </button>
-            <p class="input-label">Essayez un compte <a href="auth/oauth2/authorization/github">Github</a> ?</p>
+      <p class="input-label">Essayez un compte <a href="auth/oauth2/authorization/github"><b>Github</b></a> ?</p>
 
         </div>
     </div>

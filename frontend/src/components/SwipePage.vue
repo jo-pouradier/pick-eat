@@ -1,8 +1,8 @@
 <template>
   <section class="menu-container">
-    <SwipeCard v-for="(card, index) in restaurantData" 
-            :key="index" 
-            :restaurant="card" 
+    <SwipeCard v-for="(card, index) in restaurantData"
+            :key="index"
+            :restaurant="card"
             :isCurrent="index === currentCardIndex"
             :is-next="index === currentCardIndex + 1"
             :is-last="index === restaurantData.length - 1"
@@ -59,7 +59,7 @@ onMounted(() => {
                   console.log('Response: restaurant event', response);
                   restaurantData.value = response.data.slice(0, 10).map((item: Restaurant) => ({
             ...item,
-            name: decodeSpecialChars(item.name),  
+            name: decodeSpecialChars(item.name),
             picture: pictureLink,
           }));
                 })
@@ -126,5 +126,8 @@ function removeCard(index: number) {
   margin: 0 auto; /* Center horizontally */
   align-items: center; /* Center content */
   margin-top: 30px;
+  overflow: hidden;
+  touch-action: none;
+
 }
 </style>

@@ -111,6 +111,7 @@ function handleHome(): void {
   padding: 20px 31px;
   z-index: 999;
   position: fixed;
+  max-height:15vh;
 }
 
 .nav-icon {
