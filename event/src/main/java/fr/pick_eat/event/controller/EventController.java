@@ -17,7 +17,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.oauth2.jwt.JwtDecoder;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.UUID;
@@ -47,8 +46,8 @@ public class EventController {
 
     @PostMapping("/create")
     public ResponseEntity<String> createEvent(@RequestBody EventDTO eventDTO,
-    @Parameter(hidden=true) @CookieValue("jwt") String jwt) {
-        
+                                              @Parameter(hidden = true) @CookieValue("jwt") String jwt) {
+
         String userId = JWTUtils.extractUserIdCookie(jwt, decoder);
         UUID userUuid = UUID.fromString(userId);
         log.info("Creating event for user {}", userUuid);
@@ -188,16 +187,8 @@ public class EventController {
         String userId = JWTUtils.extractUserIdCookie(jwt, decoder);
         UUID userUuid = UUID.fromString(userId);
 
-        List<EventParticipantModel> participants;
-        try {
-            participants = eventService.getEventParticipant(userUuid, eventUuid);
-        } catch (NoSuchElementException e) {
-            log.error("Error while getting participants", e);
-            return ResponseEntity.notFound().build();
-        } catch (Exception e) {
-            log.error("Error while getting participants", e);
-            return ResponseEntity.badRequest().build();
-        }
+        List<EventParticipantModel> participants = eventService.getEventParticipant(userUuid, eventUuid);
+
 
         return ResponseEntity.ok(participants.stream().map(EventMapper::toParticipantDTO).toList());
     }

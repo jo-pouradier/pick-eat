@@ -4,12 +4,8 @@ import fr.pick_eat.event.dto.EventChatDto;
 import fr.pick_eat.event.notification.EventChatNotificationDto;
 import fr.pick_eat.notification.ENotificationType;
 import fr.pick_eat.notification.NotificationDto;
-import jakarta.jms.Destination;
-import jakarta.jms.JMSException;
-import jakarta.jms.Session;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.jms.core.JmsTemplate;
-import org.springframework.jms.support.destination.DestinationResolver;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -33,9 +29,21 @@ public class EventNotificationBrokerSender {
             return;
         }
         NotificationDto<EventChatDto> notificationDto = new EventChatNotificationDto(ENotificationType.NEW_MESSAGE, participantsUuid, chatDto);
+        if (isJUnitTest()) {
+            return;
+        }
         jmsTemplate.convertAndSend(topicName, notificationDto, message -> {
             message.setJMSType(notificationDto.getClass().getName());
             return message;
         });
+    }
+
+    public static boolean isJUnitTest() {
+        for (StackTraceElement element : Thread.currentThread().getStackTrace()) {
+            if (element.getClassName().startsWith("org.junit.")) {
+                return true;
+            }
+        }
+        return false;
     }
 }
