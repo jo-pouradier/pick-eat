@@ -1,10 +1,10 @@
-FROM nginx:stable-alpine3.20-perl as final
+FROM nginx:stable-alpine3.20-perl AS final
 #FROM ghcr.io/max-lt/nginx-jwt-module:v3.4.0 as final
 
-ENV AUTH_PORT=8081
-
-COPY ./nginx.conf /etc/nginx/templates/nginx.conf.template
+COPY ./nginx.conf.template /etc/nginx/templates/default.conf.template
 COPY ./public.pem /etc/ssl/certs/public.pem
+COPY ./certs /etc/ssl/certs
+COPY ./private /etc/ssl/private
 
-# Open port 8080
-EXPOSE 8080
+EXPOSE 80
+EXPOSE 443

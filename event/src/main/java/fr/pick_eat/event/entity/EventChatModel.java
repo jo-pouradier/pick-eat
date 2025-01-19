@@ -1,5 +1,6 @@
 package fr.pick_eat.event.entity;
 
+import fr.pick_eat.event.dto.EChatType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import lombok.*;
@@ -26,4 +27,5 @@ public class EventChatModel {
     private String imagePath;
     @CreationTimestamp
     private Date date;
+    private EChatType type;
 }

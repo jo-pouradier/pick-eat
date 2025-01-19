@@ -2,10 +2,10 @@
   <div class="event-creation-container">
     <div class="event-creation-wrapper">
       <h1 class="main-title">Register new account</h1>
-      <p>Email :</p>
+      <p class="second-title">Email :</p>
       <input class="name-selector" tabindex="0" role="textbox" type="email" @focus="handleEmailSelection"
              placeholder="Votre Email" v-model="email"/>
-      <p>Prefered name :</p>
+        <p>Prefered name :</p>
       <input class="name-selector" tabindex="0" role="textbox" @focus="handleEmailSelection"
              placeholder="Votre nom" v-model="name"/>
       <p>Mot de passe :</p>
@@ -41,7 +41,7 @@ function handleEmailSelection(): void {
 
 function handleValidation(): void {
   if (password.value !== confirmPassword.value) {
-    errorMessage.value = 'Les mots de passe ne correspondent pas';
+    errorMessage.value = 'Les mots de passe ne correspondent pas !';
   } else {
     axios.post('/auth/register',
       {
@@ -56,7 +56,7 @@ function handleValidation(): void {
         // Handle successful response
       })
       .catch(error => {
-        alert('Invalid email or password.');
+        alert(`Invalid email or password : ${error}`);
       });
   }
 };
@@ -71,35 +71,39 @@ function handleValidation(): void {
 <style scoped>
 .event-creation-container {
   display: flex;
+  border-radius: 35px;
+  padding: 21px 0 46px;
+  background: var(--Yellow-2, #f3e9b5);
   max-width: 480px;
   width: 100%;
   flex-direction: column;
-  margin: 0 auto;
+  margin-top: 15vh;
 }
+
 
 .event-creation-wrapper {
   display: flex;
   flex-direction: column;
-  border-radius: 30px;
   position: relative;
   width: 100%;
-  padding: 20px 0 0; /* Reduced padding */
   align-items: center;
 }
 
 
 .main-title {
   position: relative;
-  color: rgba(255, 255, 255, 1);
+  color: rgba(0, 0, 0, 1);
   letter-spacing: -0.28px;
   text-align: center;
-  margin: 32px 0 0;
   font: 400 40px/1 Lobster, sans-serif; /* Reduced font size */
+  border-color: black;
+  background: var(--Yellow-2, #f3e9b5);
+  width: fit-content;
 }
+
 
 .name-selector {
   position: relative;
-  border-radius: 22px; /* Reduced border-radius */
   background: var(--Yellow-2, #f3e9b5);
   margin: 10px 0 0; /* Reduced margin */
   width: 100%;
@@ -107,12 +111,17 @@ function handleValidation(): void {
   color: rgba(0, 0, 0, 1);
   text-align: center;
   letter-spacing: -0.18px;
-  padding: 10px 15px; /* Reduced padding */
+  padding: 10px  15px 0; /* Reduced padding */
   font: 700 20px/1 League Spartan, sans-serif; /* Reduced font size */
   border: none;
   cursor: pointer;
-}
+  border-bottom:black solid;
 
+}
+.second-title{
+   font: 200 20px/1 Lobster, sans-serif; /* Reduced font size */
+
+}
 .validate-button {
   position: relative;
   border-radius: 50px; /* Reduced border-radius */

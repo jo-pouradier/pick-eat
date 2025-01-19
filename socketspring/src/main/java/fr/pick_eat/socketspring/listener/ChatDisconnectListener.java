@@ -21,10 +21,9 @@ public class ChatDisconnectListener implements DisconnectListener {
 
     @Override
     public void onDisconnect(SocketIOClient client) {
-        if (client.get("jwt") != null) {
-            log.info("User disconnected : {}", client.getSessionId().toString());
+        log.info("Client disconnected : {}", client.getSessionId());
+        if (socketService.isSocketConnected(client.getSessionId())) {
+            socketService.unregister(client);
         }
-        socketService.unregister(client);
-
     }
 }

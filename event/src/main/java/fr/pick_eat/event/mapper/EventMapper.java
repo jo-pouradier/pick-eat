@@ -1,13 +1,7 @@
 package fr.pick_eat.event.mapper;
 
-import fr.pick_eat.event.dto.EventChatDto;
-import fr.pick_eat.event.dto.EventDTO;
-import fr.pick_eat.event.dto.EventFeedbackDTO;
-import fr.pick_eat.event.dto.EventVoteDTO;
-import fr.pick_eat.event.entity.EventChatModel;
-import fr.pick_eat.event.entity.EventFeedbackModel;
-import fr.pick_eat.event.entity.EventModel;
-import fr.pick_eat.event.entity.EventVoteModel;
+import fr.pick_eat.event.dto.*;
+import fr.pick_eat.event.entity.*;
 
 public class EventMapper {
 
@@ -54,6 +48,18 @@ public class EventMapper {
         dto.setContent(chat.getContent());
         dto.setImagePath(chat.getImagePath());
         dto.setDate(chat.getDate());
+        dto.setType(chat.getType());
+        return dto;
+    }
+
+    public static EventParticipantDTO toParticipantDTO(EventParticipantModel eventParticipantModel) {
+        EventParticipantDTO dto = new EventParticipantDTO();
+        dto.setUuid(eventParticipantModel.getId());
+        dto.setEventId(eventParticipantModel.getEvent().getId());
+        dto.setUserId(eventParticipantModel.getUserId());
+        dto.setOrganizer(eventParticipantModel.isOrganizer());
+        dto.setHasVoted(eventParticipantModel.isHasVoted());
+        dto.setVotes(eventParticipantModel.getVotes().stream().map(EventMapper::toEventVoteDTO).toList());
         return dto;
     }
 }

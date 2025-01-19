@@ -78,6 +78,13 @@ watch(isActive, (newValue) => {
 function handleAccount(): void {
   // if log in to account settings .... for now :
   console.log('Account clicked')
+  const userCookie = document.cookie.split('; ').find(row => row.startsWith('user='));
+
+  if (userCookie) {
+    const user = JSON.parse(decodeURIComponent(userCookie.split('=')[1]));
+    console.debug('User:', user);
+    router.push('/profile')
+  } else
   router.push('/login')
 
 }
@@ -104,6 +111,7 @@ function handleHome(): void {
   padding: 20px 31px;
   z-index: 999;
   position: fixed;
+  max-height:15vh;
 }
 
 .nav-icon {

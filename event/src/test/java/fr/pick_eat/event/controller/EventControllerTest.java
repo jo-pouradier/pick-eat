@@ -103,8 +103,8 @@ public class EventControllerTest {
     public void testJoinEventJoinSameEvent() throws Exception {
         testCreateEvent();
         String url = String.format("/join/%s", eventDTO.getId().toString());
-        mockMvc.perform(MockMvcRequestBuilders.post(url)
-                        .cookie(COOKIE))
+        mockMvc.perform(MockMvcRequestBuilders.get(url)
+                .cookie(COOKIE))
                 .andExpect(status().isBadRequest());
     }
 
@@ -112,8 +112,8 @@ public class EventControllerTest {
     public void testJoinEvent() throws Exception {
         testCreateEvent();
 
-        mockMvc.perform(MockMvcRequestBuilders.post("/join/" + eventDTO.getId())
-                        .cookie(COOKIE2))
+        mockMvc.perform(MockMvcRequestBuilders.get("/join/" + eventDTO.getId())
+                .cookie(COOKIE2))
                 .andExpect(status().isOk())
                 .andExpect(content().string("true"));
     }

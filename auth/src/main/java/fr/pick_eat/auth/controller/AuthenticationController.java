@@ -2,6 +2,7 @@ package fr.pick_eat.auth.controller;
 
 import fr.pick_eat.auth.dto.LoginUserDto;
 import fr.pick_eat.auth.dto.RegisterUserDto;
+import fr.pick_eat.auth.dto.UserBasicDto;
 import fr.pick_eat.auth.entity.UserBasic;
 import fr.pick_eat.auth.mapper.UserMapper;
 import fr.pick_eat.auth.scope.EScope;
@@ -29,13 +30,13 @@ public class AuthenticationController {
     }
 
     @PostMapping("/register")
-    public ResponseEntity<UserBasic> register(@RequestBody RegisterUserDto registerUserDto, HttpServletResponse response) {
+    public ResponseEntity<UserBasicDto> register(@RequestBody RegisterUserDto registerUserDto, HttpServletResponse response) {
         UserBasic registeredUser = authenticationService.signup(registerUserDto);
         response.addCookie(jwtService.generateDeleteCookie());
         String jwtToken = jwtService.generateToken(registeredUser, registeredUser.getUuid(), EScope.USER.getScope());
         response.addCookie(jwtService.generateCookie(jwtToken));
         CookiesUtils.addUserCookie(UserMapper.toDto(registeredUser));
-        return ResponseEntity.ok(registeredUser);
+        return ResponseEntity.ok(UserMapper.toDto(registeredUser));
     }
 
     @PostMapping("/login")

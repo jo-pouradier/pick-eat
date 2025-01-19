@@ -38,7 +38,7 @@ public class CookiesUtils {
         // Create a custom cookie
         Cookie cookie = new Cookie("user", encodedUserJson);
         cookie.setHttpOnly(false);
-        cookie.setSecure(true);
+        cookie.setSecure(false);
         cookie.setPath("/");
         cookie.setMaxAge((int) EXPIRATION_TIME); // 1 hour
 
@@ -51,7 +51,7 @@ public class CookiesUtils {
         // Create a custom cookie
         Cookie cookie = new Cookie("user", "null");
         cookie.setHttpOnly(false);
-        cookie.setSecure(true);
+        cookie.setSecure(false);
         cookie.setPath("/");
         cookie.setMaxAge(0);
 

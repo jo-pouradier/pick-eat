@@ -38,6 +38,16 @@ const router = createRouter({
       path:"/event-page",
       name:"event-page",
       component: () => import('../components/EventPage.vue')
+    },
+    {
+      path:"/profile",
+      name:"account",
+      component: () => import('../components/ProfilPage.vue')
+    },
+    {
+      path:"/join-event",
+      name:"join-event",
+      component: () => import('../components/JoinEvent.vue')
     }
     // {
     //   path: '/about',

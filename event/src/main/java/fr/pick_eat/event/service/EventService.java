@@ -1,14 +1,5 @@
 package fr.pick_eat.event.service;
 
-import java.util.*;
-import java.util.stream.Collectors;
-
-import fr.pick_eat.event.mapper.EventMapper;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-
 import fr.pick_eat.event.dto.EventDTO;
 import fr.pick_eat.event.dto.EventFeedbackDTO;
 import fr.pick_eat.event.dto.EventVoteDTO;
@@ -16,10 +7,20 @@ import fr.pick_eat.event.entity.EventFeedbackModel;
 import fr.pick_eat.event.entity.EventModel;
 import fr.pick_eat.event.entity.EventParticipantModel;
 import fr.pick_eat.event.entity.EventVoteModel;
+import fr.pick_eat.event.mapper.EventMapper;
 import fr.pick_eat.event.repository.EventFeedbackRepository;
 import fr.pick_eat.event.repository.EventParticipantRepository;
 import fr.pick_eat.event.repository.EventRepository;
 import fr.pick_eat.event.repository.EventVoteRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpStatus;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.server.ResponseStatusException;
+
+import java.util.*;
+import java.util.stream.Collectors;
 
 @Service
 public class EventService {
@@ -27,13 +28,15 @@ public class EventService {
     private final EventParticipantRepository eventParticipantRepository;
     private final EventFeedbackRepository eventFeedbackRepository;
     private final EventVoteRepository eventVoteRepository;
+    private final EventChatService eventChatService;
 
     public EventService(EventRepository eventRepository, EventParticipantRepository eventParticipantRepository,
-            EventFeedbackRepository eventFeedbackRepository, EventVoteRepository eventVoteRepository) {
+                        EventFeedbackRepository eventFeedbackRepository, EventVoteRepository eventVoteRepository, EventChatService eventChatService) {
         this.eventRepository = eventRepository;
         this.eventParticipantRepository = eventParticipantRepository;
         this.eventFeedbackRepository = eventFeedbackRepository;
         this.eventVoteRepository = eventVoteRepository;
+        this.eventChatService = eventChatService;
     }
 
     Logger log = LoggerFactory.getLogger(EventService.class);
@@ -44,6 +47,7 @@ public class EventService {
         return event.getParticipants().stream()
                 .anyMatch(participant -> participant.getUserId().equals(userUuid));
     }
+
     public List<EventModel> getHistory(UUID userUuid) {
         List<EventParticipantModel> participantEvents = eventParticipantRepository.findByUserId(userUuid);
         List<EventModel> events = participantEvents.stream().map(EventParticipantModel::getEvent).toList();
@@ -67,6 +71,8 @@ public class EventService {
             eventParticipant.setEvent(event);
             eventParticipant.setUserId(userUuid);
             eventParticipantRepository.save(eventParticipant);
+            List<UUID> participantsUuid = event.getParticipants().stream().map(EventParticipantModel::getUserId).toList();
+            eventChatService.sendLog(event.getId(), userUuid, "{" + userUuid + "} joined the event", participantsUuid);
             log.info("User:{} joined Event:{}", userUuid, eventUuid);
             return true;
         } catch (Exception e) {
@@ -82,8 +88,28 @@ public class EventService {
 
     }
 
-    public EventParticipantModel getEventParticipant(UUID userUuid, EventModel event) {
-        return eventParticipantRepository.findByUserIdAndEventId(userUuid, event.getId());
+    public List<EventParticipantModel> getEventParticipant(UUID userUuid, UUID eventUuid) {
+        Optional<EventModel> event = eventRepository.findById(eventUuid);
+        if (event.isEmpty()) {
+            log.error("Event {} does not exists", eventUuid);
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Event does not exists");
+        }
+        return getEventParticipant(userUuid, event.get());
+    }
+
+    public List<EventParticipantModel> getEventParticipant(UUID userUuid, EventModel event) {
+        List<EventParticipantModel> participants = event.getParticipants();
+        if (participants.isEmpty()) {
+            log.error("Event:{} has no participants", event.getId());
+            return new ArrayList<>();
+        }
+
+        if (participants.stream().noneMatch(participant -> participant.getUserId().equals(userUuid))) {
+            log.error("User:{} is not a participant of event:{}", userUuid, event.getId());
+            throw new NoSuchElementException("User is not a participant of event");
+        }
+        log.info("Event:{} participants: {}", event.getId(), participants);
+        return participants;
     }
 
     public void leaveEvent(UUID userUuid, UUID eventId) {
@@ -135,7 +161,7 @@ public class EventService {
     @Transactional
     public void registerUserVotes(UUID userUuid, UUID eventUuid, List<EventVoteDTO> votes) {
         EventParticipantModel participant;
-        try{
+        try {
             participant = eventParticipantRepository.findByUserIdAndEventId(userUuid, eventRepository
                     .findById(eventUuid).get().getId());
         } catch (Exception e) {
@@ -179,6 +205,8 @@ public class EventService {
             log.error("Error while saving votes", e.getMessage());
             throw new Error("Error while saving votes", e);
         }
+        eventChatService.sendLog(event.getId(), userUuid, "{" + userUuid + "} voted", event.getParticipants().stream()
+                .map(EventParticipantModel::getUserId).toList());
     }
 
     @Transactional
@@ -200,6 +228,8 @@ public class EventService {
         eventParticipant.setIsOrganizer(true);
         eventParticipant.setHasVoted(false);
         eventParticipantRepository.save(eventParticipant);
+        List<UUID> participantsUuid = Collections.singletonList(userUuid);
+        eventChatService.sendLog(savedEvent.getId(), userUuid, "{" + userUuid + "} created the event", participantsUuid);
         return savedEvent;
     }
 

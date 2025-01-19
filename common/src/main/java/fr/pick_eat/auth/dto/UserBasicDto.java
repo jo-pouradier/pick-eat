@@ -1,67 +1,74 @@
 package fr.pick_eat.auth.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import lombok.Getter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.Date;
 import java.util.UUID;
 
-@Getter
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class UserBasicDto implements UserDetails {
-    private UUID uuid;
+    private UUID uuid = null;
 
-    private String firstName;
+    private String firstName = "";
 
-    private String lastName;
+    private String lastName = "";
 
-    private String email;
+    private String email = "";
 
-    private Long githubId;
-
-    private Date createdAt;
-
-    private Date updatedAt;
+    private Long githubId = null;
 
     private String roles = "";
 
+    public UserBasicDto() {
+    }
+
     @Override
+    @JsonIgnore
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return Arrays.stream(roles.split(",")).map(role -> (GrantedAuthority) () -> role).toList();
     }
 
     @Override
+    @JsonIgnore
     public String getPassword() {
         return "**********";
     }
 
     @Override
+    @JsonIgnore
     public String getUsername() {
         return email;
     }
 
     @Override
+    @JsonIgnore
     public boolean isAccountNonExpired() {
         return true;
     }
 
     @Override
+    @JsonIgnore
     public boolean isAccountNonLocked() {
         return true;
     }
 
     @Override
+    @JsonIgnore
     public boolean isCredentialsNonExpired() {
         return true;
     }
 
     @Override
+    @JsonIgnore
     public boolean isEnabled() {
         return true;
     }
+
 
     public UserBasicDto setUuid(UUID uuid) {
         this.uuid = uuid;
@@ -96,7 +103,31 @@ public class UserBasicDto implements UserDetails {
             return "";
         }
     }
+    public UUID getUuid() {
+        return uuid;
+    }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public Long getGithubId() {
+        return githubId;
+    }
+
+    public String getRoles() {
+        return roles;
+    }
+
+    @JsonIgnore
     public boolean isGitHubUser() {
         return this.githubId != null;
     }
@@ -106,5 +137,18 @@ public class UserBasicDto implements UserDetails {
         return this;
     }
 
-
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (obj == this) {
+            return true;
+        }
+        if (obj.getClass() != getClass()) {
+            return false;
+        }
+        UserBasicDto rhs = (UserBasicDto) obj;
+        return this.uuid.equals(rhs.uuid);
+    }
 }
