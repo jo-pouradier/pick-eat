@@ -13,6 +13,8 @@ services:
       context: ./proxy
       dockerfile: ./Dockerfile
     env_file: dev.env
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
     ports:
       - "${NGINX_PORT_HTTP:-80}:80"
       - "${NGINX_PORT_HTTPS:-443}:443"
