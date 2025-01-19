@@ -15,7 +15,7 @@ router = APIRouter()
 
 # Directory to store images locally (for simplicity)
 ROOT_PATH = Path(os.getenv("SSD_STORAGE_PATH", ".."))
-IMAGE_DIR = Path("/bills")
+IMAGE_DIR = ROOT_PATH / Path("/bills")
 # IMAGE_DIR.mkdir(exist_ok=True)
 ROOT_PATH.mkdir(parents=ROOT_PATH, exist_ok=True)
 
@@ -38,6 +38,10 @@ async def get_bills_by_event(event_id: UUID, session: SessionDep) -> list[BillDT
 @router.post("/", description="Create a new bill")
 async def create_bill(bill: BillDTO, session: SessionDep) -> BillDTO | None:
     bill.id = None  # force a new UUID by orm
+    bill.path = None
+    bill.bucketName = None
+    bill.parts = []
+    bill.total_price = 0
     try:
         newBill = MapperDTO.to_bill(bill)
         print("newBill", newBill)
@@ -91,7 +95,9 @@ async def upload_bill_image(
             status_code=400, detail="Invalid file type. Only JPEG or PNG is allowed."
         )
 
-    file_path =ROOT_PATH / IMAGE_DIR / f"{bill_id}_{file.filename}"
+    file_path = IMAGE_DIR / f"{bill_id}_{file.filename}"
+    # create path if not exist
+    file_path.parent.mkdir(parents=True, exist_ok=True)
     with open(file_path, "wb") as buffer:
         shutil.copyfileobj(file.file, buffer)
     bill.path = str(file_path)

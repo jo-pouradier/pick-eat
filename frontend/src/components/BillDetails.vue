@@ -3,15 +3,16 @@
   <div class="bill-container">
     <h1 class="bill-title">Bill Details</h1>
     <div class="bill-info">
-      <p><span>Event ID:</span> {{ eventId }}</p>
-      <p><span>Bill ID:</span> {{ bill?.id }}</p>
-      <p><span>User ID:</span> {{ bill?.userId }}</p>
+      <p><span>Event ID:</span> {{ props.bill?.eventId }}</p>
+      <p><span>Bill ID:</span> {{ props.bill?.id }}</p>
+      <p><span>User ID:</span> {{ props.bill?.userId }}</p>
     </div>
-    <img :src="`/bills/image/${bill?.path}`" alt="bill image" class="bill-image" />
+    <img :src="`/billing/bills/image/${bill?.id}`" alt="bill image" class="bill-image" />
     <p class="total-price"><span>Total Price:</span> {{ bill?.total_price }}</p>
     <div class="parts-section">
       <h2>Parts</h2>
-      <ul class="parts-list">
+
+      <ul v-if="props.bill?.parts?.length" class="parts-list">
         <li v-for="part in bill?.parts" :key="part.id ?? ''" class="part-item">
           <p><span>Part ID:</span> {{ part.id }}</p>
           <p><span>Bill ID:</span> {{ part.billId }}</p>
@@ -19,82 +20,34 @@
           <p><span>Price:</span> {{ part.price }}€</p>
           <p><span>Description:</span> {{ part.text }}</p>
           <div :style="{display: 'flex', gap: '1rem'}">
-            <input type="checkbox" @change="setPartUserId(part)" :checked="part.userId == userId"
-              :disabled="part.userId !== userId && part.userId !== null"
+            <input type="checkbox" @change="setPartUserId(part)" :checked="part.userId == props.bill?.userId"
+              :disabled="part.userId !== props.bill?.userId && part.userId !== null"
             />
             <div>{{ selectPartText(part) }}</div>
           </div>
         </li>
       </ul>
+      <p v-else>The bill has not been processed yet, come back in a few minutes</p>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import type { BillDTO, BillPartDTO } from '@/types/BillDTO'
-import axios from 'axios'
-import { onMounted, ref } from 'vue'
-import { useRoute } from 'vue-router'
+import type { BillDTO, BillPartDTO } from '@/types/BillDTO';
+import axios from 'axios';
 
-const route = useRoute()
-const userId = ref('3fa85f64-5717-4562-b3fc-2c963f66afa6') // todo get from auth
-// get id from url
-const eventId = ref(route.params.eventId)
-console.log(eventId.value)
-const bill = ref<BillDTO | null>(null)
+const props = defineProps<{
+  bill: BillDTO | null
+}>()
 
-onMounted(async () => {
-  // const response = await axios.get("/bills/event/" + eventId.value)
-  // if (!response.data) {
-  //   console.log("No data found")
-  // }
-  // console.log(response.data)
-  const response: {data: BillDTO} = {
-    data: {
-      id: '3fa85f64-5717-4562-b3fc-2c963f66afa6',
-      userId: '3fa88f64-5712-4558-b6fc-6c968f70afa44',
-      bucketName: 'string',
-      path: 'string',
-      parts: [
-        {
-          id: '3fa85f64-5717-4562-b3fc-2c963f66afa6',
-          billId: '3fa85f64-5717-4562-b3fc-2c963f66afa6',
-          userId: null,
-          price: 12,
-          text: 'Biere',
-        },
-        {
-          id: '3fa85f64-5717-4562-b3fc-2c963f66afa7',
-          billId: '3fa85f64-5717-4562-b3fc-2c963f66afa6',
-          userId: '3fa85f64-5717-4562-b3fc-2c963f66afa6',
-          price: 9,
-          text: 'Poulet',
-        },
-        {
-          id: '3fa85f64-5717-4562-b3fc-2c963f66afa8',
-          billId: '3fa85f64-5717-4562-b3fc-2c963f66afa6',
-          userId: '6fa85f64-5717-4562-b3fc-2c963f66afa6',
-          price: 5,
-          text: 'Frites',
-        },
-        {
-          id: '3fa85f64-5717-4562-b3fc-2c963f66afa9',
-          billId: '3fa85f64-5717-4562-b3fc-2c963f66afa6',
-          userId: null,
-          price: 3,
-          text: 'Coca',
-        }
-      ],
-      total_price: 0,
-      eventId: '5fa85f64-5717-4562-b3fc-2c963f66afa8'
-    },
-  }
-  bill.value = response.data
-})
 
 const setPartUserId = async (part: BillPartDTO) => {
-  part.userId = part.userId === userId.value ? null : userId.value
-  const response = await axios.put(`/bills/${part.id}`, part)
+  if (!props.bill) {
+    console.error('No bill found')
+    return
+  }
+  part.userId = part.userId === props.bill?.userId ? null : props.bill?.userId
+  const response = await axios.put(`/billing/bills/${part.id}`, part)
   console.log(response)
   if (response.status !== 200) {
     console.error('Part not updated')
@@ -102,7 +55,7 @@ const setPartUserId = async (part: BillPartDTO) => {
     return
   }
   // update bill
-  bill.value?.parts?.forEach((p) => {
+  props.bill.parts?.forEach((p) => {
     if (p.id === part.id) {
       p.userId = part.userId
     }
@@ -110,7 +63,10 @@ const setPartUserId = async (part: BillPartDTO) => {
 }
 
 function selectPartText(part: BillPartDTO) {
-  if (part.userId === userId.value) {
+  if (!props.bill) {
+    return 'No bill found'
+  }
+  if (part.userId === props.bill.userId) {
     return 'For me!'
   } else if (part.userId) {
     return 'For someone else'

@@ -51,9 +51,9 @@ async function uploadImage() {
   if (!selectedFile.value) return
 
   const formData = new FormData()
-  formData.append('image', selectedFile.value)
+  formData.append('file', selectedFile.value)
 
-  const response = await axios.post(`/bills/image/${props.bill?.id}`, formData)
+  const response = await axios.post(`/billing/bills/image/${props.bill?.id}`, formData)
   if (response.status !== 200) {
     throw new Error('Failed to upload image')
   }
