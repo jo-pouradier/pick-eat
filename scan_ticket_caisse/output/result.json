@@ -1,0 +1,30 @@
+[
+    {
+        "name": "AIGUILETTES PETIT",
+        "quantity": 1,
+        "unit_price": 6.5
+    },
+    {
+        "name": "AIGUILETTES GRAND",
+        "quantity": 1,
+        "unit_price": 12.0
+    },
+    {
+        "name": "FLOWER LAGER SOCLO",
+        "quantity": 1,
+        "unit_price": 7.0
+    },
+    {
+        "name": "BLONDE SOCLO490",
+        "quantity": 2,
+        "unit_price": 4.9
+    },
+    {
+        "name": "SPRITE 25CL Uc",
+        "quantity": 1,
+        "unit_price": 4.5
+    },
+    {
+        "total_cost": 39.8
+    }
+]

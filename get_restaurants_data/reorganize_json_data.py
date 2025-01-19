@@ -1,6 +1,8 @@
 import json
 import os
 
+treated_data_path = os.path.join(".", "get_restaurants_data", "data", "restaurants_treated_data.json")
+
 # Charger les fichiers JSON
 all_restaurants_json = os.path.join('.', 'get_restaurants_data', 'data', 'all_restaurants_lyon.json')
 with open(all_restaurants_json, 'r', encoding='utf-8') as f:
@@ -15,7 +17,12 @@ with open(restaurant_types_json, 'r', encoding='utf-8') as f:
     restaurant_types = json.load(f)
 
 # Créer un dictionnaire pour stocker les données traitées
-restaurants_treated_data = {}
+# Load the JSON data
+    if os.path.exists(treated_data_path):
+        with open(treated_data_path, 'r', encoding='utf-8') as file:
+            restaurants_treated_data = json.load(file)
+    else:
+        restaurants_treated_data = {}
 
 # Parcourir tous les restaurants du fichier all_restaurants_lyon.json
 for restaurant in all_restaurants:
@@ -50,8 +57,7 @@ for restaurant in all_restaurants:
         restaurants_treated_data[place_id] = restaurant_data
 
 # Sauvegarder le fichier JSON traité
-output_json = os.path.join('.', 'get_restaurants_data', 'data', 'restaurants_treated_data.json')
-with open(output_json, 'w', encoding='utf-8') as f:
+with open(treated_data_path, 'w', encoding='utf-8') as f:
     json.dump(restaurants_treated_data, f, indent=4, ensure_ascii=False)
 
-print(f"Fichier {output_json} créé avec succès.")
+print(f"Fichier {treated_data_path} créé avec succès.")
