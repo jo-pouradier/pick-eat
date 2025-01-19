@@ -200,3 +200,18 @@ build_broker:
 #     - gradle test
 #   only:
 #     - main
+
+build_analyze_bill:
+  stage: build
+  image: docker:20.10
+  services:
+    - docker:dind
+  before_script:
+    - echo "$CI_REGISTRY_PASSWORD" | docker login $CI_REGISTRY -u $CI_REGISTRY_USER --password-stdin
+  script:
+    - cd scan_ticket_caisse
+    - docker build -t $REGISTRY/analyze_bill:$TAG -t $REGISTRY/analyze_bill:latest .
+    - docker push $REGISTRY/analyze_bill:$TAG
+    - docker push $REGISTRY/analyze_bill:latest
+  rules:
+    - if: $CI_COMMIT_BRANCH == "main" && $CI_PIPELINE_SOURCE == "push"
