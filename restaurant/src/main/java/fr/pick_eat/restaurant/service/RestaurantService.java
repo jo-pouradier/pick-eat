@@ -26,6 +26,7 @@ import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -141,10 +142,10 @@ public class RestaurantService {
     }
 
     @Transactional
-    public void parseOpeningHours() throws IOException, JSONException {
+    public void parseOpeningHours() throws IOException, JSONException, URISyntaxException {
         updateDescriptionColumnSize();
         // Read JSON file as String
-        String content = new String(Files.readAllBytes(Paths.get("restaurant/src/main/resources/dataResto.json")));
+        String content = new String(Files.readAllBytes(Path.of(RestaurantApplication.class.getClassLoader().getResource("dataResto.json").toURI())));
         JSONObject jsonObject = new JSONObject(content);
         for (Iterator<String> it = jsonObject.keys(); it.hasNext(); ) {
             String key = it.next();
