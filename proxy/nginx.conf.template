@@ -24,7 +24,7 @@ server {
         proxy_pass http://host.docker.internal:${FRONTEND_PORT};
     }
 
-    location /assets/ {
+    location /storage/ {
         alias ${SSD_STORAGE_PATH}/;
     }
 
