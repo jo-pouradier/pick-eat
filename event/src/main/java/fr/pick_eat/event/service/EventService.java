@@ -180,7 +180,7 @@ public class EventService {
             throw new Error("Error while saving participant", e);
         }
         EventModel event = participant.getEvent();
-        if (event.getIsVoteFinished()) {
+        if (event.isVoteFinished()) {
             log.error("Event is closed");
             throw new Error("Event is closed");
         }
@@ -219,6 +219,7 @@ public class EventService {
         event.setLatitude(eventDTO.getLatitude());
         event.setLongitude(eventDTO.getLongitude());
         event.setRadius(eventDTO.getRadius());
+        event.setDescription(eventDTO.getDescription());
 
         EventModel savedEvent = eventRepository.save(event);
 
@@ -356,8 +357,10 @@ public class EventService {
                 orElseThrow(() -> new NoSuchElementException("Event does not exists"));
 
         if (event.getOrganizerId().equals(userUuid)) {
-            event.setIsVoteFinished(true);
+            event.setVoteFinished(true);
             eventRepository.save(event);
+            eventChatService.sendResultRestaurant(event.getId(), getResult(eventUuid,userUuid), event.getParticipants().stream()
+                    .map(EventParticipantModel::getUserId).toList());
             return true;
         } else {
             log.error("User:{} is not the organizer of event:{}", userUuid, eventUuid);

@@ -18,6 +18,7 @@ public class EventMapper {
         eventDTO.setSelectedRestaurantId(event.getSelectedRestaurantId());
         eventDTO.setOrganizerId(event.getOrganizerId());
         eventDTO.setDescription(event.getDescription());
+        eventDTO.setVoteFinished(event.isVoteFinished());
         return eventDTO;
     }
 

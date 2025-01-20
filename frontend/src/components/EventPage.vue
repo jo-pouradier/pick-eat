@@ -7,18 +7,22 @@
     <div>
       <h1 class="main-title">{{ event.name }}</h1>
       <p class="event-place">{{ event.address }}</p>
-      <p class="event-participants">Participants: {{
+      <p class="event-participants"><b>Participants:</b> {{
           users.map(
             participant => participant.firstName + ' ' + participant.lastName
           ).join(', ')
         }}</p>
-      <p class="event-more-info">More Info: {{ event.description }}</p>
+      <p class="event-more-info"><b>More Info:</b> {{ event.description }}</p>
     </div>
     <div>
       <button v-if="!hasVoted" class="vote-button" @click="handleVote">Vote</button>
-      <button v-if="user!=null && event.organizerId==user.uuid" class="close-vote-button" @click="handleCloseVote">Close
+      <div v-else>
+        <p>You have already voted!</p>
+      </div>
+      <button v-if="user!=null && event.organizerId==user.uuid && !event.voteFinished" class="close-vote-button" @click="handleCloseVote">Close
         vote
       </button>
+      <button class="vote-button" @click="handleBill">Go to bill</button>
     </div>
     <div id="messages-logs-container" class="logs-container">
       <ChatComponent v-for="log in logs.sort(sortByTime)" :key="log.chatId" :chat="log"
@@ -60,7 +64,8 @@ const users = ref<User[]>([]);
 const hasVoted = ref(false);
 const user = ref<User>();
 const logs = ref<ChatInfo[]>([]);
-onMounted(() => {
+
+function init() {
   if (socket.connected) {
     socket.on('new_message', handleNewMessageReceived);
   } else {
@@ -76,6 +81,8 @@ onMounted(() => {
     eventId.value = route.query.eventId as string;
     loadEvent(eventId.value).then(response => {
       event.value = response.data;
+      console.log('Event:', event.value);
+      console.log( !event.value?.voteFinished)
     }).catch(() =>
       router.push("/event-list")
     );
@@ -83,6 +90,11 @@ onMounted(() => {
   } else {
     router.push("/event-list");
   }
+
+}
+
+onMounted(() => {
+  init();
 });
 
 onUnmounted(() => {
@@ -108,9 +120,8 @@ async function retrieveUser(userId: string): Promise<User | null> {
 
 async function reloadParticipants(eventId: string): Promise<void> {
   return getParticipants(eventId).then(response => {
-    console.log('Participants:', response);
     const participantsUuids = response.map(participant => participant.userId);
-    hasVoted.value = response.filter(participant => participant.uuid === user.value?.uuid && participant.votes.length > 0).length > 0;
+    hasVoted.value = response.filter(participant => participant.userId === user.value?.uuid && participant.votes.length > 0).length > 0;
     loadUsers(participantsUuids).then(response => {
       users.value = response;
     }).then(() => {
@@ -139,6 +150,11 @@ function handleCopyLink(): void {
 
 function handleCloseVote(): void {
   console.log('Close vote');
+  axios.get("/event/close/"+eventId.value)
+    .then((response) => {
+      console.log('Vote closed',response);
+      init()
+    })
 }
 
 function handleNewMessageReceived(message: any): void {
@@ -207,6 +223,11 @@ function handleImageUpload(event: Event): void {
     };
     reader.readAsDataURL(target.files[0]);
   }
+}
+
+function handleBill(): void {
+  console.log('Go to bill', eventId.value);
+  router.push({name: 'bill', query: {eventId: eventId.value}});
 }
 
 function handleVote(): void {
@@ -401,7 +422,7 @@ function handleVote(): void {
   border-radius: 10px;
   cursor: pointer;
   font: 700 14px/1 League Spartan, sans-serif;
-  margin-top: 10px;
+  margin: 10px 0.5vw ;
 }
 .back-button {
     margin-top: 10px;

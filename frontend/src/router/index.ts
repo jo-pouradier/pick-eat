@@ -50,7 +50,7 @@ const router = createRouter({
       component: () => import('../components/JoinEvent.vue'),
     },
     {
-      path: '/bill/:eventId',
+      path: '/bill',
       name: 'bill',
       component: () => import('../pages/BillPage.vue'),
     }

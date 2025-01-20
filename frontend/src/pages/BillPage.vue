@@ -21,7 +21,7 @@ const bill: Ref<BillDTO | null> = ref(null)
 onBeforeMount(async () => {
   // check if bill has been created
   const response: AxiosResponse<BillDTO[], unknown> = await axios.get(
-    `/billing/bills/event/${route.params.eventId}`,
+    `/billing/bills/event/${route.query.eventId}`,
   )
   console.log(response)
   if (response.status !== 200) {

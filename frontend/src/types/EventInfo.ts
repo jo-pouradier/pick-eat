@@ -8,6 +8,7 @@ export interface EventInfo {
     radius: number;
     description: string;
     organizerId: string | null;
+    voteFinished: boolean;
     getCoords(): [number, number];
     setCoords(lat: number, long: number): void;
     setCoords(coords: [number, number]): void;
