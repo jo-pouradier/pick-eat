@@ -206,17 +206,11 @@ public class RestaurantService {
                     valren.add((time1 + "-" + time2).replace(" ", "").replace("\u202F", ""));
                 }
                 day = day.toLowerCase().trim();
-                switch (day) {
-                    case "monday" -> resto.getMonday().setHours(valren);
-                    case "tuesday" -> resto.getTuesday().setHours(valren);
-                    case "wednesday" -> resto.getWednesday().setHours(valren);
-                    case "thursday" -> resto.getThursday().setHours(valren);
-                    case "friday" -> resto.getFriday().setHours(valren);
-                    case "saturday" -> resto.getSaturday().setHours(valren);
-                    case "sunday" -> resto.getSunday().setHours(valren);
-                }
-                restaurantRepository.save(resto);
+                resto.getDay(day).setHours(valren);
             }
+            RestaurantModel restaurantModel = restaurantRepository.save(resto);
+            RestaurantModel restaurantModel1 = restaurantRepository.findById(restaurantModel.getId()).orElse(null);
+            System.out.println();
         }
 
     }
@@ -288,17 +282,7 @@ public class RestaurantService {
         LocalTime currentTime = LocalTime.now();
         RestaurantModel restaurant = restaurantRepository.findById(uuid).orElseThrow();
         Integer day = LocalDate.now().getDayOfWeek().getValue();
-        List<String> hours = new ArrayList<>();
-        hours = switch (day) {
-            case 1 -> restaurant.getMonday().getHours();
-            case 2 -> restaurant.getTuesday().getHours();
-            case 3 -> restaurant.getWednesday().getHours();
-            case 4 -> restaurant.getThursday().getHours();
-            case 5 -> restaurant.getFriday().getHours();
-            case 6 -> restaurant.getSaturday().getHours();
-            case 7 -> restaurant.getSunday().getHours();
-            default -> hours;
-        };
+        List<String> hours = restaurant.getDay(day).getHours();
         System.out.println(restaurant.getName()+hours);
         if (hours.isEmpty()) {
             return false;

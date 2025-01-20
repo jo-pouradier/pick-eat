@@ -1,8 +1,11 @@
 package fr.pick_eat.restaurant.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
+
+import java.io.Serializable;
 import java.net.URI;
 import java.util.List;
 import java.util.UUID;
@@ -37,36 +40,40 @@ public class RestaurantModel {
     private int numberRatings;
     @ElementCollection(targetClass = URI.class, fetch = EAGER)
     private List<URI> icons;
-    @Embedded
-    private Day monday;
-    @Embedded
-    private Day tuesday;
-    @Embedded
-    private Day wednesday;
-    @Embedded
-    private Day thursday;
-    @Embedded
-    private Day friday;
-    @Embedded
-    private Day saturday;
-    @Embedded
-    private Day sunday;
+    @ElementCollection(targetClass = Day.class, fetch = EAGER)
+    private List<Day> days = List.of(new Day(), new Day(), new Day(), new Day(), new Day(), new Day(), new Day());
 
-    public List<URI> getIcons() {return icons;}
+    public List<URI> getIcons() {
+        return icons;
+    }
 
-    public void setIcons(List<URI> icons) {this.icons = icons;}
+    public void setIcons(List<URI> icons) {
+        this.icons = icons;
+    }
 
-    public float getRating() {return rating;}
+    public float getRating() {
+        return rating;
+    }
 
-    public void setRating(float rating) {this.rating = rating;}
+    public void setRating(float rating) {
+        this.rating = rating;
+    }
 
-    public int getNumberRatings() {return numberRatings;}
+    public int getNumberRatings() {
+        return numberRatings;
+    }
 
-    public void setNumberRatings(int numberRatings) {this.numberRatings = numberRatings;}
+    public void setNumberRatings(int numberRatings) {
+        this.numberRatings = numberRatings;
+    }
 
-    public String getDescription() {return description;}
+    public String getDescription() {
+        return description;
+    }
 
-    public void setDescription(String description) {this.description = description;}
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
     public UUID getId() {
         return id;
@@ -84,9 +91,13 @@ public class RestaurantModel {
         this.name = name;
     }
 
-    public String getPlace_id() {return place_id;}
+    public String getPlace_id() {
+        return place_id;
+    }
 
-    public void setPlace_id(String place_id) {this.place_id = place_id;}
+    public void setPlace_id(String place_id) {
+        this.place_id = place_id;
+    }
 
     public String getAddress() {
         return address;
@@ -194,29 +205,51 @@ public class RestaurantModel {
         }
     }
 
-    public void setMonday(Day monday) {this.monday = monday;}
-    public void setTuesday(Day tuesday) {this.tuesday = tuesday;}
-    public void setWednesday(Day wednesday) {this.wednesday = wednesday;}
-    public void setThursday(Day thursday) {this.thursday = thursday;}
-    public void setFriday(Day friday) {this.friday = friday;}
-    public void setSaturday(Day saturday) {this.saturday = saturday;}
-    public void setSunday(Day sunday) {this.sunday = sunday;}
+    public List<Day> getDays() {
+        return days;
+    }
 
-    public Day getMonday() {return monday;}
-    public Day getTuesday() {return tuesday;}
-    public Day getWednesday() {return wednesday;}
-    public Day getThursday() {return thursday;}
-    public Day getFriday() {return friday;}
-    public Day getSaturday() {return saturday;}
-    public Day getSunday() {return sunday;}
+    public void setDays(List<Day> days) {
+        this.days = days;
+    }
 
-    @Embeddable
-    public static class Day {
+    @JsonIgnore
+    public Day getDay(int day) {
+        day = day - 1;
+        if (days != null && days.size() > day) {
+            return days.get(day);
+        }
+        return null;
+    }
+
+    @JsonIgnore
+    public Day getDay(String dayString) {
+        int day = switch (dayString) {
+            case "monday" -> 0;
+            case "tuesday" -> 1;
+            case "wednesday" -> 2;
+            case "thursday" -> 3;
+            case "friday" -> 4;
+            case "saturday" -> 5;
+            case "sunday" -> 6;
+            default -> 7;
+        };
+        if (days != null && days.size() > day) {
+            return days.get(day);
+        }
+        return null;
+    }
+
+    public static class Day implements Serializable {
         @ElementCollection(targetClass = String.class, fetch = EAGER)
         private List<String> hours;
 
-        public List<String> getHours() {return hours;}
+        public List<String> getHours() {
+            return hours;
+        }
 
-        public void setHours(List<String> hours) {this.hours = hours;}
+        public void setHours(List<String> hours) {
+            this.hours = hours;
+        }
     }
 }
