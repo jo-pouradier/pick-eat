@@ -19,8 +19,8 @@ class TestPartsRouter:
     def setup_class(cls):
         cls.user_uuid = uuid4()
         cls.bill = {
-            "path": "test_path",
-            "bucketName": "test_bucket",
+            "path": None,
+            "bucketName": None,
             "userId": str(cls.user_uuid),
             "eventId": str(uuid4()),
             "parts": [],
