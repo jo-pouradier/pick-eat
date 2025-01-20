@@ -1,0 +1,42 @@
+---
+- name: Find and mount the new disk
+  hosts: pick_eat_compose
+  become: true
+  tasks:
+    - name: Find the new unmounted disk (exclude disks ending with 'a')
+      shell: lsblk -nrpo NAME,TYPE,SIZE,MOUNTPOINT | grep -E '(xvd.)' | grep -v 'xvda'
+      register: new_disks
+      changed_when: false
+
+    - name: Ensure the disk is found
+      fail:
+        msg: "No unmounted disk found (excluding disks ending with 'a')!"
+      when: new_disks.stdout_lines | length == 0
+
+    - name: Format the disk if not formatted
+      command: mkfs.ext4 {{ item.split()[0] }}
+      when: item.split(' ')[1] == "disk" and item.split(' ')[3] == ""
+      with_items: "{{ new_disks.stdout_lines }}"
+
+    - name: Create the mount directory
+      file:
+        path: /mnt/data
+        state: directory
+        owner: ubuntu
+        group: ubuntu
+        mode: '0755'
+
+    - name: Mount the disk
+      mount:
+        path: /mnt/data
+        src: "{{ item.split()[0] }}"
+        fstype: ext4
+        state: mounted
+      with_items: "{{ new_disks.stdout_lines }}"
+
+    - name: Add to fstab
+      lineinfile:
+        path: /etc/fstab
+        line: "{{ item.split()[0] }} /mnt/data ext4 defaults,nofail 0 2"
+        state: present
+      with_items: "{{ new_disks.stdout_lines }}"

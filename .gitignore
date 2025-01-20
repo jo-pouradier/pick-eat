@@ -49,3 +49,10 @@ frontend/.vscode/
 
 /uploads
 bills/
+
+# AWS
+aws/*.pem
+aws/*.ppk
+aws/*.key
+aws/*.crt
+aws/*.env

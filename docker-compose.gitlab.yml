@@ -1,12 +1,14 @@
-version: '3.8'
-
 services:
   nginx:
-    image: registry.gitlab.com/cpelyon/5eti-projet-2024-2025/groupe-7/pick-eat/nginx:latest
+    image: registry.gitlab.com/cpelyon/5eti-projet-2024-2025/groupe-7/pick-eat/proxy:latest
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
     env_file: dev.env
     ports:
       - "${NGINX_PORT_HTTP:-80}:${NGINX_PORT_HTTP:-80}"
       - "${NGINX_PORT_HTTPS:-443}:${NGINX_PORT_HTTPS:-443}"
+    volumes:
+      - /mnt/storage:${SSD_STORAGE_PATH:-/mnt/storage}
   frontend:
     image: registry.gitlab.com/cpelyon/5eti-projet-2024-2025/groupe-7/pick-eat/frontend:latest
     env_file: dev.env
@@ -26,6 +28,24 @@ services:
       POSTGRES_DB: ${AUTH_DB_NAME:-postgres}
     ports:
       - "${AUTH_DB_PORT:-5432}:5432"
+  active_mq:
+    restart: always
+    healthcheck:
+      test: [ "CMD-SHELL", "nc -z localhost 61616" ]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    image: registry.gitlab.com/cpelyon/5eti-projet-2024-2025/groupe-7/pick-eat/broker:latest
+    environment:
+      ACTIVEMQ_DISALLOW_WEBCONSOLE: ${ACTIVEMQ_DISALLOW_WEBCONSOLE:-false}
+      ACTIVEMQ_PASSWORD: ${ACTIVEMQ_PASSWORD:-admin}
+      ACTIVEMQ_USERNAME: ${ACTIVEMQ_USERNAME:-admin}
+      ACTIVEMQ_WEBADMIN_PASSWORD: ${ACTIVEMQ_WEBADMIN_PASSWORD:-adminweb}
+      ACTIVEMQ_WEBADMIN_USERNAME: ${ACTIVEMQ_WEBADMIN_USERNAME:-adminweb}
+    ports:
+      - "${ACTIVE_MQ_PORT_TCP:-61616}:61616"
+      - "${ACTIVE_MQ_PORT_WEB:-8161}:8161"
+      - "${ACTIVE_MQ_PORT_STOMP:-61613}:61613"
   auth:
     image: registry.gitlab.com/cpelyon/5eti-projet-2024-2025/groupe-7/pick-eat/auth:latest
     depends_on:
@@ -41,6 +61,10 @@ services:
   event:
     image: registry.gitlab.com/cpelyon/5eti-projet-2024-2025/groupe-7/pick-eat/event:latest
     env_file: dev.env
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    volumes:
+      - /mnt/storage:${SSD_STORAGE_PATH:-/mnt/storage}
     ports:
       - "${EVENT_PORT:-8083}:${EVENT_PORT:-8083}"
   restaurant:
@@ -48,3 +72,15 @@ services:
     env_file: dev.env
     ports:
       - "${RESTAURANT_PORT:-8084}:${RESTAURANT_PORT:-8084}"
+  billing:
+    image: registry.gitlab.com/cpelyon/5eti-projet-2024-2025/groupe-7/pick-eat/billing:latest
+    env_file: dev.env
+    ports:
+      - "${BILLING_PORT:-8086}:${BILLING_PORT:-8086}"
+  socket-spring:
+    image: registry.gitlab.com/cpelyon/5eti-projet-2024-2025/groupe-7/pick-eat/socketspring:latest
+    env_file: dev.env
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    ports:
+      - "${SOCKET_SPRING_PORT:-8085}:${SOCKET_SPRING_PORT:-8085}"

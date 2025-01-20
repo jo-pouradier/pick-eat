@@ -1,0 +1,52 @@
+---
+- name: Deploy Docker
+  hosts: docker_hosts
+  become: true
+  tasks:
+    - name: Ensure Docker is installed
+      block:
+        - name: Add Docker’s official GPG key
+          apt_key:
+            url: https://download.docker.com/linux/ubuntu/gpg
+            state: present
+
+        - name: Add Docker repository
+          apt_repository:
+            repo: deb [arch=amd64] https://download.docker.com/linux/ubuntu {{ ansible_distribution_release }} stable
+            state: present
+
+        - name: Update apt cache
+          apt:
+            update_cache: yes
+
+        - name: Install Docker and Docker Compose
+          apt:
+            name:
+              - docker-ce
+              - docker-ce-cli
+              - containerd.io
+            state: present
+            update_cache: yes
+      rescue:
+        - name: Check if Docker is already installed
+          shell: |
+            if docker --version > /dev/null 2>&1; then
+              echo "Docker already installed";
+            else
+              echo "Failed to install Docker";
+              exit 1;
+            fi
+          register: docker_check
+          failed_when: docker_check.rc != 0
+          changed_when: false
+    - name: Start and enable Docker service
+      systemd:
+        name: docker
+        state: started
+        enabled: true
+
+    - name: Add user to Docker group
+      user:
+        name: ubuntu
+        groups: docker
+        append: yes

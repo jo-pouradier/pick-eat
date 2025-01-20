@@ -1,0 +1,49 @@
+---
+- name: Deploy Docker Compose Services
+  hosts: pick_eat_compose
+  become: true
+  vars:
+    compose_file_path: "/home/ubuntu/docker-compose.yml"
+    env_file_path: "/home/ubuntu/dev.env"
+  tasks:
+    - name: Copy Docker Compose file
+      copy:
+        src: ../../docker-compose.gitlab.yml
+        dest: "{{ compose_file_path }}"
+        owner: ubuntu
+        group: ubuntu
+        mode: '0644'
+
+    - name: Copy dev.env file
+      copy:
+        src: ../../dev.env
+        dest: "{{ env_file_path }}"
+        owner: ubuntu
+        group: ubuntu
+        mode: '0644'
+
+    - name: Loggin to the Docker registry
+      shell: docker login -u {{ docker_registry_username }} -p {{ docker_registry_password }} registry.gitlab.com
+
+    - name: Run Docker Compose
+      shell: docker compose -f {{ compose_file_path }} up -d
+      args:
+        chdir: /home/ubuntu
+
+
+
+- name: Deploy Standalone Service
+  hosts: pick_eat_ai
+  become: true
+  tasks:
+    - name: Set env variables
+      set_fact:
+        BROKER_HOST: "{{ broker_host }}"
+    - name: Loggin to the Docker registry
+      shell: docker login -u {{ docker_registry_username }} -p {{ docker_registry_password }} registry.gitlab.com
+
+    - name: Remove Container if exist
+      shell: docker stop analyze_bill && docker rm analyze_bill || true
+
+    - name: Pull and run the standalone Docker service
+      shell: docker run -d -e BROKER_HOST={{broker_host}} --name analyze_bill registry.gitlab.com/cpelyon/5eti-projet-2024-2025/groupe-7/pick-eat/analyze_bill:latest
