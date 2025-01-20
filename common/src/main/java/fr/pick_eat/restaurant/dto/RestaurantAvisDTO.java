@@ -1,9 +1,5 @@
 package fr.pick_eat.restaurant.dto;
 
-import fr.pick_eat.restaurant.entity.RestaurantAvisModel;
-
-import java.util.ArrayList;
-import java.util.List;
 import java.util.UUID;
 
 public class RestaurantAvisDTO {

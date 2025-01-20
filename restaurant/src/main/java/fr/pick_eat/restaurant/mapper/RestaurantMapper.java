@@ -15,11 +15,13 @@ public class RestaurantMapper {
         restaurantDTO.setAddress(restaurant.getAddress());
         restaurantDTO.setLat(restaurant.getLat());
         restaurantDTO.setLon(restaurant.getLon());
-        restaurantDTO.setType(restaurant.getType());
+        restaurantDTO.setTypes(restaurant.getTypes());
         restaurantDTO.setBucket(restaurant.getBucket());
         restaurantDTO.setPicture(restaurant.getPicture());
         restaurantDTO.setGeneratedPicture(restaurant.getGeneratedPicture());
         restaurantDTO.setPrice_level(restaurant.getPrice_level());
+        restaurantDTO.setDescription(restaurant.getDescription());
+        restaurantDTO.setIcons(restaurant.getIcons());
         return restaurantDTO;
     }
 
@@ -31,11 +33,12 @@ public class RestaurantMapper {
         restaurant.setAddress(restaurantDTO.getAddress());
         restaurant.setLat(restaurantDTO.getLat());
         restaurant.setLon(restaurantDTO.getLon());
-        restaurant.setType(restaurantDTO.getType());
+        restaurant.setTypes(restaurantDTO.getTypes());
         restaurant.setBucket(restaurantDTO.getBucket());
         restaurant.setPicture(restaurantDTO.getPicture());
         restaurant.setGeneratedPicture(restaurantDTO.getGeneratedPicture());
         restaurant.setPrice_level(restaurantDTO.getPrice_level());
+        restaurant.setDescription(restaurantDTO.getDescription());
         return restaurant;
     }
 
