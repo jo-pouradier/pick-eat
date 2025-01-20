@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.UUID;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 import org.hibernate.annotations.UuidGenerator;
 
 @Entity
@@ -23,6 +25,8 @@ public class EventModel {
     private String description;
     private UUID organizerId;
     private UUID selectedRestaurantId;
+    @Getter
+    @Setter
     private boolean isVoteFinished;
 
     public String getDescription() {
@@ -99,14 +103,6 @@ public class EventModel {
 
     public UUID getOrganizerId() {
         return organizerId;
-    }
-
-    public void setIsVoteFinished(boolean isVoteFinished) {
-        this.isVoteFinished = isVoteFinished;
-    }
-
-    public boolean getIsVoteFinished() {
-        return isVoteFinished;
     }
 
     public void setSelectedRestaurantId(UUID selectedRestaurantId) {

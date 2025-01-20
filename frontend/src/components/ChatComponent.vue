@@ -4,6 +4,10 @@ import {defineProps, onMounted, ref} from 'vue';
 import type {User} from "@/types/User.ts";
 import type {ChatInfo} from "@/types/ChatInfo.ts";
 import {getUserCookie} from "@/lib/CookieUtils.ts";
+import SwipeCard from "@/components/SwipeCard.vue";
+import RestaurantCardComponent from "@/components/RestaurantCardComponent.vue";
+import type Restaurant from "@/types/Restaurants.ts";
+import axios from "axios";
 
 const props = defineProps<{ chat: ChatInfo, user: Promise<User | null> }>();
 
@@ -11,10 +15,17 @@ const chat = ref<ChatInfo>(props.chat);
 const userChat = ref<User | null>(null);
 const user = getUserCookie()
 const isOwnChat = ref(false);
+const restaurant = ref<Restaurant>();
 onMounted(async () => {
   userChat.value = await props.user;
   if (user) {
     isOwnChat.value = user?.uuid === chat.value.userId;
+  }
+  if (chat.value.type === 'resultRestaurant') {
+    axios.post('/restaurant/'+chat.value.content)
+      .then((response) => {
+      restaurant.value = response.data;
+    });
   }
 });
 </script>
@@ -22,7 +33,7 @@ onMounted(async () => {
 <template>
   <div v-if="userChat" :class="['chat-item', chat.type+'-message']">
     <div  v-if="chat.type=='user'" class="chat-header">
-      <span class="chat-user">{{ userChat.firstName + userChat.lastName }}</span>
+      <span class="chat-user">{{ userChat.firstName +' '+ userChat.lastName }}</span>
       <span class="chat-date">{{ chat.date.toLocaleString() }}</span>
     </div>
     <div class="chat-content">
@@ -30,6 +41,8 @@ onMounted(async () => {
       <img v-if="chat.imagePath" :src="chat.imagePath" alt="Chat Image" class="chat-image"/>
     </div>
   </div>
+  <RestaurantCardComponent :restaurant="restaurant" v-if="restaurant" />
+
 </template>
 
 <style scoped>

@@ -36,6 +36,13 @@ public class EventChatService {
         return eventChat;
     }
 
+public EventChatModel sendResultRestaurant(UUID eventId, UUID restaurantUuid, List<UUID> participantsUuid) {
+        EventChatModel eventChat = EventChatModel.builder().eventId(eventId).content(restaurantUuid.toString()).type(EChatType.resultRestaurant).build();
+        eventChat = eventChatRepository.save(eventChat);
+        eventNotificationBrokerSender.sendEventChatDto(EventMapper.toEventChatDto(eventChat), participantsUuid);
+        return eventChat;
+    }
+
     public List<EventChatModel> getMessages(UUID eventId) {
         return eventChatRepository.findAllByEventId(eventId);
     }
