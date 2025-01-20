@@ -3,7 +3,7 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, defineEmits } from 'vue';
+import { onMounted, defineEmits, watch, ref } from 'vue';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 
@@ -46,7 +46,7 @@ onMounted(() => {
         emits('locationSelected', [lat, lng]);
     });
 
-    watch(() => props.selectedRange, (newRadius) => {
+    watch(() => props.selectedRange, (newRadius: number) => {
         console.log('Selected range: circle', newRadius);
         if (circle) {
             console.log('is circle');
