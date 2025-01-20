@@ -37,7 +37,7 @@ public class EventChatService {
     }
 
 public EventChatModel sendResultRestaurant(UUID eventId, UUID restaurantUuid, List<UUID> participantsUuid) {
-        EventChatModel eventChat = EventChatModel.builder().eventId(eventId).content(restaurantUuid.toString()).type(EChatType.resultRestaurant).build();
+        EventChatModel eventChat = EventChatModel.builder().eventId(eventId).content(String.valueOf(restaurantUuid)).type(EChatType.resultRestaurant).build();
         eventChat = eventChatRepository.save(eventChat);
         eventNotificationBrokerSender.sendEventChatDto(EventMapper.toEventChatDto(eventChat), participantsUuid);
         return eventChat;
