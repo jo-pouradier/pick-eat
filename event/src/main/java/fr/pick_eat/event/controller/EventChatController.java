@@ -91,7 +91,7 @@ public class EventChatController {
         Path filePath = uploadPath.resolve(fileName);
         Files.write(filePath, fileData);
 
-        return "/assets/event/" + eventId + "/" + fileName;
+        return "/storage/event/" + eventId + "/" + fileName;
     }
 
     @GetMapping("/{eventId}/messages")
