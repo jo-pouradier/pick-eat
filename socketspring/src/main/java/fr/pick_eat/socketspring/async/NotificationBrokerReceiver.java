@@ -28,7 +28,7 @@ public class NotificationBrokerReceiver {
         try {
             String clazz = message.getJMSType();
             NotificationDto<?> notificationDtoAbstract = (NotificationDto<?>) objectMapper.readValue(message.getText(), Class.forName(clazz));
-            System.out.println("Received message: " + notificationDtoAbstract);
+            System.out.println("Received message: " + message.getText());
             socketService.sendNotification(notificationDtoAbstract);
         } catch (JMSException | ClassNotFoundException | JsonProcessingException e) {
             log.error("Error while receiving message", e);

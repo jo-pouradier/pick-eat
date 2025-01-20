@@ -96,6 +96,8 @@ services:
     env_file: dev.env
     ports:
       - "${EVENT_PORT:-8083}:${EVENT_PORT:-8083}"
+    volumes:
+      - ssd_storage:${SSD_STORAGE_PATH}
 
   restaurant:
     build:

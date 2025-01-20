@@ -81,8 +81,6 @@ function init() {
     eventId.value = route.query.eventId as string;
     loadEvent(eventId.value).then(response => {
       event.value = response.data;
-      console.log('Event:', event.value);
-      console.log( !event.value?.voteFinished)
     }).catch(() =>
       router.push("/event-list")
     );
@@ -106,7 +104,7 @@ async function retrieveUser(userId: string): Promise<User | null> {
     return Promise.resolve(null);
   }
   const part = users.value.find(participant => participant.uuid === userId) as User;
-  if (part === undefined || part) {
+  if (part === undefined || !part) {
     return loadUser(userId).then(response => {
       const participant = response as User;
       if (!users.value.find(participant => participant.uuid === userId)) {
@@ -160,10 +158,10 @@ function handleCloseVote(): void {
 function handleNewMessageReceived(message: any): void {
   console.log('New message received:', message);
   const chat = message.content as ChatInfo;
+  chat.date = new Date(chat.date);
   if (chat.eventId !== eventId.value) {
     return;
   }
-  chat.date = new Date(chat.date);
   if (!users.value.find(participant => participant.uuid === chat.userId)) {
     retrieveUser(chat.userId).then(() => {
       logs.value.push(formatMessage(chat));

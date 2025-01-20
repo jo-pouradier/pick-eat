@@ -10,6 +10,5 @@ import java.util.UUID;
 
 @Repository
 public interface EventChatRepository extends CrudRepository<EventChatModel, UUID> {
-
     List<EventChatModel> findAllByEventId(UUID eventId);
 }

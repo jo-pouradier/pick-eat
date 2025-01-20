@@ -22,18 +22,20 @@ public class EventChatService {
         this.eventNotificationBrokerSender = eventNotificationBrokerSender;
     }
 
-    public EventChatModel sendMessage(UUID eventId, UUID userUuid, String message, String filePath, List<UUID> participantsUuid) {
-        EventChatModel eventChat = EventChatModel.builder().eventId(eventId).userId(userUuid).content(message).imagePath(filePath).type(EChatType.user).build();
-        eventChat = eventChatRepository.save(eventChat);
-        eventNotificationBrokerSender.sendEventChatDto(EventMapper.toEventChatDto(eventChat), participantsUuid);
+    private EventChatModel send(UUID eventId, UUID userUuid, String message, String filePath, List<UUID> participantsUuid, EChatType type) {
+        EventChatModel eventChat = EventChatModel.builder().eventId(eventId).userId(userUuid).content(message).imagePath(filePath).type(type).build();
+        EventChatModel eventSaved = eventChatRepository.save(eventChat);
+        eventNotificationBrokerSender.sendEventChatDto(EventMapper.toEventChatDto(eventSaved), participantsUuid);
         return eventChat;
     }
 
-    public EventChatModel sendLog(UUID eventId,  UUID userUuid,String message, List<UUID> participantsUuid) {
-        EventChatModel eventChat = EventChatModel.builder().eventId(eventId).userId(userUuid).content(message).type(EChatType.log).build();
-        eventChat = eventChatRepository.save(eventChat);
-        eventNotificationBrokerSender.sendEventChatDto(EventMapper.toEventChatDto(eventChat), participantsUuid);
-        return eventChat;
+
+    public EventChatModel sendMessage(UUID eventId, UUID userUuid, String message, String filePath, List<UUID> participantsUuid) {
+        return send(eventId, userUuid, message, filePath, participantsUuid, EChatType.user);
+    }
+
+    public void sendLog(UUID eventId, UUID userUuid, String message, List<UUID> participantsUuid) {
+        send(eventId, userUuid, message, null, participantsUuid, EChatType.log);
     }
 
 public EventChatModel sendResultRestaurant(UUID eventId, UUID restaurantUuid, List<UUID> participantsUuid) {
