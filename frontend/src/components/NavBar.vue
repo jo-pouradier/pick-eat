@@ -16,7 +16,7 @@
             <img loading="lazy"
                  src="https://cdn.builder.io/api/v1/image/assets/TEMP/348ede8cbe1cf700e3a3bf5d12b1ffcc5013d1f113df32a933aa64014d9bed6d?placeholderIfAbsent=true&apiKey=e6ddd9cad30b4b528d92a08d5f92673d"
                  class="navigation-icon" alt=""/>
-            <span class="navigation-text" tabindex="0">Notifications</span>
+            <span class="navigation-text" tabindex="0" @click="handleEvents">My events</span>
           </li>
           <li class="navigation-item">
             <img loading="lazy"
@@ -46,7 +46,7 @@
             <img loading="lazy"
                  src="https://cdn.builder.io/api/v1/image/assets/TEMP/261baa17493c3abed92d6b4720030c9ed9b4e40629e7f5c816a18454e3db80e6?placeholderIfAbsent=true&apiKey=e6ddd9cad30b4b528d92a08d5f92673d"
                  class="navigation-icon" alt=""/>
-            <span class="navigation-text" tabindex="0">Log out</span>
+            <span class="navigation-text" tabindex="0" @click="handleLogout">Log out</span>
           </li>
         </ul>
       </div>
@@ -58,6 +58,7 @@
 import {computed, defineEmits, onMounted, ref, watch} from 'vue';
 import {useRoute, useRouter} from 'vue-router';
 import {socket} from "@/socket.ts";
+import axios from "axios";
 
 const emit = defineEmits(['update:isActive'])
 const isActive = ref<boolean>(false)
@@ -95,6 +96,18 @@ function handleHome(): void {
   router.push('/')
 }
 
+function handleLogout() {
+  axios.get('/auth/logout').then(() => {
+    console.log('Logged out');
+    router.push('/login');
+  });
+  isActive.value = !isActive.value
+}
+
+function handleEvents() {
+  router.push('/event-list')
+  isActive.value = !isActive.value
+}
 </script>
 
 
@@ -224,8 +237,8 @@ function handleHome(): void {
 
 .navigation-list {
   list-style: none;
-  padding: 0;
   margin: 0;
+  padding-top: 10vh;
 }
 
 .logo-image {

@@ -185,10 +185,13 @@ onMounted(() => {
   display: none; /* Hide all cards by default */
   flex-direction: column;
   align-items: center;
-  padding: 21px 0 46px;
+  padding: 21px 0 0px;
   transition: transform 0.3s ease-in-out; /* Add transition for swipe animation */
   user-select: none;
   touch-action: none;
+  height: 100%;
+  width: 70vw;
+  overflow: hidden;
 }
 
 .menu-card.isCurrent {
@@ -200,6 +203,10 @@ onMounted(() => {
 .menu-card.isNext {
   display: flex; /* Show only the next card */
   z-index: 10;
+  width: 70vw;
+  border-radius: 35px;
+
+  background-color: #4CAF50;
 }
 
 .menu-card.isLast {
@@ -256,7 +263,7 @@ onMounted(() => {
 }
 
 .price-level {
-  font-size: 1.2em; /* Increase font size */
+  font-size: clamp(1em, 1.2vw, 1.2em);
   font-weight: bold; /* Make text bold */
 }
 
@@ -265,10 +272,9 @@ onMounted(() => {
   letter-spacing: -1.3px;
   text-align: center;
   margin-top: 17px;
-  width: fit-content;
-  font: 700 29px/1 League Spartan, sans-serif;
+  width: 100%;
+  font: 700 clamp(20px, 5vw, 29px)/1 League Spartan, sans-serif;
   word-wrap: break-word; /* Ensure long titles wrap to the next line */
-  max-width: 80%; /* Ensure title does not overflow the card */
 }
 
 .menu-divider {
@@ -276,6 +282,6 @@ onMounted(() => {
   letter-spacing: -1.3px;
   text-align: center;
   margin-top: 9px;
-  font: 700 29px/31px League Spartan, -apple-system, Roboto, Helvetica, sans-serif;
+  font: 700 clamp(20px, 4vw, 29px)/31px League Spartan, sans-serif;
 }
 </style>
