@@ -1,3 +1,4 @@
+from token import OP
 from typing import Optional
 from uuid import UUID, uuid4
 from sqlmodel import Field, Relationship, SQLModel
@@ -9,7 +10,7 @@ class BillModel(SQLModel, table=True):
     id: UUID = Field(default_factory=uuid4, primary_key=True)
     userId: UUID = Field(index=True)
     eventId: UUID = Field(index=True)
-    path: str
+    path: Optional[str] = None
     bucketName: Optional[str] = None
     total_price: Optional[float] = None
     parts: Optional[list[BillPartModel]] = Relationship(back_populates="bill")

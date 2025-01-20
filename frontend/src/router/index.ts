@@ -10,44 +10,49 @@ const router = createRouter({
       component: Home,
     },
     {
-      path: "/new-vote",
-      name:"new-vote",
-      component: () => import('../components/NewVote.vue')
+      path: '/new-vote',
+      name: 'new-vote',
+      component: () => import('../components/NewVote.vue'),
     },
     {
-      path: "/register",
-      name:"register",
-      component: () => import('../components/RegisterAccount.vue')
+      path: '/register',
+      name: 'register',
+      component: () => import('../components/RegisterAccount.vue'),
     },
     {
-      path:"/login",
-      name:"login",
-      component: () => import('../components/LogIn.vue')
+      path: '/login',
+      name: 'login',
+      component: () => import('../components/LogIn.vue'),
     },
     {
-      path:"/swipe",
-      name:"swipe",
-      component: () => import('../components/SwipePage.vue')
+      path: '/swipe',
+      name: 'swipe',
+      component: () => import('../components/SwipePage.vue'),
     },
     {
-      path:"/event-list",
-      name:"event-list",
-      component: () => import('../components/EventList.vue')
+      path: '/event-list',
+      name: 'event-list',
+      component: () => import('../components/EventList.vue'),
     },
     {
-      path:"/event-page",
-      name:"event-page",
-      component: () => import('../components/EventPage.vue')
+      path: '/event-page',
+      name: 'event-page',
+      component: () => import('../components/EventPage.vue'),
     },
     {
-      path:"/profile",
-      name:"account",
-      component: () => import('../components/ProfilPage.vue')
+      path: '/profile',
+      name: 'account',
+      component: () => import('../components/ProfilPage.vue'),
     },
     {
-      path:"/join-event",
-      name:"join-event",
-      component: () => import('../components/JoinEvent.vue')
+      path: '/join-event',
+      name: 'join-event',
+      component: () => import('../components/JoinEvent.vue'),
+    },
+    {
+      path: '/bill/:eventId',
+      name: 'bill',
+      component: () => import('../pages/BillPage.vue'),
     }
     // {
     //   path: '/about',

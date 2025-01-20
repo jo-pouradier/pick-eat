@@ -1,4 +1,3 @@
-from tkinter import W
 from typing import List, Optional
 from uuid import UUID
 from pydantic import BaseModel
@@ -11,7 +10,7 @@ class BillDTO(BaseModel):
     userId: UUID
     eventId: UUID
     bucketName: Optional[str] = None
-    path: str
+    path: Optional[str] = None
     parts: Optional[List[BillPartDTO]] = None
     total_price: Optional[float] = None
 

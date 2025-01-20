@@ -13,6 +13,8 @@ services:
       context: ./proxy
       dockerfile: ./Dockerfile
     env_file: dev.env
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
     ports:
       - "${NGINX_PORT_HTTP:-80}:80"
       - "${NGINX_PORT_HTTPS:-443}:443"
@@ -104,13 +106,25 @@ services:
     env_file: dev.env
     ports:
       - "${RESTAURANT_PORT:-8084}:${RESTAURANT_PORT:-8084}"
-
+  billing:
+    build:
+      context: ./billing
+      args:
+        - BILLING_PORT=8086
+    env_file: dev.env
+    ports:
+      - "${BILLING_PORT:-8086}:${BILLING_PORT:-8086}"
   socket-spring:
     build:
       context: ./
       dockerfile: ./Dockerfile
       args:
         - TARGET_SERVICE=socketspring
+    environment:
+      BROKER_HOST: "active_mq"
+      BROKER_PORT: "61616"
+      BROKER_USER: "admin"
+      BROKER_PASSWORD: "admin"
     depends_on:
       active_mq:
         condition: service_healthy
