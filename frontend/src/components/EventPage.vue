@@ -402,6 +402,7 @@ function handleVote(): void {
   cursor: pointer;
   font: 700 14px/1 League Spartan, sans-serif;
   margin-top: 10px;
+}
 .back-button {
     margin-top: 10px;
     margin-bottom: 5px;
