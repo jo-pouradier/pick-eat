@@ -191,6 +191,20 @@ build_broker:
 #     - main
 
 
+buil_frontend:
+  stage: build
+  image: docker:dind
+  services:
+    - docker:dind
+  before_script:
+    - echo "$CI_REGISTRY_PASSWORD" | docker login $CI_REGISTRY -u $CI_REGISTRY_USER --password-stdin
+  script:
+    - cd frontend
+    - docker build -t $REGISTRY/frontend:$TAG -t $REGISTRY/frontend:latest .
+    - docker push $REGISTRY/frontend:$TAG
+    - docker push $REGISTRY/frontend:latest
+  rules:
+    - if: $CI_COMMIT_BRANCH == "main" && $CI_PIPELINE_SOURCE == "push"
 
 # test_restaurant:
 #   stage: test
