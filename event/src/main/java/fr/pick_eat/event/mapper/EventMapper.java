@@ -48,7 +48,7 @@ public class EventMapper {
         dto.setUserId(chat.getUserId());
         dto.setContent(chat.getContent());
         dto.setImagePath(chat.getImagePath());
-        dto.setDate(chat.getDate());
+        dto.setDate(chat.getCreatedAt());
         dto.setType(chat.getType());
         return dto;
     }
