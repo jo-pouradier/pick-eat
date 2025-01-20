@@ -45,6 +45,11 @@ server {
         proxy_pass http://host.docker.internal:${RESTAURANT_PORT};
     }
 
+    location /billing/ {
+        rewrite ^/billing/(.*)$ /$1 break;
+        proxy_pass http://host.docker.internal:${BILLING_PORT};
+                }
+
     location /ws/ {
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
         proxy_set_header Host $host;

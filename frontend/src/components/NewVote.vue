@@ -51,6 +51,7 @@ const eventData = ref<EventInfo>({
   radius: 50,
   description: '',
   organizerId: null,
+  voteFinished: false,
   getCoords() {
     return [this.latitude, this.longitude];
   },
@@ -73,10 +74,20 @@ function handleValidation(): void {
     ).then(response => {
       console.log(response.data);
       console.log('Event created');
-      router.push({
-        path: '/event-page',
-        query: {eventId: response.data}
-      });
+      axios.post('/billing/bills/',
+        {
+          eventId: response.data,
+          userId: getUserCookie()?.uuid
+        }
+      ).then(() => {
+        console.log('Bill created');
+          router.push({
+            path: '/event-page',
+            query: {eventId: response.data}
+          });
+      }
+      )
+
     });
   } else {
     if (eventData.value.name === '') {

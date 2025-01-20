@@ -22,6 +22,7 @@
       <button v-if="user!=null && event.organizerId==user.uuid && !event.voteFinished" class="close-vote-button" @click="handleCloseVote">Close
         vote
       </button>
+      <button class="vote-button" @click="handleBill">Go to bill</button>
     </div>
     <div id="messages-logs-container" class="logs-container">
       <ChatComponent v-for="log in logs.sort(sortByTime)" :key="log.chatId" :chat="log"
@@ -222,6 +223,11 @@ function handleImageUpload(event: Event): void {
     };
     reader.readAsDataURL(target.files[0]);
   }
+}
+
+function handleBill(): void {
+  console.log('Go to bill', eventId.value);
+  router.push({name: 'bill', query: {eventId: eventId.value}});
 }
 
 function handleVote(): void {
