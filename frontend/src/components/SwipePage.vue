@@ -1,5 +1,5 @@
 <template>
-  <section class="menu-container">
+  <section class="glass-container card-container">
     <SwipeCard v-for="(card, index) in restaurantData"
                :key="index"
                :is-last="index === restaurantData.length - 1"
@@ -119,16 +119,9 @@ function removeCard(index: number) {
 </script>
 
 <style scoped>
-.menu-container {
+.card-container{
   display: flex;
-  max-width: 441px;
-  flex-direction: column;
-  padding: 0 18px;
-  margin: 0 auto; /* Center horizontally */
-  align-items: center; /* Center content */
-  margin-top: 30px;
-  overflow: hidden;
-  touch-action: none;
+  align-items: center;
 
 }
 </style>

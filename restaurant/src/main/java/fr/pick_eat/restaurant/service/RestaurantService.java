@@ -16,6 +16,8 @@ import fr.pick_eat.restaurant.repository.RestaurantNoteRepository;
 import fr.pick_eat.restaurant.repository.RestaurantRepository;
 import jakarta.transaction.Transactional;
 import org.apache.tomcat.util.json.ParseException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.configurationprocessor.json.JSONArray;
 import org.springframework.boot.configurationprocessor.json.JSONException;
@@ -37,6 +39,7 @@ import static fr.pick_eat.restaurant.utils.CoordCalcul.getAreaFromRadius;
 
 @Service
 public class RestaurantService {
+    private static final Logger log = LoggerFactory.getLogger(RestaurantService.class);
     @Autowired
     private final RestaurantRepository restaurantRepository;
     @Autowired
@@ -116,6 +119,7 @@ public class RestaurantService {
     }
 
     public RestaurantModel getRestaurant(UUID restaurantId) {
+        addIcons(restaurantId);
         return restaurantRepository.findById(restaurantId).orElseThrow();
     }
 
@@ -217,6 +221,7 @@ public class RestaurantService {
     public List<RestaurantDTO> selectRestaurants(EventDTO event) {
         List<RestaurantModel> selectedRestaurants = new ArrayList<>();
         List<String> types = event.getTypes();
+        int maxRetries = 10;
         while (selectedRestaurants.size() < 10) {
             List<RestaurantModel> restaurants = new ArrayList<>();
             List<RestaurantDTO> rest = generateRestaurantsForEvent(event);
@@ -244,11 +249,15 @@ public class RestaurantService {
                 selectedRestaurants.remove(lowRateRestaurant);
             }
             event.setRadius(event.getRadius() + 500);
+            if (maxRetries <= 0) {
+                log.error("Max retries reached!!!!");
+                break;
+            }
+            maxRetries--;
         }
         for (RestaurantModel restaurant : selectedRestaurants) {
             addIcons(restaurant.getId());
         }
-        System.out.println(selectedRestaurants.size());
         return selectedRestaurants.stream().map(RestaurantMapper::toRestaurantDTO).toList();
     }
 

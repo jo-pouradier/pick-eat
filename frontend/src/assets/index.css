@@ -1,78 +1,215 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/* Palette de couleurs */
+:root {
+    --black: #1b1b1b;
+    --white: #fdfdfd;
+    --light-orange: #f4d8b0;
+    --accent-orange: #FFB74D;
+    --red-wrong: #fd554c;
+    --neutral-grey: #B0B0B0;
+    --valid-green: #2fec2f;
+    --primary-font: 'Arial';
+    --secondary-font: 'Brush Script MT';
 
-@layer base {
-  :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
-
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
-
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
-
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
-
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
-
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-
-    --ring: 222.2 84% 4.9%;
-
-    --radius: 0.5rem;
-  }
-
-  .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-
-    --ring: 212.7 26.8% 83.9%;
-  }
+    --navbar-height: 2rem;
 }
 
-@layer base {
-  * {
-    @apply border-border;
-  }
-  body {
-    @apply bg-background text-foreground;
-  }
+/* Réinitialisation globale */
+body {
+    margin: 0;
+    font-family: --primary-font, 'sans-serif';
+    background-color: var(--light-orange);
+    color: var(--black);
+    background-image: url('@/assets/homepage_background.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    backdrop-filter: blur(2px);
+    overflow: hidden;
+    height: 100%;
+    width: 100%;
+}
+
+h1, h2, p {
+    margin: 0;
+}
+
+p {
+    text-wrap: wrap;
+}
+
+.content div {
+    margin: 1em 0;
+}
+
+button {
+    position: relative;
+    display: inline-block;
+    --local-color: var(--accent-orange);
+    font-family: --secondary-font, 'cursive';
+    font-size: 1.2em;
+    font-weight: bold;
+    color: var(--black);
+    cursor: pointer;
+    text-transform: uppercase;
+    padding: 1.2em 1.5em;
+    background-color: var(--local-color);
+    border: 2px solid var(--black);
+    border-radius: 0.5em;
+    transform-style: preserve-3d;
+    transition: transform 150ms cubic-bezier(0, 0, 0.58, 1), background 150ms cubic-bezier(0, 0, 0.58, 1);
+    margin: 0.5em;
+}
+
+button::before {
+    position: absolute;
+    content: '';
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border: 2px solid var(--black);
+    background: hsl(from var(--local-color) h calc(s - 50) l);
+    border-radius: inherit;
+    transform: translate3d(0, 0.5em, -5em);
+    transition: transform 125ms cubic-bezier(0, 0, 0.58, 1), box-shadow 125ms cubic-bezier(0, 0, 0.58, 1);
+}
+
+button:hover {
+    background: hsl(from var(--local-color) h s calc(l + 5));
+    transform: translate(0, 0.15em);
+}
+
+button:hover::before {
+    transform: translate3d(0, 0.4em, -5em);
+}
+
+button:active {
+    transform: translate(0em, 0.75em);
+}
+
+button:active::before {
+    transform: translate3d(0, 0, -1em);
+}
+
+/* En-tête */
+.header {
+    background-color: var(--black);
+    color: var(--white);
+    padding: 15px;
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+/* Carte */
+.card {
+    background-color: var(--white);
+    border: 1px solid var(--neutral-grey);
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+}
+
+.card:hover {
+    transform: scale(1.02);
+}
+
+/* Formulaire */
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-width: 400px;
+    margin: auto;
+}
+
+input, textarea {
+    width: 95%;
+    font-family: --secondary-font, 'cursive';
+    padding: 10px;
+    border: 1px solid var(--neutral-grey);
+    border-radius: 5px;
+    font-size: 1em;
+}
+
+input:focus, textarea:focus {
+    outline: none;
+    border-color: var(--black);
+    box-shadow: 0 0 5px var(--black);
+}
+
+/* Pied de page */
+.footer {
+    background-color: var(--black);
+    color: var(--white);
+    text-align: center;
+    padding: 10px;
+    font-size: 14px;
+}
+
+/* Liens */
+.link {
+    color: var(--accent-orange);
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+.link:hover {
+    color: var(--black);
+}
+
+h1 {
+    font-size: 1.8em;
+    font-weight: bold;
+    text-align: center;
+}
+
+h2 {
+    font-size: 1.5em;
+    font-weight: bold;
+    text-align: center;
+}
+
+h3 {
+    font-size: 1.2em;
+    font-weight: bold;
+    text-align: center;
+}
+
+p {
+    font-size: 1em;
+    text-align: center;
+}
+
+hr {
+    margin-top: 2vh;
+    width: 90%;
+    border: 1px solid var(--neutral-grey);
+}
+
+.validate-button {
+    --local-color: var(--valid-green);
+}
+
+.glass-card {
+    --glass-color: rgb(255, 255, 255);
+    --glass-alpha: 0.5;
+    background: hsl(from var(--glass-color) h s l / var(--glass-alpha));
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.glass-container {
+    display: flex;
+    flex-direction: column;
+    --glass-alpha: 0.8;
+    padding: 1em;
+    margin-top: 1em;
+    justify-content: center;
 }

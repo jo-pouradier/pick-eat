@@ -1,46 +1,58 @@
 <template>
-  <div v-if="event" class="event-page-container">
-    <div class="event-links-bar">
-      <img loading="lazy" src="@/assets/back.svg" class="back-link" alt="Return to event list" @click="goBack"/>
-      <!-- <img loading="lazy" src="@/assets/copy.svg" class="copy-link" alt="Copy event link" @click="handleCopyLink"/> -->
-      <img loading="lazy" :src="copyIcon" class="copy-link" alt="Copy event link" @click="handleCopyLink"/>
-    </div>
-    <div>
-      <h1 class="main-title">{{ event.name }}</h1>
-      <p class="event-place">{{ event.address }}</p>
-      <p class="event-participants"><b>Participants:</b> {{
-          users?.map(
-            participant => participant.firstName + ' ' + participant.lastName
-          ).join(', ')
-        }}</p>
-      <p class="event-more-info"><b>More Info:</b> {{ event.description }}</p>
-    </div>
-    <div>
-      <button v-if="!hasVoted" class="vote-button" @click="handleVote">Vote</button>
-      <div v-else>
-        <p>You have already voted!</p>
+  <div v-if="event" class="glass-card glass-container event-page-container">
+    <div class="event-header">
+      <div>
+        <img loading="lazy" src="@/assets/back.svg" class="back-link" alt="Return to event list" @click="goBack"/>
+        <!-- <img loading="lazy" src="@/assets/copy.svg" class="copy-link" alt="Copy event link" @click="handleCopyLink"/> -->
+        <img loading="lazy" :src="copyIcon" class="copy-link" alt="Copy event link" @click="handleCopyLink"/>
       </div>
-      <button v-if="user!=null && event.organizerId==user.uuid && !event.voteFinished" class="close-vote-button" @click="handleCloseVote">Close
-        vote
-      </button>
-      <button class="vote-button" @click="handleBill">Go to bill</button>
+      <div>
+        <h1>{{ event.name }}</h1>
+        <p>{{ event.address }}</p>
+        <p><b>Participants:</b> {{
+            users.map(
+              participant => participant.firstName + ' ' + participant.lastName
+            ).join(', ')
+          }}</p>
+        <p class="event-more-info"><b>More Info:</b> {{ event.description }}</p>
+      </div>
+      <hr>
+      <div class="buttons-container">
+        <button v-if="!hasVoted" class="vote-button" @click="handleVote">Vote</button>
+        <div v-else>
+          <p>You have already voted!</p>
+        </div>
+        <button v-if="user!=null && event.organizerId==user.uuid && !event.voteFinished" class="close-vote-button"
+                @click="handleCloseVote">Close
+          vote
+        </button>
+        <button class="bill-button" @click="handleBill">Go to bill</button>
+      </div>
     </div>
-    <div id="messages-logs-container" class="logs-container">
-      <ChatComponent v-for="log in logs.sort(sortByTime)" :key="log.chatId" :chat="log"
-                     :user="retrieveUser(log.userId)"/>
-    </div>
-    <div>
-      <img v-if="newImage" :src="newImage" alt="Image preview" class="image-thumbnail"/>
-      <span v-if="imageLoadError" class="error-text">{{ imageLoadError }}</span>
-    </div>
-    <div class="message-input-container">
-      <input v-model="newMessage" class="message-input" placeholder="Write a message..." @keyup.enter="sendMessage"/>
-      <label class="image-upload-label send-button">
-        📷
-        <input type="file" @change="handleImageUpload" class="image-upload-input"
-               accept="image/png, image/jpeg, image/jpg, image/gif"/>
-      </label>
-      <button class="send-button" @click="sendMessage">Send</button>
+    <div class="chat-container">
+      <div class="messages-container">
+        <ChatComponent v-for="log in logs.sort(sortByTime)" :key="log.chatId" :chat="log"
+                       :user="retrieveUser(log.userId)"/>
+      </div>
+      <div class="chat-bottom-bar">
+        <div>
+          <img v-if="newImage" :src="newImage" alt="Image preview" class="image-thumbnail"/>
+          <span v-if="imageLoadError" class="error-text">{{ imageLoadError }}</span>
+        </div>
+        <hr>
+        <div class="message-input-container">
+          <input v-model="newMessage" class="message-input" placeholder="Write a message..."
+                 @keyup.enter="sendMessage"/>
+          <div class="send-image-container">
+            <label class="image-upload-label send-image-button">
+              📷
+              <input type="file" @change="handleImageUpload" class="image-upload-input"
+                     accept="image/png, image/jpeg, image/jpg, image/gif"/>
+            </label>
+          </div>
+          <button class="send-message-button" @click="sendMessage">Send</button>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -55,7 +67,6 @@ import axios from "axios";
 import {type ChatInfo} from "@/types/ChatInfo.ts";
 import {getUserCookie} from "@/lib/CookieUtils.ts";
 import ChatComponent from "@/components/ChatComponent.vue";
-import type {Participant} from "@/types/Participant.ts";
 
 const COPY_ICON = "/src/assets/copy.svg";
 const COPIED_ICON = "/src/assets/copied.svg";
@@ -157,9 +168,9 @@ function handleCopyLink(): void {
 
 function handleCloseVote(): void {
   console.log('Close vote');
-  axios.get("/event/close/"+eventId.value)
+  axios.get("/event/close/" + eventId.value)
     .then((response) => {
-      console.log('Vote closed',response);
+      console.log('Vote closed', response);
       init()
     })
 }
@@ -241,100 +252,48 @@ function handleVote(): void {
   router.push({name: 'swipe', query: {eventId: eventId.value}});
 }
 </script>
-
 <style scoped>
-.event-page-container {
+.event-header {
+  z-index: 1;
+}
+
+.buttons-container{
   display: flex;
-  flex-direction: column;
-  max-width: 480px;
+  justify-content: space-between;
+}
+
+.chat-container {
+  display: flex;
+  z-index: -1;
   width: 100%;
-  margin: 0 auto;
+  margin-top: 1em;
+  padding-bottom: 2em;
+  background-color: #fdfdfd;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.chat-bottom-bar {
+  display: flex;
   align-items: center;
-  background-color: #f3e9b5;
-  border-radius: 10px;
-  padding: 15px;
-  margin-top: calc(5vh + 60px); /* Adjusted for nav bar height */
-  height: calc(100vh - 9vh - 60px); /* Full height minus nav bar and margin */
-  position: relative; /* Add this to position the marker */
-}
-
-.event-card {
-  display: flex;
+  z-index: 1;
   flex-direction: column;
-  border-radius: 20px;
-  background: var(--Yellow-2, #f0e196);
-  padding: 10px;
-  width: 100%;
-  max-width: 300px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  align-items: center;
-  margin-bottom: 10px;
 }
 
-.main-title {
-  color: rgb(0, 0, 0);
-  letter-spacing: -0.28px;
-  text-align: center;
-  margin: 5px 0;
-  font: 400 24px/1 Lobster, sans-serif;
-}
-
-.event-place, .event-participants, .event-more-info {
-  font: 400 14px/1 League Spartan, sans-serif;
-  color: rgba(0, 0, 0, 1);
-  margin: 3px 0;
-  text-align: center;
-}
-
-.logs-container {
+.messages-container {
+  margin-top: 1em;
+  z-index: -1;
+  width: max-content;
   display: flex;
-  flex-direction: column;
-  width: 100%;
-  padding: 1em;
-  overflow-y: scroll;
-  flex: 1; /* Take available space */
   flex-direction: column-reverse;
-}
-
-.log-item {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 10px;
-  width: 100%;
-  background: #f3f3f3;
-  border-radius: 10px;
-  padding: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  height: fit-content;
-}
-
-.log-time {
-  font: 400 12px/1 League Spartan, sans-serif;
-  color: rgba(0, 0, 0, 0.6);
-}
-
-.log-message {
-  font: 400 14px/1 League Spartan, sans-serif;
-  color: rgba(0, 0, 0, 1);
-}
-
-.log-image {
-  max-width: 100%;
-  border-radius: 10px;
-  margin-top: 5px;
+  overflow-y: auto;
+  max-height: 50vh;
+  max-width: 90%;
 }
 
 .message-input-container {
   display: flex;
-  width: 100%;
-  max-width: 400px;
-  margin-top: 5px;
-  padding: 5px;
-  position: sticky;
-  bottom: 0;
-  background-color: #f3e9b5; /* Match the background color */
-  position: relative; /* Add this to position the marker */
-  align-items: center;
+  flex-direction: row;
 }
 
 .message-input {
@@ -343,64 +302,34 @@ function handleVote(): void {
   border-radius: 10px;
   border: 1px solid #ccc;
   font: 400 14px/1 League Spartan, sans-serif;
-}
-
-.image-upload-label {
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-  margin-left: 10px;
-}
-
-.image-upload-icon {
-  width: 24px;
-  height: 24px;
+  height: fit-content;
 }
 
 .image-upload-input {
   display: none;
 }
 
-.send-button {
-  padding: 10px 15px;
-  background-color: rgba(179, 38, 30, 1);
-  color: var(--Yellow-2, #f3e9b5);
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
-  font: 700 14px/1 League Spartan, sans-serif;
-  margin-left: 10px;
-}
-
-.image-uploaded-marker {
-  position: absolute;
-  top: -30px;
-  right: 10px;
-  background-color: rgba(0, 128, 0, 0.8);
-  color: white;
-  padding: 5px 10px;
+.send-image-container{
+  aspect-ratio: 1/1;
+  background-color: var(--accent-orange);
   border-radius: 5px;
-  font: 700 14px/1 League Spartan, sans-serif;
+  height: 100%;
+  justify-content: center;
+  margin: 0 0.2em;
+  padding: 0.1em 0.1em;
+  align-content: center;
+  border: 1px solid #ccc;
 }
 
-.fade-enter-active, .fade-leave-active {
-  transition: opacity 0.5s;
-}
-
-.fade-enter, .fade-leave-to /* .fade-leave-active in <2.1.8 */
-{
-  opacity: 0;
+.send-image-button {
+  align-items: center;
+  cursor: pointer;
 }
 
 .image-thumbnail {
   max-width: 100%;
   max-height: 100px;
   margin-top: 10px;
-}
-
-.event-links-bar {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
 }
 
 .copy-link {
@@ -421,25 +350,36 @@ function handleVote(): void {
   left: 10px;
 }
 
-.vote-button, .close-vote-button {
-  padding: 10px 15px;
-  background-color: rgba(179, 38, 30, 1);
-  color: var(--Yellow-2, #f3e9b5);
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
-  font: 700 14px/1 League Spartan, sans-serif;
-  margin: 10px 0.5vw ;
+.vote-button {
+  --local-color: var(--accent-orange);
 }
-.back-button {
-    margin-top: 10px;
-    margin-bottom: 5px;
-    padding: 10px 15px;
-    background-color: rgba(179, 38, 30, 1);
-    color: var(--Yellow-2, #f3e9b5);
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    font: 700 16px/1 League Spartan, sans-serif;
+
+.close-vote-button {
+  --local-color: var(--red-wrong);
+
+}
+
+.bill-button {
+  --local-color: var(--accent-orange);
+}
+
+button {
+  font-size: 0.8em;
+  padding: 0.2em 0.3em;
+}
+
+div {
+  margin: 0;
+  align-items: center;
+}
+
+hr {
+  margin: 0;
+  margin-bottom: 0.5em;
+}
+
+.event-page-container {
+  overflow: hidden;
+  height: max-content;
 }
 </style>

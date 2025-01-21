@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="glass-container glass-card">
     <BillDetails v-if="billExists" :bill="bill" />
     <BillSend v-if="!billExists" :bill="bill" />
   </div>

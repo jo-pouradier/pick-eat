@@ -1,11 +1,11 @@
 
 <template>
   <div class="bill-container">
-    <h1 class="bill-title">Bill Details</h1>
+    <h1>Bill Details</h1>
     <div class="bill-info">
-      <p><span>Event ID:</span> {{ props.bill?.eventId }}</p>
+      <p v-if="!eventName"><span>Event ID:</span> {{ props.bill?.eventId }}</p>
+      <p v-else><span>Event Name:</span> {{ eventName }}</p>
       <p><span>Bill ID:</span> {{ props.bill?.id }}</p>
-      <p><span>User ID:</span> {{ props.bill?.userId }}</p>
     </div>
     <img :src="`/billing/bills/image/${bill?.id}`" alt="bill image" class="bill-image" />
     <p class="total-price"><span>Total Price:</span> {{ bill?.total_price }}</p>
@@ -35,11 +35,22 @@
 <script setup lang="ts">
 import type { BillDTO, BillPartDTO } from '@/types/BillDTO';
 import axios from 'axios';
+import {onMounted, ref} from "vue";
+import {loadEvent} from "@/lib/EventUtils.ts";
 
 const props = defineProps<{
   bill: BillDTO | null
 }>()
 
+const eventName = ref<string | null>(null)
+onMounted( () => {
+  if( props.bill ) {
+    console.log('Bill:', props.bill)
+    loadEvent(props.bill.eventId).then(response => {
+      eventName.value = response.data.name
+      console.log('Event:', response.data)
+    })
+  }})
 
 const setPartUserId = async (part: BillPartDTO) => {
   if (!props.bill) {
@@ -78,9 +89,6 @@ function selectPartText(part: BillPartDTO) {
 <style scoped>
 .bill-container {
   padding: 16px;
-  font-family: Arial, sans-serif;
-  background-color: #f9f9f9;
-  color: #333;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   max-width: 480px;
@@ -139,7 +147,6 @@ function selectPartText(part: BillPartDTO) {
 }
 
 .part-item {
-  background-color: #fff;
   border: 1px solid #ddd;
   border-radius: 8px;
   padding: 8px 12px;

@@ -1,53 +1,32 @@
 <script setup lang="ts">
-import { RouterView } from 'vue-router'
+import {RouterView} from 'vue-router'
 import navbar from './components/NavBar.vue';
 </script>
 
 <template>
   <div id="app">
-    <navbar />
+    <navbar class="navbar"/>
     <div class="content">
       <div class="landing-container">
-        <div class="landing-content">
-          <RouterView />
-        </div>
+        <RouterView/>
       </div>
     </div>
   </div>
 </template>
 
-<style scoped>
-header {
-  background-color: #333;
-  color: white;
-  padding: 1rem;
-  text-align: center;
-}
-
+<style>
 .content {
-  background-image: url('@/assets/homepage_background.jpg');
-  background-size: cover;
-  background-repeat: no-repeat;
-  height: 100vh; /* Changed to always take full height of the screen */
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  flex: 1;
+  overflow-y: auto; /* Défilement uniquement vertical */
+  overflow-x: hidden; /* Évite le défilement horizontal */
+  margin-top: calc(var(--navbar-height) + 1em);
+  padding: 0.8em;
 }
-
-.landing-container {
-  display: flex;
-  max-width: 480px;
-  width: 100%;
-  flex-direction: column;
-  margin: 0 auto;
-}
-
-.landing-content {
+</style>
+<style scoped>
+#app {
+  height: 100svh;
   display: flex;
   flex-direction: column;
-  border-radius: 30px;
-  position: relative;
-  width: 100%;
-  align-items: center;
 }
 </style>

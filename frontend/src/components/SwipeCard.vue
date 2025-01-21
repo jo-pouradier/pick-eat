@@ -1,14 +1,15 @@
 <template>
-  <div class="menu-card" :class="{isCurrent: isCurrent, isNext : isNext, isLast: isLast}" :style="{transform: transformString}">
-    <div class="pizza-gallery">
-      <div class="pizza-showcase">
+  <div class="card-show" :class="{isNext: isNext, isLast: isLast, isCurrent: isCurrent}" :style="{transform: transformString}">
+  <div class="glass-card glass-container menu-card"  >
+    <h3>{{ restaurant.name }}</h3>
+    <div class="pizza-showcase">
         <img
           loading="lazy"
           src="https://cdn.builder.io/api/v1/image/assets/TEMP/e4762f9fa0a006504c0d5c5ad77f3cf0fd27454d2c3512a3f6edaaf1e4647cef?placeholderIfAbsent=true&apiKey=e6ddd9cad30b4b528d92a08d5f92673d"
           class="pizza-thumbnail"
           alt="Pizza variety showcase thumbnail"
         />
-        <div class="pizza-display">
+        <div>
           <img :src="pictureLink()" class="pizza-image" alt="Pizza variety showcase thumbnail" />
         </div>
         <img
@@ -17,7 +18,6 @@
           class="pizza-thumbnail"
           alt="Pizza variety showcase thumbnail"
         />
-      </div>
     </div>
     <div class="pizza-options">
       <div v-for="icon in restaurant.icons" :key="icon">
@@ -29,9 +29,10 @@
         />
       </div>
     </div>
-    <h1 class="menu-title">{{ restaurant.name }}</h1>
+    <hr/>
     <div class="description">{{restaurant.description}}</div>
-</div>
+  </div>
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -167,126 +168,92 @@ onMounted(() => {
 </script>
 
 <style scoped>
+.card-show{
+  display: none;
+}
 .menu-card {
-  border-radius: 35px;
-  background: var(--Yellow-2, #f3e9b5);
-  display: none; /* Hide all cards by default */
-  flex-direction: column;
-  align-items: center;
-  padding: 21px 0 0px;
+  display: flex; /* Hide all cards by default */
   transition: transform 0.3s ease-in-out; /* Add transition for swipe animation */
   user-select: none;
   touch-action: none;
-  height: 100%;
-  width: 70vw;
   overflow: hidden;
+  align-items: center;
+  background-color: var(--light-orange);
+  width: 70vw; /* Set fixed width */
+  height: 60vh; /* Set fixed height */
+  max-width: 500px; /* Set max width */
+  max-height: 400px; /* Set max height */
+  box-sizing: border-box; /* Include padding in the width */
+  flex-direction: column;
+  justify-content: space-between; /* Ensure content is spaced evenly */
 }
 
-.menu-card.isCurrent {
+.card-show.isCurrent {
   display: flex; /* Show only the current card */
   z-index: 11;
   position: absolute;
 }
 
-.menu-card.isNext {
+.card-show.isNext {
   display: flex; /* Show only the next card */
   z-index: 10;
-  width: 70vw;
-  border-radius: 35px;
-
-  background-color: #4CAF50;
 }
 
-.menu-card.isLast {
+.card-show.isLast {
   position: relative; /* Change position to relative for the last card */
 }
 
-.pizza-gallery {
-  display: flex;
-  gap: 4px;
-  justify-content: center; /* Center content horizontally */
-}
 
 .pizza-showcase {
   display: flex;
-  flex-grow: 1;
-  flex-basis: auto;
-  justify-content: center; /* Center content horizontally */
-  align-items: center; /* Center content vertically */
+  justify-content: space-between; /* Distribute space between items */
+  align-items: center; /* Center items vertically */
 }
 
 .pizza-thumbnail {
-  object-fit: contain;
-  object-position: center;
-  width: 55px;
-  margin: auto 0;
+  max-width: 3.5em;
+  max-height: 5em;
+  object-fit: cover; /* Ensure images cover the area without stretching */
 }
-
-.pizza-display {
-  border-radius: 24px;
-  background-color: rgba(217, 217, 217, 1);
-  width: 100%;
-  height: auto;
-  max-height: 300px;
-  max-width: 300px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-}
-
 .pizza-image {
-  max-width: 100%;
-  max-height: 100%;
+  max-width: 10em;
+  max-height: 10em;
   object-fit: cover;
+  border-radius: 10px;
 }
+
 .pizza-options {
   display: flex;
-  margin-top: 7px;
-  width: 156px;
+  align-items: center;
+  margin: 0;
   max-width: 100%;
   gap: 16px;
-  justify-content: center;
 }
 
 .option-thumbnail {
-  aspect-ratio: 1;
   object-fit: contain;
   object-position: center;
   display: table;
-  width: 30px;
-  min-width: 30px;
-  min-height: 30px;
-}
-
-.price-level {
-  font-size: clamp(1em, 1.2vw, 1.2em);
-  font-weight: bold; /* Make text bold */
-}
-
-.menu-title {
-  color: rgba(0, 0, 0, 1);
-  letter-spacing: -1.3px;
-  text-align: center;
-  margin-top: 17px;
-  width: 100%;
-  font: 700 clamp(20px, 5vw, 29px)/1 League Spartan, sans-serif;
-  word-wrap: break-word; /* Ensure long titles wrap to the next line */
-}
-
-.menu-divider {
-  color: rgba(0, 0, 0, 1);
-  letter-spacing: -1.3px;
-  text-align: center;
-  margin-top: 9px;
-  font: 700 clamp(20px, 4vw, 29px)/31px League Spartan, sans-serif;
+  width: 25px; /* Reduce width */
+  min-width: 25px; /* Reduce min-width */
+  min-height: 25px; /* Reduce min-height */
 }
 
 .description {
   color: rgba(0, 0, 0, 1);
   letter-spacing: -1.3px;
   text-align: center;
-  margin-top: 9px;
-  font: 400 clamp(10px, 2vw, 29px)/31px League Spartan, sans-serif;
+  font: var(--secondary-font);
+  word-wrap: break-word;
+  max-width: 80%;
+  overflow-y: scroll;
+}
+
+.content div {
+  margin: 0;
+}
+
+h3{
+  margin: 0;
 }
 </style>
