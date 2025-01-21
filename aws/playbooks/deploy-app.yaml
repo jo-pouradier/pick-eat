@@ -26,7 +26,7 @@
       shell: docker login -u {{ docker_registry_username }} -p {{ docker_registry_password }} registry.gitlab.com
 
     - name: Run Docker Compose
-      shell: docker compose down && docker compose rm -f && docker compose pull && export BROKER_HOST={{broker_host}} && docker compose -f {{ compose_file_path }} up -d
+      shell: docker compose down && docker compose rm -f && docker compose pull && export BROKER_HOST={{broker_host}} && export ACTIVE_MQ_HOST={{broker_host}} && docker compose -f {{ compose_file_path }} up -d
       args:
         chdir: /home/ubuntu
 

@@ -24,7 +24,7 @@ def process_bill_parts(body: str) -> None:
     if not isinstance(data, dict):
         logger.error("Message is not a dict")
         return
-    uuid = data.get("billId", None)
+    uuid = data.get("bill_id", None)
     if uuid is None:
         logger.error("No billId in message")
         return
