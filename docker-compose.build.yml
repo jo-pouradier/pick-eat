@@ -19,7 +19,7 @@ services:
       - "${NGINX_PORT_HTTP:-80}:80"
       - "${NGINX_PORT_HTTPS:-443}:443"
     volumes:
-      - ssd_storage:${SSD_STORAGE_PATH:-.}
+      - ssd_storage:${SSD_STORAGE_PATH:-/mnt/ssd_storage}
 
   frontend:
     build:
@@ -103,7 +103,7 @@ services:
     ports:
       - "${EVENT_PORT:-8083}:${EVENT_PORT:-8083}"
     volumes:
-      - ssd_storage:${SSD_STORAGE_PATH}
+      - ssd_storage:${SSD_STORAGE_PATH:-/mnt/ssd_storage}
 
   restaurant:
     build:

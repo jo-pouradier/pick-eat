@@ -28,6 +28,12 @@ server {
         alias ${SSD_STORAGE_PATH}/;
     }
 
+    location /images/ {
+        rewrite ^/images/(.*)$ /$1 break;
+        root ${SSD_STORAGE_PATH};
+        autoindex on;
+    }
+
     # Redirect
     location /auth/ {
         rewrite ^/auth/(.*)$ /$1 break;
