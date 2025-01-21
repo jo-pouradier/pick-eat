@@ -4,10 +4,15 @@ import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
-import jakarta.persistence.*;
+import org.hibernate.annotations.UuidGenerator;
+
+import jakarta.persistence.ElementCollection;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import lombok.Getter;
 import lombok.Setter;
-import org.hibernate.annotations.UuidGenerator;
 
 @Entity
 public class EventModel {
@@ -25,6 +30,10 @@ public class EventModel {
     private String description;
     private UUID organizerId;
     private UUID selectedRestaurantId;
+    @Getter
+    @Setter
+    @ElementCollection
+    private List<String> types;
     @Getter
     @Setter
     private boolean isVoteFinished;

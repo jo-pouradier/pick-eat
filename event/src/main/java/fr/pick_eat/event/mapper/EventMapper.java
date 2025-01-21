@@ -19,6 +19,7 @@ public class EventMapper {
         eventDTO.setOrganizerId(event.getOrganizerId());
         eventDTO.setDescription(event.getDescription());
         eventDTO.setVoteFinished(event.isVoteFinished());
+        eventDTO.setTypes(event.getTypes());
         return eventDTO;
     }
 
