@@ -40,6 +40,9 @@ inventory = {
     },
     "docker_hosts": {
         "hosts": [pick_eat_ai, pick_eat_compose],
+        "vars": {
+            "broker_host": pick_eat_private_ip,
+        }
     },
     "all":{
         "vars":{

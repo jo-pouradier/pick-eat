@@ -26,7 +26,7 @@
       shell: docker login -u {{ docker_registry_username }} -p {{ docker_registry_password }} registry.gitlab.com
 
     - name: Run Docker Compose
-      shell: docker compose -f {{ compose_file_path }} up -d
+      shell: docker compose down && docker compose rm -f && docker compose pull && export BROKER_HOST={{broker_host}} && docker compose -f {{ compose_file_path }} up -d
       args:
         chdir: /home/ubuntu
 
@@ -46,4 +46,4 @@
       shell: docker stop analyze_bill && docker rm analyze_bill || true
 
     - name: Pull and run the standalone Docker service
-      shell: docker run -d -e BROKER_HOST={{broker_host}} --name analyze_bill registry.gitlab.com/cpelyon/5eti-projet-2024-2025/groupe-7/pick-eat/analyze_bill:latest
+      shell: docker pull registry.gitlab.com/cpelyon/5eti-projet-2024-2025/groupe-7/pick-eat/analyze_bill:latest && docker run -d -e BROKER_HOST={{broker_host}} --name analyze_bill registry.gitlab.com/cpelyon/5eti-projet-2024-2025/groupe-7/pick-eat/analyze_bill:latest

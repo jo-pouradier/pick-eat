@@ -8,7 +8,7 @@
       <h1 class="main-title">{{ event.name }}</h1>
       <p class="event-place">{{ event.address }}</p>
       <p class="event-participants"><b>Participants:</b> {{
-          users.map(
+          users?.map(
             participant => participant.firstName + ' ' + participant.lastName
           ).join(', ')
         }}</p>
