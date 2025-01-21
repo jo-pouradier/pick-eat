@@ -4,7 +4,6 @@ import {defineProps, onMounted, ref} from 'vue';
 import type {User} from "@/types/User.ts";
 import type {ChatInfo} from "@/types/ChatInfo.ts";
 import {getUserCookie} from "@/lib/CookieUtils.ts";
-import SwipeCard from "@/components/SwipeCard.vue";
 import RestaurantCardComponent from "@/components/RestaurantCardComponent.vue";
 import type Restaurant from "@/types/Restaurants.ts";
 import axios from "axios";
@@ -22,26 +21,27 @@ onMounted(async () => {
     isOwnChat.value = user?.uuid === chat.value.userId;
   }
   if (chat.value.type === 'resultRestaurant') {
-    axios.post('/restaurant/'+chat.value.content)
+    axios.get('/restaurant/' + chat.value.content)
       .then((response) => {
-      restaurant.value = response.data;
-    });
+        restaurant.value = response.data;
+      });
   }
 });
 </script>
 
 <template>
   <div v-if="userChat" :class="['chat-item', chat.type+'-message']">
-    <div  v-if="chat.type=='user'" class="chat-header">
-      <span class="chat-user">{{ userChat.firstName +' '+ userChat.lastName }}</span>
+    <div v-if="chat.type=='user'" class="chat-header">
+      <span class="chat-user">{{ userChat.firstName + ' ' + userChat.lastName }}</span>
       <span class="chat-date">{{ chat.date.toLocaleString() }}</span>
     </div>
+    <hr>
     <div class="chat-content">
-      <p v-if="chat.content">{{ chat.content }}</p>
+      {{ chat.content }}
       <img v-if="chat.imagePath" :src="chat.imagePath" alt="Chat Image" class="chat-image"/>
     </div>
   </div>
-  <RestaurantCardComponent :restaurant="restaurant" v-if="restaurant" />
+  <RestaurantCardComponent :restaurant="restaurant" v-if="restaurant"/>
 
 </template>
 
@@ -50,14 +50,14 @@ onMounted(async () => {
 span {
   margin: 0 5px;
 }
+
 .chat-item {
   display: flex;
+  max-width: 80%;
   flex-direction: column;
   margin-bottom: 10px;
-  padding: 10px;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  max-width: 90%;
 }
 
 .log-message {
@@ -74,7 +74,6 @@ span {
 .chat-header {
   display: flex;
   justify-content: space-between;
-  font: 400 12px/1 League Spartan, sans-serif;
   color: rgba(0, 0, 0, 0.6);
 }
 
@@ -87,12 +86,30 @@ span {
 }
 
 .chat-content {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  padding-left: 1em;
   margin-top: 5px;
+  font-family: --secondary-font, cursive;
+  word-break: break-word;
+  white-space: normal;
+  justify-content: center;
 }
 
 .chat-image {
-  max-width: 100%;
+  max-width: 50svw;
   border-radius: 10px;
   margin-top: 5px;
+}
+
+div {
+  margin: 0;
+}
+
+hr {
+  margin: 0;
+  border: 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
 }
 </style>

@@ -9,8 +9,9 @@ export function getParticipants(eventId: string): Promise<Participant[]> {
   return axios.get(`${eventRoute}/participants/${eventId}`).then((response) => response.data);
 }
 
-export function loadUsers(participantUuids: string[]): Promise<User[]> {
-  return axios.post(`${authRoute}/users/`, participantUuids).then((response) => response.data);
+export async function loadUsers(participantUuids: string[]): Promise<User[]> {
+  return axios.post(`${authRoute}/users/`, participantUuids).then((response) => response.data)
+    .catch(() => {return [];});
 }
 
 export function loadUser(participantUuid: string): Promise<User> {

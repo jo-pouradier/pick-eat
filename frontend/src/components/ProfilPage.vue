@@ -1,10 +1,8 @@
 <template>
-  <div class="profile-container">
-    <h1 class="title">Profile Page</h1>
-    <p class="user-info">User: {{ userName }}</p>
-    <button class="logout-button" @click="handleLogout" tabindex="0">
-      Logout
-    </button>
+  <div class="glass-card glass-container">
+    <h1>Profile Page</h1>
+    <p>User: {{ userName }}</p>
+    <button class="logout-button" @click="handleLogout" tabindex="0">Logout</button>
   </div>
 </template>
 
@@ -17,10 +15,10 @@ const router = useRouter();
 const userName = ref<string>('...');
 
 onMounted(() => {
-    const userCookie = document.cookie.split('; ').find(row => row.startsWith('user='));
-    if (!userCookie) {
-        router.push('/login');
-    }
+  const userCookie = document.cookie.split('; ').find(row => row.startsWith('user='));
+  if (!userCookie) {
+    router.push('/login');
+  }
 });
 
 updateUserName();
@@ -43,35 +41,11 @@ function handleLogout() {
 </script>
 
 <style scoped>
-.profile-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 50px;
+button {
+  padding: 0.3em;
+  font-size: 0.8em;
 }
-
-.title {
-  font-size: 2em;
-  margin-bottom: 20px;
-}
-
-.user-info {
-  font-size: 1.2em;
-  margin-bottom: 30px;
-}
-
-.logout-button {
-  border-radius: 100px;
-  min-height: 66px;
-  width: 169px;
-  max-width: 100%;
-  text-align: center;
-  letter-spacing: -0.14px;
-  padding: 23px 12px;
-  font: 700 27px/1 "League Spartan", sans-serif;
-  border: none;
-  cursor: pointer;
-  background-color: var(--Orange-2, #ffdecf);
-  color: var(--Orange-Base, #e95322);
+.logout-button{
+  --local-color: var(--red-wrong);
 }
 </style>

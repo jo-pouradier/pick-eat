@@ -18,9 +18,15 @@ onMounted(() => {
   getParticipants(event.value.id).then(participants => {
     const participantsUuids = participants.map(participant => participant.userId);
     loadUsers(participantsUuids).then(response => {
+        console.log(response)
         users.value = response;
+        console.log('Loaded users:', users.value);
       }
-    );
+    )
+      .catch(error => {
+        users.value = [];
+        console.error('Failed to load users:', error);
+      });
   });
 });
 
@@ -41,62 +47,54 @@ function goToEventPage(eventId: string): void {
 </script>
 
 <template>
-  <div class="event-header" @click="toggleEventDetails(event.id)">
-    <p class="event-name">{{ event.name }}</p>
-    <p class="event-place">{{ event.address }}</p>
-  </div>
-  <transition name="fade">
-    <div v-if="showDetails" class="event-details">
-      <p>Participants: {{
-          users.map(
-            participant => participant.firstName + ' ' + participant.lastName
-          ).join(', ')
-        }}</p>
-      <p>More Info: {{ event.description }}</p>
-      <button class="event-button" @click="goToEventPage(event.id)">View Event</button>
+  <div class="glass-card">
+    <div @click="toggleEventDetails(event.id)">
+      <h2 class="">{{ event.name }}</h2>
+      <p class="">{{ event.address }}</p>
     </div>
-  </transition>
+    <hr/>
+    <transition name="fade">
+      <div v-if="showDetails" class="details-container">
+        <p>Participants: {{
+            users.map(
+              participant => participant.firstName + ' ' + participant.lastName
+            ).join(', ')
+          }}</p>
+        <p>More Info: {{ event.description }}</p>
+        <button class="view-event-button" @click="goToEventPage(event.id)">View Event</button>
+      </div>
+    </transition>
+  </div>
 </template>
 
 <style scoped>
-.event-header {
+.glass-card {
+  width: 95%;
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  margin: 0.5em;
+}
+
+.view-event-button {
+  font-size: 0.8em;
+  --local-color: var(--accent-orange);
+}
+
+button {
+  padding: 0.5em 1em;
+  margin-bottom: 1em;
+  align-self: center;
+  align-content: center;
   align-items: center;
-  padding: 10px 15px;
 }
 
-.event-name, .event-place {
-  font: 700 20px/1 League Spartan, sans-serif;
-  color: rgba(0, 0, 0, 1);
+.details-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.event-details {
-  margin-top: 10px;
-  font: 400 16px/1 League Spartan, sans-serif;
-  color: rgba(0, 0, 0, 0.8);
-  background-color: #c9c095;
-  padding: 10px 15px;
-  border-radius: 10px;
-  transition: all 0.3s ease;
-}
-
-.event-button {
-  margin-top: 10px;
-  padding: 10px 15px;
-  background-color: rgba(179, 38, 30, 1);
-  color: var(--Yellow-2, #f3e9b5);
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
-  font: 700 16px/1 League Spartan, sans-serif;
-}
-
-.fade-enter-active, .fade-leave-active {
-  transition: opacity 0.3s ease;
-}
-
-.fade-enter, .fade-leave-to {
-  opacity: 0;
+div {
+  margin: 0;
 }
 </style>

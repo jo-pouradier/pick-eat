@@ -1,6 +1,5 @@
 <template>
-  <div class="upload-container">
-    <h1 class="upload-title">Upload Picture</h1>
+    <h1 >Upload Picture</h1>
     <div class="upload-options">
       <button @click="triggerFileInput" class="upload-button">Choose a Picture</button>
       <button @click="capturePhoto" class="upload-button">Take a Picture</button>
@@ -13,7 +12,6 @@
     <button @click="uploadImage" class="upload-button" :disabled="!selectedFile">
       Upload Picture
     </button>
-  </div>
 </template>
 
 <script setup lang="ts">
@@ -65,36 +63,17 @@ async function uploadImage() {
 </script>
 
 <style scoped>
-.upload-container {
-  padding: 16px;
-  font-family: Arial, sans-serif;
-  background-color: #f9f9f9;
-  color: #333;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  max-width: 480px;
-  margin: 16px auto;
-}
-
-.upload-title {
-  font-size: 24px;
-  font-weight: bold;
-  color: #4caf50;
-  text-align: center;
-  margin-bottom: 16px;
-}
 
 .upload-options {
   display: flex;
   justify-content: space-around;
-  margin-bottom: 16px;
 }
 
 .upload-button {
   padding: 10px 16px;
   font-size: 16px;
-  color: #fff;
-  background-color: #4caf50;
+  color: var(--black);
+  background-color: var(--accent-orange);
   border: none;
   border-radius: 4px;
   cursor: pointer;
@@ -102,13 +81,10 @@ async function uploadImage() {
 }
 
 .upload-button:disabled {
-  background-color: #ccc;
+  background-color: var(--valid-green);
   cursor: not-allowed;
 }
 
-.upload-button:hover:not(:disabled) {
-  background-color: #45a049;
-}
 
 .preview-section {
   text-align: center;

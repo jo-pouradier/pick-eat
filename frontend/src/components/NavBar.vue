@@ -6,7 +6,6 @@
       </div>
       <img class="logo-image" v-if="!isHomeRoute" src="@/assets/eating.png" alt="Home page background image"
            @click="handleHome"/>
-
       <img loading="lazy" src="@/assets/profile.svg" class="nav-icon" alt="User profile icon" @click="handleAccount"/>
     </nav>
     <div class="navigation-menu" :class="{ active: isActive }" role="navigation" aria-label="Main navigation">
@@ -14,33 +13,15 @@
         <ul class="navigation-list">
           <li class="navigation-item">
             <img loading="lazy"
+                 src="https://i.pinimg.com/originals/db/c8/ca/dbc8ca135fe568c03bd135dc5c134453.png"
+                 class="navigation-icon" alt=""/>
+            <span class="navigation-text" tabindex="0" @click="handleHome">Home</span>
+          </li>
+          <li class="navigation-item">
+            <img loading="lazy"
                  src="https://cdn.builder.io/api/v1/image/assets/TEMP/348ede8cbe1cf700e3a3bf5d12b1ffcc5013d1f113df32a933aa64014d9bed6d?placeholderIfAbsent=true&apiKey=e6ddd9cad30b4b528d92a08d5f92673d"
                  class="navigation-icon" alt=""/>
-            <span class="navigation-text" tabindex="0" @click="handleEvents">My events</span>
-          </li>
-          <li class="navigation-item">
-            <img loading="lazy"
-                 src="https://cdn.builder.io/api/v1/image/assets/TEMP/a93ca3330a0bda50ffa03d40eddcd160441c00ba240a52f8b12c26ee1d76bda4?placeholderIfAbsent=true&apiKey=e6ddd9cad30b4b528d92a08d5f92673d"
-                 class="navigation-icon" alt=""/>
-            <span class="navigation-text" tabindex="0">Facebook</span>
-          </li>
-          <li class="navigation-item">
-            <img loading="lazy"
-                 src="https://cdn.builder.io/api/v1/image/assets/TEMP/f6d4af25fa104fa8fff00d0f30cdb98eaac9e758406502bd56ff266611b2d5c4?placeholderIfAbsent=true&apiKey=e6ddd9cad30b4b528d92a08d5f92673d"
-                 class="navigation-icon" alt=""/>
-            <span class="navigation-text" tabindex="0">Instagram</span>
-          </li>
-          <li class="navigation-item">
-            <img loading="lazy"
-                 src="https://cdn.builder.io/api/v1/image/assets/TEMP/3ddd68d0fa0e74c10fb2fa1bf2381a30264ae2d3899370e8db96829208719c81?placeholderIfAbsent=true&apiKey=e6ddd9cad30b4b528d92a08d5f92673d"
-                 class="navigation-icon" alt=""/>
-            <span class="navigation-text" tabindex="0">Gitlab</span>
-          </li>
-          <li class="navigation-item">
-            <img loading="lazy"
-                 src="https://cdn.builder.io/api/v1/image/assets/TEMP/85ebcf158d4489ad2cad14f6dc2ad0b35770325b6ee5fef8e20acfc8b9ff9656?placeholderIfAbsent=true&apiKey=e6ddd9cad30b4b528d92a08d5f92673d"
-                 class="navigation-icon" alt=""/>
-            <span class="navigation-text" tabindex="0">Help Center</span>
+            <span class="navigation-text" tabindex="0" @click="handleEventList">My events</span>
           </li>
           <li class="navigation-item">
             <img loading="lazy"
@@ -86,7 +67,7 @@ function handleAccount(): void {
     console.debug('User:', user);
     router.push('/profile')
   } else
-  router.push('/login')
+    router.push('/login')
 
 }
 
@@ -104,7 +85,7 @@ function handleLogout() {
   isActive.value = !isActive.value
 }
 
-function handleEvents() {
+function handleEventList() {
   router.push('/event-list')
   isActive.value = !isActive.value
 }
@@ -112,24 +93,31 @@ function handleEvents() {
 
 
 <style scoped>
+.navigation {
+  height: var(--navbar-height);
+  max-height: var(--navbar-height);
+}
+
 .navigation-bar {
-  /* border-radius: 30px 30px 0 0; */
-  background-color: rgba(9, 9, 9, 1);
-  align-self: stretch;
+  height: var(--navbar-height);
+  max-height: var(--navbar-height);
+  background-color: var(--black, #f5bd27);
+  align-self: center;
+  align-items: center;
   display: flex;
   width: 100%;
   gap: 20px;
   overflow: hidden;
   justify-content: space-between;
-  padding: 20px 31px;
+  margin-top: 0px;
+  padding: 3vh 0px;
   z-index: 999;
   position: fixed;
-  max-height:15vh;
 }
 
 .nav-icon {
   object-fit: contain;
-  object-position: center;
+  object-position: left;
   width: 48px;
 }
 
@@ -140,6 +128,7 @@ function handleEvents() {
   border-radius: 23px;
   margin-top: 126px;
   max-width: 100%;
+  max-height: 45px;
 }
 
 
@@ -205,8 +194,7 @@ function handleEvents() {
   left: -310px;
   transition: all 0.4s ease;
   margin-bottom: 0;
-  height: 100%;
-  color: var(--Grays-White, #fff);
+  color: var(--neutral-grey, #fff);
   font: 500 23px League Spartan, sans-serif;
 
 }
@@ -218,21 +206,12 @@ function handleEvents() {
 
 .navigation-container {
   border-radius: 0;
-  background-color: rgba(233, 83, 34, 1);
+  background-color: #f5bd27;
   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
   width: 100%;
-  fill: var(--Orange-Base, #e95322);
+  fill: var(--accent-orange, #f5bd27);
   padding: 41px 14px 2px;
   height: 100%;
-}
-
-.navigation-title {
-  text-align: center;
-  font-size: 40px;
-  font-weight: 700;
-  line-height: 1;
-  text-transform: capitalize;
-  margin: 0 0 49px;
 }
 
 .navigation-list {
@@ -242,7 +221,6 @@ function handleEvents() {
 }
 
 .logo-image {
-  aspect-ratio: 1.97;
   object-fit: contain;
   object-position: center;
   width: 120px;

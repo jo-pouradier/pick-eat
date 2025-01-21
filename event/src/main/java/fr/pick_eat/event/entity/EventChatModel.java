@@ -25,6 +25,7 @@ public class EventChatModel {
     private UUID chatId;
     private UUID eventId;
     private UUID userId;
+    @Column(length = 1024)
     private String content;
     private String imagePath;
     @CreationTimestamp

@@ -1,9 +1,9 @@
 <template>
-    <div id="map" class="map-container"></div>
+  <div id="map" class="map-container"></div>
 </template>
 
 <script setup lang="ts">
-import { onMounted, defineEmits, ref,watch } from 'vue';
+import {defineEmits, onMounted, ref, watch} from 'vue';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 
@@ -40,7 +40,7 @@ onMounted(() => {
       if (circle) {
         circle.setLatLng(coords);
       } else {
-        circle = L.circle(coords, { radius: DefaultRange.value }).addTo(map);
+        circle = L.circle(coords, {radius: DefaultRange.value}).addTo(map);
       }
       console.log('Updating map to:', coords);
       map.setView(coords, 13);
@@ -49,9 +49,8 @@ onMounted(() => {
   updateMap(SelectedCoords.value);
 
 
-
   map.on('click', (e: L.LeafletMouseEvent) => {
-    const { lat, lng } = e.latlng;
+    const {lat, lng} = e.latlng;
     updateMap([lat, lng]);
     SelectedCoords.value = [lat, lng];
     emits('locationSelected', [lat, lng]);
@@ -78,8 +77,8 @@ onMounted(() => {
 
 <style scoped>
 .map-container {
-    height: 500px; /* Increase height */
-    width: 100%;
-    border-radius: 10px;
+  min-height: 200px;
+  width: 100%;
+  border-radius: 10px;
 }
 </style>

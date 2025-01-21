@@ -1,13 +1,15 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 <template>
-  <img class="logo-image" src="@/assets/eating.png" alt="Home page background image"/>
-  <h1 v-if="userName!='...'" class="title">Welcome {{ userName }}</h1>
-  <button class="action-button action-button-primary" @click="handleNewVote" tabindex="0">
-    New Vote
-  </button>
-  <button class="action-button action-button-secondary" @click="handleJoin" tabindex="0">
-    Join
-  </button>
+  <div class="home-container">
+    <img class="logo-image" src="@/assets/eating.png" alt="Home page background image"/>
+    <h1 v-if="userName!='...'" class="title glass-card">Welcome {{ userName }}</h1>
+    <button class="new-vote-button" @click="handleNewVote" tabindex="0">
+      New Vote
+    </button>
+    <button class="join-button" @click="handleJoin" tabindex="0">
+      Join
+    </button>
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -21,11 +23,11 @@ updateUserName();
 function updateUserName() {
   const userCookie = document.cookie.split('; ').find(row => row.startsWith('user='));
   console.debug('User cookie:', userCookie);
-    if (userCookie) {
-        const user = JSON.parse(decodeURIComponent(userCookie.split('=')[1]));
-        console.debug('User:', user);
-        userName.value = user.lastName || '...';
-    }
+  if (userCookie) {
+    const user = JSON.parse(decodeURIComponent(userCookie.split('=')[1]));
+    console.debug('User:', user);
+    userName.value = user.lastName || '...';
+  }
 }
 
 function handleNewVote() {
@@ -41,43 +43,35 @@ function handleJoin() {
 </script>
 
 <style scoped>
+.home-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+.title {
+  color: var(--white); /* Bright and contrasting color */
+  background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent black background */
+  padding: 10px 20px; /* Add padding for spacing */
+  border-radius: 8px; /* Round the corners */
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); /* Add shadow for better visibility */
+  display: inline-block; /* Make the background wrap the text */
+  margin: 0.5em; /* Add spacing from elements above */
+}
+
 .logo-image {
-  aspect-ratio: 1.37;
   object-fit: contain;
   object-position: center;
-  width: 212px;
-  border-radius: 23px;
-  margin-top: 69px;
+  height: 10vh;
   max-width: 100%;
 }
 
-.action-button {
-  border-radius: 100px;
-  min-height: 66px;
-  width: 169px;
-  max-width: 100%;
-  text-align: center;
-  letter-spacing: -0.14px;
-  padding: 23px 12px;
-  font: 700 27px/1 "League Spartan", sans-serif;
-  border: none;
-  cursor: pointer;
+.new-vote-button {
+  --local-color: var(--accent-orange);
+}
+.join-button{
+  --local-color: var(--light-orange);
 }
 
-.action-button:focus {
-  outline: 2px solid #fff;
-  outline-offset: 2px;
-}
-
-.action-button-primary {
-  background-color: var(--Orange-2, #ffdecf);
-  color: var(--Orange-Base, #e95322);
-  margin-top: 33px;
-}
-
-.action-button-secondary {
-  background-color: rgba(179, 38, 30, 1);
-  color: var(--Yellow-2, #f3e9b5);
-  margin: 48px 0 -34px;
-}
 </style>
