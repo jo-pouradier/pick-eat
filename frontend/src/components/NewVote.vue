@@ -72,7 +72,6 @@ function handleValidation(): void {
   if (eventData.value.address && eventData.value.name !== '') {
     isLoading.value = true;
     console.log('Selected coordinates:', eventData.value.getCoords());
-  } else {
     axios.post('/event/create',
       eventData.value
     ).then(response => {
@@ -98,6 +97,7 @@ function handleValidation(): void {
       console.error('Error creating event:', error);
       isLoading.value = false;
     });
+  } else {
     if (eventData.value.name === '') {
       alert('Please select a name for the vote.');
     } else
