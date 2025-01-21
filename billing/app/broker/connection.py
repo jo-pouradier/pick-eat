@@ -72,8 +72,10 @@ class BrokerManager(stomp.ConnectionListener):
     @classmethod
     def connect_and_subscribe(cls):
         cls.init()
+        cls.LOGGER.info("Subscribing to queue: ANALYSE-OUT")
         cls.CONN.connect(cls.BROKER_USER, cls.BROKER_PASS, wait=True)
         cls.CONN.subscribe(destination="ANALYSE-OUT", id=1, ack="auto")
+        cls.LOGGER.info("Subscribed to queue: ANALYSE-OUT")
 
     def on_error(self, frame):
         self.LOGGER.error('received an error "%s"' % frame.body)

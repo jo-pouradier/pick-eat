@@ -2,7 +2,8 @@
   <div v-if="event" class="event-page-container">
     <div class="event-links-bar">
       <img loading="lazy" src="@/assets/back.svg" class="back-link" alt="Return to event list" @click="goBack"/>
-      <img loading="lazy" src="@/assets/copy.svg" class="copy-link" alt="Copy event link" @click="handleCopyLink"/>
+      <!-- <img loading="lazy" src="@/assets/copy.svg" class="copy-link" alt="Copy event link" @click="handleCopyLink"/> -->
+      <img loading="lazy" :src="copyIcon" class="copy-link" alt="Copy event link" @click="handleCopyLink"/>
     </div>
     <div>
       <h1 class="main-title">{{ event.name }}</h1>
@@ -56,6 +57,9 @@ import {getUserCookie} from "@/lib/CookieUtils.ts";
 import ChatComponent from "@/components/ChatComponent.vue";
 import type {Participant} from "@/types/Participant.ts";
 
+const COPY_ICON = "/src/assets/copy.svg";
+const COPIED_ICON = "/src/assets/copied.svg";
+
 const route = useRoute();
 const router = useRouter();
 const eventId = ref<string>("")
@@ -64,6 +68,7 @@ const users = ref<User[]>([]);
 const hasVoted = ref(false);
 const user = ref<User>();
 const logs = ref<ChatInfo[]>([]);
+const copyIcon = ref(COPY_ICON);
 
 function init() {
   if (socket.connected) {
@@ -143,7 +148,11 @@ function sortByTime(a: ChatInfo, b: ChatInfo): number {
 
 
 function handleCopyLink(): void {
-  navigator.clipboard.writeText(window.location.host + '/join-event?eventId=' + eventId.value);
+  copyIcon.value = COPIED_ICON;
+  setTimeout(() => {
+    copyIcon.value = COPY_ICON;
+  }, 1000);
+  navigator.clipboard.writeText(window.location.origin + '/join-event?eventId=' + eventId.value);
 }
 
 function handleCloseVote(): void {
