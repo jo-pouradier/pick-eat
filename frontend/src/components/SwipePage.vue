@@ -60,7 +60,7 @@ onMounted(() => {
           restaurantData.value = response.data.slice(0, 10).map((item: Restaurant) => ({
             ...item,
             name: decodeSpecialChars(item.name),
-            picture: pictureLink,
+            // picture: pictureLink,
           }));
         })
       })

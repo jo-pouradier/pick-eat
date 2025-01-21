@@ -216,7 +216,6 @@ public class RestaurantService {
 
     public List<RestaurantDTO> selectRestaurants(EventDTO event) {
         List<RestaurantModel> selectedRestaurants = new ArrayList<>();
-        List<RestaurantModel> otherRestaurants = new ArrayList<>();
         List<String> types = event.getTypes();
         while (selectedRestaurants.size() < 10) {
             List<RestaurantModel> restaurants = new ArrayList<>();
@@ -227,11 +226,10 @@ public class RestaurantService {
                 }
             }
             for (RestaurantModel restaurant : restaurants) {
-                restaurant.getTypes().retainAll(types);
-                if (restaurant.getTypes().size() > 0) {
+                List<String> restaurantTypes = new ArrayList<>(restaurant.getTypes());
+                restaurantTypes.retainAll(types);
+                if (!restaurantTypes.isEmpty() & !selectedRestaurants.contains(restaurant)) {
                     selectedRestaurants.add(restaurant);
-                } else {
-                    otherRestaurants.add(restaurant);
                 }
             }
             while (selectedRestaurants.size() > 10) {
@@ -245,26 +243,12 @@ public class RestaurantService {
                 }
                 selectedRestaurants.remove(lowRateRestaurant);
             }
-            while (selectedRestaurants.size() < 10) {
-                if (otherRestaurants.isEmpty()) {
-                    break;
-                }
-                float highRate = 0;
-                RestaurantModel highRateRestaurant = null;
-                for (RestaurantModel restaurant : otherRestaurants) {
-                    if (restaurant.getRating() > highRate) {
-                        highRate = restaurant.getRating();
-                        highRateRestaurant = restaurant;
-                    }
-                }
-                selectedRestaurants.add(highRateRestaurant);
-                otherRestaurants.remove(highRateRestaurant);
-            }
             event.setRadius(event.getRadius() + 500);
         }
         for (RestaurantModel restaurant : selectedRestaurants) {
             addIcons(restaurant.getId());
         }
+        System.out.println(selectedRestaurants.size());
         return selectedRestaurants.stream().map(RestaurantMapper::toRestaurantDTO).toList();
     }
 
@@ -273,11 +257,10 @@ public class RestaurantService {
         List<String> types = restaurant.getTypes();
         List<String> icons = new ArrayList<>();
         System.out.println(restaurant.getName() + " " + restaurant.getTypes());
-        icons.add("dollar.png");
-        if (isRestaurantPopular(uuid)) {
-            icons.add("trendUp.png");
-        } else {
-            icons.add("trendDown.png");
+        if (restaurant.getPrice_level() != 0) {
+            for (int i = 0; i < restaurant.getPrice_level(); i++) {
+                icons.add("dollar.png");
+            }
         }
         if (types.contains("sandwich_shop")) {
             icons.add("sandwich.png");
@@ -300,7 +283,7 @@ public class RestaurantService {
         if (types.contains("asian_restaurant") | types.contains("chinese_restaurant")) {
             icons.add("chinese.png");
         }
-        if (types.contains("japanese_restaurant")) {
+        if (types.contains("japanese_restaurant") | types.contains("sushi_restaurant")) {
             icons.add("sushi.png");
         }
         if (types.contains("mexican_restaurant")) {
@@ -308,6 +291,11 @@ public class RestaurantService {
         }
         if (types.contains("hamburger_restaurant")) {
         icons.add("burger.png");
+        }
+        if (isRestaurantPopular(uuid)) {
+            icons.add("trendUp.png");
+        } else {
+            icons.add("trendDown.png");
         }
         restaurant.setIcons(icons);
     }
@@ -364,8 +352,6 @@ public class RestaurantService {
         event.setDate(new Date());
         event.setName("Lyon");
         event.setDescription("Lyon");
-        System.out.println(new Date());
-
 
 
         parseRestaurants(resto_path, resto_details_path);

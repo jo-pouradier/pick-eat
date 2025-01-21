@@ -9,7 +9,7 @@
           alt="Pizza variety showcase thumbnail"
         />
         <div class="pizza-display">
-          <img :src="restaurant.picture" class="pizza-image" alt="Pizza variety showcase thumbnail" />
+          <img :src="pictureLink()" class="pizza-image" alt="Pizza variety showcase thumbnail" />
         </div>
         <img
           loading="lazy"
@@ -20,28 +20,17 @@
       </div>
     </div>
     <div class="pizza-options">
-      <p class="price-level">{{ priceLevelString }}</p>
-      <img
-        loading="lazy"
-        src="https://cdn.builder.io/api/v1/image/assets/TEMP/fa708cecc73e8b32335f52d05da68f9984267ad789adb3657ccd4c965f3a1297?placeholderIfAbsent=true&apiKey=e6ddd9cad30b4b528d92a08d5f92673d"
-        class="option-thumbnail"
-        alt="Pizza topping option"
-      />
-      <img
-        loading="lazy"
-        src="https://cdn.builder.io/api/v1/image/assets/TEMP/870b983e2b6bb8a36fe91e6a3fb775338c2a8881a64a9313daf1cbb06d20df68?placeholderIfAbsent=true&apiKey=e6ddd9cad30b4b528d92a08d5f92673d"
-        class="option-thumbnail"
-        alt="Pizza topping option"
-      />
-      <img
-        loading="lazy"
-        src="https://cdn.builder.io/api/v1/image/assets/TEMP/a2e62b0d627c4de4e8f0a4e2a4b8e77e8383bf8c911dfab2c5b8fe3ac5d7d2d4?placeholderIfAbsent=true&apiKey=e6ddd9cad30b4b528d92a08d5f92673d"
-        class="option-thumbnail"
-        alt="Pizza topping option"
-      />
+      <div v-for="icon in restaurant.icons" :key="icon">
+        <img
+          loading="lazy"
+          :src="'/images/icons/' + icon"
+          class="option-thumbnail"
+          alt="Pizza topping option"
+        />
+      </div>
     </div>
     <h1 class="menu-title">{{ restaurant.name }}</h1>
-    <div class="menu-divider">____________________<br />_______________</div>
+    <div class="description">{{restaurant.description}}</div>
 </div>
 </template>
 
@@ -76,6 +65,9 @@ const props = defineProps<{
   isLast: boolean;
 }>();
 const transformString = ref<string>('translate3D(0,0,0) rotate(0deg)');
+const pictureLink = () => {
+  return "/images/restaurants_photos/" + props.restaurant.picture;
+}
 
 function setTransformString(x: number, y: number, rotation: number) {
  if (props.isCurrent) {
@@ -92,10 +84,6 @@ function resetTransformString() {
     element.style.transform ='translate3D(0, 0, 0) rotate(0deg)';
   }
 }
-
-const priceLevelString = computed(() => {
-  return '€'.repeat(props.restaurant.price_level);
-});
 
 function initializeInteract() {
 interact('.isCurrent')
@@ -237,8 +225,14 @@ onMounted(() => {
 .pizza-display {
   border-radius: 24px;
   background-color: rgba(217, 217, 217, 1);
-  width: 175px;
-  height: 186px;
+  width: 100%;
+  height: auto;
+  max-height: 300px;
+  max-width: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
 }
 
 .pizza-image {
@@ -252,14 +246,17 @@ onMounted(() => {
   width: 156px;
   max-width: 100%;
   gap: 16px;
-  justify-content: space-between;
+  justify-content: center;
 }
 
 .option-thumbnail {
   aspect-ratio: 1;
   object-fit: contain;
   object-position: center;
-  width: 22px;
+  display: table;
+  width: 30px;
+  min-width: 30px;
+  min-height: 30px;
 }
 
 .price-level {
@@ -283,5 +280,13 @@ onMounted(() => {
   text-align: center;
   margin-top: 9px;
   font: 700 clamp(20px, 4vw, 29px)/31px League Spartan, sans-serif;
+}
+
+.description {
+  color: rgba(0, 0, 0, 1);
+  letter-spacing: -1.3px;
+  text-align: center;
+  margin-top: 9px;
+  font: 400 clamp(10px, 2vw, 29px)/31px League Spartan, sans-serif;
 }
 </style>

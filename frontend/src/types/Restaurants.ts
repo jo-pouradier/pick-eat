@@ -9,4 +9,6 @@ export default interface Restaurant {
     picture: string,
     price_level: number,
     generatedPicture: string,
-}   
+    icons: string[],
+    description: string,
+}

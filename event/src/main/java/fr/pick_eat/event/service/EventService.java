@@ -220,6 +220,7 @@ public class EventService {
         event.setLongitude(eventDTO.getLongitude());
         event.setRadius(eventDTO.getRadius());
         event.setDescription(eventDTO.getDescription());
+        event.setTypes(eventDTO.getTypes());
 
         EventModel savedEvent = eventRepository.save(event);
 

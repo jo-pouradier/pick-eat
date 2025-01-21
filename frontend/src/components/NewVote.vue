@@ -8,14 +8,10 @@
              v-model="eventData.name"/>
       <p>Description :</p>
       <textarea class="description-textarea" placeholder="Enter description" v-model="eventData.description"></textarea>
-      <p class="input-label">Date :</p>
-      <input class="name-selector" tabindex="0" role="textbox"
-             type="date"
-             v-model="eventData.date"/>
       <p class="input-label">Time :</p>
       <input class="name-selector" tabindex="0" role="textbox"
-             type="time"
-             v-model="eventData.date"/>
+             type="datetime-local"
+             v-model="eventData.date.setTime"/>
       <p>Select types :</p>
       <select multiple v-model="eventData.types">
         <option value="asian_restaurant">chinois</option>
