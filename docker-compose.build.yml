@@ -39,6 +39,8 @@ services:
     build:
       context: ./activemq
       dockerfile: ./Dockerfile
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
     environment:
       ACTIVEMQ_DISALLOW_WEBCONSOLE: ${ACTIVEMQ_DISALLOW_WEBCONSOLE:-false}
       ACTIVEMQ_PASSWORD: ${ACTIVEMQ_PASSWORD:-admin}
@@ -76,6 +78,8 @@ services:
     depends_on:
       auth_database:
         condition: service_healthy
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
     environment:
       POSTGRES_USER: ${AUTH_DB_USER:-postgres}
       POSTGRES_PASSWORD: ${AUTH_DB_PASSWORD:-postgres}
@@ -93,6 +97,8 @@ services:
     depends_on:
       active_mq:
         condition: service_healthy
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
     env_file: dev.env
     ports:
       - "${EVENT_PORT:-8083}:${EVENT_PORT:-8083}"
@@ -116,6 +122,9 @@ services:
     env_file: dev.env
     ports:
       - "${BILLING_PORT:-8086}:${BILLING_PORT:-8086}"
+    depends_on:
+      active_mq:
+        condition: service_healthy
   socket-spring:
     build:
       context: ./

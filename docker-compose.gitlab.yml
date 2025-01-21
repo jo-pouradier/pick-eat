@@ -68,7 +68,8 @@ services:
     ports:
       - "${EVENT_PORT:-8083}:${EVENT_PORT:-8083}"
     depends_on:
-      - active_mq
+      active_mq:
+        condition: service_healthy
   restaurant:
     image: registry.gitlab.com/cpelyon/5eti-projet-2024-2025/groupe-7/pick-eat/restaurant:latest
     env_file: dev.env
@@ -82,7 +83,8 @@ services:
     ports:
       - "${BILLING_PORT:-8086}:${BILLING_PORT:-8086}"
     depends_on:
-      - active_mq
+      active_mq:
+        condition: service_healthy
   socket-spring:
     image: registry.gitlab.com/cpelyon/5eti-projet-2024-2025/groupe-7/pick-eat/socketspring:latest
     env_file: dev.env
