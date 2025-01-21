@@ -26,8 +26,9 @@
       </dialog>
     </div>
   </div>
-  <button class="validate-button" @click="handleValidation">
-    Valider
+  <button class="validate-button" @click="handleValidation" :disabled="isLoading">
+    <span v-if="isLoading" class="loading-icon"></span>
+    <span v-else>Valider</span>
   </button>
 </template>
 
@@ -41,6 +42,7 @@ import {getUserCookie} from "@/lib/CookieUtils.ts";
 
 const router = useRouter();
 const showMapModal = ref(false);
+const isLoading = ref(false);
 const eventData = ref<EventInfo>({
   id: '',
   name: '',
@@ -68,7 +70,9 @@ const eventData = ref<EventInfo>({
 
 function handleValidation(): void {
   if (eventData.value.address && eventData.value.name !== '') {
+    isLoading.value = true;
     console.log('Selected coordinates:', eventData.value.getCoords());
+  } else {
     axios.post('/event/create',
       eventData.value
     ).then(response => {
@@ -81,15 +85,19 @@ function handleValidation(): void {
         }
       ).then(() => {
         console.log('Bill created');
-          router.push({
-            path: '/event-page',
-            query: {eventId: response.data}
-          });
-      }
-      )
+        router.push({
+          path: '/event-page',
+          query: {eventId: response.data}
+        });
+      }).finally( () =>{
+        isLoading.value = false
+      })
 
+    }).catch(error => {
+      alert('Error creating event'+ error);
+      console.error('Error creating event:', error);
+      isLoading.value = false;
     });
-  } else {
     if (eventData.value.name === '') {
       alert('Please select a name for the vote.');
     } else
@@ -129,6 +137,22 @@ function handleLocationSelected(coords: [number, number]): void {
 </script>
 
 <style scoped>
+.loading-icon {
+  border: 4px solid #f3e9b5;
+  border-top: 4px solid rgba(179, 38, 30, 1);
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  animation: spin 1s linear infinite;
+  display: inline-block;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+
 .event-creation-container {
   display: flex;
   max-width: 480px;
@@ -206,6 +230,10 @@ function handleLocationSelected(coords: [number, number]): void {
   font: 700 27px/1 League Spartan, sans-serif;
   border: none;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
 }
 
 .map-selector {
