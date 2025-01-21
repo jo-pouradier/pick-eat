@@ -1,13 +1,11 @@
 package fr.pick_eat.event.dto;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonInclude;
+import java.util.Date;
+import java.util.List;
+import java.util.UUID;
+
 import lombok.Getter;
 import lombok.Setter;
-
-import java.util.Date;
-import java.util.UUID;
 
 @Setter
 @Getter
@@ -22,5 +20,6 @@ public class EventDTO {
     private String description;
     private UUID organizerId;
     private UUID selectedRestaurantId;
+    private List<String> types;
     private boolean isVoteFinished;
 }

@@ -16,7 +16,7 @@ public class RestaurantDTO {
     private String GeneratedPicture; // path
     private Integer price_level;
     private String description;
-    private List<URI> icons;
+    private List<String> icons;
 
     public UUID getId() {return id;}
 
@@ -62,8 +62,8 @@ public class RestaurantDTO {
 
     public void setDescription(String description) {this.description = description;}
 
-    public List<URI> getIcons() {return icons;}
+    public List<String> getIcons() {return icons;}
 
-    public void setIcons(List<URI> icons) {this.icons = icons;}
+    public void setIcons(List<String> icons) {this.icons = icons;}
 
 }

@@ -124,7 +124,7 @@ public class RestaurantService {
             String name = restaurant.getName();
             String photo = name.replace(" ", "_").replace("/", "_").replace("|", "_").replace("&","and");
             String photo_path = photo.replaceAll("[<>,:\"/\\\\|?*]", "_");
-            restaurant.setPicture("get_restaurant_data/data/restaurants_photos/" + photo_path + ".jpg");
+            restaurant.setPicture(photo_path + ".jpg");
             restaurantRepository.save(restaurant);
         });
     }
@@ -214,28 +214,22 @@ public class RestaurantService {
 
     }
 
-    public List<RestaurantDTO> selectRestaurants(List<String> types, EventDTO event) throws URISyntaxException {
+    public List<RestaurantDTO> selectRestaurants(EventDTO event) {
         List<RestaurantModel> selectedRestaurants = new ArrayList<>();
-        List<RestaurantModel> otherRestaurants = new ArrayList<>();
-
+        List<String> types = event.getTypes();
         while (selectedRestaurants.size() < 10) {
             List<RestaurantModel> restaurants = new ArrayList<>();
             List<RestaurantDTO> rest = generateRestaurantsForEvent(event);
             for (RestaurantDTO restaurant : rest) {
-                System.out.println(restaurant.getName() + " " + isRestaurantOpen(restaurant.getId()));
-                 if (isRestaurantOpen(restaurant.getId())){
+                 if (isRestaurantOpen(restaurant.getId(), event.getDate())) {
                     restaurants.add(restaurantRepository.findById(restaurant.getId()).orElseThrow());
-                    System.out.println(restaurant.getName() + "added");
                 }
             }
             for (RestaurantModel restaurant : restaurants) {
-                restaurant.getTypes().retainAll(types);
-                if (restaurant.getTypes().size() > 0) {
+                List<String> restaurantTypes = new ArrayList<>(restaurant.getTypes());
+                restaurantTypes.retainAll(types);
+                if (!restaurantTypes.isEmpty() & !selectedRestaurants.contains(restaurant)) {
                     selectedRestaurants.add(restaurant);
-                    System.out.println("more : " + selectedRestaurants.size());
-                } else {
-                    otherRestaurants.add(restaurant);
-                    System.out.println(restaurant.getName() + "added to others");
                 }
             }
             while (selectedRestaurants.size() > 10) {
@@ -248,23 +242,6 @@ public class RestaurantService {
                     }
                 }
                 selectedRestaurants.remove(lowRateRestaurant);
-                System.out.println("removed : " + selectedRestaurants.size());
-            }
-            while (selectedRestaurants.size() < 10) {
-                if (otherRestaurants.isEmpty()) {
-                    break;
-                }
-                float highRate = 0;
-                RestaurantModel highRateRestaurant = null;
-                for (RestaurantModel restaurant : otherRestaurants) {
-                    if (restaurant.getRating() > highRate) {
-                        highRate = restaurant.getRating();
-                        highRateRestaurant = restaurant;
-                    }
-                }
-                selectedRestaurants.add(highRateRestaurant);
-                otherRestaurants.remove(highRateRestaurant);
-                System.out.println("added : " + selectedRestaurants.size());
             }
             event.setRadius(event.getRadius() + 500);
         }
@@ -275,46 +252,50 @@ public class RestaurantService {
         return selectedRestaurants.stream().map(RestaurantMapper::toRestaurantDTO).toList();
     }
 
-    public void addIcons(UUID uuid) throws URISyntaxException {
+    public void addIcons(UUID uuid) {
         RestaurantModel restaurant = restaurantRepository.findById(uuid).orElseThrow();
         List<String> types = restaurant.getTypes();
-        List<URI> icons = new ArrayList<>();
+        List<String> icons = new ArrayList<>();
         System.out.println(restaurant.getName() + " " + restaurant.getTypes());
-        icons.add(RestaurantService.class.getClassLoader().getResource("icons/dollar.png").toURI());
-        if (isRestaurantPopular(uuid)) {
-            icons.add(RestaurantService.class.getClassLoader().getResource("icons/trendUp.png").toURI());
-        } else {
-            icons.add(RestaurantService.class.getClassLoader().getResource("icons/trendDown.png").toURI());
+        if (restaurant.getPrice_level() != 0) {
+            for (int i = 0; i < restaurant.getPrice_level(); i++) {
+                icons.add("dollar.png");
+            }
         }
         if (types.contains("sandwich_shop")) {
-            icons.add(RestaurantService.class.getClassLoader().getResource("icons/sandwich.png").toURI());
+            icons.add("sandwich.png");
         }
         if (types.contains("dessert_shop") | types.contains("bakery")) {
-            icons.add(RestaurantService.class.getClassLoader().getResource("icons/cake.png").toURI());
+            icons.add("cake.png");
         }
         if (types.contains("indian_restaurant")) {
-            icons.add(RestaurantService.class.getClassLoader().getResource("icons/india.png").toURI());
+            icons.add("indian.png");
         }
         if (types.contains("pizza_restaurant")) {
-            icons.add(RestaurantService.class.getClassLoader().getResource("icons/pizza.png").toURI());
+            icons.add("pizza.png");
         }
         if (types.contains("bar")) {
-            icons.add(RestaurantService.class.getClassLoader().getResource("icons/bar.png").toURI());
+            icons.add("bar.png");
         }
         if (types.contains("fast_food_restaurant")) {
-            icons.add(RestaurantService.class.getClassLoader().getResource("icons/fast_food.png").toURI());
+            icons.add("fast_food.png");
         }
         if (types.contains("asian_restaurant") | types.contains("chinese_restaurant")) {
-            icons.add(RestaurantService.class.getClassLoader().getResource("icons/chinese.png").toURI());
+            icons.add("chinese.png");
         }
-        if (types.contains("japanese_restaurant")) {
-            icons.add(RestaurantService.class.getClassLoader().getResource("icons/sushi.png").toURI());
+        if (types.contains("japanese_restaurant") | types.contains("sushi_restaurant")) {
+            icons.add("sushi.png");
         }
         if (types.contains("mexican_restaurant")) {
-            icons.add(RestaurantService.class.getClassLoader().getResource("icons/taco.png").toURI());
+            icons.add("taco.png");
         }
         if (types.contains("hamburger_restaurant")) {
-            icons.add(RestaurantService.class.getClassLoader().getResource("icons/burger.png").toURI());
+        icons.add("burger.png");
+        }
+        if (isRestaurantPopular(uuid)) {
+            icons.add("trendUp.png");
+        } else {
+            icons.add("trendDown.png");
         }
         restaurant.setIcons(icons);
     }
@@ -333,10 +314,11 @@ public class RestaurantService {
         return restaurantRating >= averageRating && restaurantReviews >= (averageReviews * popularityMultiplier);
     }
 
-    public boolean isRestaurantOpen(UUID uuid) {
-        LocalTime currentTime = LocalTime.now();
+    public boolean isRestaurantOpen(UUID uuid, Date date) {
+        // extract the hour and min from the date
+        LocalTime currentTime = date.toInstant().atZone(java.time.ZoneId.systemDefault()).toLocalTime();
         RestaurantModel restaurant = restaurantRepository.findById(uuid).orElseThrow();
-        Integer day = LocalDate.now().getDayOfWeek().getValue();
+        int day = 2;
         try {
             List<String> hours = restaurant.getDay(day).getHours();
             if (hours.isEmpty()) {
@@ -370,8 +352,6 @@ public class RestaurantService {
         event.setDate(new Date());
         event.setName("Lyon");
         event.setDescription("Lyon");
-        System.out.println(new Date());
-
 
 
         parseRestaurants(resto_path, resto_details_path);
