@@ -38,16 +38,16 @@ public class RestaurantModel {
     private String description;
     private float rating;
     private int numberRatings;
-    @ElementCollection(targetClass = URI.class, fetch = EAGER)
-    private List<URI> icons;
+    @ElementCollection(targetClass = String.class, fetch = EAGER)
+    private List<String> icons;
     @ElementCollection(targetClass = Day.class, fetch = EAGER)
     private List<Day> days = List.of(new Day(), new Day(), new Day(), new Day(), new Day(), new Day(), new Day());
 
-    public List<URI> getIcons() {
+    public List<String> getIcons() {
         return icons;
     }
 
-    public void setIcons(List<URI> icons) {
+    public void setIcons(List<String> icons) {
         this.icons = icons;
     }
 

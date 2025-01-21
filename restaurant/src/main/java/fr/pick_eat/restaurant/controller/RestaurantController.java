@@ -94,20 +94,12 @@ public class RestaurantController {
     }
 
     @PostMapping("/generate-restaurants-for-event")
-    public ResponseEntity<List<RestaurantDTO>> selectRestaurants(@RequestBody GenerateRestaurantRequest request) {
+    public ResponseEntity<List<RestaurantDTO>> selectRestaurants(@RequestBody EventDTO event) {
         try {
-            List<RestaurantDTO> listRestaurant = restaurantService.selectRestaurants(request.getTypes(), request.getEvent());
+            List<RestaurantDTO> listRestaurant = restaurantService.selectRestaurants(event);
             return ResponseEntity.ok(listRestaurant);
         } catch (Exception e) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No restaurant found in the area");
         }
     }
-    public static class GenerateRestaurantRequest {
-        private EventDTO event;
-        private List<String> types;
-
-        public EventDTO getEvent() {return event;}
-        public List<String> getTypes() {return types;}
-    }
-
 }

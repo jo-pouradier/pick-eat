@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
+import jakarta.validation.constraints.FutureOrPresent;
 import org.hibernate.annotations.UuidGenerator;
 
 import jakarta.persistence.ElementCollection;

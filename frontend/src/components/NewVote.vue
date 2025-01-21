@@ -8,6 +8,27 @@
              v-model="eventData.name"/>
       <p>Description :</p>
       <textarea class="description-textarea" placeholder="Enter description" v-model="eventData.description"></textarea>
+      <p class="input-label">Date :</p>
+      <input class="name-selector" tabindex="0" role="textbox"
+             type="date"
+             v-model="eventData.date"/>
+      <p class="input-label">Time :</p>
+      <input class="name-selector" tabindex="0" role="textbox"
+             type="time"
+             v-model="eventData.date"/>
+      <p>Select types :</p>
+      <select multiple v-model="eventData.types">
+        <option value="asian_restaurant">chinois</option>
+        <option value="bar">Bar</option>
+        <option value="indian_restaurant">indien</option>
+        <option value="mexican_restaurant">mexicain</option>
+        <option value="pizza_restaurant">pizza</option>
+        <option value="japanese_restaurant">sushi</option>
+        <option value="hamburger_restaurant">burger</option>
+        <option value="fast_food_restaurant">fast food</option>
+        <option value="dessert_shop">dessert</option>
+        <option value="sandwich_shop">sandwich</option>
+      </select>
       <p>Select a place :</p>
       <button class="open-map-button" @click="openMapModal">Open Map</button>
       <h1 class="second-title" v-if="eventData.address"> Selected place :
@@ -54,6 +75,7 @@ const eventData = ref<EventInfo>({
   description: '',
   organizerId: null,
   voteFinished: false,
+  types: [],
   getCoords() {
     return [this.latitude, this.longitude];
   },
