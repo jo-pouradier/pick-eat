@@ -1,4 +1,3 @@
-
 <template>
   <div class="bill-container">
     <h1>Bill Details</h1>
@@ -7,21 +6,18 @@
       <p v-else><span>Event Name:</span> {{ eventName }}</p>
       <p><span>Bill ID:</span> {{ props.bill?.id }}</p>
     </div>
-    <img :src="`/billing/bills/image/${bill?.id}`" alt="bill image" class="bill-image" />
+    <img :src="`/billing/bills/image/${bill?.id}`" alt="bill image" class="bill-image"/>
     <p class="total-price"><span>Total Price:</span> {{ bill?.total_price }}</p>
     <div class="parts-section">
       <h2>Parts</h2>
 
       <ul v-if="props.bill?.parts?.length" class="parts-list">
         <li v-for="part in bill?.parts" :key="part.id ?? ''" class="part-item">
-          <p><span>Part ID:</span> {{ part.id }}</p>
-          <p><span>Bill ID:</span> {{ part.billId }}</p>
-          <p><span>User ID:</span> {{ part.userId }}</p>
           <p><span>Price:</span> {{ part.price }}€</p>
           <p><span>Description:</span> {{ part.text }}</p>
-          <div :style="{display: 'flex', gap: '1rem'}">
-            <input type="checkbox" @change="setPartUserId(part)" :checked="part.userId == props.bill?.userId"
-              :disabled="part.userId !== props.bill?.userId && part.userId !== null"
+          <div class="part-wrapper">
+            <input type="checkbox" @change="setPartUserId(part)" :checked="part.userId == currentUser?.uuid"
+                   :disabled="part.userId !== currentUser?.uuid && part.userId !== null"
             />
             <div>{{ selectPartText(part) }}</div>
           </div>
@@ -33,32 +29,46 @@
 </template>
 
 <script setup lang="ts">
-import type { BillDTO, BillPartDTO } from '@/types/BillDTO';
+import type {BillDTO, BillPartDTO} from '@/types/BillDTO';
 import axios from 'axios';
 import {onMounted, ref} from "vue";
 import {loadEvent} from "@/lib/EventUtils.ts";
+import {type User} from "@/types/User";
+import {getUserCookie} from "@/lib/CookieUtils.ts";
 
 const props = defineProps<{
   bill: BillDTO | null
 }>()
 
 const eventName = ref<string | null>(null)
-onMounted( () => {
-  if( props.bill ) {
+const currentUser = ref<User | undefined>()
+onMounted(() => {
+  currentUser.value = getUserCookie();
+  console.log("User Cookie", getUserCookie);
+  if (props.bill) {
     console.log('Bill:', props.bill)
     loadEvent(props.bill.eventId).then(response => {
       eventName.value = response.data.name
       console.log('Event:', response.data)
     })
-  }})
+  }
+})
 
 const setPartUserId = async (part: BillPartDTO) => {
   if (!props.bill) {
     console.error('No bill found')
     return
   }
-  part.userId = part.userId === props.bill?.userId ? null : props.bill?.userId
-  const response = await axios.put(`/billing/bills/${part.id}`, part)
+  if (part.userId === currentUser.value?.uuid) {
+    part.userId = null;
+  } else {
+    if (!currentUser.value) {
+      throw new Error('No user found')
+    } else {
+      part.userId = currentUser.value.uuid
+    }
+  }
+  const response = await axios.put(`/billing/parts/${part.id}`, part)
   console.log(response)
   if (response.status !== 200) {
     console.error('Part not updated')
@@ -77,7 +87,7 @@ function selectPartText(part: BillPartDTO) {
   if (!props.bill) {
     return 'No bill found'
   }
-  if (part.userId === props.bill.userId) {
+  if (part.userId === currentUser.value?.uuid) {
     return 'For me!'
   } else if (part.userId) {
     return 'For someone else'
@@ -147,6 +157,7 @@ function selectPartText(part: BillPartDTO) {
 }
 
 .part-item {
+  background: hsl(from var(--light-orange) h s l / 0.7);
   border: 1px solid #ddd;
   border-radius: 8px;
   padding: 8px 12px;
@@ -163,10 +174,22 @@ function selectPartText(part: BillPartDTO) {
   font-weight: bold;
   color: #333;
 }
+
 @media (max-width: 768px) {
   .bill-container {
-    padding-top: 120px;
     max-height: 100dvh;
   }
+}
+
+input[type="checkbox"] {
+  width: 2rem;
+  height: 2rem;
+}
+
+.part-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 8px;
 }
 </style>

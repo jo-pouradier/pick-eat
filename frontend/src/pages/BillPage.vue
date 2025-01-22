@@ -1,22 +1,30 @@
 <template>
   <div class="glass-container glass-card">
-    <BillDetails v-if="billExists" :bill="bill" />
-    <BillSend v-if="!billExists" :bill="bill" />
+    <img loading="lazy" src="@/assets/back.svg" class="back-link" alt="Return to event" @click="goBack"/>
+    <BillDetails v-if="billExists" :bill="bill"/>
+    <BillSend v-if="!billExists" :bill="bill"/>
   </div>
 </template>
 
 <script setup lang="ts">
-import axios, { type AxiosResponse } from 'axios'
-import { onBeforeMount, ref, type Ref } from 'vue'
-import { useRoute } from 'vue-router'
+import axios, {type AxiosResponse} from 'axios'
+import {onBeforeMount, ref, type Ref} from 'vue'
+import {useRoute} from 'vue-router'
 import BillDetails from '@/components/BillDetails.vue'
 import BillSend from '@/components/BillSend.vue'
 import router from '@/router'
-import type { BillDTO } from '@/types/BillDTO'
+import type {BillDTO} from '@/types/BillDTO'
 
 const route = useRoute()
 const billExists = ref(false)
 const bill: Ref<BillDTO | null> = ref(null)
+
+function goBack() {
+  router.push({
+    path: '/event-page',
+    query: {eventId: bill.value?.eventId}
+  });
+}
 
 onBeforeMount(async () => {
   // check if bill has been created
@@ -40,3 +48,14 @@ onBeforeMount(async () => {
   }
 })
 </script>
+
+<style scoped>
+.back-link {
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
+</style>

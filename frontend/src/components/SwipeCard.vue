@@ -1,8 +1,9 @@
 <template>
-  <div class="card-show" :class="{isNext: isNext, isLast: isLast, isCurrent: isCurrent}" :style="{transform: transformString}">
-  <div class="glass-card glass-container menu-card"  >
-    <h3>{{ restaurant.name }}</h3>
-    <div class="pizza-showcase">
+  <div class="card-show" :class="{isNext: isNext, isLast: isLast, isCurrent: isCurrent}"
+       :style="{transform: transformString}">
+    <div class="glass-card glass-container menu-card">
+      <h3>{{ restaurant.name }}</h3>
+      <div class="pizza-showcase">
         <img
           loading="lazy"
           src="https://cdn.builder.io/api/v1/image/assets/TEMP/e4762f9fa0a006504c0d5c5ad77f3cf0fd27454d2c3512a3f6edaaf1e4647cef?placeholderIfAbsent=true&apiKey=e6ddd9cad30b4b528d92a08d5f92673d"
@@ -10,7 +11,7 @@
           alt="Pizza variety showcase thumbnail"
         />
         <div>
-          <img :src="pictureLink()" class="pizza-image" alt="Pizza variety showcase thumbnail" />
+          <img :src="pictureLink()" class="pizza-image" alt="Pizza variety showcase thumbnail"/>
         </div>
         <img
           loading="lazy"
@@ -18,46 +19,47 @@
           class="pizza-thumbnail"
           alt="Pizza variety showcase thumbnail"
         />
-    </div>
-    <div class="pizza-options">
-      <div v-for="icon in restaurant.icons" :key="icon">
-        <img
-          loading="lazy"
-          :src="'/images/icons/' + icon"
-          class="option-thumbnail"
-          alt="Pizza topping option"
-        />
       </div>
+      <div class="pizza-options">
+        <div v-for="icon in restaurant.icons" :key="icon">
+          <img
+            loading="lazy"
+            :src="'/images/icons/' + icon"
+            class="option-thumbnail"
+            alt="Pizza topping option"
+          />
+        </div>
+      </div>
+      <h4>{{ restaurant.address }}</h4>
+      <hr/>
+      <div class="description">{{ restaurant.description }}</div>
     </div>
-    <hr/>
-    <div class="description">{{restaurant.description}}</div>
-  </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { defineProps,onMounted,ref, watch, defineEmits, computed } from 'vue';
+import {defineEmits, defineProps, onMounted, ref, watch} from 'vue';
 import interact from 'interactjs';
 import type Restaurant from '@/types/Restaurants';
 
 const interactPosition = {
-    x: 0,
-    y: 0,
+  x: 0,
+  y: 0,
 }
 
 const emit = defineEmits(['removeCardRight', 'removeCardLeft']);
-const maxLimits : {
-    interactMaxRotation: number,
-    interactOutOfSightXCoordinate: number,
-    interactOutOfSightYCoordinate: number,
-    interactYThreshold: number,
-    interactXThreshold: number
+const maxLimits: {
+  interactMaxRotation: number,
+  interactOutOfSightXCoordinate: number,
+  interactOutOfSightYCoordinate: number,
+  interactYThreshold: number,
+  interactXThreshold: number
 } = {
-    interactMaxRotation: 15,
-    interactOutOfSightXCoordinate: 450,
-    interactOutOfSightYCoordinate: 600,
-    interactYThreshold: 150,
-    interactXThreshold:  window.innerWidth/3,
+  interactMaxRotation: 15,
+  interactOutOfSightXCoordinate: 450,
+  interactOutOfSightYCoordinate: 600,
+  interactYThreshold: 150,
+  interactXThreshold: window.innerWidth / 3,
 }
 const props = defineProps<{
   restaurant: Restaurant;
@@ -71,10 +73,10 @@ const pictureLink = () => {
 }
 
 function setTransformString(x: number, y: number, rotation: number) {
- if (props.isCurrent) {
-    let   element = document.querySelector('.isCurrent') as HTMLElement;
+  if (props.isCurrent) {
+    let element = document.querySelector('.isCurrent') as HTMLElement;
     if (element) {
-      element.style.transform =`translate3D(${x}px, ${y}px, 0) rotate(${rotation}deg)` ;
+      element.style.transform = `translate3D(${x}px, ${y}px, 0) rotate(${rotation}deg)`;
     }
   }
 }
@@ -82,56 +84,55 @@ function setTransformString(x: number, y: number, rotation: number) {
 function resetTransformString() {
   let element = document.querySelector('.isCurrent') as HTMLElement;
   if (element) {
-    element.style.transform ='translate3D(0, 0, 0) rotate(0deg)';
+    element.style.transform = 'translate3D(0, 0, 0) rotate(0deg)';
   }
 }
 
 function initializeInteract() {
-interact('.isCurrent')
-  .draggable({
-    startAxis: 'x',
-    lockAxis: 'x',
-    inertia: true,
-    listeners: {
+  interact('.isCurrent')
+    .draggable({
+      startAxis: 'x',
+      lockAxis: 'x',
+      inertia: true,
+      listeners: {
         move(event) {
-          console.log(event.dx,event.dy);
+          console.log(event.dx, event.dy);
           if (isMouseDown) {
             interactPosition.y += event.dy;
             interactPosition.x += event.dx;
           }
-        let rotation = maxLimits.interactMaxRotation * (interactPosition.x / maxLimits.interactXThreshold);
+          let rotation = maxLimits.interactMaxRotation * (interactPosition.x / maxLimits.interactXThreshold);
 
-        if (rotation > maxLimits.interactMaxRotation) rotation = maxLimits.interactMaxRotation;
-        else if (rotation < -maxLimits.interactMaxRotation)
-          rotation = -maxLimits.interactMaxRotation;
+          if (rotation > maxLimits.interactMaxRotation) rotation = maxLimits.interactMaxRotation;
+          else if (rotation < -maxLimits.interactMaxRotation)
+            rotation = -maxLimits.interactMaxRotation;
 
-        if (interactPosition.x >= maxLimits.interactOutOfSightXCoordinate) {
+          if (interactPosition.x >= maxLimits.interactOutOfSightXCoordinate) {
             setTransformString(maxLimits.interactOutOfSightXCoordinate, interactPosition.y, rotation);
-        } else if (interactPosition.x <= -maxLimits.interactOutOfSightXCoordinate) {
+          } else if (interactPosition.x <= -maxLimits.interactOutOfSightXCoordinate) {
             setTransformString(-maxLimits.interactOutOfSightXCoordinate, interactPosition.y, rotation);
-        } else {
+          } else {
             setTransformString(interactPosition.x, interactPosition.y, rotation);
-        }
-      },
-      end() {
-        console.log('endIS te',props.restaurant.name,interactPosition.x,maxLimits.interactXThreshold);
-        if (interactPosition.x > maxLimits.interactXThreshold) {
-            console.log('emit remove card',props.restaurant.name);
+          }
+        },
+        end() {
+          console.log('endIS te', props.restaurant.name, interactPosition.x, maxLimits.interactXThreshold);
+          if (interactPosition.x > maxLimits.interactXThreshold) {
+            console.log('emit remove card', props.restaurant.name);
             emit('removeCardRight', props.restaurant.name);
-        } else if (interactPosition.x < -maxLimits.interactXThreshold) {
+          } else if (interactPosition.x < -maxLimits.interactXThreshold) {
             emit('removeCardLeft', props.restaurant.name);
-        }
-        else {
+          } else {
             resetTransformString();
-        }
-    },
-    },
-  });
+          }
+        },
+      },
+    });
 }
 
 function destroyInteract() {
-    interact('.isCurrent').unset();
-    resetTransformString();
+  interact('.isCurrent').unset();
+  resetTransformString();
 }
 
 watch(
@@ -143,7 +144,7 @@ watch(
       destroyInteract();
     }
   },
-  { immediate: true }
+  {immediate: true}
 );
 
 const isMouseDown = ref(false)
@@ -152,25 +153,25 @@ onMounted(() => {
   if (props.isCurrent) {
     initializeInteract();
     addEventListener("mousedown", (event) => {
-      isMouseDown.value =true
+        isMouseDown.value = true
       }
     )
-    addEventListener("mouseup",(event) => {
-      isMouseDown.value =false
-      console.log("x pos at release",interactPosition.x)
+    addEventListener("mouseup", (event) => {
+      isMouseDown.value = false
+      console.log("x pos at release", interactPosition.x)
       xPosAtRelease.value = interactPosition.x
     })
   }
 });
 
 
-
 </script>
 
 <style scoped>
-.card-show{
+.card-show {
   display: none;
 }
+
 .menu-card {
   display: flex; /* Hide all cards by default */
   transition: transform 0.3s ease-in-out; /* Add transition for swipe animation */
@@ -180,9 +181,9 @@ onMounted(() => {
   align-items: center;
   background-color: var(--light-orange);
   width: 70vw; /* Set fixed width */
-  height: 60vh; /* Set fixed height */
+  height: 60svh; /* Set fixed height */
   max-width: 500px; /* Set max width */
-  max-height: 400px; /* Set max height */
+  max-height: 60svh; /* Set max height */
   box-sizing: border-box; /* Include padding in the width */
   flex-direction: column;
   justify-content: space-between; /* Ensure content is spaced evenly */
@@ -215,6 +216,7 @@ onMounted(() => {
   max-height: 5em;
   object-fit: cover; /* Ensure images cover the area without stretching */
 }
+
 .pizza-image {
   max-width: 10em;
   max-height: 10em;
@@ -253,7 +255,7 @@ onMounted(() => {
   margin: 0;
 }
 
-h3{
+h3, h4{
   margin: 0;
 }
 </style>

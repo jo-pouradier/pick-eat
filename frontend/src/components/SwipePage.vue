@@ -122,6 +122,6 @@ function removeCard(index: number) {
 .card-container{
   display: flex;
   align-items: center;
-
+  margin-top: 10svh;
 }
 </style>
