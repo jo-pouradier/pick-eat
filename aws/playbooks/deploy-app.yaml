@@ -32,18 +32,18 @@
 
 
 
-- name: Deploy Standalone Service
-  hosts: pick_eat_ai
-  become: true
-  tasks:
-    - name: Set env variables
-      set_fact:
-        BROKER_HOST: "{{ broker_host }}"
-    - name: Loggin to the Docker registry
-      shell: docker login -u {{ docker_registry_username }} -p {{ docker_registry_password }} registry.gitlab.com
+# - name: Deploy Standalone Service
+#   hosts: pick_eat_ai
+#   become: true
+#   tasks:
+#     - name: Set env variables
+#       set_fact:
+#         BROKER_HOST: "{{ broker_host }}"
+#     - name: Loggin to the Docker registry
+#       shell: docker login -u {{ docker_registry_username }} -p {{ docker_registry_password }} registry.gitlab.com
 
-    - name: Remove Container if exist
-      shell: docker stop analyze_bill && docker rm analyze_bill || true
+#     - name: Remove Container if exist
+#       shell: docker stop analyze_bill && docker rm analyze_bill || true
 
-    - name: Pull and run the standalone Docker service
-      shell: docker pull registry.gitlab.com/cpelyon/5eti-projet-2024-2025/groupe-7/pick-eat/analyze_bill:latest && docker run -d -e BROKER_HOST={{broker_host}} --name analyze_bill registry.gitlab.com/cpelyon/5eti-projet-2024-2025/groupe-7/pick-eat/analyze_bill:latest
+#     - name: Pull and run the standalone Docker service
+#       shell: docker pull registry.gitlab.com/cpelyon/5eti-projet-2024-2025/groupe-7/pick-eat/analyze_bill:latest && docker run -d -e BROKER_HOST={{broker_host}} --name analyze_bill registry.gitlab.com/cpelyon/5eti-projet-2024-2025/groupe-7/pick-eat/analyze_bill:latest

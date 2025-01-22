@@ -1,14 +1,7 @@
+volumes:
+  shared-storage:
+
 services:
-  nginx:
-    image: registry.gitlab.com/cpelyon/5eti-projet-2024-2025/groupe-7/pick-eat/proxy:latest
-    extra_hosts:
-      - "host.docker.internal:host-gateway"
-    env_file: dev.env
-    ports:
-      - "${NGINX_PORT_HTTP:-80}:${NGINX_PORT_HTTP:-80}"
-      - "${NGINX_PORT_HTTPS:-443}:${NGINX_PORT_HTTPS:-443}"
-    volumes:
-      - /mnt/storage:${SSD_STORAGE_PATH:-/mnt/storage}
   frontend:
     image: registry.gitlab.com/cpelyon/5eti-projet-2024-2025/groupe-7/pick-eat/frontend:latest
     env_file: dev.env
@@ -64,7 +57,7 @@ services:
     extra_hosts:
       - "host.docker.internal:host-gateway"
     volumes:
-      - /mnt/storage:${SSD_STORAGE_PATH:-/mnt/storage}
+      - shared-storage:/mnt/storage
     ports:
       - "${EVENT_PORT:-8083}:${EVENT_PORT:-8083}"
     depends_on:
@@ -92,3 +85,22 @@ services:
       - "host.docker.internal:host-gateway"
     ports:
       - "${SOCKET_SPRING_PORT:-8085}:${SOCKET_SPRING_PORT:-8085}"
+
+  nginx:
+    image: registry.gitlab.com/cpelyon/5eti-projet-2024-2025/groupe-7/pick-eat/proxy:latest
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    env_file: dev.env
+    ports:
+      - "${NGINX_PORT_HTTP:-80}:${NGINX_PORT_HTTP:-80}"
+      - "${NGINX_PORT_HTTPS:-443}:${NGINX_PORT_HTTPS:-443}"
+    volumes:
+      - shared-storage:/mnt/storage
+    depends_on:
+      - frontend
+      - auth
+      - event
+      - restaurant
+      - billing
+      - socket-spring
+
