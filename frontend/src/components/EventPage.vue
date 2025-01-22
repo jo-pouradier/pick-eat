@@ -68,8 +68,8 @@ import {type ChatInfo} from "@/types/ChatInfo.ts";
 import {getUserCookie} from "@/lib/CookieUtils.ts";
 import ChatComponent from "@/components/ChatComponent.vue";
 
-const COPY_ICON = "/src/assets/copy.svg";
-const COPIED_ICON = "/src/assets/copied.svg";
+import COPY_ICON from "@/assets/copy.svg";
+import COPIED_ICON from "@/assets/copied.svg";
 
 const route = useRoute();
 const router = useRouter();
