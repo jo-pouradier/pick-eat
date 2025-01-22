@@ -18,7 +18,9 @@
 import type { BillDTO } from '@/types/BillDTO'
 import axios from 'axios'
 import { ref } from 'vue'
+import {useRouter} from "vue-router";
 
+const router = useRouter()
 const fileInput = ref<HTMLInputElement | null>(null)
 const previewSrc = ref<string | null>(null)
 const selectedFile = ref<File | null>(null)
@@ -55,10 +57,9 @@ async function uploadImage() {
   if (response.status !== 200) {
     throw new Error('Failed to upload image')
   }
-
-  alert('Image uploaded successfully!')
   previewSrc.value = null
   selectedFile.value = null
+  location.reload();
 }
 </script>
 

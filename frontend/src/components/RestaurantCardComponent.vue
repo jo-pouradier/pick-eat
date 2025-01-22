@@ -35,6 +35,7 @@ const pictureLink = () => {
       </div>
     </div>
     <h3>{{ restaurant.name }}</h3>
+    <h4>{{ restaurant.address }}</h4>
     <div class="description">{{restaurant.description}}</div>
   </div>
 </template>
@@ -42,7 +43,7 @@ const pictureLink = () => {
 <style scoped>
 .menu-card {
   border-radius: 35px;
-  background: var(--Yellow-2, #e9cc32);
+  background: var(--light-orange);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -116,6 +117,12 @@ const pictureLink = () => {
   word-wrap: break-word;
   max-width: 80%;
   overflow-y: scroll;
+}
+
+h3, h4 {
+  margin: 0;
+  padding: 0;
+  text-align: center;
 }
 
 div{

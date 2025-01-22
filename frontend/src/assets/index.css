@@ -179,6 +179,12 @@ h3 {
     text-align: center;
 }
 
+h4 {
+    font-size: 1.1em;
+    font-weight: bold;
+    text-align: center;
+}
+
 p {
     font-size: 1em;
     text-align: center;
