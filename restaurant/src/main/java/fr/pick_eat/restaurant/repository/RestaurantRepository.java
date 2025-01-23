@@ -26,8 +26,8 @@ public interface RestaurantRepository extends CrudRepository<RestaurantModel, UU
     @Query(value="SELECT r FROM RestaurantModel r WHERE r.place_id = :place_id", nativeQuery = false)
     RestaurantModel findByPlaceId(@Param("place_id") String place_id);
 
-    @Query(value = "SELECT r FROM RestaurantModel r WHERE r.id = :id", nativeQuery = false)
-    RestaurantModel findRawById(@Param("id") UUID id);
+    @Query(value="SELECT r FROM RestaurantModel r WHERE r.name = :name", nativeQuery = false)
+    RestaurantModel findByName(@Param("name") String name);
 
 
     // change size of description to 1000
