@@ -56,3 +56,5 @@ aws/*.ppk
 aws/*.key
 aws/*.crt
 aws/*.env
+
+scan_ticket_caisse/tools/
