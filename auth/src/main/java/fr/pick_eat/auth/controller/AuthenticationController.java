@@ -11,12 +11,9 @@ import fr.pick_eat.auth.service.JwtService;
 import fr.pick_eat.auth.utils.CookiesUtils;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.UUID;
 
 @RestController
 public class AuthenticationController {
@@ -49,28 +46,11 @@ public class AuthenticationController {
         return ResponseEntity.ok(jwtToken);
     }
 
-//    @PostMapping("verify")
-//    public ResponseEntity verify(@Parameter(hidden = true) @CookieValue("jwt") String jwt, @Parameter(hidden = true) @CookieValue("user") String user) {
-//        boolean valid = jwtService.validateToken(jwt, null);
-//        if (valid) {
-//            return ResponseEntity.ok(UserMapper.toEntity(CookiesUtils.getUserFromCookie(user)));
-//        } else {
-//            throw new Unh
-//        }
-//    }
-
-
-// Note: already handled by Spring Security
+// Note: already handled by Spring Security in SecurityConfiguration
 //    @GetMapping("/logout")
 //    public ResponseEntity<String> logout(HttpServletResponse response) {
 //        response.addCookie(jwtService.generateDeleteCookie());
 //        CookiesUtils.removeUserCookie();
 //        return ResponseEntity.ok("Logout successful");
 //    }
-
-    @GetMapping("/adminToken")
-    public ResponseEntity<String> adminToken() {
-        String jwtToken = jwtService.generateToken(new UserBasic().setEmail("admin@cpe.fr").setPassword("admin"), UUID.randomUUID(), "admin");
-        return ResponseEntity.ok(jwtToken);
-    }
 }
