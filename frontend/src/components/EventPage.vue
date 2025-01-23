@@ -184,11 +184,19 @@ function handleNewMessageReceived(message: any): void {
   }
   if (!users.value.find(participant => participant.uuid === chat.userId)) {
     retrieveUser(chat.userId).then(() => {
-      logs.value.push(formatMessage(chat));
+      if (!isMessageInChat(chat)) {
+        logs.value.push(formatMessage(chat));
+      }
     });
   } else {
-    logs.value.push(formatMessage(chat));
+    if (!isMessageInChat(chat)) {
+      logs.value.push(formatMessage(chat));
+    }
   }
+}
+
+function isMessageInChat(message: ChatInfo): boolean {
+  return logs.value.find(log => log.chatId === message.chatId) != undefined;
 }
 
 function formatMessage(message: ChatInfo): ChatInfo {
@@ -257,7 +265,7 @@ function handleVote(): void {
   z-index: 1;
 }
 
-.buttons-container{
+.buttons-container {
   display: flex;
   justify-content: space-between;
 }
@@ -309,7 +317,7 @@ function handleVote(): void {
   display: none;
 }
 
-.send-image-container{
+.send-image-container {
   aspect-ratio: 1/1;
   background-color: var(--accent-orange);
   border-radius: 5px;
