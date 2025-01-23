@@ -172,7 +172,6 @@ public class RestaurantService {
             if (restaurant.has("description")) {
                 resto.setDescription(restaurant.getString("description"));
             }
-            resto.setRating((float) restaurant.getDouble("rating"));
             resto.setNumberRatings(restaurant.getInt("user_ratings_number"));
             for (int i = 0; i < opening_hours.length(); i++) {
                 String opening = (String) opening_hours.get(i);
@@ -218,8 +217,24 @@ public class RestaurantService {
 
     }
 
+    public void parseSentimentScore() throws URISyntaxException, JSONException, IOException {
+        String content = new String(Files.readAllBytes(Path.of(RestaurantApplication.class.getClassLoader().getResource("reviews_trend.json").toURI())));
+        JSONObject jsonObject = new JSONObject(content);
+        for (Iterator<String> it = jsonObject.keys(); it.hasNext(); ) {
+            String key = it.next();
+            RestaurantModel resto = restaurantRepository.findByName(key);
+            JSONObject restaurant = jsonObject.getJSONObject(key);
+            if (restaurant.has("average_sentiment_score")) {
+                resto.setRating((float) restaurant.getDouble("average_sentiment_score"));
+            }
+            RestaurantModel save = restaurantRepository.save(resto);
+        }
+
+    }
+
     public List<RestaurantDTO> selectRestaurants(EventDTO event) {
         List<RestaurantModel> selectedRestaurants = new ArrayList<>();
+        List<RestaurantModel> other = new ArrayList<>();
         List<String> types = event.getTypes();
         int maxRetries = 10;
         while (selectedRestaurants.size() < 10) {
@@ -235,6 +250,8 @@ public class RestaurantService {
                 restaurantTypes.retainAll(types);
                 if (!restaurantTypes.isEmpty() & !selectedRestaurants.contains(restaurant)) {
                     selectedRestaurants.add(restaurant);
+                } else if (restaurantTypes.isEmpty() & !selectedRestaurants.contains(restaurant)) {
+                    other.add(restaurant);
                 }
             }
             while (selectedRestaurants.size() > 10) {
@@ -251,6 +268,20 @@ public class RestaurantService {
             event.setRadius(event.getRadius() + 500);
             if (maxRetries <= 0) {
                 log.error("Max retries reached!!!!");
+                while (selectedRestaurants.size() < 10) {
+                    if (other.isEmpty()) {
+                        break;
+                    }
+                    float highRate = 0;
+                    RestaurantModel highRateRestaurant = null;
+                    for (RestaurantModel restaurant : other) {
+                        if (restaurant.getRating() > highRate) {
+                            highRate = restaurant.getRating();
+                            highRateRestaurant = restaurant;
+                        }
+                    }
+                    selectedRestaurants.add(highRateRestaurant);
+                }
                 break;
             }
             maxRetries--;
@@ -313,14 +344,15 @@ public class RestaurantService {
     public boolean isRestaurantPopular(UUID uuid) {
         RestaurantModel restaurant = restaurantRepository.findById(uuid).orElseThrow();
         float restaurantRating = restaurant.getRating();
-        int restaurantReviews = restaurant.getNumberRatings();
-        // Averages and multiplier
-        double averageRating = 4.2625375;
-        double averageReviews = 481.78152;
-        double popularityMultiplier = 1.2; // 20% more than average reviews
-
-        // Determine if the restaurant is popular
-        return restaurantRating >= averageRating && restaurantReviews >= (averageReviews * popularityMultiplier);
+        int numberRatings = restaurant.getNumberRatings();
+        if (restaurantRating > 1) {
+            restaurantRating = restaurantRating / 5;
+        }
+        if (numberRatings < 300) {
+            restaurantRating -= 0.2F;
+        }
+        System.out.println(restaurantRating);
+        return restaurantRating > 0.5;
     }
 
     public boolean isRestaurantOpen(UUID uuid, Date date) {
@@ -366,6 +398,7 @@ public class RestaurantService {
         parseRestaurants(resto_path, resto_details_path);
         setRestaurantPhotos();
         parseOpeningHours();
+        parseSentimentScore();
     }
 
 }
